@@ -1,0 +1,8 @@
+#서버포트설정
+server.port = 80
+#오라클 DB 연결 정보
+spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@IP주소:포트번호/DB이름
+spring.datasource.username=SNS
+spring.datasource.password=SNS1234
+
