@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!-- 현재 HTML 문서에 타임리프 문법을 사용한다고 선언 -->
+<head>
+	<meta charset="UTF-8">
+	<title>프로젝트</title>
+
+</head>
+<body>
+
+        <th:block th:replace="~{common/header}"></th:block>
+        
+<<<<<<< HEAD
+	<aside class="left">
+        <div class="menu">
+            <nav>
+                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
+                <a>Profile</a>
+            </nav>
+            <nav>
+                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
+                <a>Follow</a>
+            </nav>
+            <nav>
+                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
+                <a>Message</a>
+            </nav>
+            <nav>
+                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
+                <a>chatting</a>
+            </nav>
+        </div>
+        <div class="login_block">
+            <button class="w-btn w-btn-gra1" type="button">
+                로그인
+            </button>
+        </div>
+    </aside>
+
+    <aside class="right">
+
+        <h1 id="friend_name">같은 동네 유저</h1>
+        <div class="friend_post">
+            <nav class="friend">
+                <li><a href="#">user01</a><a>서울 특별시</a></li>
+                <li><a href="#">user02</a><a>서울 특별시</a></li>
+                <li><a href="#">user03</a><a>서울 특별시</a></li>
+                <li><a href="#">user01</a><a>서울 특별시</a></li>
+                <li><a href="#">user02</a><a>서울 특별시</a></li>
+                <li><a href="#">user03</a><a>서울 특별시</a></li>
+            </nav>
+        </div>
+    </aside>
+
+
+
+    <main>
+        <section class="main_body">
+            <div class="user_box">
+                <div class="user_post">
+                    <div class="post">
+                        <div class="post_head">
+                            <div class="propile">
+                                <img src="images/Rectangle 110.png">
+                            </div>
+                            <h1 id="user01">user01</h1>
+                        </div>
+                        <div class="post_content"></div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment_left">
+                            <i class="fa-solid fa-heart" id="heart" ></i>
+                        </div>
+                        <div class="comment_right">
+                            <a>하트수</a>
+
+                            <a>조회수</a>
+                       
+                            <a>댓글수</a>
+                            <button class="commentBtn">댓글달기</button>
+                        </div>
+                    </div>
+                </div>
+
+               
+            
+        </section>
+    </main>
+=======
+	        <aside>
+		        <div class="menu">
+		            <a>프로필</a>
+		            <a>팔로우</a>
+		            <a>메세지</a>
+		            <a>채팅</a>
+		        </div>
+		        <div class="login_block">
+		            <button id="login">
+		                 로그인 
+		            </button>
+		        </div>
+	 	   </aside>
+	 	   
+ 	       <main>
+		        <section class="main_body">
+		            <div class="user_box">
+		                <div class="user_post">
+		                    <div class="post">
+		                        <div class="post_head">
+		                            <div class="propile">
+		                                <img src="images/Rectangle 110.png">
+		                            </div>
+		                            <h1 id="user01">user01</h1>
+		                        </div>
+		                        <div class="post_content"></div>
+		                    </div>
+		                    <div class="comment">
+		                        <div class="comment_left">
+		                            <i class="fa-solid fa-heart" id="heart" ></i>
+		                        </div>
+		                        <div class="comment_right">
+									<a>하트수 :</a>
+									
+		                            <a>조회수 :</a>
+		                       
+		                            <a>댓글수 :</a>
+		                            <button class="commentBtn">댓글달기</button>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		                
+		                                <div class="user_post">
+		                    <div class="post">
+		                        <div class="post_head">
+		                            <div class="propile">
+		                                <img src="images/Rectangle 110.png">
+		                            </div>
+		                            <h1 id="user01">user01</h1>
+		                        </div>
+		                        <div class="post_content"></div>
+		                    </div>
+		                    <div class="comment">
+		                        <div class="comment_left">
+		                            <i class="fa-solid fa-heart" id="heart" ></i>
+		                        </div>
+		                        <div class="comment_right">
+									<a>하트수 :</a>
+									
+		                            <a>조회수 :</a>
+		                       
+		                            <a>댓글수 :</a>
+		                            <button class="commentBtn">댓글달기</button>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		                
+		                
+		                                <div class="user_post">
+		                    <div class="post">
+		                        <div class="post_head">
+		                            <div class="propile">
+		                                <img src="images/Rectangle 110.png">
+		                            </div>
+		                            <h1 id="user01">user01</h1>
+		                        </div>
+		                        <div class="post_content"></div>
+		                    </div>
+		                    <div class="comment">
+		                        <div class="comment_left">
+		                            <i class="fa-solid fa-heart" id="heart" ></i>
+		                        </div>
+		                        <div class="comment_right">
+									<a>하트수 :</a>
+									
+		                            <a>조회수 :</a>
+		                       
+		                            <a>댓글수 :</a>
+		                            <button class="commentBtn">댓글달기</button>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		                
+		                
+		                                <div class="user_post">
+		                    <div class="post">
+		                        <div class="post_head">
+		                            <div class="propile">
+		                                <img src="images/Rectangle 110.png">
+		                            </div>
+		                            <h1 id="user01">user01</h1>
+		                        </div>
+		                        <div class="post_content"></div>
+		                    </div>
+		                    <div class="comment">
+		                        <div class="comment_left">
+		                            <i class="fa-solid fa-heart" id="heart" ></i>
+		                        </div>
+		                        <div class="comment_right">
+									<a>하트수 :</a>
+									
+		                            <a>조회수 :</a>
+		                       
+		                            <a>댓글수 :</a>
+		                            <button class="commentBtn">댓글달기</button>
+		                        </div>
+		                    </div>
+		                </div>
+		
+		
+		                
+		
+		            
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		            </div>
+		        </section>
+  			  </main>
+>>>>>>> 98712001e057337dea7f12a95f2481d18af42a28
+
+
+
+  		<script th:src="@{/js/main.js}"></script>
+	
+</body>
+</html>

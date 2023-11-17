@@ -1,0 +1,375 @@
+body{
+    height: 1080px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+
+#logo {
+    height: 100%;
+<<<<<<< HEAD
+    margin-left: 1%;
+    font-weight: bold;
+    color: rgb(0, 81, 255);
+    
+=======
+>>>>>>> 98712001e057337dea7f12a95f2481d18af42a28
+}
+
+
+button {
+    cursor: pointer;
+    box-shadow: 0px 3px 3px grey;
+    
+}
+
+header {
+    
+    height: 80px;
+    display: flex;
+<<<<<<< HEAD
+    background: linear-gradient(-100deg, #ff99cc 0%, #33ccff 100%);
+    margin: 0;
+    width: 100%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgb(163, 162, 170);
+    border-top: none;
+=======
+    background-color: #D7F0FF;
+    margin: 0;
+    position: fixed;
+  	z-index: 1;
+  	width: 100%;
+    
+>>>>>>> 98712001e057337dea7f12a95f2481d18af42a28
+}
+
+header>a{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8%;
+    cursor: pointer;
+    font-size: 30px
+}
+
+#bell {
+    font-size: 48px;
+    
+}
+
+
+
+
+/* 검색창 */
+nav{
+    width: 80%;
+    padding-top: 1%;
+    border: none; 
+
+}
+
+nav>form{
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+
+}
+
+
+#search{
+    height: 60%;
+    width: 50%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: none;
+
+  
+}
+
+
+
+input{
+    width: 100%;
+    height: 60%;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 20px;
+    padding: 2% 6%;
+    font-weight: bold;
+    border: none;
+
+}
+
+#search>button{
+    position: absolute;
+    border: none;
+    outline: none;
+    background: none;
+    margin-left: 90%;
+    box-shadow: 0px 0px 0px;
+
+
+}
+
+
+.right_button{
+    width: 20%;
+    display: flex;
+    margin-right: 5%;
+}
+
+
+.right_button>div{
+    
+    flex: 1;
+ 
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+
+
+   
+}
+
+header>div>div:nth-child(1){
+
+    align-items: center;
+
+
+}
+
+
+#upload{
+
+    height: 70%;
+    width: 100px;
+    font-size: 1.3rem;
+   border-width: 0.5px;
+    font-weight:100;
+    background-color: white;
+
+}
+
+
+/* 검색 버튼 이미지 */
+#search_icon{
+
+    height: 30px;
+
+}
+
+
+/* ///////////////////////////////////////////////////////////////////// */
+
+
+@media screen and (max-width: 900px) {
+    aside {
+        display: none; /* 화면이 작아지면 사이드바를 감춘다 */
+    }
+
+    main {
+        margin-left: 0; /* 사이드바가 없으므로 여백을 없앤다 */
+        width: 100%; /* 전체 너비로 확장 */
+    }
+}
+
+
+/* 사이드 */
+aside{
+    height: 600px;
+    width: 8%;
+    float: left;
+    min-width: 200px;
+    position: fixed;
+    z-index: 2;
+    margin-top:8%;
+    }
+    
+    .menu{
+    
+        display: flex;
+        flex-direction: column;
+        height: 60%;
+    
+    
+    }
+    
+<<<<<<< HEAD
+    #sideIcon {
+        font-size: 40px;
+        margin-top: 15px;
+        margin-left: 30%;
+        margin-bottom: 50px;
+=======
+    .menu>a{
+        display: flex;
+       
+        flex: 1;
+        font-size: 2rem;
+        font-weight: bold;
+        align-items: center;
+        justify-content: center;
+>>>>>>> 98712001e057337dea7f12a95f2481d18af42a28
+    }
+
+
+
+    
+    .login_block{
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    
+    #login{
+    
+        width: 200px;
+        height: 100px;
+        background-color: #42B0FF;
+        border-radius: 50px;
+        margin-bottom: 30%;
+        font-size: 2rem;
+        border: none;
+<<<<<<< HEAD
+        background: linear-gradient(-1000deg, #33ccff 0%, #ff99cc 100%);
+        color: white;
+=======
+    
+>>>>>>> 98712001e057337dea7f12a95f2481d18af42a28
+    }
+
+/* ///////////////메인 페이지 ////////////////////*/
+
+    .main_body {
+        margin-top: 0;
+        margin-left: 11%;
+        height: 10000px;
+        background-color: #F2F6FF;
+        display: flex;
+        justify-content: center;
+    }
+
+    .user_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 65%;
+        margin-top: 50px;
+    }
+
+    .user_post {
+        background-color: white;
+        width: 100%;
+        height: 650px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+        min-width: 600px;
+        margin-top: 8%;
+    }
+
+    .post {
+        width: 100%;
+        height: 90%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .post_head {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        margin: 0;
+    }
+
+    .post_content {
+        height: 100%;
+        padding: 5%;
+    }
+
+    .propile {
+        width: 10%;
+        height: 90%;
+        border-radius: 100%;
+        margin-left: 3%;
+        margin-top: 5px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .propile {
+        object-fit: cover;
+    }
+
+
+
+    #user01 {
+        margin-top: 5%;
+        margin-left: 2%;
+        font-size: 35px;
+        font-weight: 500;
+    }
+
+    .comment {
+        width: 100%;
+        height: 10%;
+        background-color: #7791BA;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .comment_left {
+        flex-basis: 15%;
+    }
+
+    .comment_right {
+        flex-basis: 85%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+
+    .commentBtn {
+        margin-left: 50px;
+        margin-right: 30px;
+        width: 130px;
+        border-radius: 50px;
+        border-width: 0;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        background-color: #DFE8FF;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    #heart {
+        margin-left: 10%;
+        font-size: 65px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: #feb4b4;
+    }
+
+    #heart:hover {
+        color: #ff0000;
+    }
+
+    .comment_right > a {
+        margin-top: 10px; /* 탑 마진 설정 */
+        margin-left: 20px;
+    }

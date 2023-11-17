@@ -1,0 +1,247 @@
+/* 회원 페이지 전체를 감싸고 있는 요소 */
+.myPage-content{
+    display: flex;
+    width: 1000px;
+    min-height: 700px;
+    margin: 50px auto;
+    /* 
+        width / height 관련 속성
+
+        1) width / height
+            - 지정된 크기로 고정
+
+        2) min-width / min-height    
+            - 내부 요소가 부모 크기보다 작아도 지정된 최소 크기를 유지
+            - 단, 내부 요소가 부모크기를 초과화면 부모의 크기가 늘어남
+
+        3) max-width / max-height    
+            - 내부 요소가 부모 크기보다 커도 지정된 크기를 유지 
+            - 단, 내부 요소가 부모 크기보다 작다면 부모의 크기가 줄어듬
+    */
+
+}
+
+/* 사이드메뉴 */
+.left-side{
+    width: 25%;
+    border-right: 2px solid #ddd;
+}
+
+.list-group{
+    width: 100%;
+    list-style: none;
+    padding-right: 20px;
+}
+
+.list-group > li{
+    height: 50px;
+    font-size: 18px;
+}
+
+.list-group > li > a{
+    color:black;
+    text-decoration: none;
+
+    display: flex;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    border-bottom : 2px solid #ddd;
+}
+
+.list-group > li > a:hover{
+    background-color: #ccc;
+}
+
+/* ********************************* */
+/* 마이페이지 공통 */
+.myPage-main{
+    width: 75%;
+    padding: 0 50px;
+}
+
+/* 마이페이지 제목 */
+.myPage-title{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+/* 마이페이지 부제 */
+.myPage-subject{
+    display: block;
+    margin-bottom: 30px;
+
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+
+/* 마이페이지 행 단위 스타일 지정 */
+.myPage-row{
+    width: 500px;
+    height: 50px;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    border-bottom : 2px solid #ddd;
+}
+
+.myPage-row > * {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 행 제목 */
+.myPage-row > label{
+    width: 30%;
+    color: #455ba8;
+}
+
+.myPage-row > span{
+    width: 70%;
+    color: #455ba8;
+}
+
+/* 행 내부 input 태그 */
+.myPage-row > input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-weight: normal;
+}
+
+/* 제출 버튼 */
+.myPage-submit{
+    width: 100%;
+    padding: 10px;
+    margin: 50px 0;
+    
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+
+    background-color: #455ba8;
+    color: white;
+    cursor: pointer;
+}
+
+/* form태그 */
+form[name='myPageFrm']{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 내부 input 요소 focus 시 */
+.myPage-row:focus-within{ 
+    border-bottom-color: #455ba8;
+}
+
+
+/* ******************************************* */
+/* 내 정보 페이지 전용 스타일 */
+
+.info-title{
+    border: none;
+}
+
+.info-address{
+    margin: 0;
+}
+
+.info-address > button{
+    width: 30%;
+    height: 70%;
+
+    font-size: 14px;
+    font-weight: normal;
+
+    background-color: white;
+    border : 1px solid gray;
+    cursor: pointer;
+}
+
+/* *********비밀번호 변경 화면*********** */
+.myPage-row > input[type='password']{
+    width: 70%;
+} 
+
+/* **********회원 탈퇴 약관********** */
+.secession-terms{
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    
+    overflow: auto;
+    /* 내용이 요소를 벗어나는 경우 방향에 맞춰서 자동으로 스크롤 추가 */
+
+    font-family: sans-serif; /* 돋움체 */
+    font-size: 14px;
+}
+
+/* ************* 프로필 화면 ************* */
+.profile-image-area{
+    width: 150px;
+    height: 150px;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+
+    position: relative;
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#profileImage{
+    height: 100%;
+}
+
+/* 삭제버튼 */
+form[name='myPage-frm']{position: relative;}
+
+#deleteImage{
+    position: absolute;
+    top: 0px;
+    right: 240px;
+    cursor: pointer;
+}
+
+/* 이미지 버튼 영역 */
+.profile-btn-area{
+    width: 230px;
+    margin: 20px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-btn-area > *{
+    width: 110px;
+    height: 33px;
+    padding: 5px 10px;
+
+    border: 1px solid black;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#imageInput{ display: none;}
+
+.profile-btn-area > button{
+    background-color: #455ba8;
+    color : white;
+    margin-left: 2px;
+}
+
+#profileFrm {
+	position: relative;
+}

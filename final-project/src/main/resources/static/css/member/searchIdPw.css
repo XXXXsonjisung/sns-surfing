@@ -1,0 +1,246 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 863px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+label {
+    cursor: pointer;   
+}
+
+label > input {
+    width: 13px;
+    height: 13px;
+}
+
+input {
+    width: 250px;
+    height: 30px;    
+    border-radius: 50px;
+    border: 1px solid rgb(184, 184, 184);
+    padding: 15px;
+}
+
+#logos {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    
+}
+
+#name {
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+#searchIdPw {
+    display: flex;
+    justify-content: center;
+    font-size: 27px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+#headHr {
+    width: 90%;
+    margin-left : auto;
+    margin-right : auto;
+    margin-bottom: 20px;
+    
+    border-width: 2px;
+}
+
+#side {
+    display: flex;
+}
+
+#leftSide {
+    width: 50%;
+}
+
+#rightSide {
+    width: 50%;
+
+}
+
+#idTitle {
+    font-size: 21px;
+    margin: 10px;
+    margin-left: 17.5%;
+}
+
+#idBox {
+    text-align: center;
+}
+
+#idBox > input {
+    display: inline-block;
+    flex-direction: column;
+}
+
+#idForm {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#idForPhone {
+    margin-top: 15px;
+}
+
+#idForEmail {
+    margin-top: 15px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 0;
+    background-color: #B2F1FF;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px gray;
+}
+
+#inputHr {
+    width:auto;
+    border-width: 2px;
+}
+
+#idForPhoneBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#labelBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchId {
+    width: auto;
+    border-width: 2px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+#searchId div {
+    width: 600px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#searchId label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#idFirstDt {
+    display: flex;
+    margin: 10px;
+}
+
+#idSecondDt {
+    display: flex;
+    margin: 10px;
+}
+
+#idFristDd {
+    display: flex;
+    margin: 10px;
+}
+
+#searchBtn {
+    width: 60px;
+    height: 33px;
+    margin: 20px;
+    background-color: #6DE5FF;
+    box-shadow: 1px 1px 1px 1px gray;
+}
+
+#pwTitle {
+    font-size: 21px;
+    margin: 10px;
+    margin-left: 17.5%;
+}
+
+#pwForm {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#searchPw {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+#searchPw div {
+    width: 600px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#searchPw label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+#back {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 20px;
+}
+
+#backBtn { 
+    width: 150px;
+    height: 50px;
+    background-color: #ECFCFF;
+    box-shadow: 1px 1px gray;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 0;
+    background-color: #B2F1FF;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px gray;
+    text-decoration: none;
+    color: black;
+}
