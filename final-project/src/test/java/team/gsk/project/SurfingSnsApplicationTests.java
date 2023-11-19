@@ -1,10 +1,10 @@
-package edu.kh.project;
+package team.gsk.project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BoardProjectBootApplicationTests {
+class SurfingSnsApplicationTests {
 
 	@Test
 	void contextLoads() {
