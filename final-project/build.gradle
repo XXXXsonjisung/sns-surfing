@@ -30,8 +30,6 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	// Spring Boot JDBC 관련 라이브러리 모음
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	
 	// JDBC Driver
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
