@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    
+    <link rel="stylesheet" th:href="@{/css/member/signUp.css}">
+    
+</head>
+<body>
+    <div id="logos">
+        <img id="logo" src="/final-front/image/Rectangle 17.png">
+        <span id="name">Surfing</span>
+    </div>
+
+    <div id="titleBox">
+        <span id="pageTitle">회원가입</span>
+    </div>
+    
+    <div class="idPw">
+        <p >아이디/비밀번호</p>
+    </div>
+
+    
+
+    <dl id="idPwBox">
+
+        <div id="inputIdBox">
+            <input type="text" id="inputId" placeholder="아이디">
+            <button type="button" id="duplicateBtn"> 중복 확인</button>
+        </div>
+    
+        <div id="inputPwBox">
+            <input type="password" id="inputPw" placeholder="비밀번호">
+            <button type="button" id="btnShowHide"></button>
+        </div>
+       
+        <div id="inputPw2Box">
+            <input type="password" id="inputPw2" placeholder="비밀번호 확인">
+        </div>
+       
+    </dl>
+
+    <div class="profile">
+        <p>개인정보</p>
+    </div>
+
+    <dl id="profileBox">
+        <div id="inputNameBox">
+            <input type="text" id="inputId" placeholder="이름">
+        </div>
+
+        <div id="inputNameBox">
+            <input type="text" id="inputId" placeholder="닉네임">
+        </div>
+
+        <div id="inputNameBox">
+            <input type="text" id="inputId" placeholder="전화번호">
+        </div>
+
+        <div id="inputNameBox">
+            <input type="text" id="inputId" placeholder="생년월일">
+        </div>
+
+        <div id="inputNameBox">
+            <input type="text" id="inputId" placeholder="이메일">
+            <button type="button" id="pushAuthBtn">인증번호 발송</button>
+        </div>
+
+        <div id="inputNameBox">
+            <input type="text" id="inputId" placeholder="인증번호">
+            <button type="button" id="authBtn">인증번호 확인</button>
+        </div>
+    </dl>
+
+    <div id="signUpBtnBox">
+        <button id="signUpBtn">회원가입</button>
+    </div>
+ 
+</body>
+</html>
