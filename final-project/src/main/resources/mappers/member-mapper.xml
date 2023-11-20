@@ -4,6 +4,4 @@
 <mapper namespace="edu.kh.project.member.model.dao.MemberMapper">
 	
 
-	
-
 </mapper>
