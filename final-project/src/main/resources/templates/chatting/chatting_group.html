@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅방</title>
+    <link rel="stylesheet" th:href="@{/css/chatting/chatting_group.css}">
+</head>
+<body>
+    <header>
+        <div onclick="window.location.href='/'" class="title1">Surfing</div>
+        <div class="title2">
+            <div>성북컴퓨터</div>
+            <div class="nowPepole">현재인원:</div>
+        </div>
+    </header>
+
+        <aside>
+          
+            <div class="search_room">
+                <div>채팅방검색</div>
+                <form>
+                    <input type="text"> 
+                    <button><img src="images/Rectangle 112.png"></button>
+                </form>
+            </div>
+            <div class="room_list"> 
+                <label>채팅방 목록</label>
+                <ul>
+                    <li>
+                        <img src="images/5e0d9f011a9ad2738de6.jpg">
+                        <div class="message_imform">
+                            <b id="message_pe">성구모</b>
+                            <span class="chatDate">14:05</span>
+                            <div id="last_message">
+                                fdfd
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <img src="images/5e0d9f011a9ad2738de6.jpg">
+                        <div class="message_imform">
+                            <b id="message_pe">성구모</b>
+                            <span class="chatDate">14:05</span>
+                            <div id="last_message">
+                                fdfd
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/5e0d9f011a9ad2738de6.jpg">
+                        <div class="message_imform">
+                            <b id="message_pe">성구모</b>
+                            <span class="chatDate">14:05</span>
+                            <div id="last_message">
+                                fdfd
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+        </aside>
+
+        <main>
+            <div class="mainSide"></div>
+            <div class="main_chat">
+                <div class="main_view">
+
+               
+                        <ul class="display-chatting">
+                            <li class="target-chat">
+                                <img id="pro" src="images/5e0d9f011a9ad2738de6.jpg">
+        
+                                <div>
+                                    <b>닉네임</b><br>
+                                    <p class="chat">
+                                    </p>
+                                    <span class="chatDate">14:05</span>
+                                </div>
+                            </li>
+                        </ul>	
+
+                   
+                </div>
+                <div clas="main_comment">
+                    <form>
+                        <input type="text">
+                        <button type="submit" id="submit">
+                            <img src="images/fePaperPlane0.png">
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="mainSide">
+                <button onclick="history.back()" id="back">돌아가기</button>
+            </div>
+        </main>
+  
+
+
+
+    
+</body>
+</html>
