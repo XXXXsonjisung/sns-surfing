@@ -36,6 +36,17 @@ dependencies {
 	// @ConfigurationProperties
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	
+	// Spring - Mybatis 관련 라이브러리 모음
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+	
+	// 스프링 시큐리티
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.1.0'
+	
+	// 이메일
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.1.0'
+	
 }
 
 tasks.named('bootBuildImage') {
