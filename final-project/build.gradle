@@ -48,6 +48,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.1.0'
 	
+	// WebSocket(채팅)
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.5'
+	
 }
 
 tasks.named('bootBuildImage') {

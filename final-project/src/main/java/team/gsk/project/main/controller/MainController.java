@@ -13,7 +13,11 @@ public class MainController {
 		
 		model.addAttribute("name","ㅋㅋㅋ");
 	
-		return "common/main.html";
+		//return "common/main.html";
+		
+		
+		return "chatting/chatting_choose";
+		
 	}
 	
 
