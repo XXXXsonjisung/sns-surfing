@@ -1,132 +1,57 @@
 <!DOCTYPE html>
-		<!-- 현재 HTML 문서에 타임리프 문법을 사용한다고 선언 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>프로젝트</title>
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main_page</title>
+
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-hWO6mIzRdutQzLZ5a+W8VGdL5WS3I5Xw2yyU7j60paz+1XS0b1TE1l5U0Gpqm49b" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-	<main>
-        
-         <!-- th:block
-			- html 태그가 아닌 단순히 타임리프를 쓰기 위한 태그가 필요할 때 사용
-			- 타임리프 해석 시 다른 타임리프 수행 후 사라짐
-		  -->
-        <th:block th:replace="~{common/header}"></th:block>
+    
+    <th:block th:replace="~{common/header}"></th:block>
 
-        <section class="content">
-            <section class="content-1">
-            	
-            	<h3>로그인된 회원 정보</h3>
-            	${sessionScope.loginMember}
-            	
-            	
-            	<h3>닉네임이 일치하는 회원의 전화번호 조회</h3>
-            	
-            	<input type="text" id="inputNickname">
-            	<button id="btn1">조회</button>
-            	<h4 id="result1"></h4>
-            	
-            	<hr>
-            	
-            	<h3>이메일을 입력받아 일치하는 회원의 정보를 조회</h3>
-            	<input id="inputEmail">
-            	<button id="btn2">조회</button>
-            	<ul id="result2">
-            	</ul>
-            	
+    <th:block th:replace="~{common/leftSide}"></th:block>
 
-				<h3>삼항 연산자</h3>
-				<!-- ${name} 값이 있으면 true, 없으면 false -->
-				<p th:text="${name} ? ${name} : '이름 없음'"></p>
-				<p th:text="${name2} ? ${name2} : '이름 없음'"></p>
+	<th:block th:replace="~{common/rightSide}"></th:block>
+    
 
+    <main>
+        <section class="main_body">
+            <div class="user_box">
+                <div class="user_post">
+                    <div class="post">
+                        <div class="post_head">
+                            <div class="propile">
+                                <img src="images/Rectangle 110.png">
+                            </div>
+                            <h1 id="user01">user01</h1>
+                        </div>
+                        <div class="post_content"></div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment_left">
+                            <i class="fa-solid fa-heart" id="heart" ></i>
+                        </div>
+                        <div class="comment_right">
+                            <a>하트수</a>
 
-				<h3>Elvis 연산자</h3>
-				<p th:text="${name} ?: '이름 없음'"></p>
-				<p th:text="${name2} ?: '이름 없음'"></p>
+                            <a>조회수</a>
+                       
+                            <a>댓글수</a>
+                            <button class="commentBtn">댓글달기</button>
+                        </div>
+                    </div>
+                </div>
 
-
-				<h3>No-Operation</h3>
-				<p th:text="${name} ?:_">(태그에작성)이름 없음</p>
-				<p th:text="${name2} ?:_">(태그에작성)이름 없음</p>
-
+               
             
-            </section>
-            
-
-            <!-- 아이디/비밀번호/로그인버튼 영역-->
-            <section class="content-2">
-				<!-- 로그인 X -->
-				<th:block th:unless="${session.loginMember}">
-
-					<form th:action="@{/member/login}" method="post" name="login-form" id="loginFrm">
-
-						<fieldset class="id-pw-area">
-							<section>
-								<input type="text" name="memberEmail" placeholder="이메일"
-									autocomplete="off" 
-									value=""
-									>
-								<input type="password" name="memberPw" placeholder="비밀번호">
-							</section>
-
-							<section>
-								<button>로그인</button>
-							</section>
-						</fieldset>
-
-						<label>
-							<input type="checkbox" name="saveId"> 아이디 저장
-						</label>
-
-						<section class="signup-find-area">
-							<a th:href="@{/member/signUp}">회원가입</a>
-							<span>|</span>
-							<a th:href="@{#}">ID/PW 찾기</a>
-						</section>
-
-					</form>
-				</th:block>
-             
-				<!-- 로그인 O -->
-				<!-- request Scope는 그냥 써도 인식함. 
-					session Scope는 session.loginMember 이런식으로 session.을 꼭 붙여야한다.
-				-->
-				<th:block th:if="${session.loginMember}">
-					<article class="login-area">
-						<a th:href="@{/myPage/profile}">
-							<img th:src="@{/images/user.png}" id="memberProfile">
-						</a>
-						
-						<div class="my-info">
-							<div>
-								<a th:href="@{/myPage/info}" id="nickname">[[${session.loginMember.memberNickname}]]</a>
-								<!--<th:block th:text="${session.loginMember.memberNickname}">로그인 회원의 닉네임</th:block>-->
-								<a th:href="@{/member/logout}" id="logoutBtn">로그아웃</a>
-							</div>
-							
-							<p></p>
-						</div>
-					</article>
-				</th:block>
-            		
-
-            </section>
-
         </section>
-
     </main>
-	
-	<th:block th:replace="~{common/footer}"></th:block>
-	
-	<!-- SockJS 추가 -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> -->
 
-
-	<!-- main.js 추가 -->
-	<script th:src="@{/js/main.js}"></script>
-	
+    
 </body>
 </html>
