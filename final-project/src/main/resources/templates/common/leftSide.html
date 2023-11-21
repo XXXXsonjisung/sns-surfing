@@ -1,19 +1,27 @@
- <aside class="left">
+<aside class="left">
         <div class="menu">
             <nav>
-                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
+				<a th:href="@{/profile}">
+            		<i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>					
+				</a>
                 <a>Profile</a>
             </nav>
             <nav>
-                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
+				<a th:href="@{/follow}">
+           	   	    <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>					
+				</a>
                 <a>Follow</a>
             </nav>
             <nav>
-                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
+				<a th:href="@{/message}">
+	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>				
+				</a>
                 <a>Message</a>
             </nav>
             <nav>
-                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
+				<a th:href="@{/chatting}">
+	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>				
+				</a>
                 <a>chatting</a>
             </nav>
         </div>
@@ -22,4 +30,4 @@
                 로그인
             </button>
         </div>
-    </aside>
+</aside>
