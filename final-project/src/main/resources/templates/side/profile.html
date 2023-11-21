@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile_page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-hWO6mIzRdutQzLZ5a+W8VGdL5WS3I5Xw2yyU7j60paz+1XS0b1TE1l5U0Gpqm49b" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/common/profile.css}">
+    <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+ 	<th:block th:replace="~{common/header}"></th:block>
+
+    <th:block th:replace="~{common/leftSide}"></th:block>
+
+    <main>
+        <div class="user_box">
+            <a id="p1">프로필 사진</a>
+            <hr>
+            <nav class="proBox">
+                <div class="profile_img">
+                    <img th:src="@{/common/images/profile/profile.jpg}">
+                </div>
+                <label for="imageInput">이미지 선택</label>
+                <input type="file" name="profileImage" id="imageInput" accept="image/*">
+                <button class="proBtn" id="proBtn">변경</button>
+            </nav>
+            <a id="p1">회원 아이디</a>
+            <hr>
+            <a id="t1">user1234</a>
+            <a id="p1">비밀번호 변경</a>
+            <hr>
+            <div class="proPwBox">
+                <a id="p3">현재 비밀번호</a>
+                <input class="pwInput" id="your_pw" placeholder="your Pw">
+                <a id="p2">변경 비밀번호</a>
+                <input class="pwInput" id="new_pw" placeholder="new Pw">
+                <a id="p2">비밀번호 확인</a>
+                <input class="pwInput" id="new_pw" placeholder="new Pw">
+                <button class="proBtn2">변경</button>
+            </div>
+            <a id="p1">닉네임 변경</a>
+            <hr>
+            <nav class="nickBox">
+                <a>현재 닉네임 :</a><a class="nick">user</a>
+            </nav>
+            <a class="nick1">변경 닉네임</a>
+            <input id="new_nick" placeholder="new NickName">
+            <button class="proBtn3">변경</button>
+            
+            <button id="by_sns">탈퇴하기</button>
+        </div>
+    </main>
+
+
+
+
+    
+</body>
+</html>

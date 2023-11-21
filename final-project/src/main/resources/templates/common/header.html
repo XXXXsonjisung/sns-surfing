@@ -3,15 +3,19 @@
 
 <header>
         <div class="logo_img">
-            <img src="images/Rectangle 110.png" id="logo">
+			<a th:href="@{/}">
+	            <img th:src="@{/common/images/Rectangle110.png}" id="logo">			
+			</a>
         </div>
-        <a id="logo" href="/">Surfing</a>
+
+        <a id="logo" th:href="@{/}">Surfing</a>
+
         <nav>
             <form action="#">
                 <fieldset id="search">
                     <input id="search_id" type="search" placeholder="검색" >
                     <button>
-                        <img src="images/Rectangle 112.png" id="search_icon">
+                        <img th:src="@{/common/images/Rectangle112.png}" id="search_icon">
                     </button>
                 </fieldset>
             </form>
