@@ -74,50 +74,51 @@
                         #<button id="tag-btn" type="button">태그는 5개만 선택가능합니다.</button>
                     </div>
                 </div>
-                <!-- 숨겨진 태그 리스트 -->
+                 <!-- 숨겨진 태그 리스트 -->
                 <div class="modal-overlay" id="modal-overlay">
                     <div class="tag-container" id="tag-container">
                         <div class="tagList">
                             <span class="close">&times;</span>
                             <ul class="firstList">
                                 <li>
-                                    <a>지역</a>
+                                    <a onclick="showListItem(0)" >지역</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a>나이</a>
+                                    <a onclick="showListItem(1)">나이</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a>직업</a>
+                                    <a onclick="showListItem(3)">직업</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a>성별</a>
+                                    <a onclick="showListItem(4)">성별</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a>취미</a>
+                                    <a onclick="showListItem(5)">취미</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a>전체</a>
+                                    <a onclick="showListItem(6)">전체</a>
                                     <span>(13)</span>
                                 </li>
                             </ul>
                         </div> 
                         <div class="tagList">
                             <ul class="secondList">
-                                <li>지역</li>
-                                <li>나이</li>
-                                <li>직업</li>
-                                <li>성별</li>
-                                <li>취미</li>
-                                <li>전체</li>
+                                <li class="list-item">지역</li>
+                                <li class="list-item">나이</li>
+                                <li class="list-item">직업</li>
+                                <li class="list-item">성별</li>
+                                <li class="list-item">취미</li>
+                                <li class="list-item">전체</li>
                             </ul>
                         </div> 
                     </div>
                  </div>
+
 
 
 
@@ -184,7 +185,7 @@
 
                 <div class="last_button">
                     <button type="submit">만들기</button>
-                    <button type="button">돌아가기</button>
+                    <button type="button" onclick="history.back()">돌아가기</button>
                 </div>
             </form>
         </div>
@@ -192,7 +193,7 @@
 
 
     </main>
-    <script src="js/room_making.js"></script>
+    <script th:src="@{/js/chatting/room_making.js}"></script>
     
 </body>
 </html>

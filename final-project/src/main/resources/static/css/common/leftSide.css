@@ -1,0 +1,133 @@
+/* ///////////////////////////////////////////////////////////////////// */
+
+
+@media screen and (max-width: 900px) {
+    aside {
+        display: none; /* 화면이 작아지면 사이드바를 감춘다 */
+    }
+
+    main {
+        margin-left: 0; /* 사이드바가 없으므로 여백을 없앤다 */
+        width: 100%; /* 전체 너비로 확장 */
+    }
+}
+
+
+/* 사이드 */
+aside{
+    margin-top: 5%;
+    position: fixed;
+    height: 600px;
+    width: 10%;
+    float: left;
+    min-width: 200px;
+    
+    }
+    
+    .menu{
+        display: flex;
+        flex-direction: column;
+        height: 60%;
+    
+    
+    }
+    
+    #sideIcon {
+        font-size: 40px;
+        margin-top: 15px;
+        margin-left: 30%;
+        margin-bottom: 50px;
+    }
+
+
+
+    
+    .login_block{
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+
+    .w-btn-gra1 {
+        width: 180px;
+        height: 90px;
+        font-size: 2rem;
+        border-radius: 50px;
+        border: none;
+        background: linear-gradient(-1000deg, #33ccff 0%, #ff99cc 100%);
+        color: white;
+    }
+
+    /* ////////////////////// */
+
+    .right {
+        right: 0;
+        left: auto;
+        float: right;
+        margin-top: 5%;
+        position: fixed;  
+        background-color: white;  
+        width: 15%;
+        height: 60%;
+        border-radius: 50px;
+        border: 1px solid #dfdddd;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    #friend_name {
+        color: rgb(255, 153, 0);
+    }
+
+    .friend_post {
+        width: 85%;
+        height: 80%;
+        background-color: rgb(249, 248, 255);
+        display: flex;
+        flex-direction: column;
+
+        overflow-y: scroll; /* 항상 세로 스크롤을 나타나도록 설정 */
+        
+    }
+
+    .friend {
+        list-style-type: none; /* 리스트 스타일 제거 */
+        padding: 0; /* 내부 여백 제거 */
+    }
+
+    .friend li {
+        position: relative;
+        padding-left: 20px; /* 왼쪽 여백 설정 (점 크기 조절) */
+        margin-bottom: 10px; /* 각 항목 간격 조절 */
+    }
+
+    .friend li a {
+        text-decoration: none; /* 밑줄 제거 */
+        color: inherit; /* 부모 요소에서 상속한 색상 사용 */
+        cursor: pointer; /* 포인터 커서 사용 */
+        display: inline-block; /* 인라인 블록 요소로 변경하여 크기 조절 가능 */
+        padding: 5px; /* 내부 여백 설정 */
+    }
+
+    .friend li::before {
+        content: "•"; /* 점 모양 (•) 사용 */
+        color: #ccc; /* 점 색상 설정 */
+        font-size: 24px; /* 점 크기 조절 */
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    
+    
+    a{
+		  text-decoration: none;
+		  color: black;
+		
+	}

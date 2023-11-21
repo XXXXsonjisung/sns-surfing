@@ -8,60 +8,9 @@
     <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div class="logo_img">
-            <img src="images/Rectangle 110.png" id="logo">
-        </div>
-        <a id="logo">Surfing</a>
-        <nav>
-            <form action="#">
-                <fieldset id="search">
-                    <input id="search_id" type="search" placeholder="검색" >
-                    <button>
-                        <img src="images/Rectangle 112.png" id="search_icon">
-                    </button>
-                </fieldset>
-            </form>
-        </nav>
-
-        <div class="right_button">
-            <div>
-                <i id="bell" class="fa-solid fa-bell" style="color: #ffffff;"></i>
-            </div>
-            <div>
-                <button class="w-btn-neon2" type="button">
-                    업로드
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <aside class="left">
-        <div class="menu">
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
-                <a>Profile</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
-                <a>Follow</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
-                <a>Message</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
-                <a>chatting</a>
-            </nav>
-        </div>
-        <div class="login_block">
-            <button class="w-btn w-btn-gra1" type="button">
-                로그인
-            </button>
-        </div>
-    </aside>
-
+	   <th:block th:replace="~{common/header}">헤드</th:block>	
+	
+	   <th:block th:replace="~{common/leftSide}">사이드바</th:block>
 
 
 
@@ -94,7 +43,7 @@
 
         <div class="room_container">
             <div>
-                <button class="make-room">만들기</button>
+                <button class="make-room" onclick="location.href='/chatting/roomMaking'">만들기</button>
                 <select class="general-room">
                     <option>인기순</option>
                     <option>최근순</option>
