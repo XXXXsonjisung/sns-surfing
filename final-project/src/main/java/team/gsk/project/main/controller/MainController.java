@@ -13,15 +13,14 @@ public class MainController {
 	public String mainForward(Model model) {
 		
 		model.addAttribute("name","ㅋㅋㅋ");
-	
 
+		
 		return "common/main";
+		
 
-		
-		
 //		return "chatting/chatting_choose";
 
-	}
+  }
 	
 	@GetMapping("/loginPage")
 	public String loginPageForward(Model model) {
@@ -29,12 +28,23 @@ public class MainController {
 
 		return "common/login";
 
+
+		
+//		return "chatting/chatting_choose";
+
 		
 
 	}
 	
+
+	@GetMapping("/profile")
+	public String sideForward() {
+
+		
+		return "side/profile";
 	
 
 
 }
 
+}

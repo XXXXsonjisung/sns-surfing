@@ -42,5 +42,24 @@ public class ChattingController {
 	}
 	
 	
+	//개인 채팅 페이지 이동 
+	@GetMapping("/chattinGroup")
+	public String chattinGroup(){
+		
+		return "chatting/chatting_group";
+		
+		
+	}
+	
+	
+	//그룹 채팅 만들기 페이지 이동 
+	@GetMapping("/roomMaking")
+	public String roomMaking(){
+		
+		return "chatting/room_making";
+		
+		
+	}
+	
 	
 }

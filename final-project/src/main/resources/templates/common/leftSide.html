@@ -1,20 +1,40 @@
+
+<link rel="stylesheet" th:href="@{/css/common/leftSide.css}">
+
  <aside class="left">
+
         <div class="menu">
             <nav>
-                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
+				<a th:href="@{/profile}">
+            		<i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>					
+				</a>
                 <a>Profile</a>
             </nav>
             <nav>
-                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
+				<a th:href="@{/follow}">
+           	   	    <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>					
+				</a>
                 <a>Follow</a>
             </nav>
             <nav>
-                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
+
+                <a href="/chatting/chattinGroup"><i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>Message</a>
+            </nav>
+            <nav>
+               
+                <a href="/chatting/chattingchoose"> <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>chatting</a>
+
+				<a th:href="@{/message}">
+	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>				
+				</a>
                 <a>Message</a>
             </nav>
             <nav>
-                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
+				<a th:href="@{/chatting}">
+	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>				
+				</a>
                 <a>chatting</a>
+
             </nav>
         </div>
         <div class="login_block">
@@ -22,4 +42,4 @@
                 <a th:href="@{/loginPage}">로그인</a>
             </button>
         </div>
-    </aside>
+</aside>
