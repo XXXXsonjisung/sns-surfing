@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,59 +9,10 @@
 
 </head>
 <body>
-    <header>
-        <div class="logo_img">
-            <img src="images/Rectangle 110.png" id="logo">
-        </div>
-        <a th:href="@{/}" id="logo">Surfing</a>
-        <nav>
-            <form action="#">
-                <fieldset id="search">
-                    <input id="search_id" type="search" placeholder="검색" >
-                    <button>
-                        <img src="images/Rectangle 112.png" id="search_icon">
-                    </button>
-                </fieldset>
-            </form>
-        </nav>
+    <th:block th:replace="~{common/header}">헤드</th:block>	
+  
+	<th:block th:replace="~{common/leftSide}">사이드바</th:block>
 
-        <div class="right_button">
-            <div>
-                <i id="bell" class="fa-solid fa-bell" style="color: #ffffff;"></i>
-            </div>
-            <div>
-                <button class="w-btn-neon2" type="button">
-                    업로드
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <aside class="left">
-        <div class="menu">
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
-                <a>Profile</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
-                <a>Follow</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
-                <a>Message</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
-                <a>chatting</a>
-            </nav>
-        </div>
-        <div class="login_block">
-            <button class="w-btn w-btn-gra1" type="button">
-                로그인
-            </button>
-        </div>
-    </aside>
 
     <main>
 
@@ -70,8 +21,8 @@
                     채팅 선택 
                 </div>
                 <div class="chatting_body">
-                    <button type="submit" onclick="location.href='/chatting/groupSetting'"  id="group_chat">그룹채팅</button>
-                    <button type="submit" onclick="location.href='/chatting/chattingRoom'" id="all_chat">전체채팅</button>
+                    <button type="submit" th:onclick="location.href='/chatting/groupSetting'" id="group_chat">그룹채팅</button>
+                    <button type="submit" th:onclick="location.href='/chatting/chattingRoom'" id="all_chat">전체채팅</button>
                 </div>
             </div>
 

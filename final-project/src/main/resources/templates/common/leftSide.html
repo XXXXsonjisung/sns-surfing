@@ -1,4 +1,8 @@
-<aside class="left">
+
+<link rel="stylesheet" th:href="@{/css/common/leftSide.css}">
+
+ <aside class="left">
+
         <div class="menu">
             <nav>
 				<a th:href="@{/profile}">
@@ -13,6 +17,13 @@
                 <a>Follow</a>
             </nav>
             <nav>
+
+                <a href="/chatting/chattinGroup"><i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>Message</a>
+            </nav>
+            <nav>
+               
+                <a href="/chatting/chattingchoose"> <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>chatting</a>
+
 				<a th:href="@{/message}">
 	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>				
 				</a>
@@ -23,6 +34,7 @@
 	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>				
 				</a>
                 <a>chatting</a>
+
             </nav>
         </div>
         <div class="login_block">
