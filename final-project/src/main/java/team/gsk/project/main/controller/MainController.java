@@ -3,6 +3,7 @@ package team.gsk.project.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -14,13 +15,22 @@ public class MainController {
 		
 		model.addAttribute("name","ㅋㅋㅋ");
 	
-		//return "common/main.html";
+		
+		return "common/main";
 		
 		
-		return "chatting/chatting_choose";
+//		return "chatting/chatting_choose";
 		
 	}
+	
+	
+	@GetMapping("/profile")
+	public String sideForward() {
+
+		
+		return "side/profile";
 	
 
 }
 
+}
