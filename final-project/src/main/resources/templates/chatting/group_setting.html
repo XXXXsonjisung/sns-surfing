@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그룹채팅선택</title>
+    <link rel="stylesheet" th:href="@{/css/chatting/group_setting.css}">
+    <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo_img">
+            <img src="images/Rectangle 110.png" id="logo">
+        </div>
+        <a id="logo">Surfing</a>
+        <nav>
+            <form action="#">
+                <fieldset id="search">
+                    <input id="search_id" type="search" placeholder="검색" >
+                    <button>
+                        <img src="images/Rectangle 112.png" id="search_icon">
+                    </button>
+                </fieldset>
+            </form>
+        </nav>
+
+        <div class="right_button">
+            <div>
+                <i id="bell" class="fa-solid fa-bell" style="color: #ffffff;"></i>
+            </div>
+            <div>
+                <button class="w-btn-neon2" type="button">
+                    업로드
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <aside class="left">
+        <div class="menu">
+            <nav>
+                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
+                <a>Profile</a>
+            </nav>
+            <nav>
+                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
+                <a>Follow</a>
+            </nav>
+            <nav>
+                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
+                <a>Message</a>
+            </nav>
+            <nav>
+                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
+                <a>chatting</a>
+            </nav>
+        </div>
+        <div class="login_block">
+            <button class="w-btn w-btn-gra1" type="button">
+                로그인
+            </button>
+        </div>
+    </aside>
+
+
+
+
+    <main>
+        <div class="tag_container">
+            <div class="tag-chose">
+                <label class="tag-title">태그 선택</label>
+                <ul class="tag-list">
+                    <li class="tag-li">지역</li>
+                    <li class="tag-li"></li>
+                    <li class="tag-li"></li>
+                    <li class="tag-li"></li>
+                    <li class="tag-li">나이</li> 
+                    <li class="tag-li"></li>
+                    <li class="tag-li"></li>
+                    <li class="tag-li"></li>
+                    <li class="tag-li">직업</li>
+                </ul>
+            </div>
+
+
+            <!-- 숨겨진 컨텐츠 버튼 누르면 나옴 (아직 안 만듦) -->
+            <!-- 누를시 tag-result에 담김 -->
+            
+            <div class="tag-result">
+                <input type="text" id="tag-box" placeholder="#태그를 추가하세요">
+                <button>검색</button>
+            </div>
+        </div>
+
+        <div class="room_container">
+            <div>
+                <button class="make-room">만들기</button>
+                <select class="general-room">
+                    <option>인기순</option>
+                    <option>최근순</option>
+                    <option>멤버순</option>
+                </select>
+            </div>
+            <div class="room-main">
+                <ul class="room-list">
+                    <li class="room-li">
+                        <div class="room-img">
+                            <img src="images/5e0d9f011a9ad2738de6.jpg"> 
+                        </div>
+                        <div class="room-title">성북컴퓨터</div>
+                        <div class="room-headCount">13명</div>
+                        <div class="room-signUp">
+                            <div>공개</div>
+                            <button>가입</button>
+                        </div>
+                        <div class="room-chatNum">일주일동안 54개 채팅수</div>
+                        <div class="room-tag">#컴퓨터</div>
+                        <div class="room-introduce">안녕하세요</div>
+                        
+                    </li>
+                    <li class="room-li">
+                        <div class="room-img">
+                            <img src="images/5e0d9f011a9ad2738de6.jpg"> 
+                        </div>
+                        <div class="room-title">성북컴퓨터</div>
+                        <div class="room-headCount">13명</div>
+                        <div class="room-signUp">
+                            <div>공개</div>
+                            <button>가입</button>
+                        </div>
+                        <div class="room-chatNum">일주일동안 54개 채팅수</div>
+                        <div class="room-tag">#컴퓨터</div>
+                        <div class="room-introduce">안녕하세요</div>
+                        
+                    </li>
+                    <li class="room-li">
+                        <div class="room-img">
+                            <img src="images/5e0d9f011a9ad2738de6.jpg"> 
+                        </div>
+                        <div class="room-title">성북컴퓨터</div>
+                        <div class="room-headCount">13명</div>
+                        <div class="room-signUp">
+                            <div>공개</div>
+                            <button>가입</button>
+                        </div>
+                        <div class="room-chatNum">일주일동안 54개 채팅수</div>
+                        <div class="room-tag">#컴퓨터</div>
+                        <div class="room-introduce">안녕하세요</div>
+                        
+                    </li>
+                    <li class="room-li"></li>
+                    <li class="room-li"></li>
+                </ul>
+            </div>  
+        </div>
+        
+    </main>
+
+
+
+    
+</body>
+</html>

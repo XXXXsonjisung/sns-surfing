@@ -1,0 +1,559 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0; 
+    padding: 0; 
+}
+
+button,a {
+    cursor: pointer;
+    
+}
+
+
+/* 보라색 헤더 */
+header{
+    height: 50px;
+    width: 100%;
+    background-color: #BDBFF8;
+    display: flex;
+
+}
+
+
+.title1{
+
+    display: flex;
+    width: 20%;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.title2{
+
+    display: flex;
+    width: 80%;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.nowPepole{
+
+    margin-left: 10%;
+
+}
+
+/* //////////////////////////////////////////// */
+
+/* 사이드 */
+/* 사이드 */
+@media screen and (max-width: 900px) {
+    aside {
+        display: none; /* 화면이 작아지면 사이드바를 감춘다 */
+    }
+
+    main {
+        margin-left: 0; /* 사이드바가 없으므로 여백을 없앤다 */
+        width: 100%; /* 전체 너비로 확장 */
+    }
+}
+
+
+/* 사이드 */
+aside{
+    margin-top: 5%;
+    position: fixed;
+    height: 600px;
+    width: 10%;
+    float: left;
+    min-width: 200px;
+    
+    }
+    
+    .menu{
+        display: flex;
+        flex-direction: column;
+        height: 60%;
+    
+    
+    }
+    
+    #sideIcon {
+        font-size: 40px;
+        margin-top: 15px;
+        margin-left: 30%;
+        margin-bottom: 50px;
+    }
+
+
+
+    
+    .login_block{
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+
+    .w-btn-gra1 {
+        width: 180px;
+        height: 90px;
+        font-size: 2rem;
+        border-radius: 50px;
+        border: none;
+        background: linear-gradient(-1000deg, #33ccff 0%, #ff99cc 100%);
+        color: white;
+    }
+
+
+
+    /* //////////////////////////// */
+
+
+    /* 설정 */
+
+
+
+
+    main{
+
+        margin-left: 11%;
+        height: 800px;
+
+
+    }
+
+
+    .setting{
+
+        height: 100%;
+        width: 100%;
+    
+    }
+
+    .setting_title{
+        height: 10%;
+ 
+        font-weight: bold;
+        font-size: 2rem;
+        display: flex;
+        align-items: end;
+        justify-content: start;
+        padding-left: 5%;
+        border-width: 30%;
+
+
+    }
+
+
+
+
+    .setting_contents{
+        height: 90%;
+        display: flex;
+
+    }
+
+
+
+    /* 설정옆 공간 만들기 */
+
+    .setting_contents>div:nth-child(1){
+      
+        padding-left: 5%;
+
+    }
+
+
+
+.content-1{
+
+    width: 60%;
+    height: 100%;
+    padding-top: 1%;   
+
+   
+
+
+}
+
+
+/* 설정(제목) 밑줄  */
+.content-1::before{
+
+    content : "";
+    position: absolute;
+    left    : 13%;
+    bottom  : 0;
+    height  : 86%;
+    width   : 30%;  /* or 100px */
+    border-top:2px solid black;
+   
+
+
+}
+
+
+
+.content-1 form{
+
+    height: 100%;
+    width: 100%;
+
+}
+
+
+
+
+
+    /* 설정 라벨들 일괄 설정 */
+    .content-1 label{
+
+        border-bottom: 1px solid black;
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-left: 15px; 
+        font-weight: bold;
+
+    }
+
+
+
+/* /// */
+
+
+    /* 채팅그룹태그선택 */
+    .group_choose{
+        height: 10%;
+        width: 30%;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+
+    }
+
+
+
+    .room_name>div,.pepole_limit>div,.group_choose>div,
+     .room_introduce>div, .fileUpload>input{
+        /* input 입력창과 제목 label을 정렬시키기 위해서 */
+        padding-left: 15px;
+     }
+
+
+
+
+    /* 공개여부 */
+    .public_or_not{
+        height: 10%;
+        width: 30%; 
+      
+
+    }
+
+
+    
+
+
+
+
+
+    .public_or_not div label{
+       
+       cursor: pointer;
+      
+        background-color: white;
+        border: none;
+        width: 30%;
+        height: 20%;
+        text-align: center;
+        font-weight: 500;
+
+    }
+
+
+    .custom-checkbox.checked{
+       
+       background-color: #5B9FC6;
+       opacity : 0.7;
+        
+       
+ 
+     }
+
+
+
+     /* 인원수 제한 */
+
+     .pepole_limit{
+
+        width: 30%;
+        height: 10%;
+
+
+     }
+
+
+     .pepole_limit #pepole_limit{
+
+        background-color: #D9D9D9;
+        opacity : 0.7;
+        border: none;
+        width: 20%;
+        height: 30px;
+        text-align: center;
+
+     }
+
+
+
+     /* 채팅방이름 */
+
+     .room_name{
+
+        width: 30%;
+        height: 10%;
+        
+
+
+     }
+
+
+    
+
+     #room_name{
+
+        background-color: #D9D9D9;
+        opacity : 0.7;
+        border: none;
+        width: 80%;
+        height: 30px;
+        text-align: center;
+       
+        
+
+     }
+
+     /* 채팅방소개 */
+
+     .room_introduce{
+
+        width: 60%;
+        height: 20%;
+      
+
+     }
+
+   
+
+
+     #room_introduce{
+        background-color: #D9D9D9;       
+        opacity : 0.7;
+        border: none;
+        width: 90%;
+        height: 80px;
+  
+
+
+     }
+
+
+     /* 초대창 */
+     
+     .invite{
+
+        width: 90%;
+        height: 30%;
+        display: flex;
+      
+    
+
+       
+     }
+
+
+    
+     .invi-1{
+
+        width: 60%;
+        height: 100%;
+
+     }
+
+     .search-nickname, .search-nickname::placeholder{
+        height: 30px;
+        width: 98%;
+        text-align: right;
+        background-color: #7EA2FF;
+        color: white;
+
+     
+     }
+
+
+ 
+
+     /* 초대가능한 테이블  */
+    .invite_table{
+    
+        width: 100%;
+     }
+
+
+     .invite_table tr{
+        background-color: #D4E5FF;
+
+     }
+
+     .invite_table img{
+        
+        height: 50px;
+        width: 50px;
+     }
+
+
+     .table_img{
+
+        width: 15%;
+     }
+
+
+     /*프로필사진 변경  */
+
+     .fileUpload{
+
+        width: 40%;
+     }
+
+
+
+
+     /*수정하기 돌아가기 */
+     .last_button{
+
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+
+     }
+
+     .last_button>button{
+
+       background: none;
+       background-color: #EBF0FF;
+       border-radius: 10%;
+       height: 50px;
+       width: 200px;
+       border: none;
+       font-weight: bold;
+     }
+
+
+
+
+     /* ////////////////////////////////////////////////////// */
+
+     /* 오른쪽 현재 채팅 인원 관리 */
+
+     .content-2{
+
+        margin: 0 5% 0 5%;
+        width: 40%;
+        height: 100%;
+       
+
+
+     }
+
+
+     .now_people{
+
+        height: 10%;
+        background-color:#86AFFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+
+     }
+
+
+     .now_people_main{
+
+        height: 90%;
+
+     }
+
+    .now_people_content{
+
+        height: 80%;
+   
+    }
+
+    #np-ul{
+
+        padding: 0;
+    }
+
+
+    .now_people_button{
+
+        height: 20%;
+        background-color: #66B6FF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20%;
+    }
+
+
+    .now_people_button button{
+
+        height: 30%;
+        width: 30%;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 10px;
+
+    }
+
+    
+
+    .np-list{
+        display: flex;
+        gap: 150px;
+        margin-bottom: 1%;
+        padding-left: 5%;
+        background-color: #dee3e7;
+       
+
+    }
+
+
+    #np-img{
+
+        width: 50px;
+        height: 50px;
+        margin-left: 5%;
+        border-radius: 50%
+ 
+
+    }
+
+    #np-id{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
