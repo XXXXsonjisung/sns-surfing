@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디/비밀번호 찾기</title>
+    <link rel="stylesheet" href="/final-front/searchIdPw.css">
+</head>
+<body>
+    <div id="logos">
+        <img id="logo" src="/final-front/image/Rectangle 17.png">
+        <p id="name">Surfing</p>
+    </div>
+
+    <div>
+        <p id="searchIdPw">아이디/비밀번호 찾기</P>
+        <hr id="headHr">
+    </div>
+
+    <section id="side">
+        <div id="leftSide">
+            <div>
+                <p id="idTitle">아이디 찾기</p>
+                
+            </div>
+
+            <form id="idForm">
+                <fieldset id="searchId">
+
+                    <div id="inputBox">
+                        <label id="labelBox" for="idForPhone">
+                            <input type="radio" id="idForPhone" value="idForPhone" name="searchId" checked> 휴대전화로 찾기
+                        </label>
+                        <dl>
+                            <dt id="idFirstDt">
+                                <input type="text" placeholder="이름">
+                            </dt>
+                            <dt id="idSecondDt">
+                                <input type="text" placeholder="전화번호">
+                                <button type="button">인증번호 받기</button>
+                            </dt>
+                            <dd id="idFristDd">
+                                <input type="text" placeholder="인증번호">
+                                <button type="button">인증번호 확인</button>
+                            </dd>
+                        </dl>
+                        
+                        <button id="searchBtn">찾기</button>
+                            
+                    </div>
+
+            
+                    <hr id="inputHr">           
+                        
+                        <div id="inputBox">
+                            <label id="labelBox" for="idForEmail">
+                                <input type="radio" id="idForEmail" value="idForEmail" name="searchId"> 이메일로 찾기
+                            </label>
+                            <dl>
+                                <dt id="idFirstDt">
+                                    <input type="text" placeholder="이름">
+                                </dt>
+
+                                <dt id="idSecondDt">
+                                    <input type="text" placeholder="이메일">
+                                    <button type="button">인증번호 받기</button>
+                                </dt>
+
+                                <dd id="idFristDd">
+                                    <input type="text" placeholder="인증번호">
+                                    <button type="button">인증번호 확인</button>
+                                </dd>
+                            </dl>
+                            
+                            <button id="searchBtn">찾기</button>
+                            
+                        </div>
+
+                </fieldset>
+            </form>
+            
+        </div>
+    
+        <div id="rightSide">
+            <div>
+                <p id="pwTitle">비밀번호 찾기</p>
+                
+            </div>
+            <form id="pwForm">
+  
+                <fieldset id="searchPw">
+                    
+                   
+                    <div id="inputBox">
+                        <label for="pwForPhone">
+                            <input type="radio" id="pwForPhone" value="pwForPhone" name="searchPw" checked> 휴대전화로 찾기
+                        </label>
+                        <dl>
+                            <dt id="idFirstDt">
+                                <input type="text" placeholder="이름">
+                            </dt>
+
+                            <dt id="idSecondDt">
+                                <input type="text" placeholder="전화번호">
+                                <button type="button">인증번호 받기</button>
+                            </dt>
+
+                            <dd id="idFristDd">
+                                <input type="text" placeholder="인증번호">
+                                <button type="button">인증번호 확인</button>
+                            </dd>
+                        </dl>
+                        
+                        <button id="searchBtn">찾기</button>
+                        
+                    </div>                    
+            
+                    <hr id="inputHr">                   
+                   
+                    <div id="inputBox">
+                        <label for="pwForEmail">
+                            <input type="radio" id="pwForEmail" value="pwForEmail" name="searchPw"> 이메일로 찾기
+                        </label>
+                        <dl>
+                            <dt id="idFirstDt">
+                                <input type="text" placeholder="이름">
+                            </dt>
+
+                            <dt id="idSecondDt">
+                                <input type="text" placeholder="이메일">
+                                <button type="button">인증번호 받기</button>
+                            </dt>
+
+                            <dd id="idFristDd">
+                                <input type="text" placeholder="인증번호">
+                                <button type="button">인증번호 확인</button>
+                            </dd>
+                        </dl>
+                        
+                        <button id="searchBtn">찾기</button>
+                        
+                    </div>
+                    
+                    
+                </fieldset>
+            </form>
+        </div>
+    </section>
+    <div id="back">
+        <a href="/final-front/login.html" id="backBtn">돌아가기</a>
+    </div>
+
+</body>
+</html>
