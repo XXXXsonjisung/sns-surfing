@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 화면</title>
+    
     <link rel="stylesheet" th:href="@{/css/common/login.css}">
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script th:src="@{https://apis.google.com/js/platform.js}" async defer></script>
     <meta name="google-signin-client_id." content="893429308195-ainarkgupantqhhdkio4edaptf8oenai.apps.googleusercontent.com">
-    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script th:src="@{//developers.kakao.com/sdk/js/kakao.min.js}"></script>
 </head>
 <body>
     <header id="loginHeader">
@@ -18,13 +19,13 @@
     <section id="loginBody">
 
         <div id="leftSide">
-            <img id="painting" src="/final-front/image/Rectangle 140.png">
+            <img id="painting" th:src="@{/images/Rectangle 140.png}">
         </div>
 
         <div id="rightSide">
             <div id="loginBox">
                 <div id="name">
-                    <img id="logo" src="/final-front/image/Rectangle 17.png">
+                    <img id="logo" th:src="@{/images/Rectangle 17.png}">
                     <h1>Surfing</h1>
                 </div>
 
@@ -47,7 +48,7 @@
                 </div>
 
                 <div id="icon">
-                    <a href="https://accounts.google.com/o/oauth2/v2/auth"><img id="google" src="/final-front/image/flat-color-icons_google.png"></a>
+                    <a th:href="@{https://accounts.google.com/o/oauth2/v2/auth}"><img id="google" th:src="@{/images/flat-color-icons_google.png}"></a>
                     <script type='text/javascript'>
                         //<![CDATA[
                         // 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -64,13 +65,13 @@
                         });
                       //]]>
                     </script>
-                    <a href="#" id="kakao-login-btn"><img id="kakaotalk" src="/final-front/image/simple-icons_kakaotalk.png"></a>
-                    <a href="#"><img id="facebook" src="/final-front/image/logos_facebook.png"></a>
+                    <a href="#" id="kakao-login-btn"><img id="kakaotalk" th:src="@{/images/simple-icons_kakaotalk.png}"></a>
+                    <a href="#"><img id="facebook" th:src="@{/images/logos_facebook.png}"></a>
                 </div>
 
                 <div id="aBox">
                     <a href="/final-front/searchIdPw.html" id="findIdPw" data-onsuccess="onSignIn">아이디/비밀번호 찾기</a> 
-                    <a href="/final-front/signUp.html" id="signUp">회원가입</a>
+                    <a th:href="@{/member/signUp}" id="signUp">회원가입</a>
                 </div>
             </div>
         </div>
@@ -80,6 +81,6 @@
     <footer id="loginFooter">
 
     </footer>
-    <script src="/final-front/login.js"></script>
+    <script th:src="@{/js/login.js}"></script>
 </body>
 </html>
