@@ -4,4 +4,9 @@
 <mapper namespace="edu.kh.project.member.model.dao.MemberMapper">
 	
 
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> 8c898009e696fd3e7731b56f8c995e1489048695
 </mapper>
