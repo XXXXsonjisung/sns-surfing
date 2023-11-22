@@ -118,7 +118,7 @@ nav>form{
 }
 
 
-input{
+/*input{
     width: 100%;
     height: 60%;
     outline: none;
@@ -128,7 +128,7 @@ input{
     font-weight: bold;
     border: none;
 
-}
+}*/
 
 #search>button{
     position: absolute;

@@ -158,3 +158,71 @@ function image(input) {
     document.getElementById('preview').src = "";
   }
 }
+
+
+
+//초대하기 
+
+const targetInput = document.querySelector("#targetInput"); // 사용자 검색
+const resultArea = document.querySelector("#resultArea"); // 검색 결과
+
+targetInput.addEventListener("input", e => {
+
+	const query = e.target.value.trim();
+
+	// 입력된게 없을 때
+	if(query.length == 0){
+		resultArea.innerHTML = ""; // 이전 검색 결과 비우기
+		return;
+	}
+
+
+	// 입력된게 있을 때
+	if(query.length > 0){
+		fetch("/chatting/selectTarget?query="+query)
+		.then(resp => resp.json())
+		.then(list => {
+			//console.log(list);
+
+			resultArea.innerHTML = ""; // 이전 검색 결과 비우기
+
+			if(list.length == 0){
+				const li = document.createElement("li");
+				li.classList.add("result-row");
+				li.innerText = "일치하는 회원이 없습니다";
+				resultArea.append(li);
+			}
+
+			for(let member of list){
+				// li요소 생성(한 행을 감싸는 요소)
+				const li = document.createElement("li");
+				li.classList.add("result-row");
+				li.setAttribute("data-id", member.memberNo);
+
+				// 프로필 이미지 요소
+				const img = document.createElement("img");
+				img.classList.add("result-row-img");
+				
+				// 프로필 이미지 여부에 따른 src 속성 선택
+				if(member.profileImage == null) img.setAttribute("src", "/resources/images/user.png");
+				else	img.setAttribute("src", member.profileImage);
+
+				let nickname = member.memberNickname;
+				let email = member.memberEmail;
+
+				const span = document.createElement("span");
+				span.innerHTML = `${nickname} ${email}`.replace(query, `<mark>${query}</mark>`);
+
+				// 요소 조립(화면에 추가)
+				li.append(img, span);
+				resultArea.append(li);
+
+				// li요소에 클릭 시 채팅방에 입장하는 이벤트 추가
+				li.addEventListener('click', chattingEnter);
+			}
+
+		})
+		.catch(err => console.log(err) );
+	}
+});
+
