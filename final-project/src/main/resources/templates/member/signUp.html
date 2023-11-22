@@ -22,14 +22,18 @@
         <p >아이디/비밀번호</p>
     </div>
 
-    
+     <form th:action="@{/member/signUp}" method="POST" name="signUpFrm" id="signUpFrm">
 
     <dl id="idPwBox">
 
         <div id="inputIdBox">
             <input type="text" id="inputId" placeholder="아이디">
-            <button type="button" id="duplicateBtn"> 중복 확인</button>
+            <button id="duplicateBtn" type="button"> 중복 확인</button>
         </div>
+        
+        
+			<h6 id="idCheck"> 이미 사용 중인 아이디입니다 </h6>
+		
     
         <div id="inputPwBox">
             <input type="password" id="inputPw" placeholder="비밀번호">
@@ -78,5 +82,8 @@
         <button id="signUpBtn">회원가입</button>
     </div>
  
+ 	</form>
+ 	
+ 	<script th:src="@{/js/member/signUp.js}"></script>
 </body>
 </html>

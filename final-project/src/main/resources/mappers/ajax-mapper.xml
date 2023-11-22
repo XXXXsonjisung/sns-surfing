@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- namespace를 Mapper 인터페이스로 지정 -->
-<mapper namespace="team.gsk.project.member.model.dao.MemberMapper">
-	
+<mapper namespace="team.gsk.project.member.model.dao.AjaxMapper">
+
+	 
 	<resultMap type="Member" id="member_rm">
 		<id property="memberNo" column="MEMBER_NO" />
 		<result property="memberId" column="MEMBER_ID" />
@@ -20,31 +20,26 @@
 		<result property="memberBirth" column="MEMBER_BIRTH" />
 	</resultMap>
 	
-	<!-- 로그인 -->
-	<select id="login" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_NICKNAME,
-		MEMBER_INTRO, MEMBER_PROFILE, MEMBER_CORVER_IMG, MEMBER_DELETE_FLAG, AUTHORITY, MEMBER_BIRTH,
-		TO_CHAR(MEMBER_ENROLLDATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS MEMBER_ENROLLDATE
-		FROM "MEMBER"
-		WHERE MEMBER_DELETE_FLAG = 'N'
-		AND MEMBER_ID = #{memberId}
+	
+	<!-- paramterType : 전달 받은 파라미터의 자료형 작성
+		-> 선택사항으로, 작성 안하면 TypeHandler가 알아서 처리
+	 -->
+	 
+	 <!--    자바      마이바티스
+			 int    -> _int
+			 String -> string
+	  -->
+
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="checkId" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_ID = #{id}
+		AND MEMBER_DELETE_FLAG = 'N'
 	</select>
 	
-		<!-- 회원 가입 -->
-	<insert id="signUp">
-		INSERT INTO "MEMBER"
-		VALUES(SEQ_MEMBER_NO.NEXTVAL
-		, #{memberId}
-		, #{memberPw}
-		, #{memberName}
-		, #{memberTel}
-		, '${memberNickname}'
-		, null
-		, null
-		, null
-		, DEFAULT, DEFAULT, DEFAULT
-		, #{memberEmail}
-		, #{memberBirth})
-	</insert>
+	
+	
+	
 
 </mapper>

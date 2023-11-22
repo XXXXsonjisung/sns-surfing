@@ -19,4 +19,10 @@ public class MemberDAO {
 		return mapper.login(inputMember);
 	}
 
+
+	public int signUp(Member inputMember) {
+		
+		return mapper.signUp(inputMember);
+	}
+
 }
