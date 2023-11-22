@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디/비밀번호 찾기</title>
-    <link rel="stylesheet" href="/final-front/searchIdPw.css">
+    <link rel="stylesheet" th:href="@{/css/member/searchIdPw.css}">
 </head>
 <body>
     <div id="logos">
-        <img id="logo" src="/final-front/image/Rectangle 17.png">
+        <img id="logo" th:src="@{/images/20231114115318_93362.png}">
         <p id="name">Surfing</p>
     </div>
 
@@ -147,7 +147,7 @@
         </div>
     </section>
     <div id="back">
-        <a href="/final-front/login.html" id="backBtn">돌아가기</a>
+        <a th:href="@{/loginPage}" id="backBtn">돌아가기</a>
     </div>
 
 </body>

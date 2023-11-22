@@ -22,25 +22,23 @@ public class MainController {
 
   }
 	
+	// 로그인 페이지로 이동
 	@GetMapping("/loginPage")
 	public String loginPageForward(Model model) {
 		
 
-		return "common/login";
-
-
-		
-//		return "chatting/chatting_choose";
-
-		
+		return "common/login";		
 
 	}
+	
+
+	
+
 	
 
 	@GetMapping("/profile")
 	public String sideForward() {
 
-		
 		return "side/profile";
 	
 

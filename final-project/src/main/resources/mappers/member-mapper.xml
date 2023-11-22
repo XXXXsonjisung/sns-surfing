@@ -12,22 +12,21 @@
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
 		<result property="memberIntro" column="MEMBER_INTRO" />
 		<result property="memeberProfileImage" column="MEMBER_PROFILE" />		
-		<result property="memberCoverImage" column="MEMBER_COVER_IMG" />		
+		<result property="memberCoverImage" column="MEMBER_CORVER_IMG" />		
 		<result property="enrollDate" column="MEMBER_ENROLL_DATE" />
 		<result property="memberDeleteFlag" column="MEMBER_DELETE_FLAG" />
 		<result property="authority" column="AUTHORITY" />
 		<result property="memberEmail" column="MEMBER_EMAIL" />
 		<result property="memberBirth" column="MEMBER_BIRTH" />
-		
 	</resultMap>
 	
 	<!-- 로그인 -->
 	<select id="login" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_NICKNAME,
-		MEMBER_INTRO, MEMBER_PROFILE, MEMBER_COVER_IMG, AUTHORITY, MEMBER_BIRTH
-		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE
+		MEMBER_INTRO, MEMBER_PROFILE, MEMBER_CORVER_IMG, MEMBER_DELETE_FLAG, AUTHORITY, MEMBER_BIRTH,
+		TO_CHAR(MEMBER_ENROLLDATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS MEMBER_ENROLLDATE
 		FROM "MEMBER"
-		WHERE MEMBER_DEL_FL = 'N'
+		WHERE MEMBER_DELETE_FLAG = 'N'
 		AND MEMBER_ID = #{memberId}
 	</select>
 

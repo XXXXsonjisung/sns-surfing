@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="logos">
-        <img id="logo" src="/final-front/image/Rectangle 17.png">
+        <img id="logo" th:src="@{/images/20231114115318_93362.png}">
         <span id="name">Surfing</span>
     </div>
 
@@ -37,7 +37,7 @@
         </div>
        
         <div id="inputPw2Box">
-            <input type="password" id="inputPw2" placeholder="비밀번호 확인">
+            <input type="password" id="inputPwConfirm" placeholder="비밀번호 확인">
         </div>
        
     </dl>
@@ -48,28 +48,28 @@
 
     <dl id="profileBox">
         <div id="inputNameBox">
-            <input type="text" id="inputId" placeholder="이름">
+            <input type="text" id="inputName" placeholder="이름">
         </div>
 
         <div id="inputNameBox">
-            <input type="text" id="inputId" placeholder="닉네임">
+            <input type="text" id="inputNickname" placeholder="닉네임">
         </div>
 
         <div id="inputNameBox">
-            <input type="text" id="inputId" placeholder="전화번호">
+            <input type="text" id="inputTel" placeholder="전화번호">
         </div>
 
         <div id="inputNameBox">
-            <input type="text" id="inputId" placeholder="생년월일">
+            <input type="text" id="inputBirth" placeholder="생년월일">
         </div>
 
         <div id="inputNameBox">
-            <input type="text" id="inputId" placeholder="이메일">
+            <input type="text" id="inputEmail" placeholder="이메일">
             <button type="button" id="pushAuthBtn">인증번호 발송</button>
         </div>
 
         <div id="inputNameBox">
-            <input type="text" id="inputId" placeholder="인증번호">
+            <input type="text" id="authKey" placeholder="인증번호">
             <button type="button" id="authBtn">인증번호 확인</button>
         </div>
     </dl>
