@@ -18,24 +18,14 @@
             </nav>
             <nav>
 
-                <a href="/chatting/chattinGroup"><i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>Message</a>
+                <a th:href="@{/chatting/chattinGroup}"><i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>Message</a>
             </nav>
             <nav>
                
-                <a href="/chatting/chattingchoose"> <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>chatting</a>
-
-				<a th:href="@{/message}">
-	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>				
-				</a>
-                <a>Message</a>
-            </nav>
-            <nav>
-				<a th:href="@{/chatting}">
-	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>				
-				</a>
-                <a>chatting</a>
+                <a th:href="@{/chatting/chattingchoose}"> <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>chatting</a>
 
             </nav>
+            
         </div>
         <div class="login_block">
             <button class="w-btn w-btn-gra1" type="button">

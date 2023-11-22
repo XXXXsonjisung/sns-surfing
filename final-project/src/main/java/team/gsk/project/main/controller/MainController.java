@@ -15,10 +15,10 @@ public class MainController {
 		model.addAttribute("name","ㅋㅋㅋ");
 
 		
-		return "common/main";
+		//return "common/main";
 		
 
-//		return "chatting/chatting_choose";
+	return "chatting/chatting_choose";
 
   }
 	

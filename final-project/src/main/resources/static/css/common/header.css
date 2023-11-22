@@ -13,14 +13,13 @@
 }
 
 
+.logo_img a {
+    display: inline-block; /* <a> 요소를 블록 요소로 변경하여 가운데 정렬합니다 */
+}
 
-
-#logo {
-    height: 100%;
-    margin-left: 1%;
-    font-weight: bold;
-    color: rgb(0, 81, 255);
-    
+.logo_img img {
+    width: 140px; /* 원하는 가로 너비로 설정 */
+    height: auto; /* 세로 크기를 자동 조정하여 비율 유지 */
 }
 
 
@@ -91,6 +90,14 @@ nav>form{
 #search_id {
     border: 1px solid #a5a1a1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 60%;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 20px;
+    padding: 2% 6%;
+    font-weight: bold;
+    border: none;
 }
 
 
