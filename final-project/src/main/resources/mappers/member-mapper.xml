@@ -29,5 +29,22 @@
 		WHERE MEMBER_DELETE_FLAG = 'N'
 		AND MEMBER_ID = #{memberId}
 	</select>
+	
+		<!-- 회원 가입 -->
+	<insert id="signUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL
+		, #{memberId}
+		, #{memberPw}
+		, #{memberName}
+		, #{memberTel}
+		, '${memberNickname}'
+		, null
+		, null
+		, null
+		, DEFAULT, DEFAULT, DEFAULT
+		, #{memberEmail}
+		, #{memberBirth})
+	</insert>
 
 </mapper>

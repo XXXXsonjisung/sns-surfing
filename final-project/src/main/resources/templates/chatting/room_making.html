@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +13,11 @@
 
   	<th:block th:replace="~{common/leftSide}">사이드바</th:block>
 
-      <main>
+   <main>
         <div class="roomMake-title">채팅방 만들기</div>
         <div class="content-1">
              
-            <form>
+            <form action="@{/RoomMaking/making}" method="POST" >
                 <div class="group_choose">
                     <label>채팅그룹선택</label>
                     <div>
@@ -76,10 +76,10 @@
         
                         <label>공개여부</label>
                         <div>
-                            <input type="checkbox" class="public" style="display: none;" ></input>
+                            <input type="checkbox" class="public" style="display: none;" value="public"></input>
                             <label for="public" class="custom-checkbox">공개</label>
 
-                            <input type="checkbox" class="public" style="display: none;" ></input>
+                            <input type="checkbox" class="public" style="display: none;" value="private"></input>
                             <label class="custom-checkbox">비공개</label>
                             <input type="password" id="roomPw" placeholder="비밀번호" style="display: none; float: inline-end;" >
                         </div>
@@ -106,8 +106,12 @@
                 <div class="invite">
                     <div class="invi-1">
                         <label>초대하기</label>
-                        <input class="search-nickname" type="text" placeholder="닉네임을 입력해주세요">
-                            <table class="invite_table">
+                        <input class="search-nickname" id="targetInput" type="text" placeholder="닉네임을 입력해주세요" >
+                            <ul id="resultArea">
+                            </ul>    
+                        
+                        
+                        <!-- <table class="invite_table">
                                 <tr>
                                     <th class="table_img">
                                         <img src="images/5e0d9f011a9ad2738de6.jpg">
@@ -126,7 +130,7 @@
                                         <input type="checkbox">선택
                                     </th>
                                 </tr>
-                            </table>
+                            </table> -->
                     </div>
                     <div class="fileUpload">
                         <label>프로필 이미지 선택 </label>

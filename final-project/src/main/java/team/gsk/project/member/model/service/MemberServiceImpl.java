@@ -3,6 +3,7 @@ package team.gsk.project.member.model.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import team.gsk.project.member.model.dao.MemberDAO;
 import team.gsk.project.member.model.dao.MemberMapper;
@@ -23,6 +24,21 @@ public class MemberServiceImpl implements MemberService{
 		Member loginMember = dao.login(inputMember);
 		
 		return loginMember;
+	}
+
+	// 회원 가입 서비스
+	@Transactional
+	@Override
+	public int signUp(Member inputMember) {
+		
+		// 비밀번호 암호화 (Bcrypt) 후 다시 inputMember 세팅
+		
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		inputMember.setMemberPw(encPw);
+		
+		
+		return dao.signUp(inputMember);
+		
 	}
 
 }
