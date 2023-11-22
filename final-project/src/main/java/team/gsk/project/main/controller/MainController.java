@@ -15,24 +15,19 @@ public class MainController {
 		model.addAttribute("name","ㅋㅋㅋ");
 
 		
-		return "common/main";
+		//return "common/main";
 		
 
-//		return "chatting/chatting_choose";
+	return "chatting/chatting_choose";
 
   }
 	
+	// 로그인 페이지로 이동
 	@GetMapping("/loginPage")
 	public String loginPageForward(Model model) {
 		
 
-		return "common/login";
-
-
-		
-//		return "chatting/chatting_choose";
-
-		
+		return "common/login";		
 
 	}
 	
@@ -41,8 +36,10 @@ public class MainController {
 	@GetMapping("/follow")
 	public String sideFollowForward() {
 
+
 		
 		return "side/follow";
+
 	
 
 

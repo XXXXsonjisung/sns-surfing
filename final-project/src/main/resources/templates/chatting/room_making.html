@@ -9,61 +9,11 @@
 
 </head>
 <body>
-    <header>
-        <div class="logo_img">
-            <img src="images/Rectangle 110.png" id="logo">
-        </div>
-        <a th:href="@{/}" id="logo">Surfing</a>
-        <nav>
-            <form action="#">
-                <fieldset id="search">
-                    <input id="search_id" type="search" placeholder="검색" >
-                    <button>
-                        <img src="images/Rectangle 112.png" id="search_icon">
-                    </button>
-                </fieldset>
-            </form>
-        </nav>
+    <th:block th:replace="~{common/header}">헤드</th:block>	
 
-        <div class="right_button">
-            <div>
-                <i id="bell" class="fa-solid fa-bell" style="color: #ffffff;"></i>
-            </div>
-            <div>
-                <button class="w-btn-neon2" type="button">
-                    업로드
-                </button>
-            </div>
-        </div>
-    </header>
+  	<th:block th:replace="~{common/leftSide}">사이드바</th:block>
 
-    <aside class="left">
-        <div class="menu">
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
-                <a>Profile</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
-                <a>Follow</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
-                <a>Message</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
-                <a>chatting</a>
-            </nav>
-        </div>
-        <div class="login_block">
-            <button class="w-btn w-btn-gra1" type="button">
-                로그인
-            </button>
-        </div>
-    </aside>
-
-    <main>
+      <main>
         <div class="roomMake-title">채팅방 만들기</div>
         <div class="content-1">
              
@@ -71,10 +21,11 @@
                 <div class="group_choose">
                     <label>채팅그룹선택</label>
                     <div>
-                        #<button id="tag-btn" type="button">태그는 5개만 선택가능합니다.</button>
+                        <button id="tag-btn" type="button">태그는 5개만 선택가능합니다.</button> 
+                        <input type="text" id="tagsInput">
                     </div>
                 </div>
-                 <!-- 숨겨진 태그 리스트 -->
+                <!-- 숨겨진 태그 리스트 -->
                 <div class="modal-overlay" id="modal-overlay">
                     <div class="tag-container" id="tag-container">
                         <div class="tagList">
@@ -121,22 +72,22 @@
 
 
 
-
                 <div class="public_or_not">
         
                         <label>공개여부</label>
                         <div>
-                            <input type="checkbox" id="public" name="public" style="display: none;" ></input>
+                            <input type="checkbox" class="public" style="display: none;" ></input>
                             <label for="public" class="custom-checkbox">공개</label>
 
-                            <input type="checkbox" id="public" name="public" style="display: none;" ></input>
-                            <label for="publi" class="custom-checkbox">비공개</label>
+                            <input type="checkbox" class="public" style="display: none;" ></input>
+                            <label class="custom-checkbox">비공개</label>
+                            <input type="password" id="roomPw" placeholder="비밀번호" style="display: none; float: inline-end;" >
                         </div>
                 </div>
                 <div class="pepole_limit">
                     <label>인원제한</label>
                     <div>
-                        <input type="text" id="pepole_limit" placeholder="인원수">
+                        <input type="number" min="2" max="10" id="pepole_limit" placeholder="3~10">
                     </div>
                 </div>
                 <div class="room_name">
@@ -155,7 +106,7 @@
                 <div class="invite">
                     <div class="invi-1">
                         <label>초대하기</label>
-                        <input class="search-nickname" type="text"   placeholder="닉네임을 입력해주세요">
+                        <input class="search-nickname" type="text" placeholder="닉네임을 입력해주세요">
                             <table class="invite_table">
                                 <tr>
                                     <th class="table_img">
@@ -179,17 +130,21 @@
                     </div>
                     <div class="fileUpload">
                         <label>프로필 이미지 선택 </label>
-                        <input type="file" accept="image/jpeg,image/jpg,image/png">
+                        <input type="file" accept="image/jpeg,image/jpg,image/png" onchange="image(this)">
+                        <img id="preview">
                     </div>
                 </div>
 
                 <div class="last_button">
                     <button type="submit">만들기</button>
-                    <button type="button" onclick="history.back()">돌아가기</button>
+                    <button type="button">돌아가기</button>
                 </div>
             </form>
         </div>
 
+
+
+    </main>
 
 
     </main>
