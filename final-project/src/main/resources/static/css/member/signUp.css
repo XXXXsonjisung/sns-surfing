@@ -9,8 +9,6 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-
-
 }
 
 
@@ -30,6 +28,12 @@ button {
 
 input {
     font-size: 16px;
+}
+
+#idCheck {
+	color: red;
+	display: none;
+	margin-bottom: 10px;
 }
 
 #logos {
