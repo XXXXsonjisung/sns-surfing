@@ -9,38 +9,11 @@
 
 </head>
 <body>
-    <header>
-        <div class="title1">Surfing</div>
-        <div class="title2">
-        </div>
-    </header>
+    
+		<th:block th:replace="~{common/headerChatting}">헤드</th:block>
 
   
-    <aside class="left">
-        <div class="menu">
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-user" style="color: #002b75;"></i>
-                <a>Profile</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
-                <a>Follow</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>
-                <a>Message</a>
-            </nav>
-            <nav>
-                <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>
-                <a>chatting</a>
-            </nav>
-        </div>
-        <div class="login_block">
-            <button class="w-btn w-btn-gra1" type="button">
-                로그인
-            </button>
-        </div>
-    </aside>
+    	<th:block th:replace="~{common/leftSide}">사이드바</th:block>
 
 
     <main>
