@@ -16,7 +16,7 @@ import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.member.model.service.MemberService;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/member")
 @SessionAttributes({"loginMember"})
 public class MemberController {
 	
@@ -26,7 +26,7 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(Member inputMember, Model model,
 						@RequestHeader("referer") String referer,
-						RedirectAttributes ra, HttpServletResponse resp) {
+						RedirectAttributes ra) {
 		
 		Member loginMember = service.login(inputMember);
 		
@@ -49,15 +49,18 @@ public class MemberController {
 	
 	// 아이디/비밀번호 찾기 페이지 이동
 	@GetMapping("/searchIdPw")
-	public String searchIdPw() {
+	public String searchIdPwForward(Model model) {
 		
-		return "member/searchIdPw";
+
+		return "member/searchIdPw";		
+
 	}
 	
-	// 회원 가입 페이지 이동
+	// 회원가입 페이지 이동
 	@GetMapping("/signUp")
-	public String signUp() {
+	public String signUpForward(Model model) {
 		
-		return "member/signUp";
+		return "member/signUp";		
+
 	}
 }

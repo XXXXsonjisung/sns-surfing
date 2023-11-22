@@ -25,28 +25,28 @@
         <div id="rightSide">
             <div id="loginBox">
                 <div id="name">
-                    <img id="logo" th:src="@{/images/Rectangle 17.png}">
-                    <h1>Surfing</h1>
+                    <img id="logo" th:src="@{/images/20231114115318_93362.png}">
+                    <h1><a th:href="@{/}">Surfing</a></h1>
                 </div>
-
+			 <form th:action="@{/member/login}" method="post" name="login-form" id="loginFrm">
                 <div id="idBox">
 
-                    <input id="inputID" type="text" placeholder="아이디 입력">
+                    <input id="inputId" type="text" name="memberId" placeholder="아이디 입력">
 
                 </div>
 
                 <div id="passwordBox">
 
-                    <input id="inputID" type="password" placeholder="비밀번호 입력">
+                    <input id="inputPw" type="password" name="memberPw" placeholder="비밀번호 입력">
 
                 </div>
 
                 <div id="loginBtnBox">
 
-                    <button type="button" id="loginBtn">log in</button>
+                    <button id="loginBtn">log in</button>
 
                 </div>
-
+			  </form>
                 <div id="icon">
                     <a th:href="@{https://accounts.google.com/o/oauth2/v2/auth}"><img id="google" th:src="@{/images/flat-color-icons_google.png}"></a>
                     <script type='text/javascript'>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div id="aBox">
-                    <a href="/final-front/searchIdPw.html" id="findIdPw" data-onsuccess="onSignIn">아이디/비밀번호 찾기</a> 
+                    <a th:href="@{/member/searchIdPw}" id="findIdPw" data-onsuccess="onSignIn">아이디/비밀번호 찾기</a> 
                     <a th:href="@{/member/signUp}" id="signUp">회원가입</a>
                 </div>
             </div>
@@ -81,6 +81,6 @@
     <footer id="loginFooter">
 
     </footer>
-    <script th:src="@{/js/login.js}"></script>
+    <script th:src="@{/js/common/login.js}"></script>
 </body>
 </html>

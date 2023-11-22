@@ -10,6 +10,11 @@ a {
     color: black;
 }
 
+h1 > a {
+	   text-decoration: none;
+	   color: #009FFF;
+}
+
 body {
     width: 1920px;
     height: 863px;
@@ -87,7 +92,16 @@ body {
     color: #009FFF;
 }
 
-#inputID {
+#inputId {
+    width: 268px;
+    height: 38px;
+    padding: 2px;
+    margin: 5px;
+    border: solid black 1px;
+    border-radius: 5px;
+}
+
+#inputPw {
     width: 268px;
     height: 38px;
     padding: 2px;
