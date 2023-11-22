@@ -12,6 +12,7 @@ a {
 
 
 
+
 /* ///////////////////////////////////////////////////////////////////// */
 
 
@@ -74,7 +75,6 @@ aside{
         background: linear-gradient(-1000deg, #33ccff 0%, #ff99cc 100%);
         color: white;
     }
-    /*////////////////////////////////////////////////////////////////////////////*/
 
 
     main{
@@ -127,26 +127,27 @@ aside{
     #imageInput{ display: none;}
     
     
-    input{
-    width: 100%;
-    height: 60%;
-    outline: none;
-    font-size: 1rem;
-    border-radius: 20px;
-    padding: 2% 6%;
-    font-weight: bold;
-    border: 1px solid #a5a1a1;
-
-}
+	    input{
+	    width: 100%;
+	    height: 60%;
+	    outline: none;
+	    font-size: 1rem;
+	    border-radius: 20px;
+	    padding: 2% 6%;
+	    font-weight: bold;
+	    border: 1px solid #a5a1a1;
+	
+	}
 
 
     .proBox {
         display: flex;
         justify-content: space-between;
+        width: auto;
     }
 
     .profile_img {
-        width: 600px;
+        width: 700px;
         height: 600px;
         border-radius: 50%; /* 반지름이 전체의 50%가 되면 원 모양이 됩니다 */
         overflow: hidden; /* 원 모양의 영역을 벗어나는 이미지를 숨김 */
@@ -201,6 +202,12 @@ aside{
     .pwInput {
         width: 500px;
         height: 20px;
+	    outline: none;
+	    font-size: 1rem;
+	    border-radius: 20px;
+	    padding: 2% 6%;
+	    font-weight: bold;
+	    border: 1px solid #a5a1a1;
     }
 
     #p3 {
@@ -245,6 +252,12 @@ aside{
     #new_nick {
         width: 350px;
         height: 10px;
+	    outline: none;
+	    font-size: 1rem;
+	    border-radius: 20px;
+	    padding: 2% 6%;
+	    font-weight: bold;
+	    border: 1px solid #a5a1a1;
     }
 
     .proBtn3 {

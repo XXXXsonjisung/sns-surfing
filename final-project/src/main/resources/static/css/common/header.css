@@ -1,3 +1,16 @@
+body{
+    height: 1080px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #000; /* 링크 색상 변경 */
+}
+
+
 .logo_img {
     width: 5%;
     height: 90%;
@@ -17,10 +30,13 @@
     display: inline-block; /* <a> 요소를 블록 요소로 변경하여 가운데 정렬합니다 */
 }
 
+
 .logo_img img {
     width: 140px; /* 원하는 가로 너비로 설정 */
     height: auto; /* 세로 크기를 자동 조정하여 비율 유지 */
 }
+
+
 
 
 button {
@@ -39,6 +55,7 @@ header {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     border: 1px solid rgb(163, 162, 170);
     border-top: none;
+    z-index: 2;
 }
 
 header>a{
@@ -101,6 +118,17 @@ nav>form{
 }
 
 
+input{
+    width: 100%;
+    height: 60%;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 20px;
+    padding: 2% 6%;
+    font-weight: bold;
+    border: none;
+
+}
 
 #search>button{
     position: absolute;

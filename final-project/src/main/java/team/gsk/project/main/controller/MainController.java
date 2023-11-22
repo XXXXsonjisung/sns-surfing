@@ -33,13 +33,13 @@ public class MainController {
 	
 
 	
+	@GetMapping("/follow")
+	public String sideFollowForward() {
 
-	
 
-	@GetMapping("/profile")
-	public String sideForward() {
+		
+		return "side/follow";
 
-		return "side/profile";
 	
 
 
