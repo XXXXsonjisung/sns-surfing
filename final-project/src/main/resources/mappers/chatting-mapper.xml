@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="team.gsk.project.chatting.model.ChattingMapper">
+	
+	<resultMap type="Member" id="member_rm">
+		<id property="memberNo" column="MEMBER_NO" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberTel" column="MEMBER_PHONE" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+		<result property="memberIntro" column="MEMBER_INTRO" />
+		<result property="memeberProfileImage" column="MEMBER_PROFILE" />		
+		<result property="memberCoverImage" column="MEMBER_CORVER_IMG" />		
+		<result property="enrollDate" column="MEMBER_ENROLL_DATE" />
+		<result property="memberDeleteFlag" column="MEMBER_DELETE_FLAG" />
+		<result property="authority" column="AUTHORITY" />
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+	</resultMap>
+	
+	<!--채팅 초대 찾기-->
+	<select id="selectTarget" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, PROFILE_IMG  FROM "MEMBER"
+		WHERE (MEMBER_EMAIL LIKE '%${query}%' OR MEMBER_NICKNAME LIKE '%${query}%')
+		AND MEMBER_DEL_FL = 'N'
+		AND MEMBER_NO != ${memberNo}
+	</select>
+
+</mapper>

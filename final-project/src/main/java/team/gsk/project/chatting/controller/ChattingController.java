@@ -1,11 +1,18 @@
 package team.gsk.project.chatting.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import team.gsk.project.chatting.model.service.ChattingService;
+import team.gsk.project.member.model.dto.Member;
 
 
 
@@ -60,6 +67,20 @@ public class ChattingController {
 		
 		
 	}
+	
+	
+	   // 채팅 초대 검색
+    @GetMapping(value="/chatting/selectTarget", produces="application/json; charset=UTF-8")
+    @ResponseBody
+    public List<Member> selectTarget(String query, @SessionAttribute("loginMember") Member loginMember){
+    	Map<String, Object> map = new HashMap<>();
+    	map.put("memberNo", loginMember.getMemberNo());
+    	map.put("query", query);
+    	return service.selectTarget(map);
+    }
+    
+    
+    
 	
 	
 }
