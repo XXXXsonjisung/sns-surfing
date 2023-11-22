@@ -30,6 +30,10 @@ a {
         height: 10000px;
         margin-right: 250px;
     }
+    
+    #profileImage{
+    height: 100%;
+}
 
     hr {
         width: 100%;

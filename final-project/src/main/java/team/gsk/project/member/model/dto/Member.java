@@ -18,10 +18,10 @@ public class Member {
 	private String memberTel;
 	private String memberNickname;
 	private String memberIntro;
-	private String memeberProfileImage;
-	private String memberCoverImage;
+	private String ProfileImage;
+	private String CoverImage;
 	private String enrollDate;
-	private String memberDeleteFlag;
+	private String DeleteFlag;
 	private int authority; // 1 일반 2 관리자
 	private String memberEmail;
 	private String memberBirth;
