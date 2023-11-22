@@ -19,14 +19,16 @@
         <div class="user_box">
             <a id="p1">프로필 사진</a>
             <hr>
-            <nav class="proBox">
-                <div class="profile_img">
-                    <img th:src="@{/common/images/profile/profile.jpg}">
-                </div>
-                <label for="imageInput">이미지 선택</label>
-                <input type="file" name="profileImage" id="imageInput" accept="image/*">
-                <button class="proBtn" id="proBtn">변경</button>
-            </nav>
+            	<form th:action="@{profileImage}" >
+		            <nav class="proBox">
+		                <div class="profile_img">
+		                    <img  th:src="@{/common/images/profile/profile.jpg}">
+		                </div>
+		                <label for="imageInput">이미지 선택</label>
+		                <input  type="file" name="profileImage" id="imageInput" accept="image/*">
+		                <button class="proBtn" id="proBtn">변경</button>
+		            </nav>
+		    	</form>
             <a id="p1">회원 아이디</a>
             <hr>
             <a id="t1">user1234</a>

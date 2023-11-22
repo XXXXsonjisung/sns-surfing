@@ -37,11 +37,12 @@ public class MainController {
 	}
 	
 
-	@GetMapping("/profile")
-	public String sideForward() {
+	
+	@GetMapping("/follow")
+	public String sideFollowForward() {
 
 		
-		return "side/profile";
+		return "side/follow";
 	
 
 

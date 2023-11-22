@@ -6,34 +6,27 @@
         <div class="menu">
             <nav>
 				<a th:href="@{/profile}">
-            		<i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>					
+            		<i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>	
+            		Profile				
 				</a>
-                <a>Profile</a>
             </nav>
             <nav>
 				<a th:href="@{/follow}">
-           	   	    <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>					
+           	   	    <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
+           	   	    Follow					
 				</a>
-                <a>Follow</a>
             </nav>
             <nav>
-
-                <a href="/chatting/chattinGroup"><i id="sideIcon" class="fa-solid fa-envelope" style="color: #073e9c;"></i>Message</a>
+				<a th:href="@{/chatting/chattinGroup}">
+	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>
+	                Message				
+				</a>
             </nav>
             <nav>
-               
-                <a href="/chatting/chattingchoose"> <i id="sideIcon" class="fa-regular fa-message" style="color: #1b4998;"></i>chatting</a>
-
-				<a th:href="@{/message}">
-	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>				
+				<a th:href="@{/chatting/chattingchoose}">
+	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>	
+	                chatting			
 				</a>
-                <a>Message</a>
-            </nav>
-            <nav>
-				<a th:href="@{/chatting}">
-	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>				
-				</a>
-                <a>chatting</a>
 
             </nav>
         </div>
