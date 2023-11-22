@@ -29,14 +29,6 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 8c898009e696fd3e7731b56f8c995e1489048695
-=======
->>>>>>> 89180ce51836a194411a075b508ef3f1a8b7337e
 	
 	// JDBC Driver
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
