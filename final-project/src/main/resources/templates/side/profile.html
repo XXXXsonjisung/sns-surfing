@@ -54,13 +54,29 @@
             <a id="p1">닉네임 변경</a>
             <hr>
             <nav class="nickBox">
-                <a>현재 닉네임 :</a><a class="nick">user</a>
+                <a>현재 닉네임 :</a><a class="nick" th:text="${session.loginMember.memberNickname}">user</a>
             </nav>
-            <a class="nick1">변경 닉네임</a>
-            <input id="new_nick" placeholder="new NickName">
-            <button class="proBtn3">변경</button>
-            
+            <a class="nick1" >변경 닉네임</a>
+            	
+        	<form th:action="@{/nickName}" method="post">
+			    <input id="new_nick" placeholder="new NickName" name="memberNickname" maxlength="10">				
+			    <button type="submit" class="proBtn3" onclick="validateNickname()">변경</button>
+			</form>
+            	
             <button id="by_sns">탈퇴하기</button>
+
+			<!-- 모달 팝업 -->
+			<div id="myModal" class="modal">
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+			    <h2>비밀번호 입력</h2>
+			    <input type="password" id="passwordInput" placeholder="비밀번호를 입력하세요">
+			    <button onclick="processWithdrawal()" id="good_by">탈퇴</button>
+			  </div>
+			</div>
+			
+			
+			
         </div>
     </main>
     

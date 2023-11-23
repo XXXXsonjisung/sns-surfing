@@ -114,7 +114,116 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
 	    return true;
     });
 
-
-
-
 }
+
+
+// ---------------------------------------------------------------------------------------------------------------------------
+
+
+// 비밀번호 변경 제출 시
+const changePwFrm = document.getElementById("changePwFrm");
+const currentPw = document.getElementById("currentPw");
+const newPw = document.getElementById("newPw");
+const newPwConfirm = document.getElementById("newPwConfirm");
+
+
+if(changePwFrm != null){ // 비밀번호 변경 페이지인 경우
+
+    changePwFrm.addEventListener("submit", e => {
+        
+        // 현재 비밀번호 미작성 시
+        if(currentPw.value.trim() == ""){
+            alert("현재 비밀번호를 입력해주세요");
+            e.preventDefault();
+            currentPw.focus();
+            return;
+        }
+
+        // 비밀번호 유효성 검사
+        const regEx = /^[a-zA-Z0-9\!\@\#\-\_]{6,20}$/;
+        if(!regEx.test(newPw.value)){
+            alert("비밀번호가 유효하지 않습니다");
+            e.preventDefault();
+            newPw.focus();
+            return;
+        }
+
+        // 비밀번호 == 비밀번호 확인
+        if(newPw.value != newPwConfirm.value){
+            alert("비밀번호가 일치하지 않습니다");
+            e.preventDefault();
+            newPwConfirm.focus();
+            return;
+        }
+    });
+}
+
+
+
+// -------------------------------------------------------------------------------------------------
+
+
+
+function validateNickname() {
+    var nicknameInput = document.getElementById("new_nick").value.trim();
+    var form = document.getElementById("nicknameForm");
+
+    if (!nicknameInput) {
+        alert("닉네임을 입력해주세요.");
+        event.preventDefault(); // 폼 제출을 막음
+    } else if (nicknameInput.includes(" ")) {
+        alert("사용할 수 없는 닉네임입니다. 띄어쓰기를 제거해주세요.");
+        event.preventDefault(); // 폼 제출을 막음
+    } else {
+        // 유효한 닉네임인 경우 폼을 제출합니다.
+        form.submit();
+    }
+}
+
+// -------------------------------------------------------------------------------------------------
+
+
+var modal = document.getElementById("myModal");
+var bySnsBtn = document.getElementById("by_sns");
+
+// 탈퇴하기 버튼 클릭 시 모달 창 띄우기
+bySnsBtn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// 모달 창 닫기 버튼 설정
+var closeBtn = document.getElementsByClassName("close")[0];
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+    passwordInput.value = ""; // 입력한 비밀번호 초기화
+}
+
+// 탈퇴 버튼 클릭 시 실행할 함수
+function processWithdrawal() {
+    var password = document.getElementById("passwordInput").value;
+    console.log("입력한 비밀번호:", password);
+
+    // 비밀번호 처리 로직
+    // ...
+
+    // 모달 창 닫기
+    modal.style.display = "none";
+    passwordInput.value = ""; // 입력한 비밀번호 초기화
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

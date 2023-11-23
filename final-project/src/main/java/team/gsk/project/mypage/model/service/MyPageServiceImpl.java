@@ -5,7 +5,9 @@ import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import team.gsk.project.common.utility.Util;
@@ -26,6 +28,9 @@ public class MyPageServiceImpl implements MyPageService{
 	
 	@Autowired
 	private MyPageMapper mapper;
+	
+	@Autowired // BCryptPasswordEncoder 의존성 주입(DI)
+	private BCryptPasswordEncoder bcrypt;
 	
 	
 
@@ -85,11 +90,46 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 
+	// 비밀번호 변경 서비스
+		@Transactional(rollbackFor = Exception.class)
+		@Override
+		public int changePw(String currentPw, String newPw, int memberNo) {
+			
+			// 1. 현재 비밀번호, DB에 저장된 비밀번호 비교
+			// 1) 회원번호가 일치하는 MEMBER 테이블 행의 MEMBER_PW 조회
+			String encPw = mapper.selectEncPw(memberNo);
+			
+			// 2) bcrypt.matches(평문, 암호문) -> 같으면 true -> 이 때 비번 수정
+//			if(bcrypt.matches(currentPw, encPw)) {
+//			
+//				Member member = new Member();
+//				member.setMemberNo(memberNo);
+//				member.setMemberPw(bcrypt.encode(newPw));
+//				
+//				// 2. 비밀번호 변경(UPDATE DAO 호출) -> 결과 반환
+//				return mapper.changePw( member );
+//			}
+			
+			// 평문 비밀번호 비교
+			if (currentPw.equals(newPw)) {
+				Member member = new Member();
+				member.setMemberNo(memberNo);
+				member.setMemberPw(bcrypt.encode(newPw));
+			
+				// 2. 비밀번호 변경(UPDATE DAO 호출) -> 결과 반환
+				return mapper.changePw( member );
+			}
+			
+			
+			// 3) 비밀번호가 일치하지 않으면 0 반환
+			return 0;
+		}
 
-	@Override
-	public int changePw(String currentPw, String newPw, int memberNo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		// 닉네임 변경 서비스
+		@Transactional
+		@Override
+		public int updateNickname(Member updateNickname) {
+			return mapper.updateNickname(updateNickname);
+		}
 
 }

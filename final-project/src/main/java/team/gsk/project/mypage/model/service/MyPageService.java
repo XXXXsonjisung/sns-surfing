@@ -14,7 +14,21 @@ public interface MyPageService {
 	 */
 	int updateProfile(MultipartFile profileImage, Member loginMember) throws Exception;
 
+	
+	/** 비밀번호 변경 서비스
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @return
+	 */
 	int changePw(String currentPw, String newPw, int memberNo);
+
+
+	/** 닉네임 변경 서비스
+	 * @param updateNickname
+	 * @return
+	 */
+	int updateNickname(Member updateNickname);
 	
 	
 

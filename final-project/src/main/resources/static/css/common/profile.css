@@ -250,14 +250,15 @@ aside{
     }
 
     #new_nick {
-        width: 350px;
-        height: 10px;
+        width: 450px;
+        height: 20px;
 	    outline: none;
 	    font-size: 1rem;
 	    border-radius: 20px;
 	    padding: 2% 6%;
 	    font-weight: bold;
 	    border: 1px solid #a5a1a1;
+	    margin-left: 5%;
     }
 
     .proBtn3 {
@@ -269,6 +270,7 @@ aside{
         font-weight: bolder;
         color: white;
         margin-top: 5%;
+        margin-left: 38%;
     }
     
     #deleteImage{
@@ -289,3 +291,58 @@ aside{
         margin-top: 25%;
         margin-bottom: 20%;
     }
+    
+    
+  /* -------------------------------------------*/
+  
+  /* 모달 전체 배경 */
+.modal {
+  display: none; /* 기본적으로 모달은 숨김 상태 */
+  position: fixed; /* 고정 위치 */
+  z-index: 1; /* 화면 상의 가장 위로 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+}
+
+/* 모달 내용 위치 */
+.modal-content {
+  background-color: #fefefe; /* 모달 내용 배경색 */
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* 모달 창 너비 조정 */
+  border-radius: 10px;
+}
+
+/* 모달 내용 닫기 버튼 */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#passwordInput {
+	width: 85%;
+}
+
+#good_by {
+	width: 20%;
+	height: 80px;
+	border-radius: 40px;
+	border: none;
+	margin-left: 40%;
+	margin-top: 30px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(255, 0, 0);
+}
