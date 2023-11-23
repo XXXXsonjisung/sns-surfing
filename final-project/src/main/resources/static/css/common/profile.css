@@ -270,6 +270,13 @@ aside{
         color: white;
         margin-top: 5%;
     }
+    
+    #deleteImage{
+    position: absolute;
+    top: 0px;
+    cursor: pointer;
+
+}
 
     #by_sns {
         height: 50px;

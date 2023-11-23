@@ -13,6 +13,8 @@ public interface MyPageService {
 	 * @return
 	 */
 	int updateProfile(MultipartFile profileImage, Member loginMember) throws Exception;
+
+	int changePw(String currentPw, String newPw, int memberNo);
 	
 	
 

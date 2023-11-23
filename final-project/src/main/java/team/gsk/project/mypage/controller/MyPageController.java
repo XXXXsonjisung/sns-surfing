@@ -52,6 +52,37 @@ public class MyPageController {
 	
 	
 	
+	// 비밀번호 변경
+		@PostMapping("/changePw")
+		public String changePw(String currentPw, String newPw
+			,@SessionAttribute("loginMember") Member loginMember
+			,RedirectAttributes ra) {
+			
+			// 로그인한 회원 번호(DB에서 어떤 회원을 조회, 수정하는지 알아야 되니까)
+			int memberNo = loginMember.getMemberNo();
+			
+			// 비밀번호 변경 서비스 호출
+			int result = service.changePw(currentPw, newPw, memberNo);
+			
+			String path = "redirect:";
+			String message = null;
+			
+			if(result > 0) { // 변경 성공
+				message = "비밀번호가 변경 되었습니다.";
+				path += "info";
+				
+			}else { // 변경 실패
+				message = "현재 비밀번호가 일치하지 않습니다.";
+				path += "changePw";
+			}
+			
+			ra.addFlashAttribute("message", message);
+			
+			return path;
+		}
+	
+	
+	
 	
 	
 	

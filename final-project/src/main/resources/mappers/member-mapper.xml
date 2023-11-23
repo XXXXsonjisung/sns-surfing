@@ -11,10 +11,10 @@
 		<result property="memberTel" column="MEMBER_PHONE" />
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
 		<result property="memberIntro" column="MEMBER_INTRO" />
-		<result property="ProfileImage" column="MEMBER_PROFILE" />		
-		<result property="CoverImage" column="MEMBER_COVER_IMG" />		
+		<result property="profileImage" column="MEMBER_PROFILE" />		
+		<result property="coverImage" column="MEMBER_COVER_IMG" />		
 		<result property="enrollDate" column="MEMBER_ENROLL_DATE" />
-		<result property="DeleteFlag" column="MEMBER_DELETE_FLAG" />
+		<result property="deleteFlag" column="MEMBER_DELETE_FLAG" />
 		<result property="authority" column="AUTHORITY" />
 		<result property="memberEmail" column="MEMBER_EMAIL" />
 		<result property="memberBirth" column="MEMBER_BIRTH" />
