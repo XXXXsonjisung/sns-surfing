@@ -26,7 +26,8 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(Member inputMember, Model model,
 						@RequestHeader("referer") String referer,
-						RedirectAttributes ra) {
+						RedirectAttributes ra,
+						HttpServletResponse resp) {
 		
 		Member loginMember = service.login(inputMember);
 		
@@ -42,7 +43,7 @@ public class MemberController {
 			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호 불일치");
 		}	
-		
+		System.out.println(path);
 		return path;
 				
 	}

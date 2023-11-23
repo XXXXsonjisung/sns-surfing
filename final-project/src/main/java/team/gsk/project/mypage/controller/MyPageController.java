@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -14,6 +15,7 @@ import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.mypage.model.service.MyPageService;
 
 @Controller
+@SessionAttributes({"loginMember"})
 public class MyPageController {
 	
 	
@@ -64,22 +66,56 @@ public class MyPageController {
 			// 비밀번호 변경 서비스 호출
 			int result = service.changePw(currentPw, newPw, memberNo);
 			
-			String path = "redirect:";
+			
 			String message = null;
 			
 			if(result > 0) { // 변경 성공
 				message = "비밀번호가 변경 되었습니다.";
-				path += "info";
+				
 				
 			}else { // 변경 실패
 				message = "현재 비밀번호가 일치하지 않습니다.";
-				path += "changePw";
+				
 			}
 			
 			ra.addFlashAttribute("message", message);
 			
-			return path;
+			return "redirect:profile";
 		}
+		
+		
+		// 회원 정보 수정
+		@PostMapping("/nickName")
+		public String updateInfo(@SessionAttribute("loginMember") Member loginMember,
+								Member updateNickname,
+								RedirectAttributes ra) {
+
+			updateNickname.setMemberNo( loginMember.getMemberNo() );
+
+			// DB 회원 정보 수정 (update) 서비스 호출
+			int result = service.updateNickname(updateNickname);
+			
+			String message = null;
+			
+			// 결과값으로 성공
+			if(result > 0) {
+				loginMember.setMemberNickname( updateNickname.getMemberNickname() );
+				
+				message = "회원 정보 수정 성공";
+				
+				
+			} else {
+				// 실패에 따른 처리 
+
+				message = "회원 정보 수정 실패";
+				
+			}
+			
+			ra.addFlashAttribute("message", message);
+			
+			return "redirect:profile"; 
+		}
+		
 	
 	
 	

@@ -14,11 +14,9 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 
 	@Override
 	public int roomMaking(Chatting inputChatting) {
-	
+
 		System.out.println(inputChatting);
 		return mapper.roomMaking(inputChatting);
 	}
 
-
-	
 }

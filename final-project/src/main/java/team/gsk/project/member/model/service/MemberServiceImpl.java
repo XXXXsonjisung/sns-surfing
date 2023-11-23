@@ -23,6 +23,11 @@ public class MemberServiceImpl implements MemberService{
 		
 		Member loginMember = dao.login(inputMember);
 		
+		if(loginMember != null) { // 아이디가 일치하는 회원이 조회된 경우
+			
+			
+		} 
+		
 		return loginMember;
 	}
 

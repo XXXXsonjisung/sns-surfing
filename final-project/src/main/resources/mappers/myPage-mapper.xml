@@ -29,5 +29,26 @@
 	</update>
 	
 	
+	<!-- 비밀번호 조회 -->
+	<select id="selectEncPw" parameterType="_int" resultType="string">
+		SELECT MEMBER_PW FROM "MEMBER" WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<!-- Member : 사용자 지정 별칭 (mybatis-config.xml) -->
+	<update id="changePw" parameterType="Member">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="updateNickname" parameterType="Member">
+		UPDATE "MEMBER" SET
+		MEMBER_NICKNAME = #{memberNickname}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
 	
 </mapper>
