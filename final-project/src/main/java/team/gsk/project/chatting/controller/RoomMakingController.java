@@ -33,7 +33,7 @@ public class RoomMakingController {
 		int result = service.roomMaking(inputChatting);
 		
 		
-		return null;
+		return "chatting/chatting_group";
 	}
 	
 }

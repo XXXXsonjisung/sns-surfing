@@ -122,7 +122,8 @@ body{
 
         }
 
-
+		/*input창 선택 테투리 막기*/
+    	 #tagsInput:focus {outline:none;}
  
 
         .modal-overlay {

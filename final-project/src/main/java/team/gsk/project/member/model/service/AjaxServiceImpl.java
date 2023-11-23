@@ -17,4 +17,16 @@ public class AjaxServiceImpl implements AjaxService{
 		return dao.checkId(id);
 	}
 
+	@Override
+	public int checkNickname(String nickname) {
+		
+		return dao.checkNickname(nickname);
+	}
+
+	@Override
+	public int checkEmail(String email) {
+		
+		return dao.checkEmail(email);
+	}
+
 }
