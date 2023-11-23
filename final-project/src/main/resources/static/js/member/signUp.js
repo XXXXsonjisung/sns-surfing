@@ -62,6 +62,7 @@ const inputPw = document.getElementById("inputPw");
 const btnShowHide = document.getElementById("btnShowHide");
 const pwCheck = document.getElementById("pwCheck");
 const inputPwConfirm = document.getElementById("inputPwConfirm");
+const pwConfirmCheck = document.getElementById("pwConfirmCheck");
 
 inputPw.addEventListener("input", () => {
 	
@@ -122,4 +123,26 @@ inputPw.addEventListener("input", () => {
 });
 
 
+// 비밀번호 확인 유효성 검사
+inputPwConfirm.addEventListener('input', ()=>{
 
+    if(checkObj.memberPw){ // 비밀번호가 유효하게 작성된 경우에
+
+        // 비밀번호 == 비밀번호 확인  (같을 경우)
+        if(memberPw.value === inputPwConfirm.value){
+            pwConfirmCheck.innerText = "비밀번호가 일치합니다";
+            pwConfirmCheck.classList.add("confirm");
+            pwConfirmCheck.classList.remove("error");
+            checkObj.inputPwConfirm = true;
+            
+        } else{ // 다를 경우
+            pwConfirmCheck.innerText = "비밀번호가 일치하지 않습니다";
+            pwConfirmCheck.classList.add("error");
+            pwConfirmCheck.classList.remove("confirm");
+            checkObj.inputPwConfirm = false;
+        }
+
+    } else { // 비밀번호가 유효하지 않은 경우
+        checkObj.inputPwConfirm = false;
+    }
+});
