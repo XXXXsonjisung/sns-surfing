@@ -30,6 +30,9 @@ public class RoomMakingController {
 	@PostMapping("/making")
 	public String roomMaking(Chatting inputChatting,Model model ) {
 	
+		//inputChatting.getTagNo().split
+		// let numbers = input.replace(/#|\s|,/g, "").match(/\d+/g);
+		
 		int result = service.roomMaking(inputChatting);
 		
 		

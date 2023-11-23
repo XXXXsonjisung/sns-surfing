@@ -230,7 +230,7 @@ targetInput.addEventListener("input", e => {
 });
 
 
-// 태그 , 없애고 데이터베이스에 저장하기 
+/*// 태그 , 없애고 데이터베이스에 저장하기 
 function tagEdit(){
 	
 	 event.preventDefault(); // 이벤트 기본 동작 막음
@@ -241,7 +241,7 @@ function tagEdit(){
 	
 }
 
-
+*/
 
 
 
