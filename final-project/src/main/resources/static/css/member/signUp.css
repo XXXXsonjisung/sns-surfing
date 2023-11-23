@@ -33,12 +33,13 @@ input {
     font-size: 16px;
 }
 
-#idCheck {
+h6 {
 	margin-bottom: 10px;
 }
 
-#pwCheck {
-	margin-bottom: 10px;
+
+#pwConfirmCheck {
+	margin-bottom: 0px;
 }
 
 
@@ -146,15 +147,21 @@ div > input {
     text-align: center;
     padding: 0;
     margin: auto;
-    background-image: url(/images/eye.png);
+    background-image: url(/images/slashEye.png);
     background-repeat:no-repeat;
     background-size:contain;
     background-color: Transparent;
     border: none;
+    outline: none;
+}
+
+
+#pwConfirmCheck {
+	margin: 10;
 }
 
 #inputNameBox {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 #pushAuthBtn {
