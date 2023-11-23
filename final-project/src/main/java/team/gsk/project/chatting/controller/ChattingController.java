@@ -70,7 +70,7 @@ public class ChattingController {
 	
 	
 	   // 채팅 초대 검색
-    @GetMapping(value="/chatting/selectTarget", produces="application/json; charset=UTF-8")
+    @GetMapping(value="/selectTarget", produces="application/json; charset=UTF-8")
     @ResponseBody
     public List<Member> selectTarget(String query, @SessionAttribute("loginMember") Member loginMember){
     	Map<String, Object> map = new HashMap<>();
@@ -79,7 +79,13 @@ public class ChattingController {
     	return service.selectTarget(map);
     }
     
-    
+//    //채팅 초대 검색
+//    @GetMapping(value="/selectTarget", produces="application/json; charset=UTF-8")
+//    @ResponseBody
+//    public List<Member> selectTarget(String query){
+//        // 세션에서 loginMember 정보를 사용하지 않고 직접 쿼리를 처리
+//        return service.selectTarget(query); // 이 부분도 수정할 필요가 있을 수 있음
+//    }
     
 	
 	
