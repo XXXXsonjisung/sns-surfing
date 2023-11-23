@@ -4,4 +4,8 @@ public interface AjaxService {
 
 	int checkId(String id);
 
+	int checkNickname(String nickname);
+
+	int checkEmail(String email);
+
 }
