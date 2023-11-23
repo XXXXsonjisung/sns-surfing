@@ -4,32 +4,45 @@
  <aside class="left">
 
         <div class="menu">
+           <nav>
+			    <a th:if="${session.loginMember == null}" href="#" onclick="alert('로그인 후 이용해주세요'); return false;">
+			        <i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>
+			        Profile
+			    </a>
+			    <a th:if="${session.loginMember != null}" th:href="@{/profile}">
+			        <i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>
+			        Profile
+			    </a>
+			</nav>
             <nav>
-				<a th:href="@{/profile}">
-            		<i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>	
-            		Profile				
+				 <a th:if="${session.loginMember == null}" href="#" onclick="alert('로그인 후 이용해주세요'); return false;">
+           	   	    <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
+           	   	    Follow					
 				</a>
-            </nav>
-            <nav>
-				<a th:href="@{/follow}">
+				<a th:if="${session.loginMember != null}" th:href="@{/follow}">
            	   	    <i id="sideIcon" class="fa-solid fa-user-group" style="color: #053d9e;"></i>
            	   	    Follow					
 				</a>
             </nav>
             <nav>
-
-				<a th:href="@{/chatting/chattinGroup}">
+				 <a th:if="${session.loginMember == null}" href="#" onclick="alert('로그인 후 이용해주세요'); return false;">
+	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>
+	                Message				
+				</a>
+				<a th:if="${session.loginMember != null}" th:href="@{/chatting/chattinGroup}">
 	                <i id="sideIcon" class="fa-solid fa-envelope" style="color: #053d9e;"></i>
 	                Message				
 				</a>
             </nav>
             <nav>
-				<a th:href="@{/chatting/chattingchoose}">
+				 <a th:if="${session.loginMember == null}" href="#" onclick="alert('로그인 후 이용해주세요'); return false;">
 	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>	
 	                chatting			
 				</a>
-
-
+					<a th:if="${session.loginMember != null}" th:href="@{/chatting/chattingchoose}">
+	                <i id="sideIcon" class="fa-regular fa-message" style="color: #053d9e;"></i>	
+	                chatting			
+				</a>
             </nav>
             
         </div>

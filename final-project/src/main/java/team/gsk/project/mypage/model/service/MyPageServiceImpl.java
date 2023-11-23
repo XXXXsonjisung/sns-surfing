@@ -84,4 +84,12 @@ public class MyPageServiceImpl implements MyPageService{
 		return result;
 	}
 
+
+
+	@Override
+	public int changePw(String currentPw, String newPw, int memberNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

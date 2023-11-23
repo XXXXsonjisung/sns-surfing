@@ -24,10 +24,10 @@
 		                <div class="profile_img">
 							
 							<!-- 프로필 이미지가 없으면 기본 이미지 -->
-		                    <img  th:unless="*{ProfileImage}" th:src="@{/common/images/profile/profile.jpg}" id="profileImage">
+		                    <img  th:unless="*{profileImage}" th:src="@{/common/images/profile/profile.jpg}" id="profileImage">
 		                    
 		                    <!-- 프로필 이미지가 있으면 저장된 이미지 -->
-		                    <img th:if="*{ProfileImage}" th:src="*{ProfileImage}" id="profileImage">
+		                    <img th:if="*{profileImage}" th:src="*{profileImage}" id="profileImage">
 		                    
 		                </div>
 		                <label for="imageInput">이미지 선택</label>
@@ -37,18 +37,20 @@
 		    	</form>
             <a id="p1">회원 아이디</a>
             <hr>
-            <a id="t1">user1234</a>
+            <a id="t1" th:text="${session.loginMember.memberId}">회원의 아이디</a>
             <a id="p1">비밀번호 변경</a>
             <hr>
-            <div class="proPwBox">
-                <a id="p3">현재 비밀번호</a>
-                <input class="pwInput" id="your_pw" placeholder="your Pw">
-                <a id="p2">변경 비밀번호</a>
-                <input class="pwInput" id="new_pw" placeholder="new Pw">
-                <a id="p2">비밀번호 확인</a>
-                <input class="pwInput" id="new_pw" placeholder="new Pw">
-                <button class="proBtn2">변경</button>
-            </div>
+            	<form th:action="@{changePw}" method="POST" name="myPageFrm" id="changePwFrm">
+		            <div class="proPwBox">
+		                <a id="p3">현재 비밀번호</a>
+		                <input class="pwInput" name="currentPw" id="currentPw" placeholder="your Pw">
+		                <a id="p2">변경 비밀번호</a>
+		                <input class="pwInput" name="newPw" id="newPw" placeholder="new Pw">
+		                <a id="p2">비밀번호 확인</a>
+		                <input class="pwInput" name="newPwConfirm" id="newPwConfirm" placeholder="new Pw">
+		                <button class="proBtn2">변경</button>
+		            </div>
+		    	</form>
             <a id="p1">닉네임 변경</a>
             <hr>
             <nav class="nickBox">
@@ -61,9 +63,9 @@
             <button id="by_sns">탈퇴하기</button>
         </div>
     </main>
-
-
-
+    
+    
+     <script th:src="@{/js/common/profile.js}"></script>
 
     
 </body>
