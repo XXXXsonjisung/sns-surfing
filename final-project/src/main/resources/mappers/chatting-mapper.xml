@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- namespace를 Mapper 인터페이스로 지정 -->
-<mapper namespace="team.gsk.project.chatting.model.ChattingMapper">
+<mapper namespace="team.gsk.project.chatting.model.dao.ChattingMapper">
 	
 	<resultMap type="Member" id="member_rm">
 		<id property="memberNo" column="MEMBER_NO" />
@@ -22,10 +22,13 @@
 	
 	<!--채팅 초대 찾기-->
 	<select id="selectTarget" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, PROFILE_IMG  FROM "MEMBER"
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PROFILE FROM "MEMBER"
 		WHERE (MEMBER_EMAIL LIKE '%${query}%' OR MEMBER_NICKNAME LIKE '%${query}%')
-		AND MEMBER_DEL_FL = 'N'
+		AND MEMBER_DELETE_FLAG = 'N'
 		AND MEMBER_NO != ${memberNo}
 	</select>
 
 </mapper>
+
+
+
