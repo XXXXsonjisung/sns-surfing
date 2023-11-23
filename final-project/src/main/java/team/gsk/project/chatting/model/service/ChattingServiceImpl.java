@@ -17,10 +17,16 @@ public class ChattingServiceImpl implements ChattingService {
 	@Autowired
 	private ChattingMapper mapper;
 
-	// 채팅초대 찾기
+	 //채팅초대 찾기
 	@Override
 	public List<Member> selectTarget(Map<String, Object> map) {
 		return mapper.selectTarget(map);
 	}
+
+//	
+//	@Override
+//	public List<Member> selectTarget(String query) {
+//		return mapper.selectTarget(query);
+//	}
 
 }

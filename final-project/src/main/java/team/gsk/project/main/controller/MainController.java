@@ -15,8 +15,8 @@ public class MainController {
 		model.addAttribute("name","ㅋㅋㅋ");
 
 		
-		return "common/main";
-
+		//return "common/main";
+		return "chatting/room_making";
 
   }
 	
