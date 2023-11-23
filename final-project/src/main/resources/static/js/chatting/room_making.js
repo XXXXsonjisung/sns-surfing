@@ -145,6 +145,9 @@ listItems.forEach(item=>{
 
 
 
+
+
+
 //프로필 이미지 프리뷰
 
 function image(input) {
@@ -225,4 +228,20 @@ targetInput.addEventListener("input", e => {
 		.catch(err => console.log(err) );
 	}
 });
+
+
+// 태그 , 없애고 데이터베이스에 저장하기 
+function tagEdit(){
+	
+	 event.preventDefault(); // 이벤트 기본 동작 막음
+	 
+	 
+	
+	 document.getElementById("roomMaking").submit(); 
+	
+}
+
+
+
+
 

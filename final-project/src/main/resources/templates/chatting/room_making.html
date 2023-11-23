@@ -17,12 +17,12 @@
         <div class="roomMake-title">채팅방 만들기</div>
         <div class="content-1">
              
-            <form action="@{/RoomMaking/making}" method="POST" >
+            <form th:action="@{/RoomMaking/making}" method="POST" id="roomMaking" >
                 <div class="group_choose">
                     <label>채팅그룹선택</label>
                     <div class="group_con">
                         <button id="tag-btn" type="button">태그 선택</button> 
-                        <input type="text" id="tagsInput" name="tagNo" placeholder="5개까지 가능합니다">
+                        <input readonly type="text" id="tagsInput" name="tagNo" placeholder="5개까지 가능합니다">
                     </div>
                 </div>
                 <!-- 숨겨진 태그 리스트 -->
@@ -140,8 +140,8 @@
                 </div>
 
                 <div class="last_button">
-                    <button type="submit">만들기</button>
-                    <button type="button">돌아가기</button>
+                    <button type="submit" >만들기</button>
+                    <button type="button" onclick="tagEdit()">돌아가기</button>
                 </div>
             </form>
         </div>
