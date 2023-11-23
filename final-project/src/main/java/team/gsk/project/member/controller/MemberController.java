@@ -75,7 +75,7 @@ public class MemberController {
 		String message = null;
 		
 		if(result > 0) { // 가입 성공
-			path += "/"; // 메인페이지로
+			path += "/login"; // 로그인페이지로
 			
 			message = inputMember.getMemberNickname() + "님의 가입을 환영합니다";
 			

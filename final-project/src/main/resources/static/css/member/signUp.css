@@ -3,6 +3,9 @@
     margin: 0;
 }
 
+.confirm{ color : green; }
+.error{ color : red; }
+
 body {
     width: 100%;
     height: 863px;
@@ -31,10 +34,14 @@ input {
 }
 
 #idCheck {
-	color: red;
-	display: none;
 	margin-bottom: 10px;
 }
+
+#pwCheck {
+	margin-bottom: 10px;
+}
+
+
 
 #logos {
     display: flex;
