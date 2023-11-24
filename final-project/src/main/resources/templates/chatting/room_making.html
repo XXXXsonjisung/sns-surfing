@@ -22,10 +22,10 @@
                     <label>채팅그룹선택</label>
                     <div class="group_con">
                         <button id="tag-btn" type="button">태그 선택</button> 
-                        <input readonly type="text" id="tagsInput" name="tagNo" placeholder="5개까지 가능합니다">
+                        <input readonly type="text" id="tagsInput" name="tagName" placeholder="5개까지 가능합니다">
                     </div>
                 </div>
-                <!-- 숨겨진 태그 리스트 -->
+                 <!-- 숨겨진 태그 리스트 -->
                 <div class="modal-overlay" id="modal-overlay">
                     <div class="tag-container" id="tag-container">
                         <div class="tagList">
@@ -40,30 +40,59 @@
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a onclick="showListItem(3)">직업</a>
+                                    <a onclick="showListItem(2)">직업</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a onclick="showListItem(4)">성별</a>
+                                    <a onclick="showListItem(3)">성별</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a onclick="showListItem(5)">취미</a>
+                                    <a onclick="showListItem(4)">취미</a>
                                     <span>(13)</span>
                                 </li>
                                 <li>
-                                    <a onclick="showListItem(6)">전체</a>
+                                    <a onclick="showListItem(5)">전체</a>
                                     <span>(13)</span>
                                 </li>
                             </ul>
                         </div> 
                         <div class="tagList">
                             <ul class="secondList">
-                                <li class="list-item">지역</li>
-                                <li class="list-item">나이</li>
-                                <li class="list-item">직업</li>
-                                <li class="list-item">성별</li>
-                                <li class="list-item">취미</li>
+                                <li class="list-item">
+                                    <div class="detail-tiem">서울</div>
+                                    <div class="detail-tiem">경기</div>
+                                    <div class="detail-tiem">부산</div>
+                                    <div class="detail-tiem">대구</div>
+                                    <div class="detail-tiem">목포</div>
+                                </li>
+                                <li class="list-item">
+                                    <div>10대</div>
+                                    <div>20대</div>
+                                    <div>30대</div>
+                                    <div>40대</div>
+                                    <div>50대</div>
+                                </li>
+                                <li class="list-item">
+                                    <div class="detail-tiem">공무원</div>
+                                    <div class="detail-tiem">it</div>
+                                    <div class="detail-tiem">법조계</div>
+                                    <div class="detail-tiem">건설</div>
+                                    <div class="detail-tiem">자영업</div>
+                                </li>
+                                <li class="list-item">
+                                    <div>남성</div>
+                                    <div>여성</div>
+                                    <div>트랜스젠더</div>
+                                    <div>논바이너리</div>
+                                    <div>유쥬얼바이너리</div>
+                                </li>
+                                <li class="list-item">
+                                    <div>게임</div>
+                                    <div>운동</div>
+                                    <div>그림</div>
+                                    <div>여행</div>
+                                </li>
                                 <li class="list-item">전체</li>
                             </ul>
                         </div> 
@@ -106,7 +135,7 @@
                 <div class="invite">
                     <div class="invi-1">
                         <label>초대하기</label>
-                        <input class="search-nickname" name="memberNo" id="targetInput" type="text" placeholder="닉네임을 입력해주세요" >
+                        <input class="search-nickname" name="memberName" id="targetInput" type="text" placeholder="닉네임을 입력해주세요" >
                             <ul id="resultArea">
                             </ul>    
                         

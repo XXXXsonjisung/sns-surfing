@@ -288,6 +288,59 @@ inputTel.addEventListener("input", ()=>{
 
 });
 
+// 생년월일 유효성 검사
+const inputBirth = document.getElementById("inputBirth");
+const birthCheck = document.getElementById("birthCheck");
+
+inputBirth.addEventListener("input", () => {
+	
+	var today = new Date();
+
+	var inputDate = new Date(inputBirth.value);
+	var inputYear = inputDate.getFullYear();
+	var inputMonth = inputDate.getMonth() + 1;
+	var inputDay = inputDate.getDate();
+
+   //날짜 지정을 하지 않았을 때 NaN이 발생하여 0으로 처리
+	if (isNaN(inputYear) || isNaN(inputMonth) || isNaN(inputDay)){
+		inputYear  = 0;
+    	inputMonth = 0;
+		inputDay   = 0;
+  }
+	dateFrom = inputYear +'-'+ inputMonth +'-'+inputDay;
+	
+	if(!(dateFrom == "0-0-0" || dateFrom > today)) {
+		checkObj.inputBirth = true;
+		birthCheck.classList.add("confirm");
+        birthCheck.classList.remove("error");
+		birthCheck.innerText = "유효한";
+		
+	} else {
+		checkObj.inputBirth = false;
+		birthCheck.classList.remove("confirm");
+        birthCheck.classList.add("error");
+		birthCheck.innerText = "유효하지 않은 ";
+	}
+	
+			//오늘날짜 날짜 형식으로 지정
+			  var todayYear  = today.getFullYear(); 	//2020
+			  var todayMonth = today.getMonth() + 1;    	//06
+			  var todayDay   = today.getDate();  		//11
+			  var todayString = todayYear + '-' + todayMonth + '-' + todayDay;
+			
+			
+			  if(dateFrom > todayString){
+			  	checkObj.inputBirth = false;
+			  	birthCheck.classList.remove("confirm");
+		        birthCheck.classList.add("error");
+				birthCheck.innerText = "유효하지 않은 ";
+			  	alert("해당 기간의 조회가 불가능합니다.");
+			  } else {
+			 	 checkObj.inputBirth = true;
+			  }	
+
+
+});
 
 // 이메일 유효성 검사
 const inputEmail = document.getElementById("inputEmail");
@@ -354,7 +407,7 @@ inputEmail.addEventListener("input", () => {
 
 // 인증번호 발송
 const pushAuthBtn = document.getElementById("pushAuthBtn");
-const authKeyMessage = document.getElementById("authKeyMessage");
+const authCheck = document.getElementById("authCheck");
 let authTimer;
 let authMin = 4;
 let authSec = 59;
@@ -391,12 +444,12 @@ pushAuthBtn.addEventListener("click", function(){
         alert("인증번호가 발송 되었습니다.");
 
         
-        authKeyMessage.innerText = "05:00";
-        authKeyMessage.classList.remove("confirm");
+        authCheck.innerText = "05:00";
+        authCheck.classList.remove("confirm");
 
         authTimer = window.setInterval(()=>{
 													// 삼항연산자  :  조건 	  ?   	true : false
-            authKeyMessage.innerText = "0" + authMin + ":" + (authSec < 10 ? "0" + authSec : authSec);
+            authCheck.innerText = "0" + authMin + ":" + (authSec < 10 ? "0" + authSec : authSec);
             
             // 남은 시간이 0분 0초인 경우
             if(authMin == 0 && authSec == 0){
@@ -423,7 +476,40 @@ pushAuthBtn.addEventListener("click", function(){
 
 });
 
+// 인증 확인
+const authKey = document.getElementById("authKey");
+const authBtn = document.getElementById("authBtn");
 
+authBtn.addEventListener("click", function(){
+
+    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
+        /* fetch API */
+        const obj = {"inputKey":authKey.value, "email":tempEmail}
+        const query = new URLSearchParams(obj).toString()
+        // inputKey=123456&email=user01
+
+        fetch("/sendEmail/checkAuthKey?" + query)
+        .then(resp => resp.text())
+        .then(result => {
+            if(result > 0){
+                clearInterval(authTimer);
+                authCheck.innerText = "인증되었습니다.";
+                authCheck.classList.add("confirm");
+                checkObj.authKey = true;
+
+            } else{
+                alert("인증번호가 일치하지 않습니다.")
+                checkObj.authKey = false;
+            }
+        })
+        .catch(err => console.log(err));
+
+
+    } else{
+        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
+    }
+
+});
 
 // 회원 가입 form태그가 제출 되었을 때
 document.getElementById("signUpFrm").addEventListener("submit", e=>{
