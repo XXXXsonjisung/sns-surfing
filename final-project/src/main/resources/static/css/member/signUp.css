@@ -113,12 +113,16 @@ h6 {
 }
 
 div > input {
-    width: 80%;
+    width: 100%;
     height: 100%;
     border-radius: 10px;
     border: none;
     outline: none;
     padding: 5px;
+}
+
+#inputPw {
+	width: 80%;
 }
 
 
