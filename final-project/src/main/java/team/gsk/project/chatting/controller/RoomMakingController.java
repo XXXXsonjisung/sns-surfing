@@ -30,10 +30,28 @@ public class RoomMakingController {
 	@PostMapping("/making")
 	public String roomMaking(Chatting inputChatting,Model model ) {
 	
-		//inputChatting.getTagNo().split
-		// let numbers = input.replace(/#|\s|,/g, "").match(/\d+/g);
+		// 태그이름에 ',' 제거 후 리스트로 저장
+		String[] tagName = inputChatting.getTagName().split("[,]");
 		
-		int result = service.roomMaking(inputChatting);
+		// 채팅방 생성
+		int result = service.roomMaking(inputChatting,tagName);
+		
+		// 채팅방이 제대로 생성됐다면 
+		if(result !=0) {
+			
+			
+			System.out.println("성공");
+			
+		}
+		
+		
+		
+		
+//		for (String tag : tagName) {
+//		    System.out.println(tag.trim()); // 각 요소를 출력하고 공백 제거
+//		}
+		
+	
 		
 		
 		return "chatting/chatting_group";
