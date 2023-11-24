@@ -31,6 +31,12 @@ public interface MyPageMapper {
 	 */
 	public int updateNickname(Member updateNickname);
 
+	/** 회원 탈퇴 여부
+	 * @param memberNo
+	 * @return
+	 */
+	public int secession(int memberNo);
+
 	
 	
 }

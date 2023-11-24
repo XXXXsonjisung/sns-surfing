@@ -270,7 +270,7 @@ aside{
         font-weight: bolder;
         color: white;
         margin-top: 5%;
-        margin-left: 38%;
+        margin-left: 41%;
     }
     
     #deleteImage{
@@ -296,53 +296,19 @@ aside{
   /* -------------------------------------------*/
   
   /* 모달 전체 배경 */
-.modal {
-  display: none; /* 기본적으로 모달은 숨김 상태 */
-  position: fixed; /* 고정 위치 */
-  z-index: 1; /* 화면 상의 가장 위로 */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  
+  #myModalXT {
+    z-index: 9999; /* 다른 요소보다 위에 나타나도록 높은 값 설정 */
+    position: fixed; /* 고정 위치 요소로 설정하여 화면 상에 고정 */
+    top: 50%; /* 화면의 중앙에 위치하도록 위쪽 여백 설정 */
+    left: 50%; /* 화면의 중앙에 위치하도록 왼쪽 여백 설정 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위한 트랜스폼 */
+    width: auto; /* 모달의 가로 길이 */
+    height: auto; /* 모달의 세로 길이 */
+    background-color: #fff; /* 배경색 */
+    border: 1px solid #ccc; /* 테두리 스타일 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    padding: 20px; /* 내부 여백 */
 }
-
-/* 모달 내용 위치 */
-.modal-content {
-  background-color: #fefefe; /* 모달 내용 배경색 */
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 40%; /* 모달 창 너비 조정 */
-  border-radius: 10px;
-}
-
-/* 모달 내용 닫기 버튼 */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#passwordInput {
-	width: 85%;
-}
-
-#good_by {
-	width: 20%;
-	height: 80px;
-	border-radius: 40px;
-	border: none;
-	margin-left: 40%;
-	margin-top: 30px;
-	background-color: rgb(255, 255, 255);
-	color: rgb(255, 0, 0);
-}
+  
+ 

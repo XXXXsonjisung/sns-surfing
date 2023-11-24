@@ -16,6 +16,7 @@
     <th:block th:replace="~{common/leftSide}"></th:block>
 
     <main>
+
         <div class="user_box">
             <a id="p1">프로필 사진</a>
             <hr>
@@ -65,16 +66,16 @@
             	
             <button id="by_sns">탈퇴하기</button>
 
-			<!-- 모달 팝업 -->
-			<div id="myModal" class="modal">
-			  <div class="modal-content">
-			    <span class="close">&times;</span>
-			    <h2>비밀번호 입력</h2>
-			    <input type="password" id="passwordInput" placeholder="비밀번호를 입력하세요">
-			    <button onclick="processWithdrawal()" id="good_by">탈퇴</button>
-			  </div>
-			</div>
-			
+			<form th:action="@{secession}" method="POST" name="myPageFrm">
+				<div id="myModalXT" class="modalXT" style="display: none;">
+				    <div class="modal-contentXT" style="width: 300px; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+				        <span id="closeModalXT" class="close" style="float: right; cursor: pointer;">&times;</span>
+				        <h2 style="text-align: center; margin-bottom: 20px;">비밀번호 입력</h2>
+				        <input type="password" name="memberPw" id="memberPw" maxlength="30" placeholder="비밀번호를 입력하세요" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+				        <button onclick="processWithdrawal()" id="good_by" style="width: 100%; padding: 10px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">탈퇴</button>
+				    </div>
+				</div>				
+			</form>
 			
 			
         </div>

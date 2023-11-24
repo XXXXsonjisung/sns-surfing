@@ -47,8 +47,19 @@
             
         </div>
         <div class="login_block">
-            <button class="w-btn w-btn-gra1" type="button">
-                <a th:href="@{/loginPage}">로그인</a>
-            </button>
+            <a href="/loginPage">
+			    <button class="w-btn w-btn-gra1" type="button">
+			        <span>로그인</span>
+			    </button>
+			</a>
         </div>
 </aside>
+
+<script th:inline="javascript">
+    
+    /* Natural Template */
+    const message = /*[[${message}]]*/ "전달 받은 메세지";
+    // 타임리프 해석   값(자료형 알아서 해석)    사라짐(설명)
+
+    if(message != null) alert(message);
+</script>
