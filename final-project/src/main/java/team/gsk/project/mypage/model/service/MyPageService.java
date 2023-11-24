@@ -29,6 +29,14 @@ public interface MyPageService {
 	 * @return
 	 */
 	int updateNickname(Member updateNickname);
+
+
+	/** 회원 탈퇴 서비스
+	 * @param memberPw
+	 * @param memberNo
+	 * @return
+	 */
+	int secession(String memberPw, int memberNo);
 	
 	
 

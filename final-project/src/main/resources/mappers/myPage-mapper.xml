@@ -49,6 +49,14 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 회원 탈퇴 -->
+	<update id="secession" parameterType="_int">
+		UPDATE "MEMBER" SET
+		MEMBER_DELETE_FLAG = 'Y'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
 	
 	
 </mapper>

@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpServletResponse;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.mypage.model.service.MyPageService;
 
@@ -88,6 +90,7 @@ public class MyPageController {
 		@PostMapping("/nickName")
 		public String updateInfo(@SessionAttribute("loginMember") Member loginMember,
 								Member updateNickname,
+								HttpServletResponse resp,
 								RedirectAttributes ra) {
 
 			updateNickname.setMemberNo( loginMember.getMemberNo() );
@@ -101,13 +104,13 @@ public class MyPageController {
 			if(result > 0) {
 				loginMember.setMemberNickname( updateNickname.getMemberNickname() );
 				
-				message = "회원 정보 수정 성공";
+				message = "닉네임 변경 성공";
 				
 				
 			} else {
 				// 실패에 따른 처리 
 
-				message = "회원 정보 수정 실패";
+				message = "닉네임 변경 실패";
 				
 			}
 			
@@ -116,6 +119,58 @@ public class MyPageController {
 			return "redirect:profile"; 
 		}
 		
+		
+		// 회원 탈퇴
+		@RequestMapping(value = "/secession")
+		public String secession(String memberPw
+				,@SessionAttribute("loginMember") Member loginMember
+				,SessionStatus status
+				,HttpServletResponse resp
+				,RedirectAttributes ra) {
+			
+			// String memberPw : 입력한 비밀번호
+			// SessionStatus status : 세션 관리 객체
+			// HttpServletResponse resp : 서버 -> 클라이언트 응답하는 방법 제공 객체
+			// RedirectAttributes ra : 리다이렉트 시 request로 값 전달하는 객체
+			
+			// 1. 로그인한 회원의 회원 번호 얻어오기
+			// @SessionAttribute("loginMember") Member loginMember
+			int memberNo = loginMember.getMemberNo();
+			
+			// 2. 회원 탈퇴 서비스 호출
+			//	- 비밀번호가 일치하면 MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
+			//  - 비밀번호가 일치하지 않으면 -> 0 반환
+			int result = service.secession(memberPw, memberNo);
+			
+			String path = "redirect:";
+			String message = null;
+			
+			// 3. 탈퇴 성공 시
+			if(result > 0) {
+				// - message : 탈퇴 되었습니다
+				message = "탈퇴 되었습니다";
+				
+				// - 메인 페이지로 리다이렉트
+				path += "/";
+				
+				// - 로그아웃 
+				status.setComplete();
+				
+			}
+			
+			// 4. 탈퇴 실패 시
+			else {
+				// - message : 현재 비밀번호가 일치하지 않습니다
+				message = "현재 비밀번호가 일치하지 않습니다";
+				
+				// - 회원 탈퇴 페이지로 리다이렉트
+				path += "profile";
+			}
+			
+			ra.addFlashAttribute("message",message);
+			
+			return path;
+		}
 	
 	
 	

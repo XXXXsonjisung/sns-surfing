@@ -98,18 +98,35 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
             deleteCheck = 1;
         }
     });
-
-
-
-
-    // #profileFrm이 제출 되었을 때
+    
+    
+        // #profileFrm이 제출 되었을 때
     document.getElementById("profileFrm").addEventListener("submit", e => {
-		
-		
-		 if(profileImage.getAttribute("src") == "/common/images/profile/profile.jpg"){
-     		  e.preventDefault(); // form 기본 이벤트 제거
-              alert("이미지 변경 후 클릭하세요");
-	    }
+
+        // initCheck
+        // 초기 프로필 이미지 상태를 저장하는 변수
+        // false == 기본 이미지,  true == 이전 업로드 이미지
+
+        // deleteCheck
+        // 프로필 이미지가 새로 업로드 되거나 삭제 되었음을 나타내는 변수
+        // -1 == 초기값 ,  0 == 프로필 삭제(x버튼),  1 == 새 이미지 업로드
+
+        let flag = true; // 제출하면 안되는 경우의 초기값 플래그 true로 지정
+
+        // 이전 프로필 이미지가 없으면서, 새 이미지 업로드를 했다 -> 처음으로 이미지 추가
+        if(!initCheck && deleteCheck == 1)  flag = false;
+
+        // 이전 프로필 이미지가 있으면서, 새 이미지 업로드를 했다 -> 새 이미지로 변경
+        if(initCheck && deleteCheck == 1)   flag = false;
+        
+        // 이전 프로필 이미지가 있으면서, 프로필 삭제 버튼을 눌렀다 -> 삭제
+        if(initCheck && deleteCheck == 0)   flag = false;
+
+        
+        if(flag){ // flag == true -> 제출하면 안되는 경우
+            e.preventDefault(); // form 기본 이벤트 제거
+            alert("이미지 변경 후 클릭하세요");
+        }
 
 	    return true;
     });
@@ -182,20 +199,31 @@ function validateNickname() {
 
 // -------------------------------------------------------------------------------------------------
 
+    document.getElementById('by_sns').addEventListener('click', function() {
+        var modal = document.getElementById('myModalXT');
+        modal.style.display = "block";
+    });
 
-var modal = document.getElementById("myModal");
-var bySnsBtn = document.getElementById("by_sns");
+    var closeBtn = document.querySelector('.close');
+    closeBtn.addEventListener('click', function() {
+        var modal = document.getElementById('myModalXT');
+        modal.style.display = "none";
+    });
+
+
+
+// 초기에 모달 숨기기
+document.getElementById("myModalXT").style.display = "none";
 
 // 탈퇴하기 버튼 클릭 시 모달 창 띄우기
-bySnsBtn.onclick = function() {
-    modal.style.display = "block";
+document.getElementById("by_sns").onclick = function() {
+    document.getElementById("myModalXT").style.display = "block";
 }
 
 // 모달 창 닫기 버튼 설정
-var closeBtn = document.getElementsByClassName("close")[0];
-closeBtn.onclick = function() {
-    modal.style.display = "none";
-    passwordInput.value = ""; // 입력한 비밀번호 초기화
+document.getElementById("closeModalXT").onclick = function() {
+    document.getElementById("myModalXT").style.display = "none";
+    document.getElementById("passwordInput").value = ""; // 입력한 비밀번호 초기화
 }
 
 // 탈퇴 버튼 클릭 시 실행할 함수
@@ -203,13 +231,11 @@ function processWithdrawal() {
     var password = document.getElementById("passwordInput").value;
     console.log("입력한 비밀번호:", password);
 
-    // 비밀번호 처리 로직
-    // ...
-
-    // 모달 창 닫기
-    modal.style.display = "none";
-    passwordInput.value = ""; // 입력한 비밀번호 초기화
+    // 여기서 비밀번호 확인 로직을 추가하세요
+    verifyPassword(password);
 }
+
+//--------------------------------------------------------------------------------------------------
 
 
 

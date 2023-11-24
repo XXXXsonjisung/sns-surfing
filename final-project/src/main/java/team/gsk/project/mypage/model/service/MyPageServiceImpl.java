@@ -132,4 +132,24 @@ public class MyPageServiceImpl implements MyPageService{
 			return mapper.updateNickname(updateNickname);
 		}
 
+		
+		// 회원 탈퇴 서비스
+		@Transactional(rollbackFor = Exception.class)
+		@Override
+		public int secession(String memberPw, int memberNo) {
+
+			// 1. 회원 번호가 일치하는 회원의 비밀번호 조회
+			String encPw = mapper.selectEncPw(memberNo);
+			
+			// 2.비밀번호가 일치하면 
+			if(bcrypt.matches(memberPw, encPw)) {
+				// MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
+				return mapper.secession(memberNo);
+			}
+			
+			//  3. 비밀번호가 일치하지 않으면 -> 0 반환
+			
+			return 0;
+		}
+
 }

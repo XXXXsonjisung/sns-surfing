@@ -16,8 +16,8 @@ public class MainController {
 
 		
 
-
-		//return "chatting/room_making";
+		return "common/main";
+//		return "chatting/room_making";
 
 
   }
