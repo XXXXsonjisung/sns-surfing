@@ -95,8 +95,16 @@ function showListItem(index) {
       item.style.display = 'none';
   });
   
-  // 특정 인덱스의 list-item 요소만 보이게 하기
-  listItems[index].style.display = 'block';
+  if (index === 5) {
+    listItems.forEach(item => {
+      item.style.display = 'block';
+    });
+  } else {
+    // 특정 인덱스의 list-item 요소만 보이게 하기
+    listItems[index].style.display = 'block';
+  }
+
+  
 }
 
 
@@ -105,7 +113,7 @@ function showListItem(index) {
 // 태그 선택시 input창에 쌓이게 하기 
 
 const tagsInput = document.getElementById("tagsInput");
-const listItems = document.querySelectorAll(".list-item");
+const listItems = document.querySelectorAll(".detail-tiem");
 
 listItems.forEach(item=>{
 
@@ -141,7 +149,6 @@ listItems.forEach(item=>{
 
 
 });
-
 
 
 
@@ -230,7 +237,7 @@ targetInput.addEventListener("input", e => {
 });
 
 
-// 태그 , 없애고 데이터베이스에 저장하기 
+/*// 태그 , 없애고 데이터베이스에 저장하기 
 function tagEdit(){
 	
 	 event.preventDefault(); // 이벤트 기본 동작 막음
@@ -241,7 +248,7 @@ function tagEdit(){
 	
 }
 
-
+*/
 
 
 
