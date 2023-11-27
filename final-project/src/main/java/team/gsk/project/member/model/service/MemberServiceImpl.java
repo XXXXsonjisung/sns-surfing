@@ -17,6 +17,7 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 
+
 	@Override
 	public Member login(Member inputMember) {
 		
@@ -33,6 +34,7 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return loginMember;
 	}
+
 
 	// 회원 가입 서비스
 	@Transactional
