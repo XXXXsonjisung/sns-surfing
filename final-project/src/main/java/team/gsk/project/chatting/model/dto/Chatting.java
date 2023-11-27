@@ -23,5 +23,6 @@ public class Chatting {
 	//해소 테이블
 	private Integer memberNo; // 참여자 번호
 	private int tagNo; // 태그 번호
+
 	
 }

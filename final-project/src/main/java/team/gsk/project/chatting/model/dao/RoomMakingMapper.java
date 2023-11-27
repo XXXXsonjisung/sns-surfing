@@ -14,7 +14,7 @@ public interface RoomMakingMapper{
 	int roomNumber();
 
 	// 태그 넣기 
-	int addTag(String[] tagName, int roomNum);
+	int addTag(String[] tagName, int roomNo);
 
 
 	

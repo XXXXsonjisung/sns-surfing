@@ -14,7 +14,7 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 	private RoomMakingMapper mapper;
 
 	// 채탱방 만들기
-	@Transactional
+	@Override
 	public int roomMaking(Chatting inputChatting,String[] tagName) {
 
 		System.out.println(inputChatting);
@@ -26,10 +26,11 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		if(result>0) {
 			
 			// 채팅방 번호 가져오기
-			int roomNum =mapper.roomNumber();
+			int roomNo =mapper.roomNumber();
+		
 			
 			// 태그 집어넣기 
-			int addTag =mapper.addTag(tagName,roomNum);
+			int addTag =mapper.addTag(tagName,roomNo);
 			
 			return result;
 			

@@ -19,20 +19,20 @@
 	</resultMap>
 	
 	<!--채팅방 만들기-->
-	<insert id="roomMaking">
+	<insert id="roomMaking" >
 		INSERT INTO ROOM_GROUP (ROOM_NO,ROOM_NAME,ROOM_INTRUDECE,ROOM_PERSONNEL,
 		ROOM_MANAGER,ROOM_PWD,ROOM_IMG) VALUES
-		(ROOM_NO_SEQ.NEXTVAL,#{roomName},#{roomIntrudece},#{roomPersonnel},1,NULL,#{roomImg})
+		(ROOM_NO_SEQ.NEXTVAL,#{roomName},#{roomIntrudece},#{roomPersonnel},1,#{roomPwd},#{roomImg})
 	</insert>
 	
 	<!--만들어진 채팅방 번호 가져오기 -->
-	<select id="roomNumber">
+	<select id="roomNumber" >
 		SELECT ROOM_NO_SEQ.CURRVAL FROM DUAL
 	</select>
 	
 	<!--태그 넣기 -->
-	<insert id="addTag">
-	INSERT INTO TAG_ROOM_NO (ROOM_NO,TAG_NO)VALUES(#{roomNum},(SELECT TAG_NO FROM ROOM_TAG WHERE TAG_NAME='#{tagName}'));			
+	<insert id="addTag" parameterType="map">
+	INSERT INTO TAG_ROOM_NO (ROOM_NO,TAG_NO)VALUES(#{roomNo},(SELECT TAG_NO FROM ROOM_TAG WHERE TAG_NAME=#{tagName}));			
 	</insert>
 	
 </mapper>
