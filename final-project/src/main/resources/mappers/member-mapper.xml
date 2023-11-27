@@ -34,17 +34,17 @@
 	<insert id="signUp">
 		INSERT INTO "MEMBER"
 		VALUES(SEQ_MEMBER_NO.NEXTVAL
-		, #{memberId}
-		, #{memberPw}
-		, #{memberName}
-		, #{memberTel}
+		, '${memberId}'
+		, '${memberPw}'
+		, '${memberName}'
+		, '${memberTel}'
 		, '${memberNickname}'
 		, null
 		, null
 		, null
 		, DEFAULT, DEFAULT, DEFAULT
-		, #{memberEmail}
-		, #{memberBirth})
+		, '${memberEmail}'
+		, '${memberBirth}')
 	</insert>
 
 </mapper>
