@@ -169,13 +169,18 @@ fetch('/userinfo')
             imageElement.onerror = function() {
                 console.error('모달 이미지 로드 에러');
                 // 에러 처리
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'none';
             };
         } else {
             console.error('모달 이미지 파일이 없음');
             // 에러 처리
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
         }
     })
     .catch(error => console.error('Error:', error));
 
-
+			var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
 }
