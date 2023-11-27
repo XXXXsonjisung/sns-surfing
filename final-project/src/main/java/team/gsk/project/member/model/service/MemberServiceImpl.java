@@ -24,9 +24,13 @@ public class MemberServiceImpl implements MemberService{
 		
 		if(loginMember != null) { // 아이디가 일치하는 회원이 조회된 경우
 			
-			
-		} 
+			if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
 		
+			} else {
+				loginMember = null;
+			}
+			
+		}
 		return loginMember;
 	}
 

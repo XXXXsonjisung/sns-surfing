@@ -46,5 +46,17 @@
 		, '${memberEmail}'
 		, '${memberBirth}')
 	</insert>
+	
+	<select id="memberId" resultType="string">
+		SELECT MEMBER_ID
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="profile" resultType="string">
+		SELECT MEMBER_PROFILE
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</select>
 
 </mapper>

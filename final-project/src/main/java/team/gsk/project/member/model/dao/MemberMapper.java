@@ -10,4 +10,10 @@ public interface MemberMapper {
 	Member login(Member inputMember);
 	
 	int signUp(Member inputMember);
+
+	String memberId(String string);
+
+	String profile(String string);
+
+
 }
