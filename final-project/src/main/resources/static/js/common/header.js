@@ -110,3 +110,72 @@
 
 
 //--------------------------------------------------
+
+
+// 헤더의 모달 내 게시 버튼을 눌렀을 때 실행되는 함수
+function createPost() {
+    // 게시되었습니다. 알림 띄우기
+    alert('게시되었습니다.');
+    
+    
+    
+    
+    
+fetch('/userinfo')
+    .then(response => response.json())
+    .then(data => {
+        const username = data.memberId; // 사용자 아이디
+        const profileImageUrl = data.profileImage; // 프로필 이미지 URL
+
+
+        var userBox = document.querySelector('.user_boxT');
+        var firstPost = document.querySelector('.user_boxT .user_post:first-child');
+        var newUserPost = firstPost.cloneNode(true);
+
+        var postContent = newUserPost.querySelector('.post_content');
+        postContent.textContent = '';
+
+        userBox.prepend(newUserPost);
+
+        var postContentDiv = document.querySelector('.post_content');
+        var modalText = document.getElementById('modalPostContent').innerText;
+
+        var textDiv = document.createElement('div');
+        textDiv.textContent = modalText;
+
+        postContentDiv.appendChild(textDiv);
+
+        // 모달에서 업로드한 이미지 가져오기
+        var imageFile = document.getElementById('imageInputXX').files[0];
+        
+        
+        var userIdElement = document.getElementById('user01');
+		userIdElement.textContent = session.loginMember.memberId;
+
+        // 이미지 추가
+        if (imageFile) {
+            var imageElement = document.createElement('img');
+            imageElement.src = URL.createObjectURL(imageFile);
+            imageElement.onload = function() {
+                postContentDiv.appendChild(imageElement);
+
+                // 이 부분에서 session.loginMember의 프로필 이미지 URL을 적용합니다.
+                var profileImageElement = document.querySelector('.propile img');
+                profileImageElement.src = profileImageUrl;
+
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'none';
+            };
+            imageElement.onerror = function() {
+                console.error('모달 이미지 로드 에러');
+                // 에러 처리
+            };
+        } else {
+            console.error('모달 이미지 파일이 없음');
+            // 에러 처리
+        }
+    })
+    .catch(error => console.error('Error:', error));
+
+
+}

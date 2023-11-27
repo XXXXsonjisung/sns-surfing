@@ -1,13 +1,22 @@
 package team.gsk.project.main.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import team.gsk.project.member.model.dto.Member;
+import team.gsk.project.member.model.service.MemberService;
 
 
 @Controller
 public class MainController {
+	
+
 	
 	@RequestMapping("/")
 	public String mainForward(Model model) {
@@ -18,8 +27,10 @@ public class MainController {
 
 
 
+		return "common/main";
+		
+		
 //		return "chatting/room_making";
-
 
 
 
@@ -43,9 +54,11 @@ public class MainController {
 		
 		return "side/follow";
 
-	
-
 
 }
+	
+	
+	
+	
 
 }

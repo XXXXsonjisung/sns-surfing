@@ -104,13 +104,14 @@ a {
         justify-content: center;
     }
 
-    .user_box {
+    .user_boxT {
         align-items: center;
         display: flex;
         flex-direction: column;
         width: 1000px;
         margin-top: 100px;
         margin-right: 250px;
+        height: auto;
     }
 
     .user_post {
@@ -144,6 +145,7 @@ a {
     .post_content {
         height: 100%;
         padding: 2%;
+        overflow: hidden;
     }
 
  .propile {
