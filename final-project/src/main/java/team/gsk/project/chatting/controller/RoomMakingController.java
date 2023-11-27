@@ -19,13 +19,7 @@ public class RoomMakingController {
 	private RoomMakingService service;
 	
 	
-	// 지역 태그 리스트
-	@GetMapping("/region")
-	public String regionList() {
-		
-		return null;
-	}
-	
+
 	// 채팅방 만들기
 	@PostMapping("/making")
 	public String roomMaking(Chatting inputChatting,Model model ) {

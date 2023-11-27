@@ -19,13 +19,14 @@
              
             <form th:action="@{/RoomMaking/making}" method="POST" id="roomMaking" >
                 <div class="group_choose">
-                    <label>채팅그룹선택</label>
+                    <label>채팅방 그룹</label>
                     <div class="group_con">
-                        <button id="tag-btn" type="button">태그 선택</button> 
+                        <button id="tag-btn" type="button">그룹 선택</button> 
                         <input readonly type="text" id="tagsInput" name="tagName" placeholder="5개까지 가능합니다">
+                        <button type="button" class="cleanTag">지우기</button>
                     </div>
                 </div>
-                 <!-- 숨겨진 태그 리스트 -->
+                <!-- 숨겨진 태그 리스트 -->
                 <div class="modal-overlay" id="modal-overlay">
                     <div class="tag-container" id="tag-container">
                         <div class="tagList">
@@ -33,73 +34,53 @@
                             <ul class="firstList">
                                 <li>
                                     <a onclick="showListItem(0)" >지역</a>
-                                    <span>(13)</span>
+                                    <span>(7)</span>
                                 </li>
                                 <li>
                                     <a onclick="showListItem(1)">나이</a>
-                                    <span>(13)</span>
+                                    <span>(5)</span>
                                 </li>
                                 <li>
-                                    <a onclick="showListItem(2)">직업</a>
-                                    <span>(13)</span>
+                                    <a onclick="showListItem(2)">목적</a>
+                                    <span>(5)</span>
                                 </li>
-                                <li>
-                                    <a onclick="showListItem(3)">성별</a>
-                                    <span>(13)</span>
-                                </li>
-                                <li>
-                                    <a onclick="showListItem(4)">취미</a>
-                                    <span>(13)</span>
-                                </li>
-                                <li>
+                                <!-- <li>
                                     <a onclick="showListItem(5)">전체</a>
                                     <span>(13)</span>
-                                </li>
+                                </li> -->
                             </ul>
                         </div> 
-                        <div class="tagList">
+                        <input class="other-inputs" readonly type="text"placeholder="5개까지 가능합니다" >
+                        <button type="button" class="cleanTag">지우기</button>
+                        <div class="tagList-detail">
                             <ul class="secondList">
                                 <li class="list-item">
                                     <div class="detail-tiem">서울</div>
-                                    <div class="detail-tiem">경기</div>
-                                    <div class="detail-tiem">부산</div>
-                                    <div class="detail-tiem">대구</div>
-                                    <div class="detail-tiem">목포</div>
+                                    <div class="detail-tiem">경기도</div>
+                                    <div class="detail-tiem">강원도</div>
+                                    <div class="detail-tiem">충청도</div>
+                                    <div class="detail-tiem">경상도</div>
+                                    <div class="detail-tiem">전라도</div>
+                                    <div class="detail-tiem">제주도</div>
                                 </li>
                                 <li class="list-item">
-                                    <div>10대</div>
-                                    <div>20대</div>
-                                    <div>30대</div>
-                                    <div>40대</div>
-                                    <div>50대</div>
+                                    <div class="detail-tiem">10대</div>
+                                    <div class="detail-tiem">20대</div>
+                                    <div class="detail-tiem">30대</div>
+                                    <div class="detail-tiem">40대</div>
+                                    <div class="detail-tiem">50대이상</div>
                                 </li>
                                 <li class="list-item">
-                                    <div class="detail-tiem">공무원</div>
-                                    <div class="detail-tiem">it</div>
-                                    <div class="detail-tiem">법조계</div>
-                                    <div class="detail-tiem">건설</div>
-                                    <div class="detail-tiem">자영업</div>
+                                    <div class="detail-tiem">취미</div>
+                                    <div class="detail-tiem">친목</div>
+                                    <div class="detail-tiem">공부</div>
+                                    <div class="detail-tiem">봉사</div>
+                                    <div class="detail-tiem">만남</div>
                                 </li>
-                                <li class="list-item">
-                                    <div>남성</div>
-                                    <div>여성</div>
-                                    <div>트랜스젠더</div>
-                                    <div>논바이너리</div>
-                                    <div>유쥬얼바이너리</div>
-                                </li>
-                                <li class="list-item">
-                                    <div>게임</div>
-                                    <div>운동</div>
-                                    <div>그림</div>
-                                    <div>여행</div>
-                                </li>
-                                <li class="list-item">전체</li>
                             </ul>
                         </div> 
                     </div>
                  </div>
-
-
 
                 <div class="public_or_not">
         
@@ -110,36 +91,35 @@
 
                             <input type="checkbox" class="public" style="display: none;" value="private"></input>
                             <label class="custom-checkbox">비공개</label>
-                            <input type="password" name="roomPwd"  id="roomPw" placeholder="비밀번호" style="display: none; float: inline-end;" >
+                            <input type="password" id="roomPw" placeholder="비밀번호" style="display: none; float: inline-end;" >
                         </div>
                 </div>
                 <div class="pepole_limit">
                     <label>인원제한</label>
                     <div>
-                        <input type="number" name="roomPersonnel" min="2" max="10" id="pepole_limit" placeholder="3~10">
+                        <input type="number" min="2" max="10" id="pepole_limit" placeholder="3~10">
                     </div>
                 </div>
                 <div class="room_name">
                     <label>채팅방이름</label>
                     <div>
-                        <input type="text" name="roomName" id="room_name" placeholder="채팅방 이름을 입력해주세요">
+                        <input type="text" id="room_name" placeholder="채팅방 이름을 입력해주세요">
                     </div>
                 </div>
                 <div class="room_introduce">
                     <label>채팅방소개</label>
                     <div>
-                        <textarea id="room_introduce" name="roomIntrudece" rows="4" cols="50" placeholder="채팅방을 소개해주세요"></textarea>
+                        <textarea id="room_introduce"rows="4" cols="50" placeholder="채팅방을 소개해주세요"></textarea>
                     </div>
                 </div>
 
                 <div class="invite">
                     <div class="invi-1">
                         <label>초대하기</label>
-                        <input class="search-nickname" name="memberName" id="targetInput" type="text" placeholder="닉네임을 입력해주세요" >
+                        <input class="search-nickname" id="targetInput" type="text" placeholder="닉네임을 입력해주세요" autocomplete="off" >
                             <ul id="resultArea">
                             </ul>    
-                        
-                        
+
                         <!-- <table class="invite_table">
                                 <tr>
                                     <th class="table_img">
@@ -163,18 +143,17 @@
                     </div>
                     <div class="fileUpload">
                         <label>프로필 이미지 선택 </label>
-                        <input type="file" name="roomImg" accept="image/jpeg,image/jpg,image/png" onchange="image(this)">
+                        <input type="file" accept="image/jpeg,image/jpg,image/png" onchange="image(this)">
                         <img id="preview">
                     </div>
                 </div>
 
                 <div class="last_button">
-                    <button type="submit" >만들기</button>
-                    <button type="button" onclick="tagEdit()">돌아가기</button>
+                    <button type="submit">만들기</button>
+                    <button type="button">돌아가기</button>
                 </div>
             </form>
         </div>
-
 
 
     </main>
