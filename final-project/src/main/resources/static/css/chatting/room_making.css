@@ -22,7 +22,7 @@ body{
 
 
 
-    .roomMake-title{
+   .roomMake-title{
 
         margin: 8% 15% 2% 0%;
         height: 10%;
@@ -74,13 +74,14 @@ body{
         width: 100%;
     
     }
-    
-    /*안 내용들 사이 */
-     .content-1 form>div{
+
+
+    .content-1 form>div{
     
         margin-bottom: 5px;
     
     }
+    
     
     
     
@@ -105,16 +106,14 @@ body{
         /* 채팅그룹태그선택 */
         .group_choose{
             height: 10%;
-            width: 30%;
+            width: 100%;
             display: inline-block;
             vertical-align: middle;
             text-align: left;
             
     
         }
-        
-        
-        
+
         .group_con{
             display: flex;
             margin-bottom: 50px;
@@ -122,8 +121,17 @@ body{
 
         }
 
-		/*input창 선택 테투리 막기*/
-    	 #tagsInput:focus {outline:none;}
+
+        #tagsInput{    
+            width: 15%; 
+        
+        }
+        
+       
+
+        
+        #tagsInput:focus {outline:none;}
+
  
 
         .modal-overlay {
@@ -137,6 +145,7 @@ body{
             z-index: 9999; /* 모달 창 위에 표시되도록 설정 */
         }
         
+
 
 
         /* 숨겨진 태그 리스트 */
@@ -182,17 +191,24 @@ body{
         .tagList{
             border: 1px solid black;
             width: 100%;
-            height: 50%;
+            height: 20%;
             
 
         }
+
+        .tagList-detail{
+            height: 70%;
+
+        }
+
+
 
         .firstList{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             border: 1px solid black;
             list-style: none;
-            height: 80%;
+            height: 60%;
             padding: 0;
             grid-gap: 10px;
 
@@ -204,6 +220,7 @@ body{
             display: flex;
             align-items: center;
             justify-content: center;
+            list-style: none;
             
         }
 
@@ -220,10 +237,37 @@ body{
         }
 
 
+        /* 채팅그룹 세부 종류 선택 */
 
+        .secondList{
+            height: 100%;
+            display: flex;
+            gap: 10px;
+            border: solid 1px #00ffcb;
+            padding: 0;
 
+        }
 
+        .list-item{
 
+  
+            border: solid 1px #00ffcb;
+            height: 100%;
+            width: 100%;
+            list-style: none;
+          
+        }
+
+        .detail-tiem{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10%;
+            border: solid 1px #00ffcb;
+            cursor: pointer;
+        
+        }
     
     
         .room_name>div,.pepole_limit>div,.group_choose>div,
@@ -246,7 +290,7 @@ body{
     
         
     
-    
+      
     
     
     
@@ -446,5 +490,5 @@ body{
          }
     
     
-
-     
+         
+          

@@ -114,44 +114,62 @@ function showListItem(index) {
 
 const tagsInput = document.getElementById("tagsInput");
 const listItems = document.querySelectorAll(".detail-tiem");
+const otherInputs = document.querySelectorAll('.other-inputs'); // 다른 input 요소 선택
 
-listItems.forEach(item=>{
-
-  item.tagCount =0;
-
-  item.addEventListener('click',()=>{
+listItems.forEach(item => {
 
 
+  item.addEventListener('click', () => {
     const tag = item.textContent;
-    const currentTags = tagsInput.value;
-    const tagCount = item.tagCopublicunt;
-    
-
-      //태그 개수 제한 
-      if(tagCount ===5){
-
-          alert("5개만 선택 가능합니다.");
-          return;
-      }   
-      // 태그 추가
-      if (currentTags === '') {
-          tagsInput.value = '#'+tag
-      } else {
-          tagsInput.value = `${currentTags}, ${'#'+tag}`;
-      }
-
-      tagCount++;
-
+    const currentTags = tagsInput.value.trim(); // 입력 값에서 앞뒤 공백을 제거
+    const tagsArray = currentTags === '' ? [] : currentTags.split(',').map(tag => tag.trim()); // 콤마(,)를 기준으로 배열로 변환
   
+    // 중복 태그 확인
+    if (tagsArray.includes(`#${tag}`)) {
+     
+      return;
+    }
+   
+   
+    // 태그 개수 제한 
+    if (tagsArray.length === 5) {
+      alert("5개만 선택 가능합니다.");
+      return;
+    }
+  
+    // 태그 추가
+    if (tagsArray.length === 0) {
+      tagsInput.value = '#' + tag;
+    } else {
+      tagsInput.value = `${tagsInput.value}, #${tag}`;
+      tagsInput.style.width = (tagsInput.value.length * 10) + 'px'; // 예시로 글자 하나당 8px씩 너비 지정
 
+    }
+
+    
+    otherInputs.forEach(input => {
+      input.value = tagsInput.value;
+      input.style.width = (tagsInput.value.length * 10) + 'px'; // 예시로 글자 하나당 10px씩 너비 지정
     });
 
 
+  });
+});
 
+// 태그 지우기 
+const cleanTagsButtons = document.querySelectorAll(".cleanTag");
+
+cleanTagsButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    tagsInput.value = null;
+    otherInputs.forEach(input => {
+      input.value = null;
+    });
+  });
 });
 
 
-
+/// 태그 
 
 
 
@@ -235,20 +253,5 @@ targetInput.addEventListener("input", e => {
 		.catch(err => console.log(err) );
 	}
 });
-
-
-/*// 태그 , 없애고 데이터베이스에 저장하기 
-function tagEdit(){
-	
-	 event.preventDefault(); // 이벤트 기본 동작 막음
-	 
-	 
-	
-	 document.getElementById("roomMaking").submit(); 
-	
-}
-
-*/
-
 
 
