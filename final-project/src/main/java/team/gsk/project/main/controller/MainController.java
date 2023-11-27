@@ -26,10 +26,14 @@ public class MainController {
 		
 
 
+
 		return "common/main";
 		
 		
 //		return "chatting/room_making";
+
+
+
   }
 	
 	// 로그인 페이지로 이동
