@@ -13,13 +13,13 @@
     </div>
 
     <div>
-        <p id="searchIdPw">아이디/비밀번호 찾기</P>
+        <p id="searchIdPw">아이디 찾기/비밀번호 변경</P>
         <hr id="headHr">
     </div>
 
     <section id="side">
         <div id="leftSide">
-            <div>
+            <div id="idTitleBox">
                 <p id="idTitle">아이디 찾기</p>
                 
             </div>
@@ -28,9 +28,11 @@
                 <fieldset id="searchId">
 
                     <div id="inputBox">
-                        <label id="labelBox" for="idForPhone">
-                            <input type="radio" id="idForPhone" value="idForPhone" name="searchId" checked> 휴대전화로 찾기
+						
+						<label id="labelBox" for="idForPhone">
+                            <input type="radio" id="idForPhone" value="idForPhone" name="searchIdGroup" checked> 휴대전화
                         </label>
+						
                         <dl>
                             <dt id="idFirstDt">
                                 <input type="text" placeholder="이름">
@@ -53,9 +55,11 @@
                     <hr id="inputHr">           
                         
                         <div id="inputBox">
-                            <label id="labelBox" for="idForEmail">
-                                <input type="radio" id="idForEmail" value="idForEmail" name="searchId"> 이메일로 찾기
-                            </label>
+							
+	                            <label id="labelBox" for="idForEmail">
+	                                <input type="radio" id="idForEmail" value="idForEmail" name="searchIdGroup"> 이메일
+	                            </label>
+                            
                             <dl>
                                 <dt id="idFirstDt">
                                     <input type="text" placeholder="이름">
@@ -82,8 +86,8 @@
         </div>
     
         <div id="rightSide">
-            <div>
-                <p id="pwTitle">비밀번호 찾기</p>
+            <div id="pwTitleBox">
+                <p id="pwTitle">비밀번호 변경</p>
                 
             </div>
             <form id="pwForm">
@@ -92,9 +96,11 @@
                     
                    
                     <div id="inputBox">
-                        <label for="pwForPhone">
-                            <input type="radio" id="pwForPhone" value="pwForPhone" name="searchPw" checked> 휴대전화로 찾기
-                        </label>
+						
+	                        <label id="labelBox" for="pwForPhone">
+	                            <input type="radio" id="pwForPhone" value="pwForPhone" name="searchPwGroup" checked> 휴대전화
+	                        </label>
+                        
                         <dl>
                             <dt id="idFirstDt">
                                 <input type="text" placeholder="이름">
@@ -118,9 +124,11 @@
                     <hr id="inputHr">                   
                    
                     <div id="inputBox">
-                        <label for="pwForEmail">
-                            <input type="radio" id="pwForEmail" value="pwForEmail" name="searchPw"> 이메일로 찾기
+						
+                        <label id="labelBox" for="pwForEmail">
+                            <input type="radio" id="pwForEmail" value="pwForEmail" name="searchPwGroup"> 이메일
                         </label>
+                        
                         <dl>
                             <dt id="idFirstDt">
                                 <input type="text" placeholder="이름">

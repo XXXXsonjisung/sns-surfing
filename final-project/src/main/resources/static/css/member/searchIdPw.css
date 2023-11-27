@@ -56,7 +56,7 @@ input {
 }
 
 #headHr {
-    width: 90%;
+    width: 75%;
     margin-left : auto;
     margin-right : auto;
     margin-bottom: 20px;
@@ -66,21 +66,26 @@ input {
 
 #side {
     display: flex;
+    justify-content: center;
 }
 
 #leftSide {
-    width: 50%;
+    width: 35%;
 }
 
 #rightSide {
-    width: 50%;
+    width: 35%;
 
+}
+
+#idTitleBox {
+	width: 55%;
 }
 
 #idTitle {
     font-size: 21px;
     margin: 10px;
-    margin-left: 17.5%;
+    margin-left: 40%;
 }
 
 #idBox {
@@ -100,6 +105,7 @@ input {
 
 #idForPhone {
     margin-top: 15px;
+
 }
 
 #idForEmail {
@@ -129,7 +135,13 @@ button {
     align-items: center;
 }
 
+#radioBox {
+	display: flex;
+	justify-content: start;
+}
+
 #labelBox {
+	width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,7 +162,7 @@ button {
 }
 
 #searchId div {
-    width: 600px;
+    width: 100%;
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -185,10 +197,14 @@ button {
     box-shadow: 1px 1px 1px 1px gray;
 }
 
+#pwTitleBox {
+	width: 55%;
+}
+
 #pwTitle {
     font-size: 21px;
     margin: 10px;
-    margin-left: 17.5%;
+    margin-left: 40%;
 }
 
 #pwForm {
@@ -197,6 +213,8 @@ button {
     margin: auto;
 }
 
+
+
 #searchPw {
     border-left: none;
     border-right: none;
@@ -204,7 +222,7 @@ button {
 }
 
 #searchPw div {
-    width: 600px;
+    width: 100%;
     height: 300px;
     display: flex;
     flex-direction: column;
