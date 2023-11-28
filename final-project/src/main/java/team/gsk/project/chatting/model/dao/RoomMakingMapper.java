@@ -1,6 +1,10 @@
 package team.gsk.project.chatting.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import team.gsk.project.chatting.model.dto.Chatting;
 
@@ -13,8 +17,19 @@ public interface RoomMakingMapper{
 	// 채팅방 번호 가져오기
 	int roomNumber();
 
+
+	// 태그 번호 찾기
+	List<Integer> tagNumber(String[] tagName);
+	
 	// 태그 넣기 
-	int addTag(String[] tagName, int roomNo);
+	int addTag(@Param("listOfMaps") List<Map<String, Object>> listOfMaps);
+
+
+
+//	void addTag(Map<String, Object> map);
+
+
+
 
 
 	
