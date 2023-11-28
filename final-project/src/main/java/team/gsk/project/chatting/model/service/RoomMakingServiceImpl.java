@@ -1,5 +1,10 @@
 package team.gsk.project.chatting.model.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +19,7 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 	private RoomMakingMapper mapper;
 
 	// 채탱방 만들기
-	@Transactional
+	@Override
 	public int roomMaking(Chatting inputChatting,String[] tagName) {
 
 		System.out.println(inputChatting);
@@ -26,10 +31,36 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		if(result>0) {
 			
 			// 채팅방 번호 가져오기
-			int roomNum =mapper.roomNumber();
+			int roomNo =mapper.roomNumber();
+		
+			// 태그 번호 가져오기
+			List<Integer> tagNo = mapper.tagNumber(tagName);
+		
+			List<Map<String, Object>> listOfMaps = new ArrayList<>();
 			
+			for (int i = 0; i < tagNo.size(); i++) {
+			
+			Map<String, Object> map = new HashMap<>();	
+			
+			map.put("roomNo", roomNo);
+			map.put("tagNo", tagNo.get(i));
+			
+			listOfMaps.add(map);
+		
+			}
+			
+//			
+			
+//			Map<String, Object> map = new HashMap<>();	
+//			
+//			map.put("roomNo", roomNo);
+//			map.put("tagName", tagName);
+			
+
 			// 태그 집어넣기 
-			int addTag =mapper.addTag(tagName,roomNum);
+			System.out.println(listOfMaps);
+		
+			int addTag =mapper.addTag(listOfMaps);
 			
 			return result;
 			
