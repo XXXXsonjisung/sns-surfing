@@ -114,73 +114,83 @@
 
 // 헤더의 모달 내 게시 버튼을 눌렀을 때 실행되는 함수
 function createPost() {
-    // 게시되었습니다. 알림 띄우기
-    alert('게시되었습니다.');
-    
-    
-    
-    
-    
-fetch('/userinfo')
-    .then(response => response.json())
-    .then(data => {
-        const username = data.memberId; // 사용자 아이디
-        const profileImageUrl = data.profileImage; // 프로필 이미지 URL
+    fetch('/userinfo')
+        .then(response => response.json())
+        .then(data => {
+            const username = data.memberId; 
+            const profileImageUrl = data.profileImage; 
 
+            const modalText = document.getElementById('modalPostContent').innerText; 
+            const imageFile = document.getElementById('imageInputXX').files[0]; 
+            const videoFile = document.getElementById('videoInput').files[0]; 
 
-        var userBox = document.querySelector('.user_boxT');
-        var firstPost = document.querySelector('.user_boxT .user_post:first-child');
-        var newUserPost = firstPost.cloneNode(true);
+            var userBox = document.querySelector('.user_boxT');
+            var firstPost = document.querySelector('.user_boxT .user_post:first-child');
+            var newUserPost = firstPost.cloneNode(true);
+            var postContent = newUserPost.querySelector('.post_content');
+            postContent.textContent = '';
 
-        var postContent = newUserPost.querySelector('.post_content');
-        postContent.textContent = '';
+            userBox.prepend(newUserPost);
 
-        userBox.prepend(newUserPost);
+            var postContentDiv = document.querySelector('.post_content');
+            var textDiv = document.createElement('div');
+            textDiv.textContent = modalText;
+            postContentDiv.appendChild(textDiv);
 
-        var postContentDiv = document.querySelector('.post_content');
-        var modalText = document.getElementById('modalPostContent').innerText;
-
-        var textDiv = document.createElement('div');
-        textDiv.textContent = modalText;
-
-        postContentDiv.appendChild(textDiv);
-
-        // 모달에서 업로드한 이미지 가져오기
-        var imageFile = document.getElementById('imageInputXX').files[0];
+            var profileImageElement = document.querySelector('.propile img');
+            profileImageElement.src = profileImageUrl;
         
-        
-        var userIdElement = document.getElementById('user01');
-		userIdElement.textContent = session.loginMember.memberId;
+            const usernameElement = document.getElementById('user01');
+            usernameElement.textContent = username; 
 
-        // 이미지 추가
-        if (imageFile) {
-            var imageElement = document.createElement('img');
-            imageElement.src = URL.createObjectURL(imageFile);
-            imageElement.onload = function() {
-                postContentDiv.appendChild(imageElement);
-
-                // 이 부분에서 session.loginMember의 프로필 이미지 URL을 적용합니다.
-                var profileImageElement = document.querySelector('.propile img');
-                profileImageElement.src = profileImageUrl;
-
+            if (imageFile) {
+                var imageElement = document.createElement('img');
+                imageElement.src = URL.createObjectURL(imageFile);
+                imageElement.onload = function() {
+                    postContentDiv.appendChild(imageElement);
+                    var modal = document.getElementById('myModal');
+                    modal.style.display = 'none';
+                };
+                imageElement.onerror = function() {
+                    console.error('모달 이미지 로드 에러');
+                    var modal = document.getElementById('myModal');
+                    modal.style.display = 'none';
+                };
+            } else {
+                console.error('모달 이미지 파일이 없음');
                 var modal = document.getElementById('myModal');
                 modal.style.display = 'none';
-            };
-            imageElement.onerror = function() {
-                console.error('모달 이미지 로드 에러');
-                // 에러 처리
-                var modal = document.getElementById('myModal');
-                modal.style.display = 'none';
-            };
-        } else {
-            console.error('모달 이미지 파일이 없음');
-            // 에러 처리
-            var modal = document.getElementById('myModal');
-            modal.style.display = 'none';
-        }
-    })
-    .catch(error => console.error('Error:', error));
-
-			var modal = document.getElementById('myModal');
-            modal.style.display = 'none';
+            }
+        
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('memberProfile', profileImageUrl);
+            formData.append('content', modalText);
+        
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+        
+            if (videoFile) {
+                formData.append('video', videoFile);
+            }
+        
+            fetch('/savePost', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('게시물을 저장하는 데 문제가 발생했습니다.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('게시물이 성공적으로 저장되었습니다:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        })
+        .catch(error => console.error('Error:', error));
 }

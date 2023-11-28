@@ -61,7 +61,7 @@ public class DBConfig {
 		
 		//별칭을 지정해야하는 DTO가 모여있는 패키지 지정
 		//-> 해당 패키지에 있는 모든 클래스가 클래스명으로 별칭이 지정됨
-		sessionFactoryBean.setTypeAliasesPackage("team.gsk.project.member.model.dto,team.gsk.project.chatting.model.dto");
+		sessionFactoryBean.setTypeAliasesPackage("team.gsk.project.member.model.dto,team.gsk.project.chatting.model.dto,team.gsk.project.post.model.dto");
 		
 		//마이바티스 설정 파일 경로 지정
 		sessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));

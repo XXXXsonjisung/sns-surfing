@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="team.gsk.project.post.model.dao.PostMapper">
+	
+	<resultMap type="PostRequest" id="post_rm">
+		<id property="postNo" column="POST_NO" />
+		<result property="username" column="MEMBER_ID" />
+		<result property="content" column="CONTENT" />
+		<result property="commentsCount" column="COMMENT_COUNT" />
+		<result property="heartCount" column="HEART_COUNT" />
+		<result property="postUploadDate" column="POST_UPLOAD_DATE" />
+		<result property="memberProfile" column="MEMBER_PROFILE" />
+		<result property="imageUrls" column="IMG_URL" />		
+		<result property="videoUrls" column="VIDEO_URL" />		
+	</resultMap>
+	
+	
+	<insert id="insertPost" parameterType="PostRequest">
+    INSERT INTO POST (
+        MEMBER_ID,
+        CONTENT,
+        COMMENT_COUNT,
+        HEART_COUNT,
+        POST_UPLOAD_DATE,
+        MEMBER_PROFILE,
+        IMG_URL,
+        VIDEO_URL
+    )
+    VALUES (
+        #{username},
+        #{content},
+        DEFAULT,
+        DEFAULT,
+        SYSDATE,
+        #{memberProfile},
+        #{imageUrls},
+        #{videoUrls}
+    )
+</insert>
+	
+
+
+</mapper>

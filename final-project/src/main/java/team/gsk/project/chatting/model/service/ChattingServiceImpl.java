@@ -23,10 +23,5 @@ public class ChattingServiceImpl implements ChattingService {
 		return mapper.selectTarget(map);
 	}
 
-//	
-//	@Override
-//	public List<Member> selectTarget(String query) {
-//		return mapper.selectTarget(query);
-//	}
 
 }
