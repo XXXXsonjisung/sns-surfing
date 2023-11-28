@@ -27,17 +27,19 @@ public class RoomMakingController {
 		System.out.println("처음시작 "+inputChatting);
 		
 		// 태그이름에 ',' 제거 후 리스트로 저장
-		String[] tagName = inputChatting.getTagName().split("[,]");
-		
-		for (String tag : tagName) {
-	    System.out.println(tag.trim()); // 각 요소를 출력하고 공백 제거
-	}
 	
+//		
+//		for (String tag : tagName) {
+//	    System.out.println(tag.trim()); // 각 요소를 출력하고 공백 제거
+//	}
+//		String[] tagName = inputChatting.getTagName().split("[,]");
+		
+		
 		System.out.println("보내기전 : "+inputChatting);
 		
 		
 		// 채팅방 생성
-		int result = service.roomMaking(inputChatting,tagName);
+		int result = service.roomMaking(inputChatting);
 		
 		// 채팅방이 제대로 생성됐다면 
 		if(result !=0) {

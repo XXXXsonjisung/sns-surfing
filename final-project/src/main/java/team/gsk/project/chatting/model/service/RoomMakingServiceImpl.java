@@ -20,7 +20,7 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 
 	// 채탱방 만들기
 	@Override
-	public int roomMaking(Chatting inputChatting,String[] tagName) {
+	public int roomMaking(Chatting inputChatting) {
 
 		System.out.println(inputChatting);
 		
@@ -34,16 +34,21 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 			int roomNo =mapper.roomNumber();
 		
 			// 태그 번호 가져오기
-			List<Integer> tagNo = mapper.tagNumber(tagName);
+			String tagString = inputChatting.getTagName();
+			String[] tagName = tagString.split(",\\s*");
+//			String[] tagName = inputChatting.getTagName().split("[,]");
+			
+			
+		//	List<Integer> tagNo = mapper.tagNumber(tagName);
 		
 			List<Map<String, Object>> listOfMaps = new ArrayList<>();
 			
-			for (int i = 0; i < tagNo.size(); i++) {
+			for (int i = 0; i < tagName.length; i++) {
 			
 			Map<String, Object> map = new HashMap<>();	
 			
 			map.put("roomNo", roomNo);
-			map.put("tagNo", tagNo.get(i));
+			map.put("tagName", tagName[i]);
 			
 			listOfMaps.add(map);
 		

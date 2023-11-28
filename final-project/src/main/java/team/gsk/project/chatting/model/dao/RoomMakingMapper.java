@@ -19,18 +19,11 @@ public interface RoomMakingMapper{
 
 
 	// 태그 번호 찾기
-	List<Integer> tagNumber(String[] tagName);
+	//List<Integer> tagNumber(String[] tagName);
 	
 	// 태그 넣기 
-	int addTag(@Param("listOfMaps") List<Map<String, Object>> listOfMaps);
-
-
-
-//	void addTag(Map<String, Object> map);
-
-
-
-
+	//int addTag(@Param("listOfMaps") List<Map<String, Object>> listOfMaps);
+	int addTag(List<Map<String, Object>> listOfMaps);
 
 	
 }

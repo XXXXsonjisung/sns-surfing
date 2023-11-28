@@ -37,23 +37,20 @@
 	</select>
 		
 	<!--태그 번호 찾기-->
-	<select id="tagNumber" parameterType="java.util.List" >
+<!--	<select id="tagNumber" parameterType="java.util.List" >
 	    SELECT TAG_NO FROM ROOM_TAG WHERE TAG_NAME IN
 	    <foreach collection='array' index="index" item="item" open="(" separator="," close=")">
 	           #{item}
 	    </foreach>
-	</select>
+	</select>-->
 
-	
-	
-	
-	
 	<!--태그 넣기 -->
 	<insert id="addTag" parameterType="java.util.List">
-    	<foreach collection="listOfMaps" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL">
+    	<foreach collection="list" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL">
 	        INTO TAG_ROOM_NO (ROOM_NO, TAG_NO)
 	        VALUES
-	        (#{item.roomNo},#{item.tagNo})
+	        (#{item.roomNo},(SELECT TAG_NO FROM ROOM_TAG WHERE TAG_NAME=#{item.tagName})
+	        )
 	    </foreach>
 	</insert>
 				
