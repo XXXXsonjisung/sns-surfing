@@ -4,11 +4,11 @@
 }
 
 body {
-    width: 100%;
-    height: 863px;
-    margin: 0;
-    padding: 0;
-    position: relative;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 label {
@@ -21,7 +21,7 @@ label > input {
 }
 
 input {
-    width: 250px;
+    width: 200px;
     height: 30px;    
     border-radius: 50px;
     border: 1px solid rgb(184, 184, 184);
@@ -47,20 +47,24 @@ input {
 }
 
 #searchIdPw {
-    display: flex;
-    justify-content: center;
+
+
     font-size: 27px;
     margin-top: 10px;
     margin-bottom: 10px;
 
 }
 
+#searchTitle {
+	width: 65%;
+	text-align: center;
+}
+
 #headHr {
-    width: 75%;
+    width: 100%;
     margin-left : auto;
     margin-right : auto;
-    margin-bottom: 20px;
-    
+    margin-bottom: 20px; 
     border-width: 2px;
 }
 
@@ -70,31 +74,28 @@ input {
 }
 
 #leftSide {
-    width: 35%;
+   width: 50%;
+    margin-right: 10%;
 }
 
 #rightSide {
-    width: 35%;
+	width: 50%; 
 
 }
 
 #idTitleBox {
-	width: 55%;
+	width: 60%;
 }
 
 #idTitle {
+	width: 100%;
     font-size: 21px;
     margin: 10px;
-    margin-left: 40%;
+    margin-left: 5%;
 }
 
 #idBox {
     text-align: center;
-}
-
-#idBox > input {
-    display: inline-block;
-    flex-direction: column;
 }
 
 #idForm {
@@ -103,14 +104,11 @@ input {
     margin: auto;
 }
 
-#idForPhone {
+#radio {
     margin-top: 15px;
 
 }
 
-#idForEmail {
-    margin-top: 15px;
-}
 
 button {
     display: flex;
@@ -126,7 +124,6 @@ button {
 
 #inputHr {
     width:auto;
-    border-width: 2px;
 }
 
 #idForPhoneBox {
@@ -141,10 +138,10 @@ button {
 }
 
 #labelBox {
-	width: 100%;
+	width: 90%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
 }
 
 #inputBox {
@@ -197,14 +194,12 @@ button {
     box-shadow: 1px 1px 1px 1px gray;
 }
 
-#pwTitleBox {
-	width: 55%;
-}
 
 #pwTitle {
+	width: 100%;
     font-size: 21px;
     margin: 10px;
-    margin-left: 40%;
+    margin-left: 5%;
 }
 
 #pwForm {
@@ -216,22 +211,15 @@ button {
 
 
 #searchPw {
+	width: 65%;
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    
     border-left: none;
     border-right: none;
     border-bottom: none;
-}
-
-#searchPw div {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#searchPw label {
-    display: block;
-    margin-bottom: 10px;
 }
 
 
@@ -262,3 +250,18 @@ a {
     text-decoration: none;
     color: black;
 }
+
+#leftSide #inputBox,
+#rightSide #inputBox {
+    width: 350px; /* Adjust the width as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+input[disabled] {
+	 background-color: #eee; /* 변경할 수 없는 상태를 나타내는 색상 */
+     cursor: not-allowed; /* 변경할 수 없는 상태를 나타내는 커서 스타일 *
+}
+
