@@ -21,17 +21,9 @@ public class MainController {
 	@RequestMapping("/")
 	public String mainForward(Model model) {
 		
-		model.addAttribute("name","ㅋㅋㅋ");
-
 		
 
-
-
-//		return "common/main";
-		
-		
-		return "chatting/room_making";
-
+		return "common/main";
 
 
   }

@@ -102,6 +102,7 @@ a {
         background-color: #F2F6FF;
         display: flex;
         justify-content: center;
+        height: auto;
     }
 
     .user_boxT {
