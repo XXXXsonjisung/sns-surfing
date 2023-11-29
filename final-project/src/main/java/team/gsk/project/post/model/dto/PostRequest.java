@@ -21,7 +21,9 @@ public class PostRequest {
     private int heartCount;
     private LocalDateTime postUploadDate;
     private String memberProfile;
+    
     private String imageUrls; // 이미지 URL들을 저장하는 리스트
+    
     private String videoUrls;
 
 }

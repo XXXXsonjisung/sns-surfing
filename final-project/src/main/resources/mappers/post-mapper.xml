@@ -27,17 +27,23 @@
         IMG_URL,
         VIDEO_URL
     )
-    VALUES (
-        #{username},
-        #{content},
-        DEFAULT,
-        DEFAULT,
-        SYSDATE,
-        #{memberProfile},
-        #{imageUrls},
-        #{videoUrls}
-    )
-</insert>
+	    VALUES (
+	        #{username},
+	        #{content},
+	        DEFAULT,
+	        DEFAULT,
+	        SYSDATE,
+	        #{memberProfile},
+	        #{imageUrls},
+	        #{videoUrls}
+	    )
+	</insert>
+	
+	<select id="getAllPosts" resultMap="post_rm">
+	 	 SELECT * FROM POST ORDER BY POST_UPLOAD_DATE DESC
+	</select>
+
+	
 	
 
 

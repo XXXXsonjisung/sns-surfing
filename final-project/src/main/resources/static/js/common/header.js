@@ -166,13 +166,17 @@ function createPost() {
             formData.append('username', username);
             formData.append('memberProfile', profileImageUrl);
             formData.append('content', modalText);
+            
+   
         
             if (imageFile) {
-                formData.append('image', imageFile);
+		         console.log("imageFile::" ,imageFile.name);
+                formData.append('imageUrls', imageFile.name);
+                alert(imageFile)  
             }
         
             if (videoFile) {
-                formData.append('video', videoFile);
+                formData.append('videoUrls', videoFile);
             }
         
             fetch('/savePost', {
@@ -181,7 +185,7 @@ function createPost() {
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('게시물을 저장하는 데 문제가 발생했습니다.');
+                    alert('게시물을 저장하는 데 문제가 발생했습니다.');
                 }
                 return response.json();
             })
