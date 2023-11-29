@@ -1,27 +1,71 @@
-idForPhone = document.getElementById("idForPhone");
-idForEmail = document.getElementById("idForEmail");
-pwForPhone = document.getElementById("pwForPhone");
-pwForEmail = document.getElementById("pwForEmail");
-sendAuth = document.querySelectorAll("sendAuth");
-checkAuth = document.querySelectorAll("checkAuth");
-searchBtn = document.querySelectorAll("searchBtn");
+const idForPhone = document.querySelector("#idForPhone");
+const idForEmail = document.querySelector("#idForEmail");
+const pwForPhone = document.querySelector("#pwForPhone");
+const pwForEmail = document.querySelector("#pwForEmail");
 
+const idPhoneName = document.querySelector("#idPhoneName");
+const idPhoneTel = document.querySelector("#idPhoneTel");
+const idPhoneAuthNum = document.querySelector("#idPhoneAuthNum");
 
- // 라디오 버튼 변경 시 이벤트 리스너 추가
-idForPhone.addEventListener('change', function() {
-    // 라디오 버튼이 체크되어 있지 않으면 입력란 비활성화
-    if (!this.checked) {
-        idForPhone.disabled = true;
-    } else {
-        idForPhone.disabled = false;
-    }
+const idEmailName = document.querySelector("#idEmailName");
+const idEmailTel = document.querySelector("#idEmailTel");
+const idEmailAuthNum = document.querySelector("#idEmailAuthNum");
+
+const pwPhoneName = document.querySelector("#pwPhoneName");
+const pwPhoneTel = document.querySelector("#pwPhoneTel");
+const pwPhoneAuthNum = document.querySelector("#pwPhoneAuthNum");
+
+const pwEmailName = document.querySelector("#pwEmailName");
+const pwEmailTel = document.querySelector("#pwEmailTel");
+const pwEmailAuthNum = document.querySelector("#pwEmailAuthNum");
+
+const sendAuth = document.querySelectorAll(".sendAuth");
+const checkAuth = document.querySelectorAll(".checkAuth");
+const searchBtn = document.querySelectorAll(".searchBtn");
+
+const radioGroups = [
+  { radio: idForPhone, elements: [idPhoneName, idPhoneTel, idPhoneAuthNum] },
+  { radio: idForEmail, elements: [idEmailName, idEmailTel, idEmailAuthNum] },
+  { radio: pwForPhone, elements: [pwPhoneName, pwPhoneTel, pwPhoneAuthNum] },
+  { radio: pwForEmail, elements: [pwEmailName, pwEmailTel, pwEmailAuthNum] },
+];
+
+function handleRadioChange(checkedIndex) {
+  radioGroups.forEach((group, index) => {
+    const { radio, elements } = group;
+    const isDisabled = checkedIndex !== index;
+
+    elements.forEach((element) => {
+      element.disabled = isDisabled;
+    });
+
+    [sendAuth, checkAuth, searchBtn].forEach((btnGroup) => {
+      btnGroup[index].disabled = isDisabled;
+    });
+  });
+}
+
+radioGroups.forEach((group, index) => {
+  group.radio.addEventListener('change', () => handleRadioChange(index));
 });
 
-// 버튼 클릭 시 입력란 상태 변경
-document.getElementById('disableButton').addEventListener('click', function() {
-    inputText.disabled = true;
-});
 
-document.getElementById('enableButton').addEventListener('click', function() {
-    inputText.disabled = false;
-});
+
+
+
+
+
+// 이메일로 아이디/ 비밀번호 찾기
+let authTimer;
+let authMin = 4;
+let authSec = 59;
+
+let tempEmail;
+
+for (let i = 1; i < sendAuth.length; i += 2) {
+	
+	sendAuth[i].addEventListener('click', function() {
+	   
+	});
+}
+
