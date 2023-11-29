@@ -1,6 +1,6 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
+	box-sizing: border-box;
+	margin: 0;
 }
 
 body {
@@ -12,46 +12,46 @@ body {
 }
 
 label {
-    cursor: pointer;   
+	cursor: pointer;
 }
 
-label > input {
-    width: 13px;
-    height: 13px;
+label>input {
+	width: 13px;
+	height: 13px;
 }
 
 input {
-    width: 200px;
-    height: 30px;    
-    border-radius: 50px;
-    border: 1px solid rgb(184, 184, 184);
-    padding: 15px;
+	width: 200px;
+	height: 30px;
+	border-radius: 50px;
+	border: 1px solid rgb(184, 184, 184);
+	padding: 15px;
 }
 
 #logos {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 #logo {
-    width: 80px;
-    height: 80px;
-    margin: 5px;
-    
+	width: 80px;
+	height: 80px;
+	margin: 5px;
+
 }
 
 #name {
-    font-size: 30px;
-    font-weight: bold;
+	font-size: 30px;
+	font-weight: bold;
 
 }
 
 #searchIdPw {
 
 
-    font-size: 27px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+	font-size: 27px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 
 }
 
@@ -61,25 +61,25 @@ input {
 }
 
 #headHr {
-    width: 100%;
-    margin-left : auto;
-    margin-right : auto;
-    margin-bottom: 20px; 
-    border-width: 2px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	border-width: 2px;
 }
 
 #side {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 #leftSide {
-   width: 50%;
-    margin-right: 10%;
+	width: 50%;
+	margin-right: 10%;
 }
 
 #rightSide {
-	width: 50%; 
+	width: 50%;
 
 }
 
@@ -89,47 +89,47 @@ input {
 
 #idTitle {
 	width: 100%;
-    font-size: 21px;
-    margin: 10px;
-    margin-left: 5%;
+	font-size: 21px;
+	margin: 10px;
+	margin-left: 5%;
 }
 
 #idBox {
-    text-align: center;
+	text-align: center;
 }
 
 #idForm {
-    display: flex;
-    justify-content: center;
-    margin: auto;
+	display: flex;
+	justify-content: center;
+	margin: auto;
 }
 
 #radio {
-    margin-top: 15px;
+	margin-top: 15px;
 
 }
 
 
 button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    border-radius: 5px;
-    border: 0;
-    background-color: #B2F1FF;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px 1px gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #B2F1FF;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px 1px gray;
 }
 
-#inputHr {
-    width:auto;
+.inputHr {
+	width: auto;
 }
 
 #idForPhoneBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #radioBox {
@@ -137,131 +137,112 @@ button {
 	justify-content: start;
 }
 
-#labelBox {
+.labelBox {
 	width: 90%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
+	display: flex;
+	justify-content: start;
+	align-items: start;
 }
 
-#inputBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.inputBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-#searchId {
-    width: auto;
-    border-width: 2px;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+.searchId {
+	width: auto;
+	border-width: 2px;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
 }
 
-#searchId div {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.searchId div {
+	width: 100%;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-#searchId label {
-    display: block;
-    margin-bottom: 10px;
+.searchId label {
+	display: block;
+	margin-bottom: 10px;
 }
 
-#idFirstDt {
-    display: flex;
-    margin: 10px;
+.idFirstDt {
+	display: flex;
+	margin: 10px;
 }
 
-#idSecondDt {
-    display: flex;
-    margin: 10px;
+.idSecondDt {
+	display: flex;
+	margin: 10px;
 }
 
-#idFristDd {
-    display: flex;
-    margin: 10px;
+.idFristDd {
+	display: flex;
+	margin: 10px;
 }
 
-#searchBtn {
-    width: 60px;
-    height: 33px;
-    margin: 20px;
-    background-color: #6DE5FF;
-    box-shadow: 1px 1px 1px 1px gray;
+.searchBtn {
+	width: 60px;
+	height: 33px;
+	margin: 20px;
+	background-color: #6DE5FF;
+	box-shadow: 1px 1px 1px 1px gray;
 }
 
 
 #pwTitle {
 	width: 100%;
-    font-size: 21px;
-    margin: 10px;
-    margin-left: 5%;
+	font-size: 21px;
+	margin: 10px;
+	margin-left: 5%;
 }
 
 #pwForm {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-}
-
-
-
-#searchPw {
-	width: 65%;
 	display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: auto;
-    
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+	justify-content: center;
+	margin: auto;
 }
 
 
 #back {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	margin: 20px;
 }
 
-#backBtn { 
-    width: 150px;
-    height: 50px;
-    background-color: #ECFCFF;
-    box-shadow: 1px 1px gray;
+#backBtn {
+	width: 150px;
+	height: 50px;
+	background-color: #ECFCFF;
+	box-shadow: 1px 1px gray;
 }
 
 a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    border-radius: 5px;
-    border: 0;
-    background-color: #B2F1FF;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px 1px gray;
-    text-decoration: none;
-    color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #B2F1FF;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px 1px gray;
+	text-decoration: none;
+	color: black;
 }
 
-#leftSide #inputBox,
-#rightSide #inputBox {
-    width: 350px; /* Adjust the width as needed */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#leftSide .inputBox,
+#rightSide .inputBox {
+	width: 350px;
+	/* Adjust the width as needed */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 }
-
-input[disabled] {
-	 background-color: #eee; /* 변경할 수 없는 상태를 나타내는 색상 */
-     cursor: not-allowed; /* 변경할 수 없는 상태를 나타내는 커서 스타일 *
-}
-
