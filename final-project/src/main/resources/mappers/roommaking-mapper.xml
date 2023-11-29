@@ -28,7 +28,7 @@
 	<insert id="roomMaking" >
 		INSERT INTO ROOM_GROUP (ROOM_NO,ROOM_NAME,ROOM_INTRUDECE,ROOM_PERSONNEL,
 		ROOM_MANAGER,ROOM_PWD,ROOM_IMG) VALUES
-		(ROOM_NO_SEQ.NEXTVAL,#{roomName},#{roomIntrudece},#{roomPersonnel},1,#{roomPwd},#{roomImg})
+		(ROOM_NO_SEQ.NEXTVAL,#{roomName},#{roomIntrudece},#{roomPersonnel},#{roomManager},#{roomPwd},#{roomImg})
 	</insert>
 	
 	<!--만들어진 채팅방 번호 가져오기 -->
