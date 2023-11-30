@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import team.gsk.project.chatting.model.dto.Chatting;
+import team.gsk.project.member.model.dto.Member;
 
 @Mapper
 public interface RoomMakingMapper{
@@ -24,6 +25,8 @@ public interface RoomMakingMapper{
 	// 태그 넣기 
 	//int addTag(@Param("listOfMaps") List<Map<String, Object>> listOfMaps);
 	int addTag(List<Map<String, Object>> listOfMaps);
+
+
 
 	
 }

@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 
 import team.gsk.project.chatting.model.dao.RoomMakingMapper;
 import team.gsk.project.chatting.model.dto.Chatting;
+import team.gsk.project.member.model.dto.Member;
 
 @Service
 public class RoomMakingServiceImpl implements RoomMakingService {
@@ -22,9 +23,14 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 
 	// 채탱방 만들기
 	@Override
-	public int roomMaking(Chatting inputChatting) {
+	public int roomMaking(Chatting inputChatting,Member loginMember) {
 
-		System.out.println(inputChatting);
+		
+		int memberNo = loginMember.getMemberNo();
+		
+				inputChatting.setRoomManager(memberNo);
+				
+				System.out.println("넣기" +inputChatting);
 		
 		// 채팅방 생성 
 		int result= mapper.roomMaking(inputChatting);

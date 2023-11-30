@@ -10,13 +10,17 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.service.RoomMakingService;
+import team.gsk.project.member.model.dto.Member;
 
 @Controller
 @RequestMapping("/RoomMaking")
+@SessionAttributes({"loginMember"})
 public class RoomMakingController {
 
 	@Autowired
@@ -26,13 +30,13 @@ public class RoomMakingController {
 
 	// 채팅방 만들기
 	@PostMapping("/making")
-	public String roomMaking(@Valid Chatting inputChatting, BindingResult bindingResult,Model model) {
+	public String roomMaking(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,@SessionAttribute("loginMember") Member loginMember) {
 		
 		// 서버에서 유효성 검사
 		if(bindingResult.hasErrors()) {
 			//   model.addAttribute("errors", errors.getAllErrors());
 			   model.addAttribute("inputChatting", inputChatting);
-			
+			   
 			
 			//	유효성 통과 못한 필드와 메시지를 핸들링        
 //			Map<String, String> validatorResult = service.validateHandling(errors);
@@ -53,11 +57,11 @@ public class RoomMakingController {
 //		String[] tagName = inputChatting.getTagName().split("[,]");
 		
 		
-		System.out.println("보내기전 : "+inputChatting);
+		System.out.println("보내기전 : "+inputChatting+loginMember);
 		
 		
 		// 채팅방 생성
-		int result = service.roomMaking(inputChatting);
+		int result = service.roomMaking(inputChatting,loginMember);
 		
 		// 채팅방이 제대로 생성됐다면 
 		if(result !=0) {
