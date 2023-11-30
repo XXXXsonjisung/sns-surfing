@@ -51,21 +51,46 @@ radioGroups.forEach((group, index) => {
 
 
 
-
-
-
-
-// 이메일로 아이디/ 비밀번호 찾기
+// 전화번호로 아이디/ 비밀번호 찾기
 let authTimer;
 let authMin = 4;
 let authSec = 59;
 
 let tempEmail;
 
+
+
+const checkObj = {
+    "memberName" : false,
+    "memberEmail" : false,
+    "authKey" : false
+};
+
+
+for (let i = 0; i < sendAuth.length; i += 2) {
+	
+	sendAuth[i].addEventListener('click', function() {
+	   const checkObj = {
+		    "memberName" : false,
+		    "memberTel" : false,
+		    "authKey" : false
+		    	    
+		};
+	});
+}
+
+
+
+// 이메일로 아이디/ 비밀번호 찾기
+
 for (let i = 1; i < sendAuth.length; i += 2) {
 	
 	sendAuth[i].addEventListener('click', function() {
-	   
+	
+	
+		    
+  	
+		
 	});
 }
 
