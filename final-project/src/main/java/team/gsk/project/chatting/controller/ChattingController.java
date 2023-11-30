@@ -9,10 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import team.gsk.project.chatting.model.dto.ChatRoom;
 import team.gsk.project.chatting.model.dto.Chatting;
+import team.gsk.project.chatting.model.service.ChatService;
 import team.gsk.project.chatting.model.service.ChattingService;
 import team.gsk.project.member.model.dto.Member;
 
@@ -24,6 +27,9 @@ public class ChattingController {
 	
 	@Autowired
 	private ChattingService service;
+	
+	@Autowired
+	private ChatService chatService;
 	
 	//채팅선택 페이지 이동 
 	@GetMapping("/chattingchoose")
@@ -44,7 +50,8 @@ public class ChattingController {
 	// 전체 채팅 페이지 이동 
 	@GetMapping("/chattingRoom")
 	public String chattingRoom(){
-		
+//		 ChatRoom room = chatService.findRoomNo(roomNo);
+//		model.addAttribute("room",room);
 		return "chatting/chatting_room";
 		
 		

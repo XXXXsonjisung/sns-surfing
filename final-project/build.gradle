@@ -49,7 +49,7 @@ dependencies {
 	
 	// WebSocket(채팅)
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.5'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.0'
 	
 	//GSON
 	// https://mvnrepository.com/artifact/com.google.code.gson/gson
@@ -57,8 +57,12 @@ dependencies {
 	
 	//@Validation 유효성검사 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-
 	
+	// json
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
+	
+	
+
 }
 
 tasks.named('bootBuildImage') {

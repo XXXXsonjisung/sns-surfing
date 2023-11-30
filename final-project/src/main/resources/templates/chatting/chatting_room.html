@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +18,10 @@
         <main>
             <div class="mainSide"></div>
             <div class="main_chat">
+                  <span>메세지</span>
                 <div class="main_view">
             
-                     
+                     <!--
                         <ul class="display-chatting">
                             <li class="target-chat">
                                 <img id="pro" src="images/5e0d9f011a9ad2738de6.jpg">
@@ -32,27 +33,75 @@
                                     <span class="chatDate">14:05</span>
                                 </div>
                             </li>
-                        </ul>	
+                        </ul>	-->
 
                    
                 </div>
                 <div clas="main_comment">
-                    <form action="#">
-                        <input type="text">
-                        <button type="submit" id="submit">
+                   
+                        <input type="text" class="content">
+                        <button type="button" id="submit" class="sendBtn" onclick="sendMsg()">
                             <img src="images/fePaperPlane0.png">
                         </button>
-                    </form>
+            
                 </div>
             </div>
             <div class="mainSide">
                 <button onclick="history.back()" id="back">돌아가기</button>
             </div>
         </main>
-  
 
-
-
-    
 </body>
+
+
+<script th:inline="javascript">
+	
+		var roomNo={roomNo};
+	
+        function enterRoom(socket){
+            var enterMsg={"type" : "ENTER","roomNo":roomNo,"sender":"chee","msg":""}; //sender는  글쓸때 수정하자.
+            socket.send(JSON.stringify(enterMsg));
+        }
+        let socket = new WebSocket("ws://localhost:8080/ws/chat");
+
+        socket.onopen = function (e) {
+            console.log('open server!')
+            enterRoom(socket);
+        };
+        socket.onclose=function(e){
+            console.log('disconnet');
+        }
+
+        socket.onerror = function (e){
+            console.log(e);
+        }
+
+        //메세지 수신했을 때 이벤트.
+        socket.onmessage = function (e) {
+            console.log(e.data);
+            let mainview = document.querySelector('.main_view');
+            let newMsg = document.createElement('div');
+            newMsg.innerText=e.data;
+            mainview.append(newMsg);
+        }
+
+
+        //메세지 보내기 버튼 눌렀을 떄..
+        function sendMsg() {
+            let content=document.querySelector('.content').value;
+             var talkMsg={"type" : "TALK","roomNo":roomNo ,"sender":"chee","msg":content};
+           socket.send(JSON.stringify(talkMsg));
+        }
+
+        function quit(){
+             var quitMsg={"type" : "QUIT","roomNo":roomNo ,"sender":"chee","msg":""};
+           socket.send(JSON.stringify(quitMsg));
+            socket.close();
+            location.href="/chat/chatList";
+        }
+
+</script>
+
+
+
 </html>
