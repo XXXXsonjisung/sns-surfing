@@ -10,7 +10,7 @@ import team.gsk.project.post.model.dto.PostRequest;
 @Mapper
 public interface PostMapper {
 
-	boolean insertPost(PostRequest postUser);
+	int insertPost(PostRequest postUser);
 
 	List<PostRequest> getAllPosts();
 
