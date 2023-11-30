@@ -170,9 +170,8 @@ function createPost() {
    
         
             if (imageFile) {
-		         console.log("imageFile::" ,imageFile.name);
-                formData.append('imageUrls', imageFile.name);
-                alert(imageFile)  
+		         console.log("imageFile::" ,imageFile);
+                formData.append('imageUrls', imageFile); 
             }
         
             if (videoFile) {
@@ -181,7 +180,7 @@ function createPost() {
         
             fetch('/savePost', {
                 method: 'POST',
-                body: formData,
+                body: formData
             })
             .then(response => {
                 if (!response.ok) {

@@ -1,13 +1,14 @@
 package team.gsk.project.common.utility;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Util {
 	
 	
 	public static String fileRename(String originFileName) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String date = sdf.format(new java.util.Date(System.currentTimeMillis()));
+		String date = sdf.format(new Date(System.currentTimeMillis()));
 
 		int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
 

@@ -16,7 +16,7 @@ public class PostDAO {
 	private PostMapper mapper;
 	
 
-	public boolean insertPost(PostRequest postUser) {
+	public int insertPost(PostRequest postUser) {
 	
 		return mapper.insertPost(postUser);
 	}
