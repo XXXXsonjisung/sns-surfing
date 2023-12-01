@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <title>Chat Application</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+    <div id="chat">
+        <input type="text" id="message" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+        <ul id="messageArea"></ul>
+    </div>
+
+    <script>
+        const socket = new SockJS('/chat');
+        const stompClient = Stomp.over(socket);
+         const messageInput = document.getElementById('message');
+
+        stompClient.connect({}, frame => {
+            stompClient.subscribe('/topic/publicChatRoom', message => {
+                showMessage(JSON.parse(message.body).content);
+            });
+        });
+
+        function sendMessage() {           
+            const message = messageInput.value.trim();
+            if (message !== '') {
+                stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({ content: message }));
+                messageInput.value = '';
+            }
+            
+              const messageArea = document.getElementById('messageArea');
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(message));
+            messageArea.appendChild(li);
+        }
+
+    
+    </script>
+</body>
+</html>

@@ -21,6 +21,7 @@ public class MainController {
 	@RequestMapping("/")
 	public String mainForward(Model model) {
 		
+		//return "chatting/chatting_room";
 
 		return "common/main";
 

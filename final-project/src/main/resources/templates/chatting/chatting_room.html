@@ -14,15 +14,12 @@
 
 	    <th:block th:replace="~{common/leftSide}">사이드바</th:block>
 
-
         <main>
             <div class="mainSide"></div>
             <div class="main_chat">
                   <span>메세지</span>
                 <div class="main_view">
-            
-                     <!--
-                        <ul class="display-chatting">
+			         <ul class="display-chatting" id="messageArea">
                             <li class="target-chat">
                                 <img id="pro" src="images/5e0d9f011a9ad2738de6.jpg">
         
@@ -33,17 +30,15 @@
                                     <span class="chatDate">14:05</span>
                                 </div>
                             </li>
-                        </ul>	-->
-
-                   
+                        </ul>	    
                 </div>
                 <div clas="main_comment">
-                   
-                        <input type="text" class="content">
-                        <button type="button" id="submit" class="sendBtn" onclick="sendMsg()">
+                   <form>
+                        <input type="text" id="message" class="content">
+                        <button type="button"  onclick="sendMessage()">
                             <img src="images/fePaperPlane0.png">
                         </button>
-            
+            		</form>
                 </div>
             </div>
             <div class="mainSide">
@@ -54,53 +49,37 @@
 </body>
 
 
-<script th:inline="javascript">
-	
-		var roomNo={roomNo};
-	
-        function enterRoom(socket){
-            var enterMsg={"type" : "ENTER","roomNo":roomNo,"sender":"chee","msg":""}; //sender는  글쓸때 수정하자.
-            socket.send(JSON.stringify(enterMsg));
-        }
-        let socket = new WebSocket("ws://localhost:8080/ws/chat");
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script>
+        const socket = new SockJS('/chat');
+        const stompClient = Stomp.over(socket);
 
-        socket.onopen = function (e) {
-            console.log('open server!')
-            enterRoom(socket);
-        };
-        socket.onclose=function(e){
-            console.log('disconnet');
-        }
+        stompClient.connect({}, frame => {
+            stompClient.subscribe('/topic/publicChatRoom', message => {
+                showMessage(JSON.parse(message.body).content);
+            });
+        });
 
-        socket.onerror = function (e){
-            console.log(e);
-        }
-
-        //메세지 수신했을 때 이벤트.
-        socket.onmessage = function (e) {
-            console.log(e.data);
-            let mainview = document.querySelector('.main_view');
-            let newMsg = document.createElement('div');
-            newMsg.innerText=e.data;
-            mainview.append(newMsg);
+          function sendMessage() {
+	   		const messageInput = document.getElementById('message');
+	        const message = messageInput.value.trim();
+	        if (message !== '') {
+	            stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({ content: message }));
+	            messageInput.value = '';
+	        }
         }
 
+         function showMessage(message) {
+        const messageArea = document.getElementById('messageArea');
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(message.sender + ": " + message.content)); // 메시지 표시
+        messageArea.appendChild(li);
+        	}
+            
+    
 
-        //메세지 보내기 버튼 눌렀을 떄..
-        function sendMsg() {
-            let content=document.querySelector('.content').value;
-             var talkMsg={"type" : "TALK","roomNo":roomNo ,"sender":"chee","msg":content};
-           socket.send(JSON.stringify(talkMsg));
-        }
-
-        function quit(){
-             var quitMsg={"type" : "QUIT","roomNo":roomNo ,"sender":"chee","msg":""};
-           socket.send(JSON.stringify(quitMsg));
-            socket.close();
-            location.href="/chat/chatList";
-        }
-
-</script>
+    </script>
 
 
 
