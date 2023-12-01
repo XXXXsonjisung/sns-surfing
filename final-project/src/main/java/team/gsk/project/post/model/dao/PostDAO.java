@@ -28,6 +28,14 @@ public class PostDAO {
 	}
 
 
+	public List<PostRequest> getPostBy(int postNo) {
+		
+		return mapper.getPostBy(postNo);
+	}
+
+
+
+
 
 
 }

@@ -310,7 +310,7 @@ a {
   margin-top: 20px; /* 위쪽 마진 추가 */
   font-size: 16px;
   height: 30%;
-  border: 1px solid rebeccapurple;
+  border-top: 1px solid rgb(192, 192, 192);
   border-radius: 15px;
   
 }
@@ -336,12 +336,70 @@ a {
   margin-right: 10px; /* 각 아이콘/텍스트 사이의 간격 설정 */
 }
 
+.icons {
+	display: flex;
+}
+
+.commentsCount {
+	margin-left: 40%;
+}
+
+
+
+
 /* 댓글 목록 */
 .commentListXC {
   margin-top: 20px; /* 위쪽 마진 추가 */
   border-top: 1px solid #ccc; /* 상단 테두리 추가 */
   padding-top: 10px; /* 상단 패딩 추가 */
+  height: 100%;
 }
+
+.commentInputSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  display: none;/* 댓글 입력창 아래 여백 추가 */
+}
+
+.commentInput {
+  flex: 1;
+  height: 30px;
+  width: 88%;
+  padding: 5px;
+  margin-right: 10px; /* 입력창 오른쪽 여백 추가 */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.commentSubmitBtn {
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.commentInputBtn {
+  margin-left: 79%;
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.commentList {
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 5px;
+	height: 89%;
+}
+
+.commentSubmitBtn:hover {
+  background-color: #2980b9;
+
 
 .commentItemXC {
   border-bottom: 1px solid #ccc; /* 각 댓글 아이템 사이에 구분선 추가 */
@@ -351,4 +409,12 @@ a {
 
 .commentTextXC {
   margin-bottom: 5px; /* 댓글 텍스트와 다음 댓글 사이의 간격 설정 */
+}
+
+
+
+.closeXC {
+	margin-left:70%;
+	font-size: 50px;
+}
 }

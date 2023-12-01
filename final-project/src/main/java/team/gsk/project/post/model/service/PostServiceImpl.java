@@ -62,6 +62,19 @@ public class PostServiceImpl implements PostService{
 	}
 
 
+	@Override
+	public List<PostRequest> getPostBy(int postNo) {
+		
+		return dao.getPostBy(postNo);
+	}
+
+
+
+
+
+
+
+
 	
 
 

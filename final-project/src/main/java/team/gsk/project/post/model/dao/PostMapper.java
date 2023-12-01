@@ -14,6 +14,8 @@ public interface PostMapper {
 
 	List<PostRequest> getAllPosts();
 
+	List<PostRequest> getPostBy(int postNo);
+
 	
 
 
