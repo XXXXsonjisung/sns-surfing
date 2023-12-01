@@ -47,7 +47,7 @@
                             <a>조회수</a>
                        
                             <a>댓글수</a>
-                            <button class="commentBtn" data-post-id="data-post-id">댓글달기</button>
+                            <button class="commentBtn" data-post-id="${post.postNo}">댓글달기</button>
                         </div>
                     </div>
                 </div>
@@ -73,24 +73,33 @@
 					      <div class="user-id">
 					        <span>User123</span>
 				      </div>
-				      <span class="close">&times;</span>
+				      <span class="closeXC">&times;</span>
 				  </label>
 			      <!-- 텍스트 내용 -->
 			      <div class="post-text"></div>
 			      <!-- 하트 수와 댓글 수 -->
 			      <div class="post-stats">
-			        <span class="heartCount"></span>
-			        <span class="commentsCount"></span>
-			        <!-- 하트와 댓글 아이콘 -->
-			        <div class="icons">
-			          <i class="fa-solid fa-heart"></i> <!-- 하트 아이콘 -->
-			          <i class="fa-solid fa-comment"></i> <!-- 댓글 아이콘 -->
-			        </div>
+				        <div class="icons">
+				        <span class="heartCount"></span>
+				          <i class="fa-solid fa-heart"></i> <!-- 하트 아이콘 -->
+				        <span class="commentsCount"></span>
+				          <i class="fa-solid fa-comment"></i> <!-- 댓글 아이콘 -->
+				        </div>
+				        <button id="commentInputBtn" class="commentInputBtn">댓글 입력</button>
 			      </div>
 			      <!-- 댓글 목록 -->
-			      <div class="commentListXC">
-			        <!-- 여기에 댓글 목록이 표시됩니다 -->
-			      </div>
+			      <!-- 댓글 입력창 및 버튼 -->
+				<div class="commentListXC">
+				  <!-- 작은 댓글 입력창과 입력 버튼 -->
+				  <div class="commentInputSection">
+				    <textarea class="commentInput" placeholder="댓글을 입력하세요"></textarea>
+				    <button class="commentSubmitBtn">입력</button>
+				  </div>
+				  <div class="commentList">
+					  
+				  </div>
+				  <!-- 여기에 댓글 목록이 표시됩니다 -->
+				</div>
 			    </div>
 			  </div>
 			  

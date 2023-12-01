@@ -42,6 +42,18 @@
 	<select id="getAllPosts" resultMap="post_rm">
 	 	 SELECT * FROM POST ORDER BY POST_UPLOAD_DATE DESC
 	</select>
+	
+	
+	<select id="getPostBy" resultMap="post_rm">
+		SELECT *
+		FROM POST
+		WHERE POST_NO = #{postNo}
+	</select>
+	
+	
+	
+	
+	
 
 	
 	

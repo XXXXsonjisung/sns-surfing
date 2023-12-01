@@ -65,46 +65,7 @@ public class PostController {
 	        }
 	    }
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-//	 @PostMapping("/savePost")
-//	    public String savePost(@RequestParam("imageFile") MultipartFile imageFile, PostRequest postRequest) {
-//	        if (!imageFile.isEmpty()) {
-//	            try {
-//	            	
-//	            	
-//	            	System.out.println("imageFile::"+imageFile);
-//	            	
-//	                // 이미지 파일을 서버에 저장하고 파일명을 postRequest의 필드에 설정
-//	                String filePath = "C:/finalImages/post/";
-//	                File dest = new File(filePath + imageFile.getOriginalFilename());
-//	                imageFile.transferTo(dest);
-//	                postRequest.setImageUrls(imageFile.getOriginalFilename());
-//
-//	                // postRequest와 이미지 파일을 이용하여 게시물 저장하는 로직
-//	                boolean isPostSaved = service.insertPost(postRequest);
-//
-//	                if (isPostSaved) {
-//	                    return "common/main"; // 성공 시 common/main으로 이동
-//	                } else {
-//	                    return "게시물 저장에 실패했습니다."; // 실패 시 실패 메시지 반환
-//	                }
-//	            } catch (IOException e) {
-//	                e.printStackTrace();
-//	                return "파일 업로드에 실패했습니다.";
-//	            }
-//	        } else {
-//	            return "이미지가 업로드되지 않았습니다.";
-//	        }
-//	    }
-//	 
-//	 
 
-	 
 	 
 
 	 @GetMapping("/getAllPosts")
@@ -118,7 +79,19 @@ public class PostController {
 		 
 		 return posts;
 	 }
-	   
+	 
+	 
+	 
+	 
+	 @GetMapping("/getPostData")
+	 @ResponseBody
+	 public List<PostRequest> getPostData(@RequestParam("postNo") int postNo, Model model, PostRequest posts) {
+	     // postNo를 사용하여 해당 게시물 정보를 가져옵니다.
+		 List<PostRequest> post = service.getPostBy(postNo);
+
+	     // 가져온 게시물 정보를 담은 뷰로 이동합니다. 해당 뷰에서 모달에 데이터를 표시할 수 있습니다.
+	     return post;
+	 }
 	   
 	   
 	   

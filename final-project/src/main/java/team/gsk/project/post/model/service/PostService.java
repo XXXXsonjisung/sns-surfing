@@ -13,5 +13,11 @@ public interface PostService {
 
 	List<PostRequest> getAllPosts();
 
+	/** 게시물 값 가져오기
+	 * @param postNo
+	 * @return
+	 */
+	List<PostRequest> getPostBy(int postNo);
+
 
 }
