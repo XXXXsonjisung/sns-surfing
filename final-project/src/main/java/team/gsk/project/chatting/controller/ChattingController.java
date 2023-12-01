@@ -50,10 +50,9 @@ public class ChattingController {
 	// 전체 채팅 페이지 이동 
 	@GetMapping("/chattingRoom")
 	public String chattingRoom(){
-//		 ChatRoom room = chatService.findRoomNo(roomNo);
-//		model.addAttribute("room",room);
-		return "chatting/chatting_room";
-		
+	
+		//return "chatting/chatting_room";
+		return "chatting/chatting_test";
 		
 	}
 	
