@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     <div class="comment">
                         <div class="comment_left">
-                            <i class="fa-solid fa-heart" id="heart"></i>
+                            <i class="fa-solid fa-heart" id="heart" data-item-id="${post.postNo}" data-liked="N"></i>
                         </div>
                         <div class="comment_right">
                             <a>하트수 : ${post.heartCount}</a>
@@ -39,6 +39,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 userBox.appendChild(postElement);
             });
+           
+           	
+           
+           
 
             // 게시물 내 댓글 달기 버튼 클릭 시 이벤트 처리
             userBox.addEventListener('click', function(event) {
@@ -48,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (clickedButton.classList.contains('commentBtn')) {
                     const postNo = clickedButton.getAttribute('data-post-id'); // 게시물의 고유 ID
                     console.log('Clicked on post No:', postNo);
+
 
                     // 여기서 모달창 열기 등 게시물에 대한 작업을 할 수 있습니다.
                     
@@ -59,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         .catch(error => console.error('Error fetching data:', error));
 });
+
 
 
 
@@ -133,24 +139,51 @@ document.addEventListener("DOMContentLoaded", function() {
 	  }
 	});
 	
+
+	
 	//---------------------------------------------------------------------
 	
-	// 게시물 내 댓글 달기 버튼 클릭 시 이벤트 처리
-	document.getElementById('user_boxT').addEventListener('click', function(event) {
-	    const clickedButton = event.target;
+		document.addEventListener('click', function(event) {
+	    const clickedElement = event.target;
 	
-	    // '댓글달기' 버튼인 경우
-	    if (clickedButton.classList.contains('commentBtn')) {
-	        const postNo = clickedButton.getAttribute('data-post-id'); // 게시물의 고유 ID
-	        console.log('Clicked on post ID:', postNo);
+	    if (clickedElement.matches('.fa-heart')) {
+	        const postNo = clickedElement.getAttribute('data-item-id');
+	        const isLiked = clickedElement.getAttribute('data-liked');
 	
-	        // 댓글 달기 버튼을 클릭한 경우 해당 postId를 이용하여 데이터를 가져오는 함수 호출
+	        if (isLiked === 'N') {
+	            clickedElement.style.color = '#ff0000'; // 빨간색으로 변경
+	            clickedElement.setAttribute('data-liked', 'Y');
+	        } else {
+	            clickedElement.style.color = '#dbe8ff'; // 회색(옅은 색상)으로 변경
+	            clickedElement.setAttribute('data-liked', 'N');
+	        }
+	
+	        const memberNoValue = ''; // 사용자의 ID 등을 여기에 추가해주세요
+	        fetch('/updateHeart', {
+	            method: 'POST',
+	            headers: {
+	                'Content-Type': 'application/json'
+	            },
+	            body: JSON.stringify({
+	                postNo: postNo,
+	                memberNo: memberNoValue,
+	                isLiked: isLiked === 'Y' ? 'N' : 'Y' // 좋아요 상태 토글
+	            })
+	        })
+	        .then(response => response.json())
+	        .then(result => {
+	            console.log(result);
+	        })
+	        .catch(error => {
+	            console.error('Error:', error);
+	        });
+	    } else if (clickedElement.classList.contains('commentBtn')) {
+	        const postNo = clickedElement.getAttribute('data-post-id');
 	        fetchPostData(postNo);
-	        
-	        const modalXC = document.getElementById('commentModalXC');
-	        
 	    }
 	});
+				
+	
 	
 		function fetchPostData(postNo) {
 	    fetch(`/getPostData?postNo=${postNo}`)
@@ -194,13 +227,18 @@ document.addEventListener("DOMContentLoaded", function() {
 			    const XpostText = modalXC.querySelector('.post-text');
 			    const XheartCount = modalXC.querySelector('.heartCount');
 			    const XcommentsCount = modalXC.querySelector('.commentsCount');
-				const XimageUrls = modalXC.querySelector('.post-media')      
+				const XimageUrls = modalXC.querySelector('.post-media img')      
 	            
 	            XprofileImage.src = memberProfile; // 프로필 이미지
 			    XuserId.textContent = username; // 회원 아이디
 			    XpostText.textContent = content; // 텍스트 내용
 			    XheartCount.textContent = heartCount; // 하트 수
 			    XcommentsCount.textContent = commentsCount;
+			    XimageUrls.src = imageUrls;
+			    
+			    
+			    const memberNo = session.loginMember.memberNo;
+			    console.log('현재 로그인한 회원의 번호 : ', memberNo);
 	            
 
 
@@ -212,5 +250,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	        });
 	}
 
-	
+	//-----------------------------------------------------
+
 	

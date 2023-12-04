@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.common.utility.Util;
+import team.gsk.project.member.model.dto.Member;
+import team.gsk.project.mypage.model.dao.MyPageMapper;
 import team.gsk.project.post.model.dao.PostDAO;
 import team.gsk.project.post.model.dto.PostRequest;
 
@@ -22,7 +24,8 @@ public class PostServiceImpl implements PostService{
 	@Value("${my.post.webpath}")
 	private String webPath;
 	
-	
+	@Autowired
+	private MyPageMapper mapper;
 	
 	@Autowired
 	private PostDAO dao;
@@ -67,6 +70,8 @@ public class PostServiceImpl implements PostService{
 		
 		return dao.getPostBy(postNo);
 	}
+
+
 
 
 
