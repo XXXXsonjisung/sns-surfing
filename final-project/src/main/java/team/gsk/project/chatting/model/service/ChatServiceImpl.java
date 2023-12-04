@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,5 +41,25 @@ public class ChatServiceImpl implements ChatService {
 	    	mapper.save(message);
 	    }
 
+	    // 기존 채팅 불러오기
+		@Override
+		public List<ChatMessage> getOldMessages() {
+			return mapper.getOldMessages();
+		}
+
+		// 메세지 개수 제한 
+	    @Scheduled(fixedDelay = 60000) // 60초마다 실행되도록 설정
+	    public void cleanupOldMessages() {
+	        // 일정 메시지 수를 유지하기 위해 오래된 메시지 삭제
+	        int maxMessageCount = 100; // 최대 메시지 수
+	        List<ChatMessage> messages = mapper.findAll(); // 모든 메시지 가져오기
+
+	        if (messages.size() > maxMessageCount) {
+	            // 최신 메시지 수를 유지하고 오래된 메시지 삭제
+	        	List<ChatMessage> messagesToDelete = messages.subList(0, messages.size() - maxMessageCount);
+	            mapper.deleteAll(messagesToDelete);
+	        }
+	    }
+		
 
 }

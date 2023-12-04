@@ -51,8 +51,8 @@ public class ChattingController {
 	@GetMapping("/chattingRoom")
 	public String chattingRoom(){
 	
-		//return "chatting/chatting_room";
-		return "chatting/chatting_test";
+		return "chatting/chatting_room";
+		//return "chatting/chatting_test";
 		
 	}
 	
