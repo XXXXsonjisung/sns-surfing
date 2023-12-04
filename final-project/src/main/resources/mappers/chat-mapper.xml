@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+
+<mapper namespace="team.gsk.project.chatting.model.dao.ChatMapper">
+	  <resultMap id="chatMessageResultMap" type="ChatMessage">
+        <id property="id" column="id"/>
+        <result property="content" column="CONTENT"/>
+        <result property="sender" column="SENDER"/>
+        <result property="sentAt" column="SENTAT"/>
+    </resultMap>
+
+    <insert id="save" parameterType="ChatMessage">
+        INSERT INTO chat_message (CONTENT, SENDER, SENTAT)
+        VALUES (#{content}, #{sender}, #{sentAt})
+    </insert>
+
+	<!--페이지 접속시 메세지 조회-->
+	<select id="getOldMessages" resultMap="chatMessageResultMap">
+     	SELECT * FROM CHAT_MESSAGE
+	</select>
+	
+	<!--메세지 제한을 위한 메세지 찾기-->
+    <select id="findAll" resultMap="chatMessageResultMap">
+	    SELECT * FROM CHAT_MESSAGE
+    </select>
+	
+	<!--메세지 삭제-->
+	<select id="deleteAll">
+	   DELETE FROM CHAT_MESSAGE 
+	   WHERE rowid IN (
+	   SELECT rowid
+		 FROM ( SELECT rowid FROM CHAT_MESSAGE ORDER BY SENTAT DESC)
+	     WHERE ROWNUM > 5
+		)
+	</select>
+	
+	
+</mapper>
