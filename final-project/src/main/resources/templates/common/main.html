@@ -18,50 +18,53 @@
 
 	<th:block th:replace="~{common/rightSide}"></th:block>
     
+    <th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="H_memberNo" th:value="${session.loginMember.memberNo}">
+	</th:block>
+    
 
     <main>
-        <section class="main_body">
-            <div class="user_boxT" id="user_boxT">
-				
-				
-				
-                <div class="user_post">
-                    <div class="post">
-                        <div class="post_head">
-                            <div class="propile">
-                                <img th:src="@{/common/images/profile/profile.jpg}">
-                            </div>
-                            <h1 id="user01">surfing</h1>
-                        </div>
-                        <div class="post_content" id="postContentInput">
-							<h1>서핑에 오신것을 환영합니다.</h1>
-						</div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment_left">
-                            <i class="fa-solid fa-heart" id="heart" ></i>
-                        </div>
-                        <div class="comment_right">
-                            <a>하트수</a>
-
-                            <a>조회수</a>
-                       
-                            <a>댓글수</a>
-                            <button class="commentBtn" data-post-id="${post.postNo}">댓글달기</button>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                
-			                
+    <section class="main_body">
+        <div class="user_boxT" id="user_boxT">
+       
+       		<th:block th:if="${session.loginMember}">
+	            <div class="user_post">
+	                <div class="post">
+	                    <div class="post_head">
+	                        <div class="propile">
+	                            <img th:src="${session.loginMember.profileImage}">
+	                        </div>
+	                        <h1 id="user01" th:text="${session.loginMember.memberNickname}">surfing</h1>
+	                    </div>
+	                    <div class="post_content" id="postContentInput">
+	                             <h1>서핑에 오신것을 환영합니다.</h1>
+	                             <img th:src="@{/common/images/profile/ccc.jpg}">                       
+	                    </div>
+	                </div>
+	                <div class="comment">
+	                    <div class="comment_left">
+	                        <i class="fa-solid fa-heart" id="heartX" ></i>
+	                    </div>
+	                    <div class="comment_right">
+	                        <a>하트수</a>
+	
+	                        <a>조회수</a>
+	                   
+	                        <a>댓글수</a>
+	                        <button class="commentBtn" data-post-id="data-post-id">댓글달기</button>
+	                    </div>
+	                </div>
+	            </div> 
+			</th:block>
+      
 			<!-- 모달 -->
 			<div id="commentModalXC" class="modalXC">
 			  <div class="modal-contentXC">
 			    <div class="left-content">
 			      <!-- 이미지 또는 동영상 -->
-			      <div class="post-media"></div>
+			      <div class="post-media">
+					  <img src="" alt="post Imgae">
+				  </div>
 			    </div>
 			    <div class="right-content">
 			      <!-- 프로필 이미지 -->
@@ -104,14 +107,14 @@
 			  </div>
 			  
 			  
-			                
+		       
                 
                 
                 
         	</div>
         </section>
     </main>
-    
+
     
     <script th:src="@{/js/common/main.js}"></script>
 

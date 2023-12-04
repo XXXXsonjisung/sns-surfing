@@ -224,6 +224,14 @@ a {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         color: #feb4b4;
     }
+    
+     #heartX {
+        margin-left: 25%;
+        font-size: 65px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: #feb4b4;
+    }
+    
 
     #heart:hover {
         color: #ff0000;
@@ -275,7 +283,16 @@ a {
   height: 100%; /* 이미지/동영상 높이 설정 */
   background-color: #f0f0f0; /* 이미지/동영상 부분 배경색 */
   border-radius: 6px; /* 모서리를 부드럽게 */
+  overflow: hidden;
+  
 }
+
+.post-media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 
 /* 우측 컨텐츠 영역 */
 .right-content {

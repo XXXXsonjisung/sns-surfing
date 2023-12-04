@@ -38,6 +38,9 @@ public class UserController {
 	    // JSON 형태로 데이터 반환
 	    return ResponseEntity.ok(userInfo);
 	}
+	
+	
+	
 
 
 }

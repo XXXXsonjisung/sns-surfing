@@ -28,6 +28,10 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<select id="mainProfile" parameterType="_int" resultType="string">
+		SELECT * FROM "MEMBER" WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
 	
 	<!-- 비밀번호 조회 -->
 	<select id="selectEncPw" parameterType="_int" resultType="string">

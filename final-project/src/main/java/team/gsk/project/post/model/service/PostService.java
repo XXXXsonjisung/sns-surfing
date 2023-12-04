@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import oracle.jdbc.proxy.annotation.Post;
+import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.post.model.dto.PostRequest;
 
 public interface PostService {
@@ -18,6 +19,5 @@ public interface PostService {
 	 * @return
 	 */
 	List<PostRequest> getPostBy(int postNo);
-
 
 }
