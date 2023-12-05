@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id." content="893429308195-ainarkgupantqhhdkio4edaptf8oenai.apps.googleusercontent.com">
+
     <title>로그인 화면</title>
     
     <link rel="stylesheet" th:href="@{/css/common/login.css}">
 
     <script th:src="@{https://apis.google.com/js/platform.js}" async defer></script>
-    <meta name="google-signin-client_id." content="893429308195-ainarkgupantqhhdkio4edaptf8oenai.apps.googleusercontent.com">
     <script th:src="@{//developers.kakao.com/sdk/js/kakao.min.js}"></script>
 </head>
 <body>
@@ -48,23 +49,15 @@
 	                </div>
 				  </form>
                 <div id="icon">
-                    <a th:href="@{/oauth2/authorization/google}"><img id="google" th:src="@{/images/flat-color-icons_google.png}"></a>
-                    <script type='text/javascript'>
-                        //<![CDATA[
-                        // 사용할 앱의 JavaScript 키를 설정해 주세요.
-                        Kakao.init('Your KEY');
-                        // 카카오 로그인 버튼을 생성합니다.
-                        Kakao.Auth.createLoginButton({
-                            container: '#kakao-login-btn',
-                            success: function (authObj) {
-                                alert(JSON.stringify(authObj));
-                            },
-                            fail: function (err) {
-                                alert(JSON.stringify(err));
-                            }
-                        });
-                      //]]>
-                    </script>
+                    
+                    
+                    
+					<!--<a class="g-signin2" data-onsuccess="onSignIn" th:href="@{http://localhost:8080/oauth2/authorization/google}"><img id="google" th:src="@{/images/flat-color-icons_google.png}"></a> -->
+                    
+                    <a class="g-signin2" th:href="@{http://localhost/oauth2/authorization/google}" data-clientid="893429308195-ainarkgupantqhhdkio4edaptf8oenai.apps.googleusercontent.com">
+					    <img id="google" th:src="@{/images/flat-color-icons_google.png}">
+					</a>
+                  
                     <a href="#" id="kakao-login-btn"><img id="kakaotalk" th:src="@{/images/simple-icons_kakaotalk.png}"></a>
                     <a href="#"><img id="facebook" th:src="@{/images/logos_facebook.png}"></a>
                 </div>
