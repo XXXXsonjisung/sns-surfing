@@ -1,5 +1,7 @@
 package team.gsk.project.main.controller;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +18,7 @@ import team.gsk.project.member.model.service.MemberService;
 
 
 @Controller
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class MainController {
 	
 
