@@ -13,6 +13,7 @@ import team.gsk.project.common.utility.Util;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.mypage.model.dao.MyPageMapper;
 import team.gsk.project.post.model.dao.PostDAO;
+import team.gsk.project.post.model.dto.Heart;
 import team.gsk.project.post.model.dto.PostRequest;
 
 @Service
@@ -69,6 +70,50 @@ public class PostServiceImpl implements PostService{
 	public List<PostRequest> getPostBy(int postNo) {
 		
 		return dao.getPostBy(postNo);
+	}
+
+
+	@Override
+	public int insertHeart(Heart heart) {
+		
+		
+		int postNo = heart.getPostNo();
+			
+		if(postNo > 0) {
+			
+			int result	= dao.updatedHeartCountP(postNo);
+				
+			
+		
+		}
+		
+		
+		return dao.insertHeart(heart);
+	}
+
+
+	@Override
+	public int deleteHeart(Heart heart) {
+		
+		int postNo = heart.getPostNo();
+		
+		if(postNo > 0) {
+			
+			int result	= dao.updatedHeartCountM(postNo);
+			
+		
+	
+		}
+		
+	
+		return dao.deleteHeart(heart);
+	}
+
+
+	@Override
+	public Post getMemberPosts(int memberNo) {
+		
+		return dao.getMemberPosts(memberNo);
 	}
 
 

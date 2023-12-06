@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="team.gsk.project.post.model.dao.HeartMapper">
+	
+	
+	<resultMap type="Heart" id="heart_rm">
+		<id property="heartId" column="HEART_ID" />
+		<result property="postNo" column="POST_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+	</resultMap>
+	
+	
+		<insert id="insertHeart">
+		    INSERT INTO HEART (POST_NO, MEMBER_NO)
+		    VALUES ( ${postNo}, ${memberNo})
+		</insert>
+
+		<delete id="deleteHeart">
+		    DELETE FROM HEART
+		    WHERE POST_NO = #{postNo} AND MEMBER_NO = #{memberNo}
+		</delete>
+		
+		<select id="getMemberPosts">
+			SELECT POST_NO
+			FROM HEART
+			WHERE MEMBER_NO =#{memberNo}
+		</select>
+		
+		
+	
+		
+	
+	</mapper>
