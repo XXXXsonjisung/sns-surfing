@@ -106,10 +106,6 @@ public class MemberController {
 		
 	}
 
-	@GetMapping("google")
-	public void getGoogleAuthUrl(HttpServletResponse response) throws Exception {
-		response.sendRedirect(googleoauth.getOauthRedirectURL());
-	}
 	
 	
 	

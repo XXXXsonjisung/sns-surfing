@@ -9,9 +9,10 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '17'
-}
+} 
 
 configurations {
+
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -22,19 +23,18 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.5.0'
 	
-	// JDBC Driver
+	// Spring Boot JDBC 관련 라이브러리 모음
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	// 오라클 JDBC Driver
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
-
-	// @ConfigurationProperties
+	// @ConfigurationProperties 사용 가능
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	
 	// Spring - Mybatis 관련 라이브러리 모음
@@ -43,12 +43,12 @@ dependencies {
 	// 스프링 시큐리티
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.1.0'
-	
+
 	// 이메일
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.1.0'
 	
-	// WebSocket(채팅)
+	// 웹소켓
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.0'
 	
@@ -58,12 +58,6 @@ dependencies {
 	
 	//@Validation 유효성검사 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	
-	// json
-	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
-	
-	
-
 }
 
 tasks.named('bootBuildImage') {
