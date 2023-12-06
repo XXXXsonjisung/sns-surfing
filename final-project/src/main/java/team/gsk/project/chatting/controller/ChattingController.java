@@ -62,12 +62,12 @@ public class ChattingController {
 	
 	
 	//개인 채팅 페이지 이동 
-	@GetMapping(value="/chattinGroup", produces="application/json; charset=UTF-8")
-	@ResponseBody
+	@GetMapping("/chattinGroup")
 	public String chattinGroup(@SessionAttribute("loginMember") Member loginMember, Model model){
 		
 		int memberNo =loginMember.getMemberNo();
 		List<ChatRoomList>  roomList = service.selectRoomList(memberNo);
+	
 		
 		model.addAttribute("roomList", roomList);
 		
