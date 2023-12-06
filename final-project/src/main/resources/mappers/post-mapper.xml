@@ -50,8 +50,17 @@
 		WHERE POST_NO = #{postNo}
 	</select>
 	
+	<update id="updatedHeartCountP">
+	    UPDATE POST
+	    SET HEART_COUNT = HEART_COUNT + 1
+	    WHERE POST_NO = #{postNo}
+	</update>
 	
-	
+	<update id="updatedHeartCountM">
+	    UPDATE POST
+	    SET HEART_COUNT = HEART_COUNT - 1
+	    WHERE POST_NO = #{postNo}
+	</update>
 	
 	
 

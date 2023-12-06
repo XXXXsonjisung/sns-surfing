@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.member.model.dto.Member;
+import team.gsk.project.post.model.dto.Heart;
 import team.gsk.project.post.model.dto.PostRequest;
 import team.gsk.project.post.model.service.PostService;
 
@@ -93,8 +94,64 @@ public class PostController {
 	     // 가져온 게시물 정보를 담은 뷰로 이동합니다. 해당 뷰에서 모달에 데이터를 표시할 수 있습니다.
 	     return post;
 	 }
-	   
-
-	   
-	   
+	 
+	 
+	 
+	 @PostMapping("/updateHeart")
+	 public String updateHeart(@RequestParam(value="postNo") int postNo,
+			 					@RequestParam(value="memberNo") int memberNo)  {
+		 
+		  System.out.println("postNo: " + postNo);
+          System.out.println("memberNo: " + memberNo);
+		 
+          Heart heart = new Heart();
+          heart.setPostNo(postNo);
+          heart.setMemberNo(memberNo);
+          
+          int insertHeart = service.insertHeart(heart);
+   	 
+   
+        	  
+        	  return "common/main";
+        	  
+	 }
+	 
+	 
+	 @PostMapping("/deleteHeart")
+	 public String deleteHeart(@RequestParam(value="postNo") int postNo,
+			 					@RequestParam(value="memberNo") int memberNo)  {
+		 
+		  System.out.println("postNo: " + postNo);
+          System.out.println("memberNo: " + memberNo);
+		 
+          Heart heart = new Heart();
+          heart.setPostNo(postNo);
+          heart.setMemberNo(memberNo);
+          
+          int insertHeart = service.deleteHeart(heart);
+   	 
+   
+        	  
+        	  return "common/main";  
+	 }
+	 
+	 @GetMapping("/getMemberPosts")
+	 @ResponseBody
+	 public Post getMemberPosts(@RequestParam(value="memberNo") int memberNo ) {
+		 
+		 System.out.println("Received memberNo: " + memberNo);
+		 
+		 
+		 return service.getMemberPosts(memberNo);
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 }

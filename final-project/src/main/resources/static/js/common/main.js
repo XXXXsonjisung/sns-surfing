@@ -2,6 +2,8 @@
 
 // JavaScript
 document.addEventListener("DOMContentLoaded", function() {
+
+	
     fetch('/getAllPosts') // 서버에서 모든 게시물 데이터를 가져오는 엔드포인트로 가정
         .then(response => response.json())
         .then(posts => {
@@ -39,10 +41,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 userBox.appendChild(postElement);
             });
-           
-           	
-           
-           
+            
+            
+            
+            
+	    const memberNo = document.getElementById('H_memberNo').value;
+	    
+	    alert(memberNo);
+
+	    // 서버에 해당 회원의 게시물 목록을 요청하는 함수
+		function sendMemberNoToServer(memberNo) {
+		    const formData = new FormData();
+		    formData.append('memberNo', memberNo);
+		
+		    fetch('/getMemberPosts', {
+		        method: 'POST',
+		        body: formData
+		    })
+		    .then(response => response.json())
+		    .then(posts => {
+				
+				console.log(posts);
+		        // 받아온 게시물 목록(posts)을 기반으로 하트를 변경하는 작업 수행
+		        posts.forEach(post => {
+		            const heartElement = document.querySelector(`[data-item-id="${post.postNo}"]`);
+		            
+		            if (heartElement) {
+		                heartElement.style.color = '#ff0000'; // 빨간색으로 변경
+		            }
+		        });
+		    })
+		    .catch(error => {
+		        console.error('Error:', error);
+		    });
+		}
+			
+
 
             // 게시물 내 댓글 달기 버튼 클릭 시 이벤트 처리
             userBox.addEventListener('click', function(event) {
@@ -143,44 +177,65 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	//---------------------------------------------------------------------
 	
-		document.addEventListener('click', function(event) {
+	document.addEventListener('click', function(event) {
 	    const clickedElement = event.target;
 	
 	    if (clickedElement.matches('.fa-heart')) {
 	        const postNo = clickedElement.getAttribute('data-item-id');
-	        const isLiked = clickedElement.getAttribute('data-liked');
-	
-	        if (isLiked === 'N') {
-	            clickedElement.style.color = '#ff0000'; // 빨간색으로 변경
-	            clickedElement.setAttribute('data-liked', 'Y');
+	        const memberNoValue = document.getElementById('H_memberNo').value;
+	        let isLiked = clickedElement.getAttribute('data-liked');
+	        
+	        // 서버에 데이터 전송
+	        const formData = new FormData();
+	        formData.append('memberNo', memberNoValue);
+	        formData.append('postNo', postNo);
+	        
+	        
+	         if (isLiked === 'N') {
+            clickedElement.style.color = '#ff0000'; // 빨간색으로 변경
+            clickedElement.setAttribute('data-liked', 'Y'); // 좋아요 설정
+
+		        
+		        fetch('/updateHeart', {
+		            method: 'POST',
+		            body: formData
+		        })
+		        .then(response => response.json())
+		        .then(result => {
+		            console.log(result); // 성공적으로 전송되었을 때의 작업
+		        })
+		        .catch(error => {
+		            console.error('Error:', error); // 에러 발생 시의 작업
+		        });
+		        
 	        } else {
-	            clickedElement.style.color = '#dbe8ff'; // 회색(옅은 색상)으로 변경
-	            clickedElement.setAttribute('data-liked', 'N');
-	        }
-	
-	        const memberNoValue = ''; // 사용자의 ID 등을 여기에 추가해주세요
-	        fetch('/updateHeart', {
-	            method: 'POST',
-	            headers: {
-	                'Content-Type': 'application/json'
-	            },
-	            body: JSON.stringify({
-	                postNo: postNo,
-	                memberNo: memberNoValue,
-	                isLiked: isLiked === 'Y' ? 'N' : 'Y' // 좋아요 상태 토글
-	            })
-	        })
-	        .then(response => response.json())
-	        .then(result => {
-	            console.log(result);
-	        })
-	        .catch(error => {
-	            console.error('Error:', error);
-	        });
-	    } else if (clickedElement.classList.contains('commentBtn')) {
-	        const postNo = clickedElement.getAttribute('data-post-id');
-	        fetchPostData(postNo);
-	    }
+
+			clickedElement.style.color = '#feb4b4';
+			clickedElement.setAttribute('data-liked', 'N');	
+			
+			
+				fetch('/deleteHeart', {
+		            method: 'POST',
+		            body: formData
+		        })
+		        .then(response => response.json())
+		        .then(result => {
+		            console.log(result); // 성공적으로 전송되었을 때의 작업
+
+		        })
+		        .catch(error => {
+		            console.error('Error:', error); // 에러 발생 시의 작업
+		        });
+
+			}
+  
+
+	    }else if (clickedElement.classList.contains('commentBtn')) {
+		        const postNo = clickedElement.getAttribute('data-post-id');
+		        fetchPostData(postNo);
+		    }
+	    
+	    
 	});
 				
 	
@@ -250,6 +305,18 @@ document.addEventListener("DOMContentLoaded", function() {
 	        });
 	}
 
-	//-----------------------------------------------------
+	//---------------하트 표시 -------------------
+
+	
+
+
+
+
+
+
+
+
+
+
 
 	
