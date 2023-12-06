@@ -34,6 +34,9 @@ public class SessionService implements ApplicationListener<SessionConnectEvent> 
         // 클라이언트의 sessionId를 가져와서 저장
         String sessionId = event.getMessage().getHeaders().get("simpSessionId").toString();
         sessions.add(sessionId); // Set에 추가
+        
+        sendUserJoinMessage(sessionId); // 사용자 입장 메시지 전송
+        
         updateConnectedUsers(); // 연결된 클라이언트 수 업데이트
     }
 
@@ -42,6 +45,9 @@ public class SessionService implements ApplicationListener<SessionConnectEvent> 
     public void handleDisconnectEvent(SessionDisconnectEvent event) {
         String sessionId = event.getSessionId(); // 연결 끊긴 클라이언트의 sessionId 가져오기
         sessions.remove(sessionId); // Set에서 제거
+        
+        sendUserLeaveMessage(sessionId); // 사용자 퇴장 메시지 전송
+        
         updateConnectedUsers(); // 연결된 클라이언트 수 업데이트
     }
 
@@ -50,12 +56,25 @@ public class SessionService implements ApplicationListener<SessionConnectEvent> 
         messagingTemplate.convertAndSend("/topic/connectedUsers", sessions.size());
     }
     
-    // 최초 숫자 반환
-    @MessageMapping("/getConnectedUsers")
-    public void getConnectedUsers() {
-        messagingTemplate.convertAndSend("/topic/connectedUsers", sessions.size());
+//    // 최초 숫자 반환
+//    @MessageMapping("/getConnectedUsers")
+//    public void getConnectedUsers() {
+//        messagingTemplate.convertAndSend("/topic/connectedUsers", sessions.size());
+//    }
+    
+    
+    // 사용자 입장 메시지 전송
+    private void sendUserJoinMessage(String sessionId) {
+        messagingTemplate.convertAndSend("/topic/userJoin", "User joined: " + sessionId);
+    }
+
+    // 사용자 퇴장 메시지 전송
+    private void sendUserLeaveMessage(String sessionId) {
+        messagingTemplate.convertAndSend("/topic/userLeave", "User left: " + sessionId);
     }
     
+    
+    // 
     
     
 }

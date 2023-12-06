@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import team.gsk.project.chatting.model.dto.ChatMessage;
 import team.gsk.project.chatting.model.service.ChatService;
 
+// 전체 채팅
 @Controller
 public class ChatController {
 	

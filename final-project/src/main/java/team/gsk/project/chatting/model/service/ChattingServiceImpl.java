@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.gsk.project.chatting.model.dao.ChattingMapper;
+import team.gsk.project.chatting.model.dto.ChatRoomList;
+import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.member.model.dto.Member;
 
 
@@ -21,6 +23,12 @@ public class ChattingServiceImpl implements ChattingService {
 	@Override
 	public List<Member> selectTarget(Map<String, Object> map) {
 		return mapper.selectTarget(map);
+	}
+
+	// 회원의 채팅방 리스트 찾기
+	@Override
+	public List<ChatRoomList> selectRoomList(int memberNo) {
+		return mapper.selectRoomList(memberNo);
 	}
 
 

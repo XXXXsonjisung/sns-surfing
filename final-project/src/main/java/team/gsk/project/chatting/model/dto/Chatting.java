@@ -19,7 +19,9 @@ import lombok.ToString;
 @Builder
 public class Chatting {
 	
-	// 채팅방 테이블 
+	// 채팅방 테이블
+	// 채팅방 만들기
+	
 	private int roomNo; // 채팅방 번호 
 	
 	@NotBlank(message = "필수 입력 항목입니다.")

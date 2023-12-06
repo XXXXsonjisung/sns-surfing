@@ -43,6 +43,10 @@ dependencies {
 	// 스프링 시큐리티
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.1.0'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	//implementation 'org.springframework.boot:spring-boot-starter-security:2.4.13'
+	//implementation group: 'org.springframework.security', name: 'spring-security-config', version: '3.0.6.RELEASE'
 	
 	// 이메일
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
@@ -57,11 +61,14 @@ dependencies {
 	implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
 	
 	//@Validation 유효성검사 
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	
+	// https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api
+	implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
+
 	// json
 	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
-	
+
+	// stomp
+	//implementation 'org.webjars:stomp-websocket:2.3.4'
 	
 
 }

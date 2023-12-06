@@ -53,6 +53,13 @@
 	        )
 	    </foreach>
 	</insert>
+	
+	
+	<!--방장 넣기-->
+	<insert id="addMember">
+		INSERT INTO MEMBER_ROOM_NO mrn (ROOM_NO,MEMBER_NO) VALUES(#{roomNo},#{memberNo})
+	</insert>
+	
 				
 </mapper>
 

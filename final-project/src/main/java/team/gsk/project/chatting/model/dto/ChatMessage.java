@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class ChatMessage {
 	
+	//전체 메세지
+	
     // 메시지 타입 : 입장, 채팅, 나감
 	// enum : 세가지 동류 상수를 정의하는 열거형 
 //    public enum MessageType {
