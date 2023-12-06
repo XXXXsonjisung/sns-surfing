@@ -12,17 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import lombok.extern.slf4j.Slf4j;
 import team.gsk.project.chatting.model.dto.ChatRoom;
+import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.service.ChatService;
 import team.gsk.project.chatting.model.service.ChattingService;
 import team.gsk.project.member.model.dto.Member;
 
 
-
+@SessionAttributes({"loginMember"})
 @RequestMapping("/chatting")
 @Controller
+@Slf4j
 public class ChattingController {
 	
 	@Autowired
@@ -58,8 +62,16 @@ public class ChattingController {
 	
 	
 	//개인 채팅 페이지 이동 
-	@GetMapping("/chattinGroup")
-	public String chattinGroup(){
+	@GetMapping(value="/chattinGroup", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public String chattinGroup(@SessionAttribute("loginMember") Member loginMember, Model model){
+		
+		int memberNo =loginMember.getMemberNo();
+		List<ChatRoomList>  roomList = service.selectRoomList(memberNo);
+		
+		model.addAttribute("roomList", roomList);
+		
+		log.info("방 표시 :" , roomList);
 		
 		return "chatting/chatting_group";
 		

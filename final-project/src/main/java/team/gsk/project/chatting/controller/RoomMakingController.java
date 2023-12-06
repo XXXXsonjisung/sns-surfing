@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.service.RoomMakingService;
 import team.gsk.project.member.model.dto.Member;
 
+@Slf4j
 @Controller
 @RequestMapping("/RoomMaking")
 @SessionAttributes({"loginMember"})
@@ -57,8 +59,7 @@ public class RoomMakingController {
 //		String[] tagName = inputChatting.getTagName().split("[,]");
 		
 		
-		System.out.println("보내기전 : "+inputChatting+loginMember);
-		
+		log.info("보내기전 : "+inputChatting+loginMember);
 		
 		// 채팅방 생성
 		int result = service.roomMaking(inputChatting,loginMember);
@@ -66,13 +67,14 @@ public class RoomMakingController {
 		// 채팅방이 제대로 생성됐다면 
 		if(result !=0) {
 
-			System.out.println("성공");
+		 log.info("성공");
 			
 		}else {
 			
 			return "chatting/room_making";
 		}
 		
+		model.addAttribute("roomName",result);
 		
 		return "chatting/chatting_group";
 	}
