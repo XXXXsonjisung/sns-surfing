@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService{
 	public Member login(Member inputMember) {
 		
 		Member loginMember = dao.login(inputMember);
-		
+	
 		if(loginMember != null) { // 아이디가 일치하는 회원이 조회된 경우
 			
 			if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
@@ -44,8 +44,8 @@ public class MemberServiceImpl implements MemberService{
 		
 		// 비밀번호 암호화 (Bcrypt) 후 다시 inputMember 세팅
 		
-		String encPw = bcrypt.encode(inputMember.getMemberPw());
-		
+ 		String encPw = bcrypt.encode(inputMember.getMemberPw());
+	
 		inputMember.setMemberPw(encPw);
 		
 		

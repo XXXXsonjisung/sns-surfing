@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- namespace를 Mapper 인터페이스로 지정 -->
+<!-- 개인 채팅 -->
 <mapper namespace="team.gsk.project.chatting.model.dao.ChattingMapper">
 	
 	<resultMap type="Member" id="member_rm">
@@ -26,6 +26,25 @@
 		WHERE (MEMBER_EMAIL LIKE '%${query}%' OR MEMBER_NICKNAME LIKE '%${query}%')
 		AND MEMBER_DELETE_FLAG = 'N'
 		AND MEMBER_NO != ${memberNo}
+	</select>
+	
+	
+	<!--회원의 채팅방 리스트 찾기-->
+	<select id="selectRoomList"  resultMap="member_rm">
+	SELECT ROOM.ROOM_NO, ROOM.ROOM_NAME,ROOM.ROOM_IMG,CHATTING.SENDER, DBMS_LOB.SUBSTR(CHATTING.MESSAGE, 4000) AS MESSAGE_SUBSTR, CHATTING.TIME
+		FROM MEMBER MEM
+		JOIN MEMBER_ROOM_NO MRN ON MEM.MEMBER_NO = MRN.MEMBER_NO 
+		JOIN ROOM_GROUP ROOM ON MRN.ROOM_NO = ROOM.ROOM_NO 
+		LEFT JOIN (
+		    SELECT ROOM_NO, SENDER, MESSAGE, TIME
+		    FROM (
+		        SELECT ROOM_NO, SENDER, MESSAGE, TIME,
+		               ROW_NUMBER() OVER (PARTITION BY ROOM_NO ORDER BY TIME DESC) AS rn
+		        FROM CHATTING_MESSAGE
+		    ) CM
+		    WHERE CM.rn = 1
+		) CHATTING ON ROOM.ROOM_NO = CHATTING.ROOM_NO
+		WHERE MEM.MEMBER_NO = #{memberNo}
 	</select>
 
 </mapper>

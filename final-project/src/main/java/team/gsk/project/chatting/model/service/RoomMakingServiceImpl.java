@@ -30,7 +30,7 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		
 				inputChatting.setRoomManager(memberNo);
 				
-				System.out.println("넣기" +inputChatting);
+	
 		
 		// 채팅방 생성 
 		int result= mapper.roomMaking(inputChatting);
@@ -59,8 +59,14 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 			map.put("tagName", tagName[i]);
 			
 			listOfMaps.add(map);
+
+			}		
+			// 방장 번호 해소 테이블에 넣기 
+			Map<String, Object> map2 = new HashMap<>();	
+			
+			map2.put("memberNo", memberNo);
+			map2.put("roomNo", roomNo);
 		
-			}
 			
 //			
 			
@@ -71,9 +77,10 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 			
 
 			// 태그 집어넣기 
-			System.out.println(listOfMaps);
-		
+			System.out.println(listOfMaps);	
 			int addTag =mapper.addTag(listOfMaps);
+			// 방장 집어넣기 
+			int addMember = mapper.addMember(map2);
 			
 			return result;
 			

@@ -26,6 +26,9 @@ public interface RoomMakingMapper{
 	//int addTag(@Param("listOfMaps") List<Map<String, Object>> listOfMaps);
 	int addTag(List<Map<String, Object>> listOfMaps);
 
+	// 방장 넣기 
+	int addMember(Map<String, Object> map2);
+
 
 
 	
