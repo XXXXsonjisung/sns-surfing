@@ -3,8 +3,10 @@ package team.gsk.project.google.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,24 +16,32 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import team.gsk.project.google.constants.ConfigUtils;
 import team.gsk.project.google.dto.GoogleLoginDto;
 import team.gsk.project.google.dto.GoogleLoginRequest;
 import team.gsk.project.google.dto.GoogleLoginResponse;
+import team.gsk.project.member.model.dto.Member;
+import team.gsk.project.member.model.service.MemberService;
 
 @Controller
-@RequestMapping(value = "/google")
 public class GoogleController {
 
 	private final ConfigUtils configUtils;
+	
+	
+	@Autowired
+	private MemberService service;
 	 
 	GoogleController(ConfigUtils configUtils) {
 		this.configUtils = configUtils;
 	}
 	 
-    @GetMapping(value = "/login")
+    @GetMapping(value = "/google/login")
     public ResponseEntity<Object> moveGoogleInitUrl() {
         String authUrl = configUtils.googleInitUrl();
         URI redirectUri = null;
@@ -47,9 +57,10 @@ public class GoogleController {
         return ResponseEntity.badRequest().build();
     }
 	 
-    @GetMapping(value = "/login/redirect")
+    @GetMapping(value = "/redirect")
     public ResponseEntity<GoogleLoginDto> redirectGoogleLogin(
-            @RequestParam(value = "code") String authCode
+            @RequestParam(value = "code") String authCode,
+            HttpServletRequest request
     ) {
         // HTTP 통신을 위해 RestTemplate 활용
         RestTemplate restTemplate = new RestTemplate();
@@ -60,6 +71,9 @@ public class GoogleController {
                 .redirectUri(configUtils.getGoogleRedirectUri())
                 .grantType("authorization_code")
                 .build();
+        
+
+
 
         try {
             // Http Header 설정

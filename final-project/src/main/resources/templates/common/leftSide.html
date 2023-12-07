@@ -9,7 +9,7 @@
 			        <i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>
 			        Profile
 			    </a>
-			    <a th:if="${session.loginMember != null}" th:href="@{/profile}">
+			    <a th:if="${session.loginMember = null}" th:href="@{/profile}">
 			        <i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>
 			        Profile
 			    </a>
@@ -46,12 +46,25 @@
             </nav>
             
         </div>
+       
+        
         <div class="login_block">
-            <a href="/loginPage">
-			    <button class="w-btn w-btn-gra1" type="button">
-			        <span>로그인</span>
-			    </button>
-			</a>
+			<th:block th:unless="${session.loginMember}">
+				<a th:href="@{/loginPage}">
+				    <button class="w-btn w-btn-gra1" type="button">
+				    	<span>로그인</span>
+				    </button>
+			    </a>
+			</th:block>
+			<th:block th:if="${session.loginMember}">
+				<a th:href="@{/member/logout}">
+				    <button class="w-btn w-btn-gra1" type="button">
+				    	<span>로그아웃</span>
+				    </button>
+			    </a>
+			</th:block>
+
+			
         </div>
 </aside>
 
