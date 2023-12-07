@@ -53,11 +53,17 @@ public class MainController {
 
 
 }
+
 	
+	@GetMapping("/mypage")
+	public String myPageForward() {
+
+
+		
+		return "common/myPage";
 
 	
 	
-	
-	
+	}
 
 }
