@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.member.model.service.MemberService;
 
@@ -54,6 +56,13 @@ public class MemberController {
 		System.out.println(path);
 		return path;
 				
+	}
+	
+	@GetMapping("/logout")
+	public String logout(SessionStatus status, HttpSession session) {
+		status.setComplete();
+		
+		return "redirect:/";
 	}
 	
 	// 아이디/비밀번호 찾기 페이지 이동
