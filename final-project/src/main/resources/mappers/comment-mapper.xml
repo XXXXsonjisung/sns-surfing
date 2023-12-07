@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="team.gsk.project.post.model.dao.CommentMapper">
+	
+	
+	<resultMap type="PostComment" id="postComment_rm">
+		<id property="postCommentId" column="POST_COMMENT_ID" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberProfile" column="MEMBER_PROFILE" />
+		<result property="postNo" column="POST_NO" />
+		<result property="postComment" column="POST_COMMENT" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+	</resultMap>
+	
+
+		<insert id="addComment" parameterType="PostComment">
+		  INSERT INTO POST_COMMENT (MEMBER_NO, MEMBER_PROFILE, POST_NO, POST_COMMENT,MEMBER_NICKNAME)
+		  VALUES (#{memberNo}, #{memberProfile}, #{postNo}, #{postComment}, #{memberNickname})
+		</insert>
+		
+		<select id="getComments" resultMap="postComment_rm">
+		    SELECT POST_COMMENT_ID, MEMBER_NO, MEMBER_PROFILE, POST_NO, POST_COMMENT, MEMBER_NICKNAME
+		    FROM POST_COMMENT
+		    WHERE POST_NO = #{postNo}
+		</select>
+	
+		
+	
+	</mapper>

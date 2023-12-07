@@ -21,7 +21,7 @@
 		    WHERE POST_NO = #{postNo} AND MEMBER_NO = #{memberNo}
 		</delete>
 		
-		<select id="getMemberPosts">
+		<select id="getMemberPosts" resultMap="heart_rm">
 			SELECT POST_NO
 			FROM HEART
 			WHERE MEMBER_NO =#{memberNo}

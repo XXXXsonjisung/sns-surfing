@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main_page</title>
 
-    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" th:href="@{/css/common/main.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-hWO6mIzRdutQzLZ5a+W8VGdL5WS3I5Xw2yyU7j60paz+1XS0b1TE1l5U0Gpqm49b" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
 </head>
@@ -20,6 +20,14 @@
     
     <th:block th:if="${session.loginMember}">
 	    <input type="hidden" id="H_memberNo" th:value="${session.loginMember.memberNo}">
+	</th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="P_profileImage" th:value="${session.loginMember.profileImage}">
+	</th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="P_memberNickname" th:value="${session.loginMember.memberNickname}">
 	</th:block>
     
 
@@ -88,17 +96,21 @@
 				        <span class="commentsCount"></span>
 				          <i class="fa-solid fa-comment"></i> <!-- 댓글 아이콘 -->
 				        </div>
-				        <button id="commentInputBtn" class="commentInputBtn">댓글 입력</button>
+				        <button id="commentInputBtn" class="commentInputBtn">댓글 입력comment</button>
 			      </div>
 			      <!-- 댓글 목록 -->
 			      <!-- 댓글 입력창 및 버튼 -->
 				<div class="commentListXC">
 				  <!-- 작은 댓글 입력창과 입력 버튼 -->
 				  <div class="commentInputSection">
-				    <textarea class="commentInput" placeholder="댓글을 입력하세요"></textarea>
-				    <button class="commentSubmitBtn">입력</button>
+					  <label class="comLable">
+					    <textarea class="commentInput" placeholder="댓글을 입력하세요"></textarea>
+					    <button class="commentSubmitBtn">입력</button>
+					  </label>
 				  </div>
 				  <div class="commentList">
+					  
+					  
 					  
 				  </div>
 				  <!-- 여기에 댓글 목록이 표시됩니다 -->

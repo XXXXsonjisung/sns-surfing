@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.post.model.dto.Heart;
+import team.gsk.project.post.model.dto.PostComment;
 import team.gsk.project.post.model.dto.PostRequest;
 import team.gsk.project.post.model.service.PostService;
 
@@ -135,19 +136,57 @@ public class PostController {
         	  return "common/main";  
 	 }
 	 
-	 @GetMapping("/getMemberPosts")
+	 @PostMapping("/getMemberPosts")
 	 @ResponseBody
-	 public Post getMemberPosts(@RequestParam(value="memberNo") int memberNo ) {
+	 public List<Heart> getMemberPosts(@RequestParam(value="memberNo") int memberNo) {
 		 
 		 System.out.println("Received memberNo: " + memberNo);
 		 
+		 List<Heart> posts = service.getMemberPosts(memberNo);
 		 
-		 return service.getMemberPosts(memberNo);
+		 System.out.println("Received posts: " + posts);
+		 
+		 return posts;
+	 }
+	 
+	 
+	 @PostMapping("/addComment")
+	 public String addComment(@RequestParam(value="memberNo") int memberNo,
+			 					@RequestParam(value="memberProfile") String memberProfile,
+			 					@RequestParam(value="postNo") int postNo,
+			 					@RequestParam(value="comment") String postComment,
+			 					@RequestParam(value="memberNickname") String memberNickname) {
+		 
+		 
+		 System.out.println("Received comment : " + postComment);
+		 
+		 PostComment postCom = new PostComment();
+		 postCom.setMemberNo(memberNo);
+		 postCom.setMemberProfile(memberProfile);
+		 postCom.setPostNo(postNo);
+		 postCom.setPostComment(postComment);
+		 postCom.setMemberNickname(memberNickname);
+		 
+		 
+		 int addComment = service.addComment(postCom);
+
+		 
+		 return "common/main";
 	 }
 	 
 	 
 	 
-	 
+	 @GetMapping("/getComments")
+	 @ResponseBody
+	 public List<PostComment> getComments(@RequestParam(value="postNo") int postNo) {
+		 
+		 System.out.println("Received postNo: " + postNo);
+		 
+		 List<PostComment> postComment = service.getComments(postNo);
+
+		 System.out.println("Received postComment: " + postComment);
+		 return postComment;
+	 }
 	 
 	 
 	 

@@ -2,7 +2,6 @@
 
 // JavaScript
 document.addEventListener("DOMContentLoaded", function() {
-
 	
     fetch('/getAllPosts') // 서버에서 모든 게시물 데이터를 가져오는 엔드포인트로 가정
         .then(response => response.json())
@@ -46,11 +45,8 @@ document.addEventListener("DOMContentLoaded", function() {
             
             
 	    const memberNo = document.getElementById('H_memberNo').value;
-	    
-	    alert(memberNo);
-
 	    // 서버에 해당 회원의 게시물 목록을 요청하는 함수
-		function sendMemberNoToServer(memberNo) {
+		
 		    const formData = new FormData();
 		    formData.append('memberNo', memberNo);
 		
@@ -74,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		    .catch(error => {
 		        console.error('Error:', error);
 		    });
-		}
+		
 			
 
 
@@ -109,6 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	// 모달 열기 함수
 	function openCommentModal(postNo) {
+		currentPostNo = postNo;
+		
 	    var commentForm = document.getElementById('commentFormXC'); // 댓글을 달기 위한 form element
 	    var commentText = document.getElementById('commentTextXC'); // 댓글 텍스트를 입력하는 textarea element
 	
@@ -117,11 +115,44 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	    // 댓글 모달 열기
 	    modalXC.style.display = 'block';
-	
-	    // 여기서 추가적인 작업을 할 수 있습니다.
-	    // 댓글을 작성하는 로직 등을 추가하세요.
-	    // ex) commentForm.action = '/addComment/' + postId;
-	    //     commentForm.submit(); // 예시로 댓글을 서버로 보내는 동작
+	    
+	      fetch(`/getComments?postNo=${postNo}`)
+		    .then(response => {
+		        if (!response.ok) {
+		            throw new Error('Network response was not ok');
+		        }
+		        return response.json();
+		    })
+		    .then(comments => {
+		        const commentListContainer = modalXC.querySelector('.commentList');
+		        
+		        // comments 배열을 순회하면서 각 댓글을 HTML로 만들어서 commentListContainer에 추가
+		        comments.forEach(comment => {
+		            const newCommentElement = document.createElement('div');
+		            newCommentElement.classList.add('commentItem');
+		            
+		            // 댓글 HTML 생성
+		            newCommentElement.innerHTML = `
+		                <div class="commentContentTT">
+		                    <div class="commentProfileTT">
+		                        <img src="${comment.memberProfile}" alt="Profile Image">
+		                    </div>
+		                    <div class="commentDetailsRR">
+		                        <p id="comNick">${comment.memberNickname}</p>
+		                        <p>${comment.postComment}</p>
+		                    </div>
+		                </div>
+		            `;
+		            
+		            // 생성한 댓글 HTML을 commentListContainer에 추가
+		            commentListContainer.appendChild(newCommentElement);
+		        });
+		    })
+		    .catch(error => {
+		        console.error('Error fetching comments:', error);
+		    });
+	    
+
 	}
 	
 	// 모달 닫기 함수
@@ -132,14 +163,21 @@ document.addEventListener("DOMContentLoaded", function() {
 	// 게시물 내 댓글 달기 버튼 클릭 시 이벤트 처리
 	document.getElementById('user_boxT').addEventListener('click', function(event) {
 	    const clickedButton = event.target;
+	    
+	    
+	   
 	
-	    // '댓글달기' 버튼인 경우
-	    if (clickedButton.classList.contains('commentBtn')) {
-	        const postNo = clickedButton.getAttribute('data-post-id'); // 게시물의 고유 ID
-	        console.log('Clicked on post ID:', postNo);
-	
-	        // 댓글 모달 열기 함수 호출
-	        openCommentModal(postNo);
+		    // '댓글달기' 버튼인 경우
+		    if (clickedButton.classList.contains('commentBtn')) {
+		        const postNo = clickedButton.getAttribute('data-post-id'); // 게시물의 고유 ID
+		        console.log('Clicked on post ID:', postNo);
+		
+		        // 댓글 모달 열기 함수 호출  
+		        openCommentModal(postNo);
+		        
+
+	        
+	        console.log('this postNo : ', postNo);
 	    }
 	});
 	
@@ -162,15 +200,76 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	// 댓글 입력 버튼에 클릭 이벤트 핸들러 추가
 	commentInputBtn.addEventListener('click', function() {
-	  // 현재 댓글 입력창의 display 속성 값 확인
 	  const currentDisplay = window.getComputedStyle(commentInputSection).getPropertyValue('display');
-	
+
+		
 	  // display 속성 값이 'none'이면 보이도록, 그렇지 않으면 숨기도록 토글
 	  if (currentDisplay === 'none') {
 	    commentInputSection.style.display = 'block'; // 또는 원하는 스타일로 변경하여 보이도록 설정
 	  } else {
 	    commentInputSection.style.display = 'none';
 	  }
+	  
+	  
+	const commentSubmitBtn = document.querySelector('.commentSubmitBtn'); // 댓글 입력 버튼 선택
+
+	commentSubmitBtn.addEventListener('click', function() {
+	  const currentDisplay = window.getComputedStyle(commentInputSection).getPropertyValue('display');
+	  const memberNo = document.getElementById('H_memberNo').value;
+	  const postNo = currentPostNo;
+	  const commentInput = document.querySelector('.commentInput'); 
+	  const postComment = commentInput.value; // 입력된 댓글 값 가져오기
+	  const memberProfile = document.getElementById('P_profileImage').value;
+	  const memberNickname = document.getElementById('P_memberNickname').value;
+	
+	  console.log(memberNo);
+	  console.log(postNo);
+	  console.log('Member Profile:', memberProfile);
+	  console.log('commentInput :', postComment);
+
+	
+	  // display 속성 값이 'none'이면 보이도록, 그렇지 않으면 숨기도록 토글
+	  if (currentDisplay === 'none') {
+	    commentInputSection.style.display = 'block';
+	  } else {
+	    commentInputSection.style.display = 'none';
+	  }
+
+	  
+		      // 폼 데이터 구성
+	  const formData = new FormData();
+	  formData.append('memberNo', memberNo);
+	  formData.append('postNo', postNo);
+	  formData.append('comment', postComment);
+	  formData.append('memberProfile', memberProfile);
+	  formData.append('memberNickname', memberNickname);
+	
+	  fetch('/addComment', {
+	    method: 'POST',
+	    body: formData
+	  })
+	  .then(response => response.json())
+	  .then(newComment => {
+	    const commentList = document.querySelector('.commentList');
+	    const newCommentElement = document.createElement('div');
+	    newCommentElement.classList.add('newCommentX');
+	    // 실제 댓글 데이터를 이용하여 HTML 구조 만들기
+	    newCommentElement.innerHTML = `
+	      <div class="newComment">
+	      	<div class="newCommentImg">
+		        <img src="${newComment.memberProfile}" alt="Profile Image">	
+	      	</div>
+	        <sqan>${newComment.memberNickname}</span>      	
+	        <p>${newComment.comment}</p>
+	      </div>
+	    `;
+	    commentList.appendChild(newCommentElement);
+	  })
+	  .catch(error => {
+	    console.error('Error adding comment:', error);
+	  });
+	});
+		  
 	});
 	
 
@@ -276,13 +375,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	            console.log('imageUrls:', imageUrls);
 	            console.log('videoUrls:', videoUrls);
 	            
-	            
 	            const XprofileImage = modalXC.querySelector('.profile-image img');
 			    const XuserId = modalXC.querySelector('.user-id');
 			    const XpostText = modalXC.querySelector('.post-text');
 			    const XheartCount = modalXC.querySelector('.heartCount');
 			    const XcommentsCount = modalXC.querySelector('.commentsCount');
-				const XimageUrls = modalXC.querySelector('.post-media img')      
+				const XimageUrls = modalXC.querySelector('.post-media img');      
 	            
 	            XprofileImage.src = memberProfile; // 프로필 이미지
 			    XuserId.textContent = username; // 회원 아이디
@@ -305,9 +403,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	        });
 	}
 
-	//---------------하트 표시 -------------------
 
-	
+
+
 
 
 

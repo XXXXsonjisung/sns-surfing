@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my_page</title>
+
+    <link rel="stylesheet" th:href="@{/css/common/myPage.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-hWO6mIzRdutQzLZ5a+W8VGdL5WS3I5Xw2yyU7j60paz+1XS0b1TE1l5U0Gpqm49b" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <th:block th:replace="~{common/leftSide}"></th:block>
+    
+    <th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="H_memberNo" th:value="${session.loginMember.memberNo}">
+	</th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="P_profileImage" th:value="${session.loginMember.profileImage}">
+	</th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="P_memberNickname" th:value="${session.loginMember.memberNickname}">
+	</th:block>
+
+   	 <main>
+        <div class="my_page_top">
+            <div class="top_img">
+				<th:block th:if="${session.loginMember.coverImage}">
+                	<img th:src="${session.loginMember.coverImage}">
+                </th:block>
+                <th:block th:unless="${session.loginMember.coverImage}">
+                	<img th:src="@{/common/images/ccc.jpg}">
+                </th:block>
+            </div>
+            <span class="propile">
+                <div class="propile_img">
+					<th:block th:if="${session.loginMember.profileImage}">
+                    	<img th:src="${session.loginMember.profileImage}">
+                	</th:block>
+                </div>
+
+                <p id="user" th:text="${session.loginMember.memberNickname}">user</p>
+                <a id="fol">팔로잉</a>
+                <p>/</p>
+                <a>팔로워</a>
+                <p>/</p>
+                <a>좋아요</a>
+            </span>
+        </div>
+        <button class="Writing">글쓰기</button>
+        <hr>
+        <div class="user_box">
+            <div class="user_post">
+                <div class="post">
+                    <div class="post_head">
+                        <div class="propile_bottom">
+                            <img src="images/Rectangle 110.png">
+                        </div>
+                        <h1 id="user01">user01</h1>
+                    </div>
+                    <div class="post_content"></div>
+                </div>
+                <div class="comment">
+                    <div class="comment_left">
+                        <i class="fa-solid fa-heart" id="heart" ></i>
+                    </div>
+                    <div class="comment_right">
+                        <a>하트수:</a>
+
+                        <a>조회수:</a>
+                   
+                        <a>댓글수:</a>
+                        <button class="commentBtn">댓글달기</button>
+                    </div>
+                </div>
+            </div>
+	  </main>
+    
+</body>
+</html>

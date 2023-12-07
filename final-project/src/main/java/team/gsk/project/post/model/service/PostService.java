@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.post.model.dto.Heart;
+import team.gsk.project.post.model.dto.PostComment;
 import team.gsk.project.post.model.dto.PostRequest;
 
 public interface PostService {
@@ -34,8 +35,22 @@ public interface PostService {
 	int deleteHeart(Heart heart);
 
 	/** 하트 목록 가져오기
+	 * @param memberNo 
 	 * @param memberNo
 	 * @return
 	 */
-	Post getMemberPosts(int memberNo); 
+	List<Heart> getMemberPosts(int memberNo);
+
+	/** 댓글 입력
+	 * @param postCom
+	 * @return
+	 */
+	int addComment(PostComment postCom);
+
+	/** 뎃글 리스트 가져오기
+	 * @param postNo
+	 * @return
+	 */
+	List<PostComment> getComments(int postNo);
+
 }

@@ -379,6 +379,10 @@ a {
   display: none;/* 댓글 입력창 아래 여백 추가 */
 }
 
+.comLable {
+	display: flex;
+}
+
 .commentInput {
   flex: 1;
   height: 30px;
@@ -396,6 +400,7 @@ a {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin: 0;
 }
 
 .commentInputBtn {
@@ -411,27 +416,65 @@ a {
 .commentList {
 	border: 1px solid rgb(192, 192, 192);
 	border-radius: 5px;
-	height: 89%;
+	height: 600px;
+	max-height: 600px;
+	padding: 1px;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+}
+
+.commentItem {
+	display: flex;
+	width: 99%;
+	height: 10%;
+	overflow: hidden;
+    margin-bottom: 10px; 
 }
 
 .commentSubmitBtn:hover {
   background-color: #2980b9;
 
-
-.commentItemXC {
-  border-bottom: 1px solid #ccc; /* 각 댓글 아이템 사이에 구분선 추가 */
-  margin-bottom: 10px; /* 각 댓글 아이템 사이의 간격 설정 */
-  padding-bottom: 10px; /* 하단 패딩 추가 */
 }
 
-.commentTextXC {
-  margin-bottom: 5px; /* 댓글 텍스트와 다음 댓글 사이의 간격 설정 */
+
+/* 댓글 컨테이너 */
+.commentContentTT {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
+/* 프로필 이미지를 감싸는 박스 */
+.commentProfileTT {
+	border: 1px solid rgb(192, 192, 192);
+    width: 58px; /* 이미지 너비 설정 */
+    height: 58px; /* 이미지 높이 설정 */
+    border-radius: 50%; /* 박스를 원형으로 만들어줌 */
+    overflow: hidden; /* 넘치는 부분을 숨김 */
+}
+
+/* 프로필 이미지 */
+.commentProfileTT img {
+    width: 100%; /* 이미지를 박스 너비에 맞춤 */
+    height: auto; /* 높이 자동 조정 */
+    object-fit: cover; /* 이미지를 박스에 채워줌 */
+}
+
+/* 댓글 내용 */
+.commentDetailsRR p {
+    margin: 0; /* 기본 마진 제거 */
+    /* 추가적인 스타일링을 원하시면 여기에 작성하세요 */
+}
+
+#comNick {
+	margin-top: 5%;
+	 font-weight: bold;
+}
 
 
 .closeXC {
 	margin-left:70%;
 	font-size: 50px;
-}
 }

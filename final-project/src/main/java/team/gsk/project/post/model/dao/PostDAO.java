@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.post.model.dto.Heart;
+import team.gsk.project.post.model.dto.PostComment;
 import team.gsk.project.post.model.dto.PostRequest;
 
 @Repository
@@ -18,6 +19,9 @@ public class PostDAO {
 	
 	@Autowired
 	private HeartMapper Hmapper;
+	
+	@Autowired
+	private CommentMapper Cmapper;
 	
 
 	public int insertPost(PostRequest postUser) {
@@ -62,9 +66,21 @@ public class PostDAO {
 	}
 
 
-	public Post getMemberPosts(int memberNo) {
-		
+	public List<Heart> getMemberPosts(int memberNo) {
+	
 		return Hmapper.getMemberPosts(memberNo);
+	}
+
+
+	public int addComment(PostComment postCom) {
+		
+		return Cmapper.addComment(postCom);
+	}
+
+
+	public List<PostComment> getComments(int postNo) {
+		
+		return Cmapper.getComments(postNo);
 	}
 
 

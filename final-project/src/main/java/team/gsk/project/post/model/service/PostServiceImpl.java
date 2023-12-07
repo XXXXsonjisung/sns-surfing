@@ -14,6 +14,7 @@ import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.mypage.model.dao.MyPageMapper;
 import team.gsk.project.post.model.dao.PostDAO;
 import team.gsk.project.post.model.dto.Heart;
+import team.gsk.project.post.model.dto.PostComment;
 import team.gsk.project.post.model.dto.PostRequest;
 
 @Service
@@ -110,11 +111,28 @@ public class PostServiceImpl implements PostService{
 	}
 
 
+
+
 	@Override
-	public Post getMemberPosts(int memberNo) {
+	public List<Heart> getMemberPosts(int memberNo) {
 		
 		return dao.getMemberPosts(memberNo);
 	}
+
+
+	@Override
+	public int addComment(PostComment postCom) {
+		
+		return dao.addComment(postCom);
+	}
+
+
+	@Override
+	public List<PostComment> getComments(int postNo) {
+		
+		return dao.getComments(postNo);
+	}
+
 
 
 

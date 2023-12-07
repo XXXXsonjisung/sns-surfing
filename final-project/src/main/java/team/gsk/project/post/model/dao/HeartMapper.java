@@ -1,5 +1,7 @@
 package team.gsk.project.post.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -12,6 +14,7 @@ public interface HeartMapper {
 
 	public int deleteHeart(Heart heart);
 
-	public Post getMemberPosts(int memberNo);
+	public List<Heart> getMemberPosts(int memberNo);
+
 
 }
