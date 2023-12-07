@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import lombok.Data;
 
-// 채팅방 리스트를 위한 필드
+// 채팅방 리스트를 위한 객체
 @Data
 public class ChatRoomList {
 

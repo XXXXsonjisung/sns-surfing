@@ -40,9 +40,7 @@ public class ChatController {
         messagingTemplate.convertAndSend("/topic/publicChatRoom", chatMessage); // WebSocket으로 클라이언트에 전송
     }
     
-    
- 
-    
+
     @MessageMapping("/chat.addUser") // 새로운 사용자가 채팅에 참여할 때 사용하는 endpoint
     public void addUser(@Payload ChatMessage chatMessage) {
         messagingTemplate.convertAndSend("/topic/publicChatRoom", chatMessage); // 새로운 사용자에게 입장 메시지 전송

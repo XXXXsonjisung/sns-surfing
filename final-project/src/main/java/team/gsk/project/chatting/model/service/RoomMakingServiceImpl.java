@@ -93,6 +93,7 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 
 	}
 
+	// 서버 유효성 검사 
 	@Transactional
 	public Map<String, String> validateHandling(Errors errors) {
 		Map<String, String> validatorResult = new HashMap<>();
