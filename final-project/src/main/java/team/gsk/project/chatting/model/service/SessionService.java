@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-
+// 전체 채팅을 위한 세션 
 
 @Service
 public class SessionService implements ApplicationListener<SessionConnectEvent> {

@@ -17,7 +17,7 @@ import team.gsk.project.chatting.model.dao.ChatMapper;
 import team.gsk.project.chatting.model.dto.ChatMessage;
 import team.gsk.project.chatting.model.dto.ChatRoom;
 
-
+// 전체 채팅
 
 @Service
 public class ChatServiceImpl implements ChatService {
