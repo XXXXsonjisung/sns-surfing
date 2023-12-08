@@ -12,6 +12,8 @@
         <div class="title2">
             <div>성북컴퓨터</div>
             <div class="nowPepole">현재인원:</div>
+            <div id="memberNoDiv" th:data-member-no="${memberNo}"></div>
+            <div id="memberNoDivv" th:data-member-name="${memberName}"></div>
         </div>
     </header>
 
@@ -26,33 +28,18 @@
             </div>
             <div class="room_list"> 
                 <label>채팅방 목록</label>
-            <!--    <ul id="room-list">
-					<th:block th:each="room:${roomList}">
-						<li th:room-no="${room.roomNo}">
-							<img th:src="${room.roomImg}">
-							<div class="message_imform">
-	                            <b id="message_pe" th:text="${room.roomName}">이름</b>
-	                            <span class="chatDate" th:text="${room.time}">시간</span>
-	                            <div id="last_message" th:text="${room.chattingMessage}">
-	                                마지막 메세지
-	                            </div>
-                        	</div>					
-						</li>		
-					</th:block>
-                </ul>-->
-               <ul id="room-list">
-				    <li th:each="room : ${roomList}" th:attr="room-no=${room.roomNo}">
-				        <img th:src="${room.roomImg}">
-				        <div class="message_imform">
-				            <b class="message_pe" th:text="${room.roomName}">이름</b>
-				            <span class="chatDate" th:text="${room.time}">시간</span>
-				            <div class="last_message" th:text="${room.chattingMessage}">
-				                마지막 메세지
-				            </div>
-				        </div>
-				    </li>
-				</ul>
-
+	                <ul id="room-list">
+					    <li th:each="room : ${roomList}" th:attr="room-no=${room.roomNo}">
+					        <img th:src="${room.roomImg}">
+					        <div class="message_imform">
+					            <b class="message_pe" th:text="${room.roomName}">이름</b>
+					            <span class="chatDate" th:text="${room.time}">시간</span>
+					            <div class="last_message" th:text="${room.chattingMessage}">
+					                마지막 메세지
+					            </div>
+					        </div>
+					    </li>
+					</ul>
             </div>
             
         </aside>
@@ -62,16 +49,6 @@
             <div class="main_chat">
                 <div class="main_view">
                    <ul class="display-chatting"  id="messageArea">
-                        <!--    <li class="target-chat">
-                                <img id="pro" src="images/5e0d9f011a9ad2738de6.jpg">
-        
-                                <div>
-                                    <b>닉네임</b><br>
-                                    <p class="chat">
-                                    </p>
-                                    <span class="chatDate">14:05</span>
-                                </div>
-                            </li>-->
                             <li class="target-chat" >
 							</li>
                     </ul>	
@@ -79,8 +56,8 @@
                 </div>
                 <div clas="main_comment">
                     <form>
-                        <input type="text">
-                        <button type="button" id="submit">
+                        <input type="text" id="message">
+                        <button type="button" id="submit" onclick="sendMessage()">
                             <img src="images/fePaperPlane0.png">
                         </button>
                     </form>

@@ -66,13 +66,15 @@ public class ChattingController {
 	public String chattinGroup(@SessionAttribute("loginMember") Member loginMember, Model model){
 		
 		int memberNo =loginMember.getMemberNo();
+		String memberName =loginMember.getMemberName();
+		model.addAttribute("memberNo", memberNo);
+		model.addAttribute("memberName", memberName);
+		
 		List<ChatRoomList>  roomList = service.selectRoomList(memberNo);
 	
 		
 		model.addAttribute("roomList", roomList);
-		
-		log.info("방 표시 :" , roomList);
-		
+	
 		return "chatting/chatting_group";
 		
 		
