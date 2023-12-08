@@ -27,10 +27,10 @@
                 </div>
                 <div clas="main_comment">
 	            	<form>
-	                        <input type="text" id="message" class="content">
-	                        <button type="button"  onclick="sendMessage()">
-	                            <img th:src="@{/images/fePaperPlane0.png}">
-	                        </button>
+                        <input type="text" id="message" class="content">
+                        <button type="button" onclick="sendMessage()">
+                            <img th:src="@{/images/fePaperPlane0.png}">
+                        </button>
 	            	</form>
                 </div>
             </div>
@@ -94,13 +94,13 @@
 		
 // 사용자가 입장했을 때 UI 업데이트
 function showUserJoin(username) {
-    const userJoinMessage = `${username} has joined the chat.`;
+    const userJoinMessage = `익명 ${username}가 입장 `;
     appendSystemMessage(userJoinMessage);
 }
 
 // 사용자가 퇴장했을 때 UI 업데이트
 function showUserLeave(username) {
-    const userLeaveMessage = `${username} has left the chat.`;
+    const userLeaveMessage = `익명 ${username}가 퇴장`;
     appendSystemMessage(userLeaveMessage);
 }
 
@@ -122,11 +122,12 @@ function sendMessage() {
         messageInput.value = '';
     }
 }
-
+// ㅁ
 function showMessage(message) {
     appendMessage(message);
 }
 
+// 메세지 화면에 추가
 function appendMessage(message) {
     const li = document.createElement('li');
     const formattedTime = new Date(message.sentAt).toLocaleTimeString(); // 시간 형식 변환

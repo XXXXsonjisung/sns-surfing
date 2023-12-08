@@ -34,6 +34,7 @@ public class ChatController {
         messagingTemplate.convertAndSend("/topic/oldMessages", oldMessages); // 클라이언트에게 전송
     }
  
+    // 메세지 보내기 
     @MessageMapping("/chat.sendMessage")
     public void sendMessage(@Payload ChatMessage chatMessage) {
         chatService.saveMessage(chatMessage); // 메시지 저장
