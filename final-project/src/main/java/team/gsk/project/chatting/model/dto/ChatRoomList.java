@@ -20,4 +20,5 @@ public class ChatRoomList {
 	
 	private Timestamp time;
 	
+
 }

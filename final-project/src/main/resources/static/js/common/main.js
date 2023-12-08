@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             <div class="propile">
                                 <img src="${post.memberProfile}">
                             </div>
-                            <h1 id="user01">${post.username}</h1>
+                            <a class="user-link" th:href="@{@{/getUserInfo(username=${post.username})}}" id="user01" data-username="${post.username}">
+							    ${post.username}
+							</a>
                         </div>
                         <div class="post_content" id="postContentInput">
                             <h1>${post.content}</h1>
@@ -41,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 userBox.appendChild(postElement);
             });
             
+
             
             
             
@@ -89,6 +92,9 @@ document.addEventListener("DOMContentLoaded", function() {
                    } 
           
             });
+            
+            
+            
         })
         
         
@@ -402,10 +408,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	            console.error('Error fetching post data:', error);
 	        });
 	}
-
-
-
-
 
 
 

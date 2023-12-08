@@ -147,7 +147,6 @@ body{
         align-items: center;
         width: 65%;
         margin-top: 50px;
-        height: auto;
     }
 
     .user_post {
@@ -283,7 +282,57 @@ body{
 		margin-right: 10px;
 	}
 	
-
+	.w-btn {
+	    position: relative;
+	    border: none;
+	    display: inline-block;
+	    padding: 15px 30px;
+	    border-radius: 15px;
+	    font-family: "paybooc-Light", sans-serif;
+	    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	    text-decoration: none;
+	    font-weight: 600;
+	    transition: 0.25s;
+	}
+	
+	.w-btn-outline {
+	    position: relative;
+	    padding: 15px 30px;
+	    border-radius: 15px;
+	    font-family: "paybooc-Light", sans-serif;
+	    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	    text-decoration: none;
+	    font-weight: 600;
+	    transition: 0.25s;
+	}
+	
+	.w-btn-blue:hover {
+	    color: rgb(0, 128, 255);
+	    background: rgb(255, 255, 255);
+	    transform: scale(1.1); /* 1.1은 버튼 크기를 10% 확대하는 값입니다. */
+	    transition: transform 0.3s ease; /* 부드럽게 크기 변화를 적용하는 트랜지션을 추가합니다. */
+	}
+	
+	
+	.w-btn-pink:hover {
+	    color: rgb(255, 128, 192);
+	    background: rgb(255, 255, 255);
+	    transform: scale(1.1); /* 1.1은 버튼 크기를 10% 확대하는 값입니다. */
+	    transition: transform 0.3s ease; /* 부드럽게 크기 변화를 적용하는 트랜지션을 추가합니다. */
+	}
+	
+	
+	.w-btn-blue {
+	    background-color: #6aafe6;
+	    color: rgb(255, 255, 255);
+	    margin-left: 30%;
+	}
+	
+	.w-btn-pink {
+	    background-color: #f199bc;
+	    color: rgb(255, 255, 255);
+	}
+	
     
     
     /*--------------모달 관련 --------------------*/

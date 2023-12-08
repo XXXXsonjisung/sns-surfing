@@ -55,7 +55,7 @@ public class MainController {
 }
 
 	
-	@GetMapping("/mypage")
+	@GetMapping("/myPage")
 	public String myPageForward() {
 
 

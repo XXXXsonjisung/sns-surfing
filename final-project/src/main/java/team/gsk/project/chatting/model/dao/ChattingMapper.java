@@ -34,6 +34,4 @@ public interface ChattingMapper {
 
 
 
-
-
 }

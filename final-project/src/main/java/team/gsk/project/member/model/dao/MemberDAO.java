@@ -39,6 +39,12 @@ public class MemberDAO {
 	}
 
 
+	public Member getMemberX(String memberId) {
+		
+		return mapper.getMemberX(memberId);
+	}
+
+
 
 
 }

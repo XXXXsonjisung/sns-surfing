@@ -39,5 +39,6 @@ public class AjaxController {
 		
 		return service.checkIdEmailAuth(memberEmail);
 	
+
 	}
 }
