@@ -117,20 +117,24 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 			checkIdObj.memberEmail = false;
 			return;
 		}else {
+	
+		    authMin = 4;
+			authSec = 59;
 			
-			fetch("/sendAuth/memberEmail?="+memberEmail.value)
+			
+			fetch("/sendAuth/memberEmail?"+memberEmail.value)
 			.then(res => res.text())
 			.then(result => {
 				if(result > 0) {
 					alert("인증번호가 발송 되었습니다.");
 					
 					tempEmail = memberEmail.value;
-               		checkObj.memberEmail = true;
+               		checkIdObj.memberEmail = true;
                		
                		idEmailCheck.innertext = "5:00";
                		
                		authTimer = window.setInterval(()=>{
-														// 삼항연산자  :    조건   ?   	 	  true : false
+					
 	                idEmailCheck.innerText = "0" + authMin + ":" + (authSec < 10 ? "0" + authSec : authSec);
 	                
 	                // 남은 시간이 0분 0초인 경우
@@ -139,13 +143,13 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	                    e.preventDefault();
 	                    return;
 	                }
-	
+
 	                // 0초인 경우
 	                if(authSec == 0){
 	                    authSec = 60;
 	                    authMin--;
 	                }
-	
+
 	                authSec--; // 1초 감소
 	
 	            }, 1000)
@@ -153,6 +157,7 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	            }else if(result == 0 ){ 
 	                console.log("인증번호 발송 실패")
 	            }else{
+					
 	                alert("가입 정보가 없는 이메일입니다.")
 	                checkIdObj.memberEmail = false;
 	                return;
@@ -190,7 +195,7 @@ for (let i = 1; i < sendAuth.length; i += 2) {
         })
         .catch(err => console.log(err));
 
- 
+
     } else{
         alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
 		}
