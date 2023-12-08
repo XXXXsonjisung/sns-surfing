@@ -9,7 +9,7 @@
 			        <i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>
 			        Profile
 			    </a>
-			    <a th:if="${session.loginMember = null}" th:href="@{/profile}">
+			    <a th:if="${session.loginMember != null}" th:href="@{/profile}">
 			        <i id="sideIcon" class="fa-regular fa-user" style="color: #053d9e;"></i>
 			        Profile
 			    </a>
