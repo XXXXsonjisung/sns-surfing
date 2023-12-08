@@ -54,7 +54,10 @@
 		AND MEMBER_DELETE_FLAG = 'N'
 	</select>
 	
-	
+	<!-- 이메일로 아이디 찾기 -->
+	<select id="checkIdEmailAuth" resultType="_int">
+		
+	</select>
 	
 
 </mapper>

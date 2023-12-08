@@ -29,4 +29,10 @@ public class AjaxServiceImpl implements AjaxService{
 		return dao.checkEmail(email);
 	}
 
+	@Override
+	public int sendAuthKey(String memberEmail) {
+		
+		return dao.sendAuthKey(memberEmail);
+	}
+
 }

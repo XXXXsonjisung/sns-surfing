@@ -8,4 +8,6 @@ public interface AjaxService {
 
 	int checkEmail(String email);
 
+	int checkIdEmailAuth(String memberEmail);
+
 }
