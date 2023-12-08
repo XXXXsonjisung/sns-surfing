@@ -368,7 +368,7 @@ inputEmail.addEventListener("input", () => {
     const regEx = /^[A-Za-z\d\-\_]{4,}@[가-힣\w\-\_]+(\.\w+){1,3}$/;
 
     // 2) 입력 받은 이메일과 정규식 일치 여부 판별
-    if(  regEx.test(inputEmail.value)  ){ // 유효한 경우
+    if(   regEx.test(inputEmail.value)  ){ // 유효한 경우
 
         /* fetch() API를 이용한 ajax(비동기 통신) : 이메일 중복*/
 		// url : /dupCheck/email
@@ -387,7 +387,7 @@ inputEmail.addEventListener("input", () => {
 			 emailCheck.innerText = "이미 사용중입니다";
         	 emailCheck.classList.add("error"); // .error 스타일 적용
         	 emailCheck.classList.remove("confirm"); // .confirm 스타일 제거
-			}	
+			}
 			
 		})
 		.catch(err => console.log(err));
