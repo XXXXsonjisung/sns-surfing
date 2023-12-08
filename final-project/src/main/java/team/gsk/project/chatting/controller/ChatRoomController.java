@@ -63,7 +63,7 @@ public class ChatRoomController {
 	@MessageMapping("/ws-stomp.sendMessage")
 	public void sendMessage(@Payload ChattingMessage chattingMessage) {
 		log.info("채팅메세지 :"+ chattingMessage);
-		//service.saveMessage(chattingMessage);
+		service.saveMessage(chattingMessage);
 		messagingTemplate.convertAndSend("/sub/updateMessage", chattingMessage);
 	}
 	

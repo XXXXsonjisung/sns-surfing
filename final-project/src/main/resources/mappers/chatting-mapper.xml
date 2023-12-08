@@ -36,7 +36,8 @@
 			<result property="roomNo" column="ROOM_No"/>
 			<result property="message" column="MESSAGE" />
 			<result property="time" column="TIME" />
-			<result property="sender" column="MEMBER_NAME"/>
+			<result property="sender" column="SENDER"/>
+			<result property="memberName" column="MEMBER_NAME"/>
 	</resultMap>
 	
 	
@@ -73,7 +74,11 @@
 		FROM CHATTING_MESSAGE LEFT JOIN "MEMBER" ON SENDER = MEMBER_NO WHERE ROOM_NO  = #{roomNo}
 	</select>
 	
-
+	<!--개인 채팅 메세지 저장-->
+	<insert id="saveMessage"  parameterType="ChattingMessage">
+		INSERT INTO CHATTING_MESSAGE (TYPE,ROOM_NO,MESSAGE,SENDER)
+		VALUES(#{type},#{roomNo},#{message},#{sender})	
+	</insert>
 
 </mapper>
 

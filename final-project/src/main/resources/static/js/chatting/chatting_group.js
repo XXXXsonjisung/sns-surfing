@@ -108,18 +108,18 @@ function displayChat(messages){
 function appendMessage(message) {
      const messageElement = document.createElement('li');
         messageElement.className = 'target-chat';
-
-//	
-//		if(message.sender==memberNo){
-//			li.style.textAlign = 'right';
-//	        li.style.backgroundColor = '#cce6ff';
-//		}
+	 	console.log("메세지 추가시 :::" +message);
+	
+		if(message.sender==memberNo){
+			messageElement.style.textAlign = 'right';
+	        messageElement.style.backgroundColor = '#cce6ff';
+		}
 
      // 메시지 내용을 구성
         messageElement.innerHTML = `
             <img id="pro" src="images/${message.sender}.jpg">
             <div>
-                <b>${message.sender}</b><br>
+                <b>${message.memberName}</b><br>
                 <p class="chat">${message.message}</p>
                 <span class="chatDate">${message.time}</span>
             </div>
@@ -191,8 +191,9 @@ function sendMessage() {
         stompClient.send("/pub/ws-stomp.sendMessage", {}, JSON.stringify({
 			type: 'TALK',
 			roomNo : roomNo,
-			sender : memberName,
-			message : message
+			memberName : memberName,
+			message : message,
+			sender : memberNo
 		}));
         // 입력 필드 초기화
         messageInput.value = '';
