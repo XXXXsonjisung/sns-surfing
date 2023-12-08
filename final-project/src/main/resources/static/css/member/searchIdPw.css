@@ -3,6 +3,9 @@
 	margin: 0;
 }
 
+.confirm{ color : green; }
+.error{ color : red; }
+
 body {
 	width: 100%;
 	min-height: 100vh;
@@ -179,6 +182,11 @@ button {
 .idSecondDt {
 	display: flex;
 	margin: 10px;
+}
+
+.idThirdDt {
+	display: flex;
+	margin: 10px;	
 }
 
 .idFristDd {

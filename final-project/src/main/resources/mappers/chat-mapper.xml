@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- 전체 채팅  -->
 
+<!-- 전체 채팅  -->
 <mapper namespace="team.gsk.project.chatting.model.dao.ChatMapper">
 	  <resultMap id="chatMessageResultMap" type="ChatMessage">
-        <id property="id" column="id"/>
-        <result property="content" column="CONTENT"/>
-        <result property="sender" column="SENDER"/>
-        <result property="sentAt" column="SENTAT"/>
-    </resultMap>
+	        <id property="id" column="id"/>
+	        <result property="content" column="CONTENT"/>
+	        <result property="sender" column="SENDER"/>
+	        <result property="sentAt" column="SENTAT"/>
+    	</resultMap>
 
+	<!--메세지 저장-->
     <insert id="save" parameterType="ChatMessage">
         INSERT INTO chat_message (CONTENT, SENDER, SENTAT)
         VALUES (#{content}, #{sender}, #{sentAt})
@@ -25,7 +26,7 @@
 	    SELECT * FROM CHAT_MESSAGE
     </select>
 	
-	<!--메세지 삭제-->
+	<!--메세지 자동 삭제-->
 	<select id="deleteAll">
 	   DELETE FROM CHAT_MESSAGE 
 	   WHERE rowid IN (

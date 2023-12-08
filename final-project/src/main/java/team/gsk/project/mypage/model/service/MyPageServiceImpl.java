@@ -100,15 +100,15 @@ public class MyPageServiceImpl implements MyPageService{
 			String encPw = mapper.selectEncPw(memberNo);
 			
 			// 2) bcrypt.matches(평문, 암호문) -> 같으면 true -> 이 때 비번 수정
-//			if(bcrypt.matches(currentPw, encPw)) {
-//			
-//				Member member = new Member();
-//				member.setMemberNo(memberNo);
-//				member.setMemberPw(bcrypt.encode(newPw));
-//				
-//				// 2. 비밀번호 변경(UPDATE DAO 호출) -> 결과 반환
-//				return mapper.changePw( member );
-//			}
+			if(bcrypt.matches(currentPw, encPw)) {
+			
+				Member member = new Member();
+				member.setMemberNo(memberNo);
+				member.setMemberPw(bcrypt.encode(newPw));
+				
+				// 2. 비밀번호 변경(UPDATE DAO 호출) -> 결과 반환
+				return mapper.changePw( member );
+			}
 			
 			// 평문 비밀번호 비교
 			if (currentPw.equals(newPw)) {

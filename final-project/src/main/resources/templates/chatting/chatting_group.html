@@ -26,39 +26,33 @@
             </div>
             <div class="room_list"> 
                 <label>채팅방 목록</label>
-                <ul>
-                    <li>
-                        <img src="images/5e0d9f011a9ad2738de6.jpg">
-                        <div class="message_imform">
-                            <b id="message_pe">성구모</b>
-                            <span class="chatDate">14:05</span>
-                            <div id="last_message">
-                                fdfd
-                            </div>
-                        </div>
+            <!--    <ul id="room-list">
+					<th:block th:each="room:${roomList}">
+						<li th:room-no="${room.roomNo}">
+							<img th:src="${room.roomImg}">
+							<div class="message_imform">
+	                            <b id="message_pe" th:text="${room.roomName}">이름</b>
+	                            <span class="chatDate" th:text="${room.time}">시간</span>
+	                            <div id="last_message" th:text="${room.chattingMessage}">
+	                                마지막 메세지
+	                            </div>
+                        	</div>					
+						</li>		
+					</th:block>
+                </ul>-->
+               <ul id="room-list">
+				    <li th:each="room : ${roomList}" th:attr="room-no=${room.roomNo}">
+				        <img th:src="${room.roomImg}">
+				        <div class="message_imform">
+				            <b class="message_pe" th:text="${room.roomName}">이름</b>
+				            <span class="chatDate" th:text="${room.time}">시간</span>
+				            <div class="last_message" th:text="${room.chattingMessage}">
+				                마지막 메세지
+				            </div>
+				        </div>
+				    </li>
+				</ul>
 
-                    </li>
-                    <li>
-                        <img src="images/5e0d9f011a9ad2738de6.jpg">
-                        <div class="message_imform">
-                            <b id="message_pe">성구모</b>
-                            <span class="chatDate">14:05</span>
-                            <div id="last_message">
-                                fdfd
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="images/5e0d9f011a9ad2738de6.jpg">
-                        <div class="message_imform">
-                            <b id="message_pe">성구모</b>
-                            <span class="chatDate">14:05</span>
-                            <div id="last_message">
-                                fdfd
-                            </div>
-                        </div>
-                    </li>
-                </ul>
             </div>
             
         </aside>
@@ -69,7 +63,7 @@
                 <div class="main_view">
 
                
-                        <ul class="display-chatting">
+                        <ul class="display-chatting"  id="messageArea">
                             <li class="target-chat">
                                 <img id="pro" src="images/5e0d9f011a9ad2738de6.jpg">
         
@@ -95,12 +89,14 @@
             </div>
             <div class="mainSide">
                 <button onclick="history.back()" id="back">돌아가기</button>
+                <button th:onclick="location.href='/chatting/roomSetting'">설정</button>
             </div>
         </main>
-  
-
-
-
-    
 </body>
+
+    <script th:src="@{/js/chatting/chatting_group.js}"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+
 </html>

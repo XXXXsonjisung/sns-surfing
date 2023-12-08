@@ -33,4 +33,11 @@ public class AjaxController {
 		return service.checkEmail(email);
 	}
 	
+	@GetMapping("/sendAuth/memberEamil")
+	@ResponseBody
+	public int checkIdEmailAuth(String memberEmail) {
+		
+		return service.checkIdEmailAuth(memberEmail);
+
+	}
 }

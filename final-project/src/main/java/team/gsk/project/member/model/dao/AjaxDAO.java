@@ -26,4 +26,9 @@ public class AjaxDAO {
 		
 		return mapper.checkEmail(email);
 	}
+
+	public int sendAuthKey(String memberEmail) {
+		
+		return mapper.checkIdEmailAuth(memberEmail);
+	}
 }

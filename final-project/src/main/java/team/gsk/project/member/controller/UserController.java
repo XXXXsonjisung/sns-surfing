@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import ch.qos.logback.core.model.Model;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.member.model.service.UserService;
 
@@ -40,6 +42,14 @@ public class UserController {
 	}
 	
 	
+	@GetMapping("/getUserInfo")
+	public String userPageForward(@RequestParam("username") String memberId, Model model) {
+
+	    Member member = service.getMemberX(memberId);
+	    
+	    
+	    return "common/userPage";
+	}
 	
 
 

@@ -40,10 +40,7 @@ a {
 	margin: 0;
 }
 
-.mygo {
-	font-weight: bold;
-	color: rgb(0, 128, 255);
-}
+
 
 
 button {
@@ -174,6 +171,13 @@ header>div>div:nth-child(1){
     align-items: center;
 
 
+}
+
+#mygo {
+	font-weight: bold;
+	font-size: 20px;
+	color: rgb(255, 255, 255);
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 

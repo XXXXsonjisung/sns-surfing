@@ -46,12 +46,25 @@
             </nav>
             
         </div>
+       
+        
         <div class="login_block">
-            <a href="/loginPage">
-			    <button class="w-btn w-btn-gra1" type="button">
-			        <span>로그인</span>
-			    </button>
-			</a>
+			<th:block th:unless="${session.loginMember}">
+				<a th:href="@{/loginPage}">
+				    <button class="w-btn w-btn-gra1" type="button">
+				    	<span>로그인</span>
+				    </button>
+			    </a>
+			</th:block>
+			<th:block th:if="${session.loginMember}">
+				<a th:href="@{/member/logout}">
+				    <button class="w-btn w-btn-gra1" type="button">
+				    	<span>로그아웃</span>
+				    </button>
+			    </a>
+			</th:block>
+
+			
         </div>
 </aside>
 

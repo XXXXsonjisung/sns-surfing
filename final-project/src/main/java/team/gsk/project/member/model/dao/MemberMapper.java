@@ -15,5 +15,7 @@ public interface MemberMapper {
 
 	String profile(String string);
 
+	Member getMemberX(String memberId);
+
 
 }
