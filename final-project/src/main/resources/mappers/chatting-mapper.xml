@@ -43,13 +43,16 @@
 	</resultMap>
 	
 	
+	
 	<!--채팅 초대 찾기-->
 	<select id="selectTarget" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PROFILE FROM "MEMBER"
-		WHERE (MEMBER_EMAIL LIKE '%${query}%' OR MEMBER_NICKNAME LIKE '%${query}%')
+		WHERE MEMBER_NICKNAME LIKE '%${query}%'
 		AND MEMBER_DELETE_FLAG = 'N'
 		AND MEMBER_NO != ${memberNo}
 	</select>
+	
+	
 	
 	
 	<!--회원의 채팅방 리스트 찾기-->

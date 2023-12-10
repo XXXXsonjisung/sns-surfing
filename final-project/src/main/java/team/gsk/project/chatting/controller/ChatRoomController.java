@@ -28,8 +28,6 @@ import team.gsk.project.chatting.model.service.ChattingService;
 @RestController
 public class ChatRoomController {
 	
-	@Autowired
-	private ChattingService service;
 
 
 	private final ChattingService service;
