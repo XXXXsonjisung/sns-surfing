@@ -38,6 +38,7 @@ public class ChattingServiceImpl implements ChattingService {
 		return mapper.getOldMessage(roomNo);
 	}
 
+
 	// 개인 채팅 메세지 저장
 	@Override
 	public void saveMessage(ChattingMessage chattingMessage) {

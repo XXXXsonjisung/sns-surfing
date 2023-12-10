@@ -22,4 +22,10 @@ public interface AjaxMapper {
 	 * @return
 	 */
 	int checkEmail(String email);
+
+	/** 이메일로 아이디 찾기
+	 * @param memberEmail
+	 * @return
+	 */
+	int checkIdEmailAuth(String memberEmail);
 }

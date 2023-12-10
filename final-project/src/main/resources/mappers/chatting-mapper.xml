@@ -37,7 +37,9 @@
 			<result property="message" column="MESSAGE" />
 			<result property="time" column="TIME" />
 			<result property="sender" column="SENDER"/>
+
 			<result property="memberName" column="MEMBER_NAME"/>
+
 	</resultMap>
 	
 	
@@ -70,6 +72,7 @@
 	
 	<!--채팅방의 메세지 리스트 찾기-->
 	<select id="getOldMessage" resultMap="message_rm">
+
 		SELECT TYPE,ROOM_NO,MESSAGE,TIME,MEMBER_NAME
 		FROM CHATTING_MESSAGE LEFT JOIN "MEMBER" ON SENDER = MEMBER_NO WHERE ROOM_NO  = #{roomNo}
 	</select>
@@ -79,6 +82,7 @@
 		INSERT INTO CHATTING_MESSAGE (TYPE,ROOM_NO,MESSAGE,SENDER)
 		VALUES(#{type},#{roomNo},#{message},#{sender})	
 	</insert>
+
 
 </mapper>
 

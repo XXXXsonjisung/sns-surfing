@@ -7,6 +7,7 @@ const stompClient = Stomp.over(socket); // SockJS를 이용해 Stomp 클라이�
 const chatroomList = document.getElementById("room-list");
 const messageArea = document.getElementById('messageArea'); // 채팅 메시지를 표시할 영역
 
+
 const memberNo = document.getElementById('memberNoDiv').getAttribute('data-member-no');
 const memberName = document.getElementById('memberNoDivv').getAttribute('data-member-name');
 

@@ -26,4 +26,12 @@ public class AjaxDAO {
 		
 		return mapper.checkEmail(email);
 	}
+
+
+	// 이메일로 아이디 찾기
+	public int checkIdEmailAuth(String memberEmail) {
+
+		
+		return mapper.checkIdEmailAuth(memberEmail);
+	}
 }
