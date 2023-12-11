@@ -34,4 +34,10 @@ public class AjaxDAO {
 		
 		return mapper.checkIdEmailAuth(memberEmail);
 	}
+
+	// 이메일 중복 체크
+	public int dupCheck(String memberEmail) {
+		
+		return mapper.dupCheck(memberEmail);
+	}
 }

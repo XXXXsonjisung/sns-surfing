@@ -50,15 +50,12 @@ radioGroups.forEach((group, index) => {
 });
 
 
-
-// 전화번호로 아이디 / 비밀번호 찾기
+// 이메일로 아이디 / 비밀번호 찾기
 let authTimer;
 let authMin = 4;
 let authSec = 59;
 
 let tempEmail;
-
-
 
 const checkIdObj = {
     "memberName" : false,
@@ -70,13 +67,16 @@ const memberName = document.getElementById("idEmailName");
 const memberEmail = document.getElementById("idEmailNum");
 const authKey = document.getElementById("idEmailAuthNum");
 
+
+
+
+//전화번호로 아이디 / 비밀번호 찾기
 for (let i = 0; i < sendAuth.length; i += 2) {
 	
 	sendAuth[i].addEventListener('click', function() {
 
 	});
 }
-
 
 
 // 이메일로 아이디 / 비밀번호 찾기
@@ -103,11 +103,9 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 
 	// 이메일 유효성 검사
 	// 홀수번째 i의 인증번호 받기를 누르면 
-	sendAuth[i].addEventListener('click', function() { 
+	sendAuth[i].addEventListener('click', function(e) { 
 		
-		// 이름과 이메일이 일치하는 회원이 있을 경우
-		// if() {}
-		
+
 		// 입력된 이메일이 없을 경우
 		if(memberEmail.value.trim().length == 0) {
 			memberEmail.value = "";
@@ -118,12 +116,13 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 			return;
 		}else {
 
+			
+			fetch("/sendEmail/sendAuth?memberEmail=" + memberEmail.value)
+
 	
 		    authMin = 4;
 			authSec = 59;
 			
-			
-			fetch("/sendAuth/memberEmail?"+memberEmail.value)
 
 			.then(res => res.text())
 			.then(result => {
@@ -134,7 +133,9 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 
                		checkIdObj.memberEmail = true;
 
-               		idEmailCheck.innertext = "5:00";
+               		
+               		idEmailCheck.innerText = "4:59";
+
                		
                		authTimer = window.setInterval(()=>{
 
@@ -169,39 +170,9 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 			.catch(err => {
             console.log("이메일 발송 중 에러 발생");
             console.log(err);								
-			})
+			});
 		}
-	})
+	});
 
-	// 인증 확인
-	checkAuth.addEventListener("click", function(){
-
-    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
-        /* fetch API */
-        const obj = {"inputKey":idPhoneAuthNum.value, "email":tempEmail}
-        const query = new URLSearchParams(obj).toString()
-        // inputKey=123456&email=user01
-
-        fetch("/sendEmail/checkAuthKey?" + query)
-        .then(resp => resp.text())
-        .then(result => {
-            if(result > 0){
-                clearInterval(authTimer);
-                idEmailCheck.innerText = "인증되었습니다.";
-                idEmailCheck.classList.add("confirm");
-                checkIdObj.idPhoneAuthNum = true;
-
-            } else{
-                alert("인증번호가 일치하지 않습니다.")
-                checkIdObj.idPhoneAuthNum = false;
-            }
-        })
-        .catch(err => console.log(err));
-
-
-    } else{
-        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
-		}
-
-	});	
+	
 }

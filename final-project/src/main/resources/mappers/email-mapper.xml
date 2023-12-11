@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.gsk.project.member.model.dao.EmailMapper">
+	
+	<resultMap type="Member" id="member_rm">
+		<id property="memberNo" column="MEMBER_NO" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberTel" column="MEMBER_PHONE" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+		<result property="memberIntro" column="MEMBER_INTRO" />
+		<result property="profileImage" column="MEMBER_PROFILE" />		
+		<result property="coverImage" column="MEMBER_COVER_IMG" />		
+		<result property="enrollDate" column="MEMBER_ENROLL_DATE" />
+		<result property="deleteFlag" column="MEMBER_DELETE_FLAG" />
+		<result property="authority" column="AUTHORITY" />
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+	</resultMap>
 
 	<update id="updateAuthKey">
 		UPDATE "AUTH_KEY" SET
 		CODE = #{authKey},
-		CREATE_TIME = sysdate
+		CREATE_TIME = sysdate 
 		WHERE EMAIL = #{email}
 	</update>
 	
@@ -19,4 +36,28 @@
 		WHERE EMAIL = #{email}
 		AND CODE = #{inputKey}
 	</select>
+	
+	<!-- 이메일 중복 확인 -->
+<!-- 	<select id="dupCheck" resultMap="member_rm" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE  MEMBER_EMAIL = #{memberEmail}
+	</select>	
+-->
+	
+	<select id="dupCheck" resultType="_int" parameterType="string">
+	    SELECT COUNT(*)
+	    FROM "MEMBER"
+	    WHERE  MEMBER_EMAIL = #{memberEmail}
+	</select>
+
+	<!-- 이메일로 아이디 인증키 확인 -->
+	<select id="checkAuth" resultType="_int">
+		SELECT COUNT(*)
+		FROM "AUTH_KEY"
+		WHERE AUTH_CODE = #{inputKey}
+		AND EMAIL = #{memberEmail}
+	</select>
+	
+	
 </mapper>

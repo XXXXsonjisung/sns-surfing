@@ -10,4 +10,5 @@ public interface AjaxService {
 
 	int checkIdEmailAuth(String memberEmail);
 
+
 }

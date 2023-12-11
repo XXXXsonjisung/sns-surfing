@@ -26,19 +26,8 @@ public class AjaxController {
 		return service.checkNickname(nickname);
 	}
 	
-	@GetMapping("/dupCheck/email")
-	@ResponseBody
-	public int checkEmail(String email) {
-		
-		return service.checkEmail(email);
-	}
-				
-	@GetMapping("/sendAuth/memberEamil")
-	@ResponseBody
-	public int checkIdEmailAuth(String memberEmail) {
-		
-		return service.checkIdEmailAuth(memberEmail);
-	
+
 
 	}
+
 }

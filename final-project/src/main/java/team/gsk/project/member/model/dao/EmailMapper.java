@@ -13,4 +13,10 @@ public interface EmailMapper {
 
 	int checkAuthKey(Map<String, Object> paramMap);
 
+	int dupCheck(String memberEmail);
+
+	int sendAuthKey(String memberEmail);
+
+	int checkAuth(Map<String, String> map);
+
 }
