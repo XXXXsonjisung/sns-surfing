@@ -8,4 +8,10 @@ public interface EmailService {
 
 	int checkAuthKey(Map<String, Object> paramMap);
 
+	int dupCheck(String memberEmail);
+
+	int sendAuthKey(String memberEmail);
+
+	int checkAuth(String inputKey, String memberEmail);
+
 }

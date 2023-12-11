@@ -28,4 +28,10 @@ public interface AjaxMapper {
 	 * @return
 	 */
 	int checkIdEmailAuth(String memberEmail);
+
+	/** 이메일 중복 확인
+	 * @param memberEmail
+	 * @return
+	 */
+	int dupCheck(String memberEmail);
 }

@@ -29,4 +29,22 @@ public class EmailDAO {
 		return mapper.checkAuthKey(paramMap);
 	}
 
+
+	public int dupCheck(String memberEmail) {
+		
+		return mapper.dupCheck(memberEmail);
+	}
+
+
+	public int sendAuthKey(String memberEmail) {
+		
+		return mapper.sendAuthKey(memberEmail);
+	}
+
+
+	public int checkAuth(Map<String, String> map) {
+		
+		return mapper.checkAuth(map);
+	}
+
 }
