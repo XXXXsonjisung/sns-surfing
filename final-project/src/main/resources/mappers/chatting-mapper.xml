@@ -87,6 +87,20 @@
 	</insert>
 
 
+	<!--친구 전부 조회-->
+	<select id="allFriends" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE  FROM "MEMBER"
+		WHERE MEMBER_DELETE_FLAG ='N'	
+	</select>
+
+
+	<!--친구 초대-->
+	<insert id="invite" parameterType="map">
+		 <foreach item="friendId" collection="friendIds" open="INSERT ALL" separator=" ">
+		 	INTO MEMBER_ROOM_NO (ROOM_NO,MEMBER_NO) VALUES(#{roomNo},#{friendId})
+	 	 </foreach>
+	</insert>
+
 </mapper>
 
 

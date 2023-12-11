@@ -93,6 +93,17 @@ public class ChattingController {
 	}
 	
 	
+	//친구 초대(임시)
+	@GetMapping("/invite")
+	public String invite(){
+	
+		return "chatting/invite";
+		
+		
+	}
+	
+	
+	
 	   // 채팅 초대 검색
     @GetMapping(value="/selectTarget", produces="application/json; charset=UTF-8")
     @ResponseBody
@@ -118,6 +129,7 @@ public class ChattingController {
 
     	return "chatting/room_setting";
     }
+    
     
     
     

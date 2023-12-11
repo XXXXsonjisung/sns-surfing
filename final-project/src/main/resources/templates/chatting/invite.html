@@ -9,72 +9,148 @@
 
 </head>
 <body>
-	<input id="targetInput" placeholder="친구 초대">
+	<input id="targetInput" placeholder="친구 초대 입력">
+	<button id="invite">초대</button>
     <ul id="resultArea">
 	</ul>
+	<div id="selectedFriendsArea"></div>
 </body>
 	<script>
 const targetInput = document.querySelector("#targetInput"); // 사용자 검색
 const resultArea = document.querySelector("#resultArea"); // 검색 결과
 
+// 친구 리스트 전역변수 선언
+let allFriends = [];
+
+// 시작할때 리스트를 가져오기
+document.addEventListener("DOMContentLoaded",()=>{
+	
+	fetch("/allFriends")
+		.then(resp=>resp.json())
+		.then(list=>{
+			allFriends=list;
+			displayFriends(list);
+			console.log(allFriends)
+		})
+		.catch(err => console.log(err));
+	
+});
+
+
+// 리스트를 보여주기 
+function displayFriends(list){
+	resultArea.innerHTML="";
+	list.forEach(member=>{
+		const li = document.createElement("li");
+	    li.classList.add("result-row");
+        li.setAttribute("data-id", member.memberNo);
+		
+		const img = document.createElement("img");
+		img.classList.add("result-row-img");
+		
+		// 프로필 이미지 여부에 따른 src 속성 선택
+		if(member.profileImage == null) img.setAttribute("src", "/images/user.png");
+		else img.setAttribute("src", member.profileImage);
+
+		let nickname = member.memberNickname;
+
+		const span = document.createElement("span");
+		span.innerHTML = `${nickname}`;
+
+		
+		
+		const checkbox = document.createElement("input");
+	    checkbox.type = "checkbox";
+	    checkbox.classList.add("friend-checkbox");
+	    checkbox.checked = member.selected || false;
+	    checkbox.addEventListener("change", (e) => handleCheckboxChange(e, member));
+	
+	  	li.append(checkbox,img,span); // 체크박스 추가
+        resultArea.append(li);
+		
+	})
+	
+	
+}
+
+
+
+// 친구 체크박스 상태 변경 시 이벤트 처리
+function handleCheckboxChange(event, member) {
+    if (event.target.checked) {
+        // 체크박스 선택 시, 선택된 친구 목록에 추가
+        member.selected = true;
+    } else {
+        // 체크박스 해제 시, 선택된 친구 목록에서 제거
+        member.selected = false;
+    }
+    updateSelectedFriendsDisplay();
+}
+
+
+
+// 선택된 친구 목록 업데이트 및 표시
+function updateSelectedFriendsDisplay() {
+	const selectedFriendsArea = document.getElementById("selectedFriendsArea");
+	selectedFriendsArea.innerHTML = "";
+
+    const selectedFriends = allFriends.filter(member => member.selected);
+    
+    selectedFriends.forEach(member=> {
+		const div = document.createElement("div");
+		div.textContent=member.memberNickname;
+		selectedFriendsArea.appendChild(div);
+		
+	});
+	
+}
+
+
+
+// 입력창에 친구 입력시
 targetInput.addEventListener("input", e => {
 
 	const query = e.target.value.trim();
-
-	// 입력된게 없을 때
-	if(query.length == 0){
-		resultArea.innerHTML = ""; // 이전 검색 결과 비우기
-		return;
-	}
-
-
 	// 입력된게 있을 때
 	if(query.length > 0){
-		fetch("/chatting/selectTarget?query="+query)
-		.then(resp => resp.json())
-		.then(list => {
-			//console.log(list);
-
-			resultArea.innerHTML = ""; // 이전 검색 결과 비우기
-
-			if(list.length == 0){
-				const li = document.createElement("li");
-				li.classList.add("result-row");
-				li.innerText = "일치하는 회원이 없습니다";
-				resultArea.append(li);
-			}
-
-			for(let member of list){
-				// li요소 생성(한 행을 감싸는 요소)
-				const li = document.createElement("li");
-				li.classList.add("result-row");
-				li.setAttribute("data-id", member.memberNo);
-
-				// 프로필 이미지 요소
-				const img = document.createElement("img");
-				img.classList.add("result-row-img");
-				
-				// 프로필 이미지 여부에 따른 src 속성 선택
-				if(member.profileImage == null) img.setAttribute("src", "/resources/images/user.png");
-				else	img.setAttribute("src", member.profileImage);
-
-				let nickname = member.memberNickname;
-
-				const span = document.createElement("span");
-				span.innerHTML = `${nickname}`.replace(query, `<mark>${query}</mark>`);
-
-				// 요소 조립(화면에 추가)
-				li.append(img, span);
-				resultArea.append(li);
-
-				// li요소에 클릭 시 채팅방에 입장하는 이벤트 추가
-				li.addEventListener('click', chattingEnter);
-			}
-
-		})
-		.catch(err => console.log(err) );
-	}
+		const filteredFriends = allFriends.filter(member => 
+        member.memberNickname.includes(query));
+    	displayFriends(filteredFriends);
+		} else {
+		    displayFriends(allFriends);
+		}
+	
 });
+
+
+// 친구 초대
+document.getElementById("invite").addEventListener("click", () => {
+    // 선택된 친구들의 ID를 배열로 수집
+    const selectedFriendIds = allFriends.filter(member => member.selected)
+                                         .map(member => member.memberNo);
+
+    if (selectedFriendIds.length > 0) {
+        // AJAX 요청을 사용하여 서버에 초대 정보 전송
+        fetch('/invite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ invitedFriends: selectedFriendIds })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            // 성공적으로 처리된 후의 로직
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            // 에러 처리 로직
+        });
+    }
+});
+
+
 
 
 
