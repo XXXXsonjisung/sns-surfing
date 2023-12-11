@@ -26,5 +26,8 @@ public class AjaxController {
 		return service.checkNickname(nickname);
 	}
 	
-	
+
+
+	}
+
 }

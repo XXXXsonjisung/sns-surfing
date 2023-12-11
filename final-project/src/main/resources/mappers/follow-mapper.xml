@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="team.gsk.project.member.model.dao.FollowMapper">
+	
+	
+	<resultMap type="Follow" id="follow_rm">
+		<result property="p_memberId" column="P_MEMBER_ID" />
+		<result property="h_memberId" column="H_MEMBER_ID" />
+		<result property="profileImage" column="PROFILE_IMAGE" />
+	</resultMap>
+	
+	<insert id="saveFollow">
+	    INSERT INTO FOLLOW (P_MEMBER_ID, H_MEMBER_ID)
+	    VALUES (#{p_memberId}, #{h_memberId})
+	</insert>
+		
+	<delete id="unFollow">
+	    DELETE FROM FOLLOW
+	    WHERE P_MEMBER_ID = #{p_memberId} AND H_MEMBER_ID = #{h_memberId}
+	</delete>
+	
+	
+	<select id="checkFollow" resultType="java.lang.Integer">
+	    SELECT COUNT(*)
+	    FROM FOLLOW
+	    WHERE P_MEMBER_ID = #{p_memberId} AND H_MEMBER_ID = #{h_memberId}
+	</select>
+	
+	<select id="getFollowDataByMemberId" resultMap="follow_rm">
+	   SELECT H_MEMBER_ID FROM FOLLOW WHERE P_MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="getMemberById" parameterType="String" resultType="Member">
+	    SELECT * FROM MEMBER WHERE MEMBER_ID = #{h_memberId}
+	</select>
+	
+	
+	</mapper>

@@ -20,6 +20,16 @@ public interface ChattingService {
 	// 채팅방의 메세지 리스트 찾기
 	List<ChattingMessage> getOldMessage(int roomNo);
 
+
+	// 개인 채팅 메세지 저장
+	void saveMessage(ChattingMessage chattingMessage);
+
+	// 친구 전부 조회
+	List<Member> allFriends(int memberNo);
+
+	// 친구 초대
+	int invite(int currentRoomNo, List<Long> invitedFriends);
+
 	
 
 }

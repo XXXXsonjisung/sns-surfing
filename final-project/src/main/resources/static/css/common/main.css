@@ -138,7 +138,7 @@ a {
 
     .post_head {
         width: 100%;
-        height: 20%;
+        height: 25%;
         display: flex;
         margin: 0;
     }
@@ -180,7 +180,7 @@ a {
 
 
     #user01 {
-        margin-top: 5%;
+        margin-top: 3%;
         margin-left: 2%;
         font-size: 35px;
         font-weight: 500;
@@ -477,4 +477,14 @@ a {
 .closeXC {
 	margin-left:70%;
 	font-size: 50px;
+}
+
+.user-link {
+  text-decoration: none;
+  color: rgb(0, 0, 0); /* 링크 색상 */
+  cursor: pointer; /* 클릭 가능한 커서 모양 */
+}
+
+.user-link:hover {
+  color: rgb(128, 128, 128); /* 호버시 색상 변경 */
 }

@@ -1,5 +1,6 @@
 package team.gsk.project.chatting.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,31 @@ public class ChattingServiceImpl implements ChattingService {
 	@Override
 	public List<ChattingMessage> getOldMessage(int roomNo) {
 		return mapper.getOldMessage(roomNo);
+	}
+
+
+	// 개인 채팅 메세지 저장
+	@Override
+	public void saveMessage(ChattingMessage chattingMessage) {
+		mapper.saveMessage(chattingMessage);
+		
+	}
+
+	// 친구 전부 조회
+	@Override
+	public List<Member> allFriends(int memberNo) {
+		return mapper.allFriends(memberNo);
+	}
+
+	// 친구 초대
+	@Override
+	public int invite(int currentRoomNo, List<Long> invitedFriends) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("roomNo", currentRoomNo);
+		map.put("frienIds", invitedFriends);
+		
+		
+		return mapper.invite(map);
 	}
 
 

@@ -29,13 +29,37 @@
 	</th:block>
 
    	 <main>
+
+			
+	<div id="myModalMM" class="modalMM">
+	    <div class="modal-content">
+	        <span class="closeMM">&times;</span>
+	        <h2>게시글 작성</h2>
+	        <div class="modelPostContent" id="modalPostContentMM" contenteditable="true" placeholder="게시글 내용을 입력하세요"></div>
+	        <!-- 이미지 및 동영상 추가 입력란 -->
+		    <label for="imageInputXXMM" class="custom-file-uploadMM" id="cfuMM">
+		        <span class="button-text">이미지</span>
+		        <input type="file" id="imageInputXXMM" accept="image/*" style="display: none;">
+		    </label>
+		    <label class="custom-file-uploadMM" for="videoInputMM">
+		        <span class="button-text">동영상</span>
+		        <input type="file" id="videoInputMM" accept="video/*" style="display: none;">
+		    </label>
+		    <button class="xxxMM" onclick="createPostMM()">게시</button>
+		</div>
+	</div>
+			
+			
+			
+			
+			
         <div class="my_page_top">
             <div class="top_img">
 				<th:block th:if="${session.loginMember.coverImage}">
                 	<img th:src="${session.loginMember.coverImage}">
                 </th:block>
                 <th:block th:unless="${session.loginMember.coverImage}">
-                	<img th:src="@{/common/images/ccc.jpg}">
+                	<img th:src="@{/common/images/follow/ggggg1.jpg}">
                 </th:block>
             </div>
             <span class="propile">
@@ -43,28 +67,40 @@
 					<th:block th:if="${session.loginMember.profileImage}">
                     	<img th:src="${session.loginMember.profileImage}">
                 	</th:block>
+                	<th:block th:unless="${session.loginMember.profileImage}">
+					    <img th:src="@{/common/images/profile/profile.jpg}">
+					</th:block>
                 </div>
 
                 <p id="user" th:text="${session.loginMember.memberNickname}">user</p>
-                <a id="fol">팔로잉</a>
-                <p>/</p>
-                <a>팔로워</a>
-                <p>/</p>
-                <a>좋아요</a>
+                <label class="myFL">
+	                <a class="followText">팔로워 :</a>
+	                <a class="likeText">좋아요 :</a>
+				</label>
+				
             </span>
         </div>
-        <button class="Writing">글쓰기</button>
+        <button class="Writing" id="wirtingBtn">글쓰기</button>
         <hr>
-        <div class="user_box">
+        <div class="user_boxMM">
             <div class="user_post">
                 <div class="post">
                     <div class="post_head">
                         <div class="propile_bottom">
-                            <img src="images/Rectangle 110.png">
+                            <th:block th:if="${session.loginMember.profileImage}">
+		                    	<img th:src="${session.loginMember.profileImage}">
+		                	</th:block>
+		                	<th:block th:unless="${session.loginMember.profileImage}">
+							    <img th:src="@{/common/images/profile/profile.jpg}">
+							</th:block>
                         </div>
-                        <h1 id="user01">user01</h1>
+                        <h1 id="user01MM" th:text="${session.loginMember.memberNickname}">닉네임</h1>
                     </div>
-                    <div class="post_content"></div>
+                    <div class="post_contentMM">
+						<h1 th:text="${session.loginMember.memberNickname} + '님'"></h1>
+						<br>
+						<h1>페이지에 오신것을 환영합니다.</h1>
+					</div>
                 </div>
                 <div class="comment">
                     <div class="comment_left">
@@ -81,6 +117,6 @@
                 </div>
             </div>
 	  </main>
-    
+    <script th:src="@{/js/common/myPage.js}"></script>
 </body>
 </html>

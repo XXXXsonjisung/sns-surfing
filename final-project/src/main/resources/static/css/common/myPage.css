@@ -58,10 +58,13 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        object-fit: cover;
-
-        
+        object-fit: cover;     
     }
+    
+    .propile_img img {
+	    width: 140px; /* 원하는 가로 너비로 설정 */
+	    height: auto; /* 세로 크기를 자동 조정하여 비율 유지 */
+	}
     
     .propile {
         display: flex;
@@ -138,12 +141,13 @@ body{
 
     /*main*/
 
-    .user_box {
+    .user_boxMM {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 65%;
         margin-top: 50px;
+        height: auto;
     }
 
     .user_post {
@@ -169,15 +173,22 @@ body{
 
     .post_head {
         width: 100%;
-        height: 20%;
+        height: 25%;
         display: flex;
         margin: 0;
     }
 
-    .post_content {
+    .post_contentMM {
         height: 100%;
-        padding: 2%;
+	    padding: 2%;
+	    overflow: hidden;
     }
+    
+    .post_contentMM img {
+	    max-width: 100%;
+	    max-height: 100%;
+	    display: block;
+	}
 
     .propile_bottom {
         width: 10%;
@@ -194,14 +205,15 @@ body{
     }
 
     .propile_bottom img {
-        max-width: 100%;
-        max-height: 100%;
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
     }
 
 
 
 
-    #user01 {
+    #user01MM {
         margin-top: 5%;
         margin-left: 2%;
         font-size: 35px;
@@ -255,3 +267,109 @@ body{
         margin-top: 10px; /* 탑 마진 설정 */
         margin-left: 20px;
     }
+    
+    .myFL {
+		display: flex;
+	}
+	
+	.myFL > a {
+		font-weight: bold;
+		font-size: 20px;
+	}
+	
+	
+	.followText {
+		margin-left: 40px;
+		margin-right: 10px;
+	}
+	
+
+    
+    
+    /*--------------모달 관련 --------------------*/
+    
+  .modalMM {
+  display: none; /* 기본적으로 모달은 숨김 상태 */
+  position: fixed; /* 고정 위치 */
+  z-index: 2; /* 화면 상의 가장 위로 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+}
+
+
+
+.modal-content {
+    background-color: #fefefe;
+	margin-top: 2%;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: auto;
+    margin-left: 8.5%;
+}
+
+.modelPostContentMM{
+	width: 95.5%;
+	height: 600px;
+	border: 1px solid rgb(0, 0, 128);
+	border-radius: 30px;
+	padding: 2%;
+	overflow-y: auto;
+}
+
+
+
+
+.custom-file-uploadMM {
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: rgb(69, 131, 186);
+    border-radius: 5px;
+    height: 10%;
+    width: 4%;
+}
+
+#cfuMM {
+	margin-left: 2%;
+}
+
+
+.xxxMM {
+	margin-top: 0;
+	width: 180px;
+    height: 90px;
+    font-size: 2rem;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(-1000deg, #33ccff 0%, #ff99cc 100%);
+    color: white;
+    margin-left: 70%;
+}
+
+
+
+/* 마우스 호버 시 색상 변경 */
+.custom-file-uploadMM:hover {
+    background-color: rgb(61, 185, 194);
+}
+
+
+.closeMM {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeMM:hover,
+.closeMM:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*-------------------------------------------------*/

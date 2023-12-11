@@ -66,13 +66,15 @@ public class ChattingController {
 	public String chattinGroup(@SessionAttribute("loginMember") Member loginMember, Model model){
 		
 		int memberNo =loginMember.getMemberNo();
+		String memberName =loginMember.getMemberName();
+		model.addAttribute("memberNo", memberNo);
+		model.addAttribute("memberName", memberName);
+		
 		List<ChatRoomList>  roomList = service.selectRoomList(memberNo);
 	
 		
 		model.addAttribute("roomList", roomList);
-		
-		log.info("방 표시 :" , roomList);
-		
+	
 		return "chatting/chatting_group";
 		
 		
@@ -89,6 +91,17 @@ public class ChattingController {
 		
 		
 	}
+	
+	
+	//친구 초대(임시)
+	@GetMapping("/invite")
+	public String invite(){
+	
+		return "chatting/invite";
+		
+		
+	}
+	
 	
 	
 	   // 채팅 초대 검색
@@ -116,6 +129,7 @@ public class ChattingController {
 
     	return "chatting/room_setting";
     }
+    
     
     
     

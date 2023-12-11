@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user_page</title>
+
+    <link rel="stylesheet" th:href="@{/css/common/userPage.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-hWO6mIzRdutQzLZ5a+W8VGdL5WS3I5Xw2yyU7j60paz+1XS0b1TE1l5U0Gpqm49b" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <th:block th:replace="~{common/leftSide}"></th:block>
+    
+    <th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="H_memberNo" th:value="${session.loginMember.memberNo}">
+	</th:block>
+	
+	 <th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="H_memberId" th:value="${session.loginMember.memberId}">
+	</th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="P_profileImage" th:value="${session.loginMember.profileImage}">
+	</th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="P_memberNickname" th:value="${session.loginMember.memberNickname}">
+	</th:block>
+	
+	<th:block th:if="${member.memberId}">
+	    <input type="hidden" id="M_memberId" th:value="${member.memberId}">
+	</th:block>
+	
+	<th:block th:if="${member.memberNickname}">
+	    <input type="hidden" id="M_memberNickname" th:value="${member.memberNickname}">
+	</th:block>
+	
+	<th:block th:if="${member.profileImage}">
+	    <input type="hidden" id="M_profileImage" th:value="${member.profileImage}">
+	</th:block>
+	
+	<th:block th:if="${member.coverImage}">
+	    <input type="hidden" id="M_coverImage" th:value="${member.coverImage}">
+	</th:block>
+
+
+   	 <main>
+
+			
+	<div id="myModalMM" class="modalMM">
+	    <div class="modal-content">
+	        <span class="closeMM">&times;</span>
+	        <h2>게시글 작성</h2>
+	        <div class="modelPostContent" id="modalPostContentMM" contenteditable="true" placeholder="게시글 내용을 입력하세요"></div>
+	        <!-- 이미지 및 동영상 추가 입력란 -->
+		    <label for="imageInputXXMM" class="custom-file-uploadMM" id="cfuMM">
+		        <span class="button-text">이미지</span>
+		        <input type="file" id="imageInputXXMM" accept="image/*" style="display: none;">
+		    </label>
+		    <label class="custom-file-uploadMM" for="videoInputMM">
+		        <span class="button-text">동영상</span>
+		        <input type="file" id="videoInputMM" accept="video/*" style="display: none;">
+		    </label>
+		    <button class="xxxMM" onclick="createPostMM()">게시</button>
+		</div>
+	</div>
+			
+			
+			
+			
+			
+        <div class="my_page_top">
+            <div class="top_img">
+				<th:block th:if="${member.coverImage}">
+                	<img th:src="${member.coverImage}">					
+				</th:block>
+				<th:block th:unless="${member.coverImage}">
+                	<img th:src="@{/common/images/follow/ggggg1.jpg}">					
+				</th:block>
+            </div>
+            <span class="propile">
+                <div class="propile_img">
+					<th:block th:if="${member.profileImage}">
+	                	<img th:src="${member.profileImage}">					
+					</th:block>
+					<th:block th:unless="${member.profileImage}">
+	                	<img th:src="@{/common/images/profile/profile.jpg}">				
+					</th:block>   
+                </div>
+
+                <p id="user" th:text="${member.memberNickname}">user</p>
+                <label class="myFL">
+	                <a class="followText">팔로워 :</a>
+	                <a class="likeText">좋아요 :</a>
+				</label>
+				
+				
+				<button class="w-btn w-btn-blue" type="button">Follow</button>
+				
+				
+				<button class="w-btn w-btn-pink" type="button">UnFollow</button>
+
+            </span>
+        </div>
+        <button class="Writing" id="wirtingBtn">글쓰기</button>
+        <hr>
+        <div class="user_boxMM">
+            <div class="user_post">
+                <div class="post">
+                    <div class="post_head">
+                        <div class="propile_bottom">
+							    <th:block th:if="${member.profileImage}">
+				                	<img th:src="${member.profileImage}">					
+								</th:block>
+								<th:block th:unless="${member.profileImage}">
+				                	<img th:src="@{/common/images/profile/profile.jpg}">				
+								</th:block>
+                        </div>
+                        <h1 id="user01MM" th:text="${member.memberNickname}">닉네임</h1>
+                    </div>
+                    <div class="post_contentMM">
+						<h1 th:text="${member.memberNickname} + '님'"></h1>
+						<br>
+						
+						<h1>페이지에 오신것을 환영합니다.</h1>
+					</div>
+                </div>
+                <div class="comment">
+                    <div class="comment_left">
+                        <i class="fa-solid fa-heart" id="heart" ></i>
+                    </div>
+                    <div class="comment_right">
+                        <a>하트수:</a>
+
+                        <a>조회수:</a>
+                   
+                        <a>댓글수:</a>
+                        <button class="commentBtn">댓글달기</button>
+                    </div>
+                </div>
+            </div>
+	  </main>
+    <script th:src="@{/js/common/userPage.js}"></script>
+</body>
+</html>

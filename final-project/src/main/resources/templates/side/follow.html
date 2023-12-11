@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>follow_page</title>
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}" integrity="sha384-hWO6mIzRdutQzLZ5a+W8VGdL5WS3I5Xw2yyU7j60paz+1XS0b1TE1l5U0Gpqm49b" crossorigin="anonymous">
     <script th:src="@{https://kit.fontawesome.com/69a462bb6c.js}" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/common/follow.css}">
@@ -14,33 +14,38 @@
     <th:block th:replace="~{common/leftSide}"></th:block>
 
 	<th:block th:replace="~{common/rightSide}"></th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="H_memberId" th:value="${session.loginMember.memberId}">
+	</th:block>
+	
 
    <main>
         <div class="user_box">
             <hr class="hr1">
                 <nav class="btn">
-                    <button class="fBtn">팔로잉</button>
-                    <button class="fBtn">팔로워</button>
+					
+				    <button class="w-btn w-btn-gra2 w-btn-gra-anim" type="button" id="followBtn">
+				        팔로워
+				    </button>
+					<button class="w-btn w-btn-gra2 w-btn-gra-anim" type="button" id="fingBtn">
+				        팔로잉
+				    </button>
                 </nav>
             <hr>
-            <div class="xProfile">
-                <div class="uProfile">
-                   <img th:src="@{/common/images/follow/ggggg1.jpg}">
-                </div>
-                <div class="FollowNav">
-                    <a>user1234</a>
-                    <nav class="followNav">
-                        <a>팔로워</a>
-                        <a>35만</a>
-                    </nav>
-                </div>
-            </div>
-           
+            <div class="XXProfile">
+					<h1> 여기는 팔로워를 보여주고 있습니다.</h1>
+			</div>
+			<div class="TTProfile">
+					<h1> 여기는 팔로잉을 보여주고 있습니다.</h1>
+			</div>
+			
 
         </div>
 
     </main>
-
+    
+	<script th:src="@{/js/common/follow.js}"></script>
     
 </body>
 </html>

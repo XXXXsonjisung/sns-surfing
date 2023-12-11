@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             <div class="propile">
                                 <img src="${post.memberProfile}">
                             </div>
-                            <h1 id="user01">${post.username}</h1>
+                            <a class="user-link" th:href="@{@{/getUserInfo(username=${post.username})}}" id="user01" data-username="${post.username}">
+							    ${post.username}
+							</a>
                         </div>
                         <div class="post_content" id="postContentInput">
                             <h1>${post.content}</h1>
@@ -41,6 +43,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 userBox.appendChild(postElement);
             });
             
+            
+            
+            
+            document.querySelectorAll('.user-link').forEach(link => {
+		    link.addEventListener('click', function(event) {
+		        event.preventDefault(); // 기본 동작 방지 (페이지 새로고침 등)
+		        
+		        const username = this.getAttribute('data-username');
+		        window.location.href = `/getUserInfo?username=${username}`;
+		    });
+		});
+            
+            
+
             
             
             
@@ -89,6 +105,9 @@ document.addEventListener("DOMContentLoaded", function() {
                    } 
           
             });
+            
+            
+            
         })
         
         
@@ -402,10 +421,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	            console.error('Error fetching post data:', error);
 	        });
 	}
-
-
-
-
 
 
 

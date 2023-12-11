@@ -58,5 +58,15 @@
 		FROM MEMBER
 		WHERE MEMBER_ID = #{memberId}
 	</select>
+	
+	<select id="getMemberX" resultMap="member_rm">
+	    SELECT MEMBER_ID, MEMBER_NICKNAME, MEMBER_PROFILE, MEMBER_COVER_IMG
+	    FROM MEMBER
+	    WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="getMemberById" resultMap="member_rm">
+	    SELECT * FROM MEMBER WHERE MEMBER_ID = #{h_memberId}
+	</select>
 
 </mapper>

@@ -34,6 +34,7 @@ public class AjaxServiceImpl implements AjaxService{
 	public int checkIdEmailAuth(String memberEmail) {
 		
 		return dao.checkIdEmailAuth(memberEmail);
+
 	}
 
 

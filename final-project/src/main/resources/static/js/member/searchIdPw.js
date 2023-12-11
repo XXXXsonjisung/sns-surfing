@@ -115,20 +115,30 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 			checkIdObj.memberEmail = false;
 			return;
 		}else {
+
 			
 			fetch("/sendEmail/sendAuth?memberEmail=" + memberEmail.value)
+
+	
+		    authMin = 4;
+			authSec = 59;
+			
+
 			.then(res => res.text())
 			.then(result => {
 				if(result > 0) {
 					alert("인증번호가 발송 되었습니다.");
 					
 					tempEmail = memberEmail.value;
+
                		checkIdObj.memberEmail = true;
+
                		
                		idEmailCheck.innerText = "4:59";
+
                		
                		authTimer = window.setInterval(()=>{
-					
+
 	                idEmailCheck.innerText = "0" + authMin + ":" + (authSec < 10 ? "0" + authSec : authSec);
 	                
 	                // 남은 시간이 0분 0초인 경우
@@ -151,7 +161,7 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	            }else if(result == 0 ){ 
 	                console.log("인증번호 발송 실패")
 	            }else{
-					
+
 	                alert("가입 정보가 없는 이메일입니다.")
 	                checkIdObj.memberEmail = false;
 	                return;
