@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my_page</title>
+    <title>user_page</title>
 
     <link rel="stylesheet" th:href="@{/css/common/userPage.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-hWO6mIzRdutQzLZ5a+W8VGdL5WS3I5Xw2yyU7j60paz+1XS0b1TE1l5U0Gpqm49b" crossorigin="anonymous">
@@ -20,6 +20,10 @@
 	    <input type="hidden" id="H_memberNo" th:value="${session.loginMember.memberNo}">
 	</th:block>
 	
+	 <th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="H_memberId" th:value="${session.loginMember.memberId}">
+	</th:block>
+	
 	<th:block th:if="${session.loginMember}">
 	    <input type="hidden" id="P_profileImage" th:value="${session.loginMember.profileImage}">
 	</th:block>
@@ -27,6 +31,23 @@
 	<th:block th:if="${session.loginMember}">
 	    <input type="hidden" id="P_memberNickname" th:value="${session.loginMember.memberNickname}">
 	</th:block>
+	
+	<th:block th:if="${member.memberId}">
+	    <input type="hidden" id="M_memberId" th:value="${member.memberId}">
+	</th:block>
+	
+	<th:block th:if="${member.memberNickname}">
+	    <input type="hidden" id="M_memberNickname" th:value="${member.memberNickname}">
+	</th:block>
+	
+	<th:block th:if="${member.profileImage}">
+	    <input type="hidden" id="M_profileImage" th:value="${member.profileImage}">
+	</th:block>
+	
+	<th:block th:if="${member.coverImage}">
+	    <input type="hidden" id="M_coverImage" th:value="${member.coverImage}">
+	</th:block>
+
 
    	 <main>
 
@@ -55,14 +76,24 @@
 			
         <div class="my_page_top">
             <div class="top_img">
-                	<img th:src="@{/common/images/follow/ggggg1.jpg}">
+				<th:block th:if="${member.coverImage}">
+                	<img th:src="${member.coverImage}">					
+				</th:block>
+				<th:block th:unless="${member.coverImage}">
+                	<img th:src="@{/common/images/follow/ggggg1.jpg}">					
+				</th:block>
             </div>
             <span class="propile">
                 <div class="propile_img">
-					    <img th:src="@{/common/images/profile/profile.jpg}">
+					<th:block th:if="${member.profileImage}">
+	                	<img th:src="${member.profileImage}">					
+					</th:block>
+					<th:block th:unless="${member.profileImage}">
+	                	<img th:src="@{/common/images/profile/profile.jpg}">				
+					</th:block>   
                 </div>
 
-                <p id="user">user</p>
+                <p id="user" th:text="${member.memberNickname}">user</p>
                 <label class="myFL">
 	                <a class="followText">팔로워 :</a>
 	                <a class="likeText">좋아요 :</a>
@@ -83,13 +114,19 @@
                 <div class="post">
                     <div class="post_head">
                         <div class="propile_bottom">
-							    <img th:src="@{/common/images/profile/profile.jpg}">
+							    <th:block th:if="${member.profileImage}">
+				                	<img th:src="${member.profileImage}">					
+								</th:block>
+								<th:block th:unless="${member.profileImage}">
+				                	<img th:src="@{/common/images/profile/profile.jpg}">				
+								</th:block>
                         </div>
-                        <h1 id="user01MM">닉네임</h1>
+                        <h1 id="user01MM" th:text="${member.memberNickname}">닉네임</h1>
                     </div>
                     <div class="post_contentMM">
-						<h1 th:text="님"></h1>
+						<h1 th:text="${member.memberNickname} + '님'"></h1>
 						<br>
+						
 						<h1>페이지에 오신것을 환영합니다.</h1>
 					</div>
                 </div>

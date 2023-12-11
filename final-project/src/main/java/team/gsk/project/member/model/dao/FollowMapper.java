@@ -1,17 +1,14 @@
-package team.gsk.project.member.model.service;
+package team.gsk.project.member.model.dao;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 
 import team.gsk.project.member.model.dto.Follow;
 import team.gsk.project.member.model.dto.Member;
 
-public interface UserService {
-
-	String getMemberId(String string);
-
-	String getProfileImage(String string);
-
-	Member getMemberX(String memberId);
+@Mapper
+public interface FollowMapper {
 
 	int saveFollow(Follow follow);
 
@@ -21,6 +18,5 @@ public interface UserService {
 
 	List<Follow> getFollowDataByMemberId(String memberId);
 
-	Member getMemberById(String h_memberId);
 
 }

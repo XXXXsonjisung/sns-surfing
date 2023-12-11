@@ -1,8 +1,11 @@
 package team.gsk.project.member.model.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.gsk.project.member.model.dto.Follow;
 import team.gsk.project.member.model.dto.Member;
 
 
@@ -14,6 +17,8 @@ public class MemberDAO {
 	private MemberMapper mapper; // MemberMapper 인터페이스를 상속받은 자식 객체
 										// 자식객체가 sqlSessionTemplate 이용
 
+	@Autowired
+	private FollowMapper Fmapper;
 	
 	
 	public Member login(Member inputMember) {
@@ -42,6 +47,36 @@ public class MemberDAO {
 	public Member getMemberX(String memberId) {
 		
 		return mapper.getMemberX(memberId);
+	}
+
+
+	public int saveFollow(Follow follow) {
+		
+		return Fmapper.saveFollow(follow);
+	}
+
+
+	public int unFollow(Follow follow) {
+		
+		return Fmapper.unFollow(follow);
+	}
+
+
+	public int checkFollow(Follow follow) {
+		
+		return Fmapper.checkFollow(follow);
+	}
+
+
+	public List<Follow> getFollowDataByMemberId(String memberId) {
+		
+		return Fmapper.getFollowDataByMemberId(memberId);
+	}
+
+
+	public Member getMemberById(String h_memberId) {
+		
+		return mapper.getMemberById(h_memberId);
 	}
 
 

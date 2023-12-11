@@ -47,7 +47,6 @@ public class MainController {
 	@GetMapping("/follow")
 	public String sideFollowForward() {
 
-
 		
 		return "side/follow";
 

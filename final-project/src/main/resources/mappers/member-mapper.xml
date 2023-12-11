@@ -64,5 +64,9 @@
 	    FROM MEMBER
 	    WHERE MEMBER_ID = #{memberId}
 	</select>
+	
+	<select id="getMemberById" resultMap="member_rm">
+	    SELECT * FROM MEMBER WHERE MEMBER_ID = #{h_memberId}
+	</select>
 
 </mapper>
