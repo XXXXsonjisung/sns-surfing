@@ -39,4 +39,12 @@ public class ChattingServiceImpl implements ChattingService {
 	}
 
 
+	// 개인 채팅 메세지 저장
+	@Override
+	public void saveMessage(ChattingMessage chattingMessage) {
+		mapper.saveMessage(chattingMessage);
+		
+	}
+
+
 }

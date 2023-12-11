@@ -387,7 +387,7 @@ inputEmail.addEventListener("input", () => {
 			 emailCheck.innerText = "이미 사용중입니다";
         	 emailCheck.classList.add("error"); // .error 스타일 적용
         	 emailCheck.classList.remove("confirm"); // .confirm 스타일 제거
-			}	
+			}
 			
 		})
 		.catch(err => console.log(err));
