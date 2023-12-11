@@ -84,13 +84,13 @@ aside form{
 
 }
 
-aside input{
+#searchChatting{
 
     height: 30px;
     width: 70%;
-
+    border-radius: 10px;
+ 	border: 1px solid black;
     margin-left: 5%;
-    box-shadow: 0px 1px 5px grey;
 }   
 
 aside img{
@@ -250,7 +250,7 @@ form{
 
 }
 
-input{
+#message{
 
     height: 70px;
     width: 70%;
@@ -326,3 +326,43 @@ input{
     border-radius: 50px;
 
   }
+  
+  
+  
+  
+	.modal-overlay {
+	    display: none;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 50%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
+	    z-index: 9999; /* 모달 창 위에 표시되도록 설정 */
+	}
+	
+	
+	.modal-background{
+		
+		
+		background: white;
+	}
+	
+	
+
+  #resultArea{
+	  
+	  width: 50%;
+	  height: 50%;
+	  
+  }	        
+
+  .result-row{
+	  margin:0%;
+	  padding:0%;
+	  
+  }
+  
+
+        
+  

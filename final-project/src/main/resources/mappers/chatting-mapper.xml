@@ -43,13 +43,16 @@
 	</resultMap>
 	
 	
+	
 	<!--채팅 초대 찾기-->
 	<select id="selectTarget" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PROFILE FROM "MEMBER"
-		WHERE (MEMBER_EMAIL LIKE '%${query}%' OR MEMBER_NICKNAME LIKE '%${query}%')
+		WHERE MEMBER_NICKNAME LIKE '%${query}%'
 		AND MEMBER_DELETE_FLAG = 'N'
 		AND MEMBER_NO != ${memberNo}
 	</select>
+	
+	
 	
 	
 	<!--회원의 채팅방 리스트 찾기-->
@@ -83,6 +86,20 @@
 		VALUES(#{type},#{roomNo},#{message},#{sender})	
 	</insert>
 
+
+	<!--친구 전부 조회-->
+	<select id="allFriends" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE  FROM "MEMBER"
+		WHERE MEMBER_DELETE_FLAG ='N'	
+	</select>
+
+
+	<!--친구 초대-->
+	<insert id="invite" parameterType="map">
+		 <foreach item="friendId" collection="friendIds" open="INSERT ALL" separator=" ">
+		 	INTO MEMBER_ROOM_NO (ROOM_NO,MEMBER_NO) VALUES(#{roomNo},#{friendId})
+	 	 </foreach>
+	</insert>
 
 </mapper>
 

@@ -24,6 +24,12 @@ public interface ChattingService {
 	// 개인 채팅 메세지 저장
 	void saveMessage(ChattingMessage chattingMessage);
 
+	// 친구 전부 조회
+	List<Member> allFriends(int memberNo);
+
+	// 친구 초대
+	int invite(int currentRoomNo, List<Long> invitedFriends);
+
 	
 
 }
