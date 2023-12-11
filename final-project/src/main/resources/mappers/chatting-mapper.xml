@@ -78,6 +78,7 @@
 
 		SELECT TYPE,ROOM_NO,MESSAGE,TIME,MEMBER_NAME
 		FROM CHATTING_MESSAGE LEFT JOIN "MEMBER" ON SENDER = MEMBER_NO WHERE ROOM_NO  = #{roomNo}
+		ORDER BY TIME
 	</select>
 	
 	<!--개인 채팅 메세지 저장-->
@@ -96,9 +97,11 @@
 
 	<!--친구 초대-->
 	<insert id="invite" parameterType="map">
-		 <foreach item="friendId" collection="friendIds" open="INSERT ALL" separator=" ">
-		 	INTO MEMBER_ROOM_NO (ROOM_NO,MEMBER_NO) VALUES(#{roomNo},#{friendId})
-	 	 </foreach>
+	     INSERT ALL
+    	<foreach collection="frienIds" item="friendId" separator=" " open="" close="">
+        	INTO MEMBER_ROOM_NO (ROOM_NO, MEMBER_NO) VALUES (#{roomNo}, #{friendId})
+    	</foreach>
+   		 SELECT * FROM DUAL
 	</insert>
 
 </mapper>

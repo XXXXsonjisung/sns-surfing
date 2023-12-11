@@ -59,8 +59,7 @@ public class ChattingServiceImpl implements ChattingService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("roomNo", currentRoomNo);
 		map.put("frienIds", invitedFriends);
-		
-		
+	
 		return mapper.invite(map);
 	}
 

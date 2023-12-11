@@ -77,6 +77,7 @@ chatroomList.addEventListener('click', function(event) {
     // 기존 메시지 불러와 화면에 표시
     fetchAndDisplayOldMessages(roomNo);
     
+    
     console.log('방번호:', roomNo);
   }
 });
@@ -124,7 +125,9 @@ function appendMessage(message) {
                 <span class="chatDate">${message.time}</span>
             </div>
         `;
-
+		
+		
+		
         // messageArea에 메시지 요소 추가
         messageArea.appendChild(messageElement);
     
@@ -272,6 +275,29 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 
+
+
+
+// 시작할때 리스트를 가져오기
+//document.addEventListener("DOMContentLoaded",()=>{
+//	
+//	fetch("/allFriends")
+//		.then(resp=>resp.json())
+//		.then(list=>{
+//			allFriends=list;
+//			displayFriends(list);
+//			console.log(allFriends)
+//		})
+//		.catch(err => console.log(err));
+//	
+//});
+//
+
+
+
+
+
+
 // 리스트를 보여주기 
 function displayFriends(list){
 	resultArea.innerHTML="";
@@ -381,18 +407,23 @@ document.getElementById("invite").addEventListener("click", () => {
             console.log('성공 :', data);
             
             
-            // 성공적으로 처리된 후의 로직
+            
         })
         .catch((error) => {
             console.error('Error:', error);
-            // 에러 처리 로직
+          
         });
     }
 });
 
 
-
-
+// 현재 채팅방에 있는 친구 보여주기 
+function displayFriend(){
+	
+	
+	
+	
+}
 
 
 
