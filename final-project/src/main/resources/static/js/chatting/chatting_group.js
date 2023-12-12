@@ -11,6 +11,9 @@ const messageArea = document.getElementById('messageArea'); // 채팅 메시지�
 const memberNo = document.getElementById('memberNoDiv').getAttribute('data-member-no');
 const memberName = document.getElementById('memberNoDivv').getAttribute('data-member-name');
 
+
+
+
 let roomNo = null;
 
 // 서버에 연결
@@ -60,8 +63,6 @@ stompClient.connect({}, frame=> {
 //});
 
 
-
-
 // 클릭된 채팅방 처리 이벤트 리스너
 chatroomList.addEventListener('click', function(event) {
   // 클릭된 요소 또는 그 부모 요소 중 LI 요소 찾기
@@ -77,6 +78,7 @@ chatroomList.addEventListener('click', function(event) {
     // 기존 메시지 불러와 화면에 표시
     fetchAndDisplayOldMessages(roomNo);
     
+    displayFriend();
     
     console.log('방번호:', roomNo);
   }
@@ -118,7 +120,7 @@ function appendMessage(message) {
 
      // 메시지 내용을 구성
         messageElement.innerHTML = `
-            <img id="pro" src="images/${message.sender}.jpg">
+            <img id="pro" src="/images/${message.sender}.jpg">
             <div>
                 <b>${message.memberName}</b><br>
                 <p class="chat">${message.message}</p>
@@ -256,22 +258,26 @@ window.onclick = function(event) {
 
 const targetInput = document.querySelector("#targetInput"); // 사용자 검색
 const resultArea = document.querySelector("#resultArea"); // 검색 결과
+const inviteBtn = document.getElementById("invite-btn"); // 친구 추가 창
 
 // 친구 리스트 전역변수 선언
 let allFriends = [];
 
-// 시작할때 리스트를 가져오기
-document.addEventListener("DOMContentLoaded",()=>{
-	
-	fetch("/allFriends")
-		.then(resp=>resp.json())
-		.then(list=>{
-			allFriends=list;
-			displayFriends(list);
-			console.log(allFriends)
-		})
-		.catch(err => console.log(err));
-	
+// 친구 추가 버튼 리스트를 가져오기
+inviteBtn.addEventListener("click",()=>{
+
+	if(roomNo!==null){
+		
+		fetch(`/allFriends?roomNo=${roomNo}`)
+			.then(resp=>resp.json())
+			.then(list=>{
+				allFriends=list;
+				displayFriends(list);
+				console.log(allFriends)
+			})
+			.catch(err => console.log(err));
+		}
+		
 });
 
 
@@ -372,7 +378,6 @@ function updateSelectedFriendsDisplay() {
 targetInput.addEventListener("input", e => {
 
 	const query = e.target.value.trim();
-	// 입력된게 있을 때
 	if(query.length > 0){
 		const filteredFriends = allFriends.filter(member => 
         member.memberNickname.includes(query));
@@ -405,7 +410,7 @@ document.getElementById("invite").addEventListener("click", () => {
         .then(response => response.json())
         .then(data => {
             console.log('성공 :', data);
-            
+            displayFriend();
             
             
         })
@@ -417,14 +422,48 @@ document.getElementById("invite").addEventListener("click", () => {
 });
 
 
-// 현재 채팅방에 있는 친구 보여주기 
+// 현재 채팅방에 있는 친구 찾기 
 function displayFriend(){
-	
-	
-	
-	
+	if(roomNo!==null){
+		
+		fetch(`/displayFriend?roomNo=${roomNo}`)
+			.then(resp=>resp.json())
+			.then(list=>{
+				
+				console.log('현재 채팅방 인원',list)
+				appendFriend(list)
+			})
+			.catch(err => console.log(err));
+		}
+
 }
 
+
+// 현재 채팅방 친구 추가
+function appendFriend(list) {
+  
+  	const friendAreas = document.querySelectorAll('.friendArea');
+
+    friendAreas.forEach(friendArea => {
+        friendArea.innerHTML = ''; // 각 friendArea 내용을 초기화
+
+        list.forEach(member => {
+            const li = document.createElement('li');
+            li.className = 'friendList';
+
+            const p = document.createElement('p');
+            p.textContent = member.memberNickname;
+
+            const img = document.createElement('img');
+            img.src = member.profileImage;
+
+            li.appendChild(img);
+            li.appendChild(p);
+            friendArea.appendChild(li); 
+        });
+    });
+ 
+}
 
 
 

@@ -47,10 +47,10 @@ public class ChattingServiceImpl implements ChattingService {
 		
 	}
 
-	// 친구 전부 조회
+	// 채팅방 참여를 위한 친구 조회
 	@Override
-	public List<Member> allFriends(int memberNo) {
-		return mapper.allFriends(memberNo);
+	public List<Member> allFriends(int roomNo) {
+		return mapper.allFriends(roomNo);
 	}
 
 	// 친구 초대
@@ -61,6 +61,12 @@ public class ChattingServiceImpl implements ChattingService {
 		map.put("frienIds", invitedFriends);
 	
 		return mapper.invite(map);
+	}
+
+	// 채팅방 친구 조회
+	@Override
+	public List<Member> displayFriend(int roomNo) {
+		return mapper.displayFriend(roomNo);
 	}
 
 
