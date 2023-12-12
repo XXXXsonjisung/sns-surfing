@@ -1,5 +1,6 @@
 package team.gsk.project.chatting.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.service.ChatService;
 import team.gsk.project.chatting.model.service.ChattingService;
+import team.gsk.project.chatting.model.service.RoomMakingService;
 import team.gsk.project.member.model.dto.Member;
 
 
@@ -35,6 +37,11 @@ public class ChattingController {
 	@Autowired
 	private ChatService chatService;
 	
+	@Autowired
+	private RoomMakingService roomService;
+	
+	
+	
 	//채팅선택 페이지 이동 
 	@GetMapping("/chattingchoose")
 	public String chattingChoose(){
@@ -45,7 +52,25 @@ public class ChattingController {
 	
 	//그룹채팅 선택 페이지 이동 
 	@GetMapping("/groupSetting")
-	public String groupSetting() {
+	public String groupSetting(Model model) {
+		
+		List<Chatting> roomList=roomService.findRoom();
+		
+		log.info("채팅방 리스트 : " +roomList);
+		
+		List<String> tags= new ArrayList<>();
+		
+		for(Chatting room : roomList) {
+			int roomNo = room.getRoomNo();
+			List<String> tag =roomService.findRoomTag(roomNo);
+			log.info("채팅방 번호 리스트 : " + tag);
+			tags.addAll(tag);
+		}
+		log.info("채팅방 번호 리스트 : " + tags);
+		
+		
+		
+		model.addAttribute("roomList",roomList);
 		
 		return "chatting/group_setting";
 		

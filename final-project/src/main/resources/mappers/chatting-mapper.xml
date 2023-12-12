@@ -20,6 +20,7 @@
 		<result property="authority" column="AUTHORITY" />
 		<result property="memberEmail" column="MEMBER_EMAIL" />
 		<result property="memberBirth" column="MEMBER_BIRTH" />
+		<result property="roomNo" column="ROOM_NO"/>
 	</resultMap>
 	
 	<resultMap type="ChatRoomList" id="roomList_rm">
@@ -75,9 +76,9 @@
 	
 	<!--채팅방의 메세지 리스트 찾기-->
 	<select id="getOldMessage" resultMap="message_rm">
-
 		SELECT TYPE,ROOM_NO,MESSAGE,TIME,MEMBER_NAME
 		FROM CHATTING_MESSAGE LEFT JOIN "MEMBER" ON SENDER = MEMBER_NO WHERE ROOM_NO  = #{roomNo}
+		ORDER BY TIME
 	</select>
 	
 	<!--개인 채팅 메세지 저장-->
@@ -87,19 +88,32 @@
 	</insert>
 
 
-	<!--친구 전부 조회-->
+	<!--초대를 위한 친구 조회-->
 	<select id="allFriends" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE  FROM "MEMBER"
-		WHERE MEMBER_DELETE_FLAG ='N'	
+		WHERE MEMBER_DELETE_FLAG ='N'
+		AND MEMBER_NO NOT IN (SELECT MEMBER_NO FROM MEMBER_ROOM_NO WHERE ROOM_NO = #{roomNo})
 	</select>
 
 
 	<!--친구 초대-->
 	<insert id="invite" parameterType="map">
-		 <foreach item="friendId" collection="friendIds" open="INSERT ALL" separator=" ">
-		 	INTO MEMBER_ROOM_NO (ROOM_NO,MEMBER_NO) VALUES(#{roomNo},#{friendId})
-	 	 </foreach>
+	     INSERT ALL
+    	<foreach collection="frienIds" item="friendId" separator=" " open="" close="">
+        	INTO MEMBER_ROOM_NO (ROOM_NO, MEMBER_NO) VALUES (#{roomNo}, #{friendId})
+    	</foreach>
+   		 SELECT * FROM DUAL
 	</insert>
+
+	<!--채팅방 친구 조회-->
+	<select id="displayFriend" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE  FROM "MEMBER"
+		WHERE MEMBER_DELETE_FLAG ='N'
+		AND MEMBER_NO IN (SELECT MEMBER_NO FROM MEMBER_ROOM_NO WHERE ROOM_NO = #{roomNo})
+	</select>
+
+
+
 
 </mapper>
 

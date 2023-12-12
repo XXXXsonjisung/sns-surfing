@@ -30,12 +30,16 @@ public interface ChattingMapper {
 	void saveMessage(ChattingMessage chattingMessage);
 
 
-	// 친구 전부 조회
-	List<Member> allFriends(int memberNo);
+	// 초대를 위한 친구 조회
+	List<Member> allFriends(int roomNo);
 
 
 	// 친구 초대
 	int invite(Map<String, Object> map);
+
+
+	// 채팅방 친구 조회
+	List<Member> displayFriend(int roomNo);
 
 
 

@@ -60,6 +60,16 @@
 		INSERT INTO MEMBER_ROOM_NO mrn (ROOM_NO,MEMBER_NO) VALUES(#{roomNo},#{memberNo})
 	</insert>
 	
+	<!--채팅방 찾기-->
+	<select id="findRoom" resultMap="chatting_rm">
+		SELECT * FROM ROOM_GROUP
+	</select>
+	
+	<!--채팅방 태그찾기-->
+	<select id="findRoomTag">
+		SELECT rt.TAG_NAME  FROM TAG_ROOM_NO trn INNER JOIN ROOM_TAG rt ON rt.TAG_NO = trn.TAG_NO WHERE ROOM_NO = #{roomNo}
+	</select>	
+	
 				
 </mapper>
 
