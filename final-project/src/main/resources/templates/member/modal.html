@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달 창</title>
+    <link rel="stylesheet" th:href="@{/css/member/modal.css}">
+</head>
+<body>
+
+	<div class="modal">
+		<div class="modal_body">
+
+			<div class="modalBodyTitle">아이디 찾기</div>
+			<div class="modalBodyContent">
+				<h2 id="id_value"></h2>
+			</div>
+			<button type="button" id="back_btn" class="btn peach-gradient btn-rounded waves-effect">
+			<i class="fa fa-envelope"></i>돌아가기</button>
+		</div>
+	</div>
+
+	
+	<script th:src="@{/js/member/modal.js}"></script>
+</body>
+</html>

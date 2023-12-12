@@ -104,6 +104,20 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		
 		return validatorResult;
 	}
+
+	
+	
+	// 채팅방 찾기 
+	@Override
+	public List<Chatting> findRoom() {
+		return mapper.findRoom();
+	}
+
+	// 채팅방 태그 찾기
+	@Override
+	public List<String> findRoomTag(int roomNo) {
+		return mapper.findRoomTag(roomNo);
+	}
 	
 	
 	

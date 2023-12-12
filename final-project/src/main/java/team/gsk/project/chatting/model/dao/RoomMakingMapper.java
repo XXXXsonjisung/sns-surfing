@@ -29,6 +29,13 @@ public interface RoomMakingMapper{
 	// 방장 넣기 
 	int addMember(Map<String, Object> map2);
 
+	
+	// 채팅방 찾기
+	List<Chatting> findRoom();
+
+	// 채팅방 태그찾기
+	List<String> findRoomTag(int roomNo);
+
 
 
 	

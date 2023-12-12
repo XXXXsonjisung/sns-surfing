@@ -26,6 +26,6 @@ public class Member {
 	private String memberEmail;
 	private String memberBirth;
 	
-
+	private int roomNo;
 
 }

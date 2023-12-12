@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
                 <div>채팅방검색</div>
                 <form>
                     <input type="text" id="searchChatting"> 
-                    <button><img src="images/Rectangle 112.png"></button>
+                    <button><img th:src="@{/common/images/Rectangle112.png}"></button>
                 </form>
             </div>
             <div class="room_list"> 
@@ -47,7 +47,9 @@
         </aside>
 
         <main>
-            <div class="mainSide"></div>
+            <div class="mainSide">
+				<ul class="friendArea"></ul>
+			</div>
             <div class="main_chat">
                 <div class="main_view">
                    <ul class="display-chatting"  id="messageArea">
@@ -61,7 +63,7 @@
                     <form>
                         <input type="text" id="message">
                         <button type="button" id="submit" onclick="sendMessage()">
-                            <img src="images/fePaperPlane0.png">
+                            <img th:src="@{/common/images/fePaperPlane0.png}">
                         </button>
                     </form>
                 </div>
@@ -71,6 +73,9 @@
                 <button th:onclick="location.href='/chatting/roomSetting'">설정</button>
                 <button id="invite-btn">친구추가 창</button>
                 <button th:onclick="location.href='/chatting/invite'">친구추가</button>
+                <div >현재 인원
+				</div>
+					
             </div>
         
              <div class="modal-overlay" id="modal-overlay">
@@ -81,6 +86,8 @@
 					<ul id="resultArea">
 					</ul>
 					<div id="selectedFriendsArea"></div>
+					
+					<ul class="friendArea"></ul>
 				</div>
 			 </div>
            

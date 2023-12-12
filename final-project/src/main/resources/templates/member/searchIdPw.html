@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,9 @@
     <link rel="stylesheet" th:href="@{/css/member/searchIdPw.css}">
 </head>
 <body>
+	
+	<th:block th:replace="~{member/modal}"></th:block>
+	
     <div id="logos">
         <img id="logo" th:src="@{/images/20231114115318_93362.png}">
         <p id="name">Surfing</p>
@@ -74,7 +77,7 @@
 		                            <button type="button" disabled class="checkAuth">인증번호 확인</button>
 		                        </dt>
 		                        <dd class="idFristDd">
-									<h6 id="idEmailCheck"></h6>
+									<h6 id="idEmailCheck"> </h6>
 								</dd>
 	                        </dl>
 	                        

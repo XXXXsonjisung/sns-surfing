@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +52,22 @@
             </div>
             <div class="room-main">
                 <ul class="room-list">
-                    <li class="room-li">
+                    <li class="room-li" th:each="room:${roomList}">
+                        <div class="room-img">
+                            <img th:src="${room.roomImg}"> 
+                        </div>
+                        <div class="room-title" th:text="${room.roomName}">성북컴퓨터</div>
+                        <div class="room-headCount" th:text="${room.roomPersonnel}">13명</div>
+                        <div class="room-signUp">
+                            <div>공개</div>
+                            <button>가입</button>
+                        </div>
+                        <div class="room-chatNum">일주일동안 54개 채팅수</div>
+                        <div class="room-tag">#컴퓨터</div>
+                        <div class="room-introduce">안녕하세요</div>
+                        
+                    </li>
+           <!--         <li class="room-li">
                         <div class="room-img">
                             <img src="images/5e0d9f011a9ad2738de6.jpg"> 
                         </div>
@@ -81,22 +96,7 @@
                         <div class="room-tag">#컴퓨터</div>
                         <div class="room-introduce">안녕하세요</div>
                         
-                    </li>
-                    <li class="room-li">
-                        <div class="room-img">
-                            <img src="images/5e0d9f011a9ad2738de6.jpg"> 
-                        </div>
-                        <div class="room-title">성북컴퓨터</div>
-                        <div class="room-headCount">13명</div>
-                        <div class="room-signUp">
-                            <div>공개</div>
-                            <button>가입</button>
-                        </div>
-                        <div class="room-chatNum">일주일동안 54개 채팅수</div>
-                        <div class="room-tag">#컴퓨터</div>
-                        <div class="room-introduce">안녕하세요</div>
-                        
-                    </li>
+                    </li>-->
                     <li class="room-li"></li>
                     <li class="room-li"></li>
                 </ul>
