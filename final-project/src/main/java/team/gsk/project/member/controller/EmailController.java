@@ -54,7 +54,8 @@ public class EmailController {
 	    
 	    if (dupCheck > 0) {
 	    	 result = service.sendAuthKey(memberEmail);
-
+	    } else {
+	    	result = -1;
 	    }
 	
 
