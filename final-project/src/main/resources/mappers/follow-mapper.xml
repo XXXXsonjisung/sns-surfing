@@ -35,5 +35,9 @@
 	    SELECT * FROM MEMBER WHERE MEMBER_ID = #{h_memberId}
 	</select>
 	
+	<select id="getFolloingDataByMemberId" resultMap="follow_rm">
+	   SELECT P_MEMBER_ID FROM FOLLOW WHERE H_MEMBER_ID = #{memberId}
+	</select>
+	
 	
 	</mapper>

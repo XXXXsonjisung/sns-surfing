@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import oracle.jdbc.proxy.annotation.Post;
+import team.gsk.project.member.model.dao.MemberMapper;
 import team.gsk.project.post.model.dto.Heart;
 import team.gsk.project.post.model.dto.PostComment;
 import team.gsk.project.post.model.dto.PostRequest;
@@ -22,6 +23,9 @@ public class PostDAO {
 	
 	@Autowired
 	private CommentMapper Cmapper;
+	
+	@Autowired
+	private MemberMapper Mmapper;
 	
 
 	public int insertPost(PostRequest postUser) {
@@ -81,6 +85,12 @@ public class PostDAO {
 	public List<PostComment> getComments(int postNo) {
 		
 		return Cmapper.getComments(postNo);
+	}
+
+
+	public String getMemberNicknameByUsername(String username) {
+		
+		return Mmapper.getMemberNicknameByUsername(username);
 	}
 
 

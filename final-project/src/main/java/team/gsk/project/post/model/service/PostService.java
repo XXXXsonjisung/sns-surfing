@@ -53,4 +53,10 @@ public interface PostService {
 	 */
 	List<PostComment> getComments(int postNo);
 
+	/** 게시글의 닉네임 가져오기
+	 * @param username
+	 * @return
+	 */
+	String getMemberNicknameByUsername(String username);
+
 }

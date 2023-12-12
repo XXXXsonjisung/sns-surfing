@@ -80,6 +80,30 @@ public class MemberDAO {
 	}
 
 
+	public List<Follow> getFolloingDataByMemberId(String memberId) {
+		
+		return Fmapper.getFolloingDataByMemberId(memberId);
+	}
+
+
+	public Member getMemberByIdP(String p_memberId) {
+		
+		return mapper.getMemberByIdP(p_memberId);
+	}
+
+
+	public List<Member> searchHeader(String value) {
+		
+		return mapper.searchHeader(value);
+	}
+
+
+	public boolean checkNicknameX(String nickname) {
+		
+		return mapper.checkNicknameX(nickname);
+	}
+
+
 
 
 }

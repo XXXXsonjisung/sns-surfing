@@ -134,6 +134,13 @@ public class PostServiceImpl implements PostService{
 	}
 
 
+	@Override
+	public String getMemberNicknameByUsername(String username) {
+		
+		return dao.getMemberNicknameByUsername(username);
+	}
+
+
 
 
 

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <img src="${post.memberProfile}">
                             </div>
                             <a class="user-link" th:href="@{@{/getUserInfo(username=${post.username})}}" id="user01" data-username="${post.username}">
-							    ${post.username}
+							    ${post.userNickname}
 							</a>
                         </div>
                         <div class="post_content" id="postContentInput">

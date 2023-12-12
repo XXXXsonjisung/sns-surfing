@@ -27,6 +27,7 @@ public class MainController {
 	public String mainForward(Model model) {
 		
 //	return "chatting/chatting_choose";
+
 		return "common/main";
 
 

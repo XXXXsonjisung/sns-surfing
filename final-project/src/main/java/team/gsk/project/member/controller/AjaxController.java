@@ -27,9 +27,5 @@ public class AjaxController {
 	}
 	
 
-
-
-	}
-
-
+}
 

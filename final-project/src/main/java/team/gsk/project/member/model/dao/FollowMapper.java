@@ -18,5 +18,7 @@ public interface FollowMapper {
 
 	List<Follow> getFollowDataByMemberId(String memberId);
 
+	List<Follow> getFolloingDataByMemberId(String memberId);
+
 
 }

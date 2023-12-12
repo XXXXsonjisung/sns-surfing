@@ -197,3 +197,38 @@ function createPost() {
         })
         .catch(error => console.error('Error:', error));
 }
+
+
+
+/*-------------------- 검색 ------------------------------------*/
+
+
+
+document.getElementById('search_icon').addEventListener('click', function() {
+    const inputValue = document.getElementById('search_id').value; // 입력된 값 가져오기
+    
+    alert('눌림');
+
+    // AJAX 요청 보내기
+    fetch('/searchHeader', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `searchValue=${inputValue}`, // 입력값을 요청에 첨부
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log(data); // 서버에서 받은 응답 확인
+    })
+    .catch(error => {
+        console.error('Request failed!', error);
+    });
+});
+
+

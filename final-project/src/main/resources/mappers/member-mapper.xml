@@ -68,5 +68,35 @@
 	<select id="getMemberById" resultMap="member_rm">
 	    SELECT * FROM MEMBER WHERE MEMBER_ID = #{h_memberId}
 	</select>
+	
+	<select id="getMemberByIdP" resultMap="member_rm">
+	    SELECT * FROM MEMBER WHERE MEMBER_ID = #{p_memberId}
+	</select>
+	
+	<select id="getMemberNicknameByUsername" resultType="string">
+	    SELECT MEMBER_NICKNAME 
+	    FROM MEMBER 
+	    WHERE MEMBER_ID = #{username} AND MEMBER_DELETE_FLAG = 'N'
+	</select>
+	
+	<select id="searchHeader" parameterType="String" resultType="Member">
+	    SELECT * FROM MEMBER WHERE (MEMBER_ID = #{value} OR MEMBER_NICKNAME = #{value}) AND MEMBER_DELETE_FLAG = 'N'
+	</select>
+	
+	<select id="checkNicknameX" parameterType="String" resultType="boolean">
+	    SELECT 
+		    CASE 
+		        WHEN EXISTS (
+		            SELECT 1 FROM MEMBER 
+		            WHERE MEMBER_NICKNAME = #{nickname} AND MEMBER_DELETE_FLAG = 'N'
+		        ) THEN 'true'
+		        ELSE 'false'
+		    END AS result
+		FROM DUAL
+	</select>
+	
+	
+	
+	
 
 </mapper>

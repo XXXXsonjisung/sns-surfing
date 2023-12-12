@@ -65,4 +65,28 @@ public class UserServiceImpl implements UserService{
 		return dao.getMemberById(h_memberId);
 	}
 
+	@Override
+	public List<Follow> getFolloingDataByMemberId(String memberId) {
+		
+		return dao.getFolloingDataByMemberId(memberId);
+	}
+
+	@Override
+	public Member getMemberByIdP(String p_memberId) {
+		
+		return dao.getMemberByIdP(p_memberId);
+	}
+
+	@Override
+	public List<Member> searchHeader(String value) {
+		
+		return dao.searchHeader(value);
+	}
+
+	@Override
+	public boolean checkNicknameX(String nickname) {
+		
+		return dao.checkNicknameX(nickname);
+	}
+
 }
