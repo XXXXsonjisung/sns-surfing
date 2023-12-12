@@ -22,7 +22,6 @@ a {
     }
 
     .user_box {
-        align-items: center;
         display: flex;
         flex-direction: column;
         width: 65%;
@@ -64,10 +63,18 @@ a {
         border-radius: 10px;
     }
     
+    #followBtn {
+		margin-left: 38%;
+	}
+	
+	#fingBtn {
+		margin-left: 5%;
+	}
+    
     .XXProfile {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
+		align-items: flex-end;
 	}
 	
 	.TTProfile {
@@ -150,7 +157,13 @@ a {
         position: relative; /* 포지션을 상대적으로 변경합니다 */
         margin-left: 20%;
         margin-top: 2%;
+        transition: transform 0.2s;
+        cursor: pointer;
     }
+    
+    .uProfile:hover {
+	    transform: scale(1.1); /* 호버 시 이미지 크기를 1.1배로 확대하는 효과 */
+	}
     
     .uProfile img {
         position: absolute; /* 포지션을 절대적으로 변경합니다 */
@@ -187,6 +200,13 @@ a {
         margin-bottom: 0;
         font-size: 30px;
         font-weight: 550;
+        transition: transform 0.2s;
+        cursor: pointer;
+        
+    }
+    
+    .FollowNav > a:hover {
+		transform: scale(1.1);
         
     }
     

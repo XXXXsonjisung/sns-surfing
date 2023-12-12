@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search_page</title>
+
+    <link rel="stylesheet" th:href="@{/css/common/searchPage.css}">
+    <link rel="stylesheet" href="search_page.css">
+    <script src="https://kit.fontawesome.com/69a462bb6c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <th:block th:replace="~{common/leftSide}"></th:block>
+
+	<th:block th:replace="~{common/rightSide}"></th:block>
+
+    <main>
+        <div class="user_box">
+            <div class="search_X">
+                <h2 id="inputA">‘input’ 에 대한 입력 결과 입니다.</h1>
+            </div>
+            <hr>
+            <div class="searchList">
+				
+			</div>
+        </div>
+
+    </main>
+
+    
+</body>
+</html>

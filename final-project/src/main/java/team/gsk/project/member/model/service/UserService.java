@@ -23,4 +23,12 @@ public interface UserService {
 
 	Member getMemberById(String h_memberId);
 
+	List<Follow> getFolloingDataByMemberId(String memberId);
+
+	Member getMemberByIdP(String p_memberId);
+
+	List<Member> searchHeader(String value);
+
+	boolean checkNicknameX(String nickname);
+
 }

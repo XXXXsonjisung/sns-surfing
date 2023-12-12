@@ -127,4 +127,58 @@ public class UserController {
 	     return followData; // Follow 테이블 데이터와 프로필 이미지를 포함한 JSON 형태로 반환
 	 }
 	 
+	 @GetMapping("/folloingPageData")
+	 @ResponseBody
+	 public List<Follow> getFolloingPageData(@RequestParam("memberId") String memberId) {
+	     // memberId를 이용하여 Follow 테이블에서 데이터를 가져옴
+	     List<Follow> folloingData = service.getFolloingDataByMemberId(memberId);
+	     
+	     System.out.println(memberId);
+	     
+	     System.out.println(folloingData);
+
+	     // Follow 테이블에서 가져온 데이터의 memberId를 이용하여 Member 테이블에서 프로필 이미지 가져오기
+	     for (Follow follow : folloingData) {
+	         Member member = service.getMemberByIdP(follow.getP_memberId()); // MemberService를 통해 memberId로 Member 정보 가져오기
+	         follow.setProfileImage(member.getProfileImage()); // 가져온 프로필 이미지를 Follow 객체에 설정
+	     }
+
+	     return folloingData; // Follow 테이블 데이터와 프로필 이미지를 포함한 JSON 형태로 반환
+	 }
+	 
+	 
+	 
+	 	@PostMapping("/searchHeader")
+	    @ResponseBody
+	    public String searchHeader(@RequestParam("searchValue") String value, Model model) {
+	 	  
+	 		List<Member> members = service.searchHeader(value); // memberService는 해당 기능을 수행하는 서비스 클래스입니다.
+	 	    
+	 		System.out.println("이것은 벨류값:" +value);
+	 		System.out.println(members);
+	 		
+	 		
+	 	    // 조회한 데이터를 모델에 담아서 searchPage로 전달합니다.
+	 	    model.addAttribute("members", members);
+	 	    
+	 	    return "common/searchPage";
+	 	}
+	 	
+	 	
+	 	@GetMapping("/checkNicknameX")
+	 	@ResponseBody
+	 	public String checkNicknameX(@RequestParam("nickname") String nickname) {
+	 	    // 닉네임 중복 여부를 확인하는 로직을 수행합니다.
+	 	    // 예를 들어, Member 테이블에서 해당 닉네임이 있는지 확인하는 쿼리를 실행하고 결과에 따라 응답합니다.
+	 	    boolean isNicknameAvailable = service.checkNicknameX(nickname);
+
+	 	    if (isNicknameAvailable) {
+	 	        return "unavailable"; // 닉네임이 사용 가능할 때의 응답
+	 	    } else {
+	 	        return "available"; // 닉네임이 이미 사용 중일 때의 응답
+	 	    }
+	 	}
+	 	
+	 	
+	 
  }

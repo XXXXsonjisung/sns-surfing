@@ -2,6 +2,7 @@ package team.gsk.project.post.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.post.model.dto.Heart;
 import team.gsk.project.post.model.dto.PostComment;
 import team.gsk.project.post.model.dto.PostRequest;
+import team.gsk.project.post.model.dto.PostRequest2;
 import team.gsk.project.post.model.service.PostService;
 
 @Controller
@@ -73,14 +75,32 @@ public class PostController {
 
 	 @GetMapping("/getAllPosts")
 	 @ResponseBody
-	 public List<PostRequest> getAllPosts() {
+	 public List<PostRequest2> getAllPosts() {
+		 
+		 List<PostRequest2> postsWithNickname = new ArrayList<>();
 		 
 		 List<PostRequest> posts = service.getAllPosts();
-
-		 System.out.println(posts);
+		 
+		 for (PostRequest post : posts) {
+		        PostRequest2 postWithNickname = new PostRequest2();
+		        String memberNickname = service.getMemberNicknameByUsername(post.getUsername());
+		        postWithNickname.setUserNickname(memberNickname);
+		        postWithNickname.setPostNo(post.getPostNo());
+		        postWithNickname.setUsername(post.getUsername());
+		        postWithNickname.setContent(post.getContent());
+		        postWithNickname.setCommentsCount(post.getCommentsCount());
+		        postWithNickname.setHeartCount(post.getHeartCount());
+		        postWithNickname.setPostUploadDate(post.getPostUploadDate());
+		        postWithNickname.setMemberProfile(post.getMemberProfile());
+		        postWithNickname.setImageUrls(post.getImageUrls());
+		        postWithNickname.setVideoUrls(post.getVideoUrls());
+		        
+		        
+		        postsWithNickname.add(postWithNickname);
+		    }
 		 
 		 
-		 return posts;
+		 return postsWithNickname;
 	 }
 	 
 	 

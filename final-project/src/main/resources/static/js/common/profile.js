@@ -237,8 +237,43 @@ function processWithdrawal() {
 
 //--------------------------------------------------------------------------------------------------
 
+// 닉네임을 입력하는 input 요소에 대한 이벤트 리스너 추가
+const inputField = document.getElementById('new_nick');
 
+inputField.addEventListener('input', function() {
+    const newNickname = inputField.value; // 입력된 닉네임 값
 
+    fetch(`/checkNicknameX?nickname=${newNickname}`)
+    .then(response => {
+        if (response.ok) {
+            return response.text();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        const message = document.getElementById('nickname_message');
+        const submitButton = document.querySelector('.proBtn3'); // 변경 버튼 요소
+
+        if (data === 'available') {
+            message.textContent = '사용 가능한 닉네임입니다.';
+            message.style.color = 'rgb(0, 191, 255)'; // 파란색으로 변경
+            message.style.fontWeight = 'bold'; // 글씨 두껍게 설정
+            submitButton.style.display = 'block'; // 버튼 표시
+        } else if (data === 'unavailable') {
+            message.textContent = '이미 사용 중인 닉네임입니다.';
+            message.style.color = 'red'; // 빨간색으로 변경
+            message.style.fontWeight = 'bold'; // 글씨 두껍게 설정
+            submitButton.style.display = 'none'; // 버튼 숨기기
+        } else {
+            message.textContent = '서버 오류가 발생했습니다.';
+            // 서버 오류가 있을 때 실행할 내용
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // 에러 발생 시 처리
+    });
+});
 
 
 

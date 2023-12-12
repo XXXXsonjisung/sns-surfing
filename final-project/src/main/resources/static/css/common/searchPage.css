@@ -1,0 +1,33 @@
+  body{
+    height: 1080px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+  
+  
+	main{
+	    margin-left: 11%;
+	    width: 88%;
+	    height: 10000px;
+	    background-color: #ffffff;
+	    display: flex;
+	    flex-direction: column;
+	    flex: 1;
+	    align-items: center;
+	}
+	
+	.user_box {
+	    align-items: center;
+	    display: flex;
+	    flex-direction: column;
+	    width: 65%;
+	    margin-top: 100px;
+	    height: 10000px;
+	    margin-right: 250px;
+	}
+	
+	    hr {
+        width: 100%;
+    }
+

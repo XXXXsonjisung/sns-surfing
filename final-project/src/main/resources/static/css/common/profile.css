@@ -250,7 +250,7 @@ aside{
     }
 
     #new_nick {
-        width: 450px;
+        width: 600px;
         height: 20px;
 	    outline: none;
 	    font-size: 1rem;
@@ -258,8 +258,11 @@ aside{
 	    padding: 2% 6%;
 	    font-weight: bold;
 	    border: 1px solid #a5a1a1;
-	    margin-left: 5%;
     }
+    
+    .nickname_message {
+		font-weight: bold;
+	}
 
     .proBtn3 {
         height: 50px;
@@ -272,6 +275,7 @@ aside{
         margin-top: 5%;
         margin-left: 41%;
     }
+
     
     #deleteImage{
     position: absolute;
@@ -288,7 +292,7 @@ aside{
         background-color: rgb(230, 230, 255);
         font-weight: bolder;
         color: rgb(255, 0, 0);
-        margin-top: 25%;
+        margin-top: 35%;
         margin-bottom: 20%;
     }
     
