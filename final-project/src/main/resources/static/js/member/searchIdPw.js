@@ -66,7 +66,7 @@ const checkIdObj = {
 const memberName = document.getElementById("idEmailName");
 const memberEmail = document.getElementById("idEmailNum");
 const authKey = document.getElementById("idEmailAuthNum");
-
+const idEmailCheck = document.getElementById("idEmailCheck");
 
 
 
@@ -118,14 +118,8 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 
 			
 			fetch("/sendEmail/sendAuth?memberEmail=" + memberEmail.value)
-
-	
-		    authMin = 4;
-			authSec = 59;
-			
-
 			.then(res => res.text())
-			.then(result => {
+			.then(result => { 
 				if(result > 0) {
 					alert("인증번호가 발송 되었습니다.");
 					
@@ -161,7 +155,6 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	            }else if(result == 0 ){ 
 	                console.log("인증번호 발송 실패")
 	            }else{
-
 	                alert("가입 정보가 없는 이메일입니다.")
 	                checkIdObj.memberEmail = false;
 	                return;
@@ -174,5 +167,36 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 		}
 	});
 
+	// 인증 확인
+	const checkEmail = document.getElementById("checkEmail");
+	const certifyBtnEmail = document.getElementById("certifyBtnEmail");
 	
+	certifyBtnEmail.addEventListener("click",  () => {
+	
+	    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
+	        /* fetch API */
+	        const obj = {"inputKey":checkEmail.value, "memberEmail":tempEmail}
+	        const query = new URLSearchParams(obj).toString()
+	
+	        fetch("/email/checkAuthKey?" + query)
+	        .then(resp => resp.text())
+	        .then(result => {
+	            if(result > 0){
+	                clearInterval(authTimer);
+	                alert("인증되었습니다.");
+	                checkObj.authKey =true;
+	
+	            } else{
+	                alert("인증번호가 일치하지 않습니다.")
+	            }
+	        })
+	        .catch(err => console.log(err));
+	
+	
+	    } else{
+	        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
+	    }
+	
+	});
+
 }
