@@ -77,16 +77,48 @@ public class ChatRoomController {
 	}
 	
 	
-	// 친구 전부 조회
+	// 친구 초대를 위한 전부 조회
 	@GetMapping("/allFriends")
-	public List<Member> allFriends(@SessionAttribute("loginMember") Member loginMember) {
+	public List<Member> allFriends(@RequestParam("roomNo")int roomNo) {
 		
-     	int memberNo = loginMember.getMemberNo();
+		log.info("친구 조회를 위한 방번호 :"+roomNo);
 		
-		List<Member> allFriends = service.allFriends(memberNo);
+		
+		List<Member> allFriends = service.allFriends(roomNo);
 		
 		return allFriends;
 	}
+	
+	
+	
+	// 채팅방 참여중인 친구 조회
+	@GetMapping("/displayFriend")
+	public List<Member> displayFriend(@RequestParam("roomNo")int roomNo) {
+		
+		log.info("채팅방을 위한 방번호 :"+roomNo);
+		
+		List<Member> displayFriend = service.displayFriend(roomNo);
+		
+		return displayFriend;
+	}
+	
+	
+//	// 채팅방 참여중인 친구 조회
+//	@GetMapping("/displayFriend")
+//	public List<Member> displayFriend(@SessionAttribute("loginMember") Member loginMember,
+//			@RequestParam("roomNo")int roomNo) {
+//		
+//		log.info("채팅방을 위한 방번호 :"+roomNo);
+//		
+//     	int memberNo = loginMember.getMemberNo();
+//		
+//		List<Member> displayFriend = service.displayFriend(memberNo,roomNo);
+//		
+//		return displayFriend;
+//	}
+//	
+	
+	
 	
 	// 친구 초대 
 	@PostMapping("/invite")
