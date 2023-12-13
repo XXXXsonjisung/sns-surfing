@@ -52,7 +52,13 @@ public class ChattingController {
 	
 	//그룹채팅 선택 페이지 이동 
 	@GetMapping("/groupSetting")
-	public String groupSetting(Model model) {
+	public String groupSetting(Model model,@RequestParam(value="cca", required = false) String cca) {
+		
+		
+		if(cca!=null) {
+			
+		}
+		
 		
 		List<Chatting> roomList=roomService.findRoom();
 		
@@ -63,10 +69,11 @@ public class ChattingController {
 		for(Chatting room : roomList) {
 			int roomNo = room.getRoomNo();
 			List<String> tag =roomService.findRoomTag(roomNo);
-			log.info("채팅방 번호 리스트 : " + tag);
-			tags.addAll(tag);
+			String tagName = String.join(",", tag);
+			room.setTagName(tagName);
+			log.info("문자열로 만들기 :"+ tagName);
 		}
-		log.info("채팅방 번호 리스트 : " + tags);
+		log.info("다시 채팅방 리스트 : " + roomList);
 		
 		
 		

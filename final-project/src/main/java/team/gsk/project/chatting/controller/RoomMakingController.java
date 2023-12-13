@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -78,5 +80,34 @@ public class RoomMakingController {
 		
 		return "chatting/chatting_group";
 	}
+	
+	// 채팅방 가입
+	@GetMapping("/joinRoom")
+	@ResponseBody
+	public int joinRoom(@RequestParam("roomNo") int roomNo,
+			@SessionAttribute("loginMember") Member loginMember) {
+		
+		log.info("방번호  : "+ roomNo);
+		int memberNo = loginMember.getMemberNo();
+						
+		int result = service.insertMemberRoom(memberNo,roomNo);
+		
+		return result;
+		
+	}
+	
+	
+	
+	//채팅방 리스트 다시 정렬
+//	@GetMapping("/changeRoomList")
+//	@ResponseBody
+//	public String changeRoomList(@RequestParam("cca")int cca) {
+//		
+//		
+//		return result;
+//	}
+	
+	
+	
 	
 }

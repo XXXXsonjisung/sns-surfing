@@ -16,6 +16,8 @@
 		<!--해소테이블 컬럼-->
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="tagNo" column="TAG_NO" />
+		
+		<result property="memberCount" column="MEMBER_COUNT"/>
 	</resultMap>
 	
 	
@@ -62,13 +64,32 @@
 	
 	<!--채팅방 찾기-->
 	<select id="findRoom" resultMap="chatting_rm">
-		SELECT * FROM ROOM_GROUP
+		SELECT rg.*, COALESCE(mrn_count.count, 0) AS MEMBER_COUNT FROM ROOM_GROUP rg LEFT JOIN (SELECT ROOM_NO, COUNT(MEMBER_NO) AS count FROM MEMBER_ROOM_NO GROUP BY ROOM_NO ) mrn_count
+		ON mrn_count.ROOM_NO= rg.ROOM_NO
+		ORDER BY MEMBER_COUNT DESC
 	</select>
 	
 	<!--채팅방 태그찾기-->
 	<select id="findRoomTag">
 		SELECT rt.TAG_NAME  FROM TAG_ROOM_NO trn INNER JOIN ROOM_TAG rt ON rt.TAG_NO = trn.TAG_NO WHERE ROOM_NO = #{roomNo}
 	</select>	
+	
+	
+	<!--회원 채팅방 가입-->
+	<insert id="insertMemberRoom">
+		INSERT INTO MEMBER_ROOM_NO (ROOM_NO, MEMBER_NO)
+		SELECT #{roomNo}, #{memberNo} FROM DUAL
+		WHERE NOT EXISTS (
+    		SELECT 1 FROM MEMBER_ROOM_NO WHERE ROOM_NO = #{roomNo} AND MEMBER_NO = #{memberNo}
+			)
+	</insert>
+	
+	
+	
+	
+	
+	
+	
 	
 				
 </mapper>

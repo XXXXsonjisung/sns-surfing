@@ -73,7 +73,6 @@ chatroomList.addEventListener('click', function(event) {
     // 선택한 채팅방의 데이터 속성 값 가져오기
     roomNo = li.getAttribute('room-no');
 
-	// 기존 채팅 지우기 
   	clearChatArea();
     // 기존 메시지 불러와 화면에 표시
     fetchAndDisplayOldMessages(roomNo);
@@ -110,15 +109,27 @@ function displayChat(messages){
 
 // 메세지 추가 
 function appendMessage(message) {
+	
+	
      const messageElement = document.createElement('li');
         messageElement.className = 'target-chat';
 	
 		if(message.sender==memberNo){
-			messageElement.style.textAlign = 'right';
-	        messageElement.style.backgroundColor = '#cce6ff';
-		}
-
-     // 메시지 내용을 구성
+	        messageElement.style.display = 'flex';
+        	messageElement.style.justifyContent = 'flex-end';
+	          // 메시지 내용을 구성
+        messageElement.innerHTML = `
+            <div>
+                <p class="chat">${message.message}</p>
+                <span class="chatDate">${message.time}</span>
+            </div>
+        `;
+		
+		
+	        
+	        
+		}else{
+			  // 메시지 내용을 구성
         messageElement.innerHTML = `
             <img id="pro" src="/images/${message.sender}.jpg">
             <div>
@@ -126,9 +137,11 @@ function appendMessage(message) {
                 <p class="chat">${message.message}</p>
                 <span class="chatDate">${message.time}</span>
             </div>
-        `;
-		
-		
+        `;	
+			
+		}
+
+   
 		
         // messageArea에 메시지 요소 추가
         messageArea.appendChild(messageElement);
