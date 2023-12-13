@@ -479,4 +479,23 @@ function appendFriend(list) {
 }
 
 
+//채팅방 설정 페이지로
+function roomSetting(){
+	if(roomNo===null){
+		
+		alert("채팅방을 선택하세요");
+		
+	}else{
+			
+	window.location.href = '/chatting/roomSetting?roomNo='+roomNo;
+	}
+	
+
+	
+}
+
+
+
+
+
 

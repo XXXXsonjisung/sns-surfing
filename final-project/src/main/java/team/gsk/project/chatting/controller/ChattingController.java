@@ -157,8 +157,14 @@ public class ChattingController {
 	
     // 채팅방 설정 
     @GetMapping("/roomSetting")
-    public String roomSetting() {
+    public String roomSetting(@RequestParam("roomNo") int roomNo) {
 
+    	log.info("방번호 설정을 위한 :" +roomNo);
+    							
+		Chatting room =roomService.refindRoom(roomNo);
+		
+		log.info("방 확인 :" +room);
+    	
     	return "chatting/room_setting";
     }
     
