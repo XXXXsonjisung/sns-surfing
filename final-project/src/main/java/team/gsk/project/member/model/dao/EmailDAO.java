@@ -30,9 +30,9 @@ public class EmailDAO {
 	}
 
 
-	public int dupCheck(String memberEmail) {
+	public int dupCheckEmail(String memberEmail) {
 		
-		return mapper.dupCheck(memberEmail);
+		return mapper.dupCheckEmail(memberEmail);
 	}
 
 
@@ -46,5 +46,8 @@ public class EmailDAO {
 		
 		return mapper.checkAuth(map);
 	}
+
+
+
 
 }
