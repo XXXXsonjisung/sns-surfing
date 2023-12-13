@@ -118,6 +118,19 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 	public List<String> findRoomTag(int roomNo) {
 		return mapper.findRoomTag(roomNo);
 	}
+
+	
+	// 회원 채팅방 가입
+	@Override
+	public int insertMemberRoom(int memberNo, int roomNo) {
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("memberNo", memberNo);
+		map.put("roomNo", roomNo);
+		
+		return mapper.insertMemberRoom(map);
+	}
 	
 	
 	

@@ -22,4 +22,7 @@ public interface RoomMakingService {
 	// 채팅방 태그 찾기
 	List<String> findRoomTag(int roomNo);
 
+	// 회원 채팅방 가입
+	int insertMemberRoom(int memberNo, int roomNo);
+
 }

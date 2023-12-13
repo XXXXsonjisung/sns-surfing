@@ -35,6 +35,9 @@ public interface RoomMakingMapper{
 
 	// 채팅방 태그찾기
 	List<String> findRoomTag(int roomNo);
+	
+	// 회원 채팅방 가입
+	int insertMemberRoom(Map<String, Object> map);
 
 
 

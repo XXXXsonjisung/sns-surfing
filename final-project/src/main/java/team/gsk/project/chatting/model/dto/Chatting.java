@@ -46,5 +46,5 @@ public class Chatting {
 	private Integer memberName; // 참여자 번호
 	private int tagNo; // 태그 번호
 
-	
+	private int memberCount; // 채팅방 인원수
 }
