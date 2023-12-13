@@ -31,4 +31,6 @@ public interface UserService {
 
 	boolean checkNicknameX(String nickname);
 
+	int getCount(String memberId);
+
 }

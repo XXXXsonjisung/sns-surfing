@@ -51,6 +51,11 @@ public class UserController {
 
 	    Member member = service.getMemberX(memberId);
 	    
+	    int count = service.getCount(memberId);
+	    
+	    System.out.println("이것은 팔로워 숫자임 : " +count);
+	    
+	    model.addAttribute("count", count);
 	    model.addAttribute("member", member);
 	    
 	    
@@ -148,21 +153,24 @@ public class UserController {
 	 
 	 
 	 
-	 	@PostMapping("/searchHeader")
-	    @ResponseBody
-	    public String searchHeader(@RequestParam("searchValue") String value, Model model) {
-	 	  
-	 		List<Member> members = service.searchHeader(value); // memberService는 해당 기능을 수행하는 서비스 클래스입니다.
-	 	    
-	 		System.out.println("이것은 벨류값:" +value);
-	 		System.out.println(members);
-	 		
-	 		
-	 	    // 조회한 데이터를 모델에 담아서 searchPage로 전달합니다.
-	 	    model.addAttribute("members", members);
-	 	    
-	 	    return "common/searchPage";
-	 	}
+	 @GetMapping("/searchHeader")
+	 public String searchHeader(@RequestParam("searchValue") String value, Model model) {
+	     List<Member> members = service.searchHeader(value);
+
+	     System.out.println("이것은 벨류값:" + value);
+	     System.out.println("이것은 모델값:" + members);
+
+	     String message = "일치하는 결과 값이 없습니다.";
+
+	     if (members != null && !members.isEmpty()) {
+	         model.addAttribute("members", members);
+	         return "common/searchPage";
+	     } else {
+	         model.addAttribute("message", message);
+	         return "common/searchPage";
+	     }
+	 }
+	 	
 	 	
 	 	
 	 	@GetMapping("/checkNicknameX")

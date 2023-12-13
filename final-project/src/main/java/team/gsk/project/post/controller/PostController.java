@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;   
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -169,31 +170,35 @@ public class PostController {
 		 return posts;
 	 }
 	 
+
 	 
 	 @PostMapping("/addComment")
-	 public String addComment(@RequestParam(value="memberNo") int memberNo,
-			 					@RequestParam(value="memberProfile") String memberProfile,
-			 					@RequestParam(value="postNo") int postNo,
-			 					@RequestParam(value="comment") String postComment,
-			 					@RequestParam(value="memberNickname") String memberNickname) {
-		 
-		 
-		 System.out.println("Received comment : " + postComment);
-		 
-		 PostComment postCom = new PostComment();
-		 postCom.setMemberNo(memberNo);
-		 postCom.setMemberProfile(memberProfile);
-		 postCom.setPostNo(postNo);
-		 postCom.setPostComment(postComment);
-		 postCom.setMemberNickname(memberNickname);
-		 
-		 
-		 int addComment = service.addComment(postCom);
+	 public ResponseEntity<?> addComment(@RequestParam(value="memberNo") int memberNo,
+	                                     @RequestParam(value="memberProfile") String memberProfile,
+	                                     @RequestParam(value="postNo") int postNo,
+	                                     @RequestParam(value="comment") String postComment,
+	                                     @RequestParam(value="memberNickname") String memberNickname) {
+	     try {
+	         System.out.println("Received comment : " + postComment);
 
-		 
-		 return "common/main";
+	         PostComment postCom = new PostComment();
+	         postCom.setMemberNo(memberNo);
+	         postCom.setMemberProfile(memberProfile);
+	         postCom.setPostNo(postNo);
+	         postCom.setPostComment(postComment);
+	         postCom.setMemberNickname(memberNickname);
+
+	         int newComment = service.addComment(postCom);
+	         
+	         System.out.println(postCom);
+
+	         // 댓글 추가에 성공했다면 JSON 응답으로 성공 상태와 댓글 데이터를 반환합니다.
+	         return ResponseEntity.ok().body(postCom);
+	     } catch (Exception e) {
+	         // 댓글 추가에 실패한 경우에는 예외 처리를 통해 실패 상태를 반환할 수 있습니다.
+	         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	     }
 	 }
-	 
 	 
 	 
 	 @GetMapping("/getComments")

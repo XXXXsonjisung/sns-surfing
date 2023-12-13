@@ -1,5 +1,6 @@
 package team.gsk.project.main.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.security.core.Authentication;
@@ -10,11 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.member.model.service.MemberService;
+import team.gsk.project.member.model.service.UserService;
 
 
 @Controller
@@ -22,6 +25,9 @@ import team.gsk.project.member.model.service.MemberService;
 public class MainController {
 	
 
+	@Autowired
+	private UserService service;
+	
 	
 	@RequestMapping("/")
 	public String mainForward(Model model) {
@@ -29,6 +35,8 @@ public class MainController {
 //	return "chatting/chatting_choose";
 
 		return "common/main";
+		
+//		return "common/searchPage";
 
 
   }
@@ -52,17 +60,22 @@ public class MainController {
 
 
 }
-
 	
 	@GetMapping("/myPage")
-	public String myPageForward() {
-
-
+	public String myPageForward(@RequestParam(value="memberId", required=false) String memberId,
+									Model model) {
+		
+		int count = service.getCount(memberId);
+		
+		model.addAttribute("count", count);
 		
 		return "common/myPage";
+	}
+	
+	@GetMapping("/searchHeaderT")
+	public String searchPageTForward(@RequestParam(value="memberId", required=false) String memberId) {
 
-	
-	
+		return "common/searchPage";
 	}
 
 }

@@ -29,6 +29,10 @@
 	<th:block th:if="${session.loginMember}">
 	    <input type="hidden" id="P_memberNickname" th:value="${session.loginMember.memberNickname}">
 	</th:block>
+	
+	<th:block th:if="${session.loginMember}">
+	    <input type="hidden" id="S_memberId" th:value="${session.loginMember.memberId}">
+	</th:block>
     
 
     <main>

@@ -36,6 +36,27 @@
 		                <button class="proBtn" id="proBtn">변경</button>
 		            </nav>
 		    	</form>
+		    	<br>
+		    	<br>
+		    	<a id="p1">커버 사진</a>
+		    	<hr>
+		    	<form th:action="@{cover}" th:object="${session.loginMember}" method="POST" name="myPageFrm" id="profileFrm" enctype="multipart/form-data">
+		            <nav class="proBox">
+		                <div class="profile_img">
+							
+							<!-- 프로필 이미지가 없으면 기본 이미지 -->
+		                    <img  th:unless="*{profileImage}" th:src="@{/common/images/profile/profile.jpg}" id="profileImage">
+		                    
+		                    <!-- 프로필 이미지가 있으면 저장된 이미지 -->
+		                    <img th:if="*{profileImage}" th:src="*{profileImage}" id="profileImage">
+		                    
+		                </div>
+		                <label for="imageInput">이미지 선택</label>
+		                <input  type="file" name="profileImage" id="imageInput" accept="image/*">
+		                <button class="proBtn" id="proBtn">변경</button>
+		            </nav>
+		    	</form>
+		    	
             <a id="p1">회원 아이디</a>
             <hr>
             <a id="t1" th:text="${session.loginMember.memberId}">회원의 아이디</a>

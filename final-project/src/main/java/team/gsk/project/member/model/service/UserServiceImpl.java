@@ -89,4 +89,10 @@ public class UserServiceImpl implements UserService{
 		return dao.checkNicknameX(nickname);
 	}
 
+	@Override
+	public int getCount(String memberId) {
+		
+		return dao.getCount(memberId);
+	}
+
 }
