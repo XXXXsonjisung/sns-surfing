@@ -44,11 +44,11 @@ public class EmailController {
 	 */
 	@GetMapping("/sendAuth")
 	@ResponseBody
-	public String sendIdEmailAuth(@RequestParam(value="memberEmail", required=false) String memberEmail) {
+	public int sendIdEmailAuth(@RequestParam String memberEmail) {
 		
 		System.out.println(memberEmail);
 		
-	    int dupCheck = service.dupCheck(memberEmail);
+	    int dupCheck = service.dupCheckEmail(memberEmail);
 	    int result = 0;
 	    
 	    
@@ -59,20 +59,17 @@ public class EmailController {
 	    }
 	
 
-	    return "common/searchIdPw";
+	    return result;
 	}
 	
-    @GetMapping("/sendEmail/sendAuthKey")
-    @ResponseBody
-    public int sendAuthKey(String memberEmail) {
-    	return service.sendAuthKey(memberEmail);
-    }
 	
 	/** 이메일로 아이디 찾기 인증 확인
 	 * @param inputKey
 	 * @param memberEmail
 	 * @return
 	 */
+    @GetMapping("/searchId/checkAuthKey")
+    @ResponseBody 
 	public int checkAuth(String inputKey, String memberEmail) {
 		
 		return service.checkAuth(inputKey, memberEmail);

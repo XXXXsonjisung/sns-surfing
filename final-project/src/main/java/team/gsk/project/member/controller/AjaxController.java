@@ -26,6 +26,12 @@ public class AjaxController {
 		return service.checkNickname(nickname);
 	}
 	
+	@GetMapping("/dupCheck/email")
+	@ResponseBody
+	public int checkEmail(String email) {
+		return service.checkEmail(email);
+	}
+	
 
 }
 

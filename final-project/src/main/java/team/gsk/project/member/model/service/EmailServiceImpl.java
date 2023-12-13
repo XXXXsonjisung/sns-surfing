@@ -122,9 +122,8 @@ public class EmailServiceImpl implements EmailService{
 	}
 
 	@Override
-	public int dupCheck(String memberEmail) {
-
-		return dao.dupCheck(memberEmail);
+	public int dupCheckEmail(String memberEmail) {
+		return dao.dupCheckEmail(memberEmail);
 	}
 
 	
@@ -170,13 +169,13 @@ public class EmailServiceImpl implements EmailService{
     	
         e.printStackTrace();
         
-        return 0;
+        return  0;
     }
     
     Map<String, String> map = new HashMap<String, String>();
     
     map.put("authKey", authKey);
-    map.put("memberEmail", memberEmail);
+    map.put("email", memberEmail);
     
     int result = dao.updateAuthKey(map);
     
@@ -186,7 +185,7 @@ public class EmailServiceImpl implements EmailService{
 
     return result;
 
-	}
+	}	
 
 	@Override
 	public int checkAuth(String inputKey, String memberEmail) {
@@ -196,5 +195,7 @@ public class EmailServiceImpl implements EmailService{
 		
 	    return dao.checkAuth(map);
 	}
+
+
 
 }

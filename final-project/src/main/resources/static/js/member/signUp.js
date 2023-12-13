@@ -313,13 +313,13 @@ inputBirth.addEventListener("input", () => {
 		checkObj.inputBirth = true;
 		birthCheck.classList.add("confirm");
         birthCheck.classList.remove("error");
-		birthCheck.innerText = "유효한";
+		birthCheck.innerText = "유효한 날짜입니다";
 		
 	} else {
 		checkObj.inputBirth = false;
 		birthCheck.classList.remove("confirm");
         birthCheck.classList.add("error");
-		birthCheck.innerText = "유효하지 않은 ";
+		birthCheck.innerText = "유효하지 않은 날짜입니다";
 	}
 	
 			//오늘날짜 날짜 형식으로 지정

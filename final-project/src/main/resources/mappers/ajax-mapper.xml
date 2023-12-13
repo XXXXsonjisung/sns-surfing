@@ -59,7 +59,7 @@
 
 		SELECT COUNT(*)
 		FROM "AUTH_KEY"
-		WHERE EMAIL = #{memberEmail}
+		WHERE MEMBER_EMAIL = #{memberEmail}
 
 	</select>
 

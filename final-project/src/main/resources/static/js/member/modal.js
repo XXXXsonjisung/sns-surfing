@@ -3,7 +3,7 @@ const modal = document.querySelector('.modal');
 const searchAuthBtn = document.getElementsByClassName('searchBtn');
 const body = document.body;
 
-for (let i = 0; i < searchBtn.length; i++) {
+for (let i = 0; i < searchAuthBtn.length; i++) {
   searchAuthBtn[i].addEventListener('click', () => {
     modal.classList.toggle('show');
 	body.style.overflow = 'hidden';

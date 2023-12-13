@@ -23,6 +23,7 @@ const sendAuth = document.querySelectorAll(".sendAuth");
 const checkAuth = document.querySelectorAll(".checkAuth");
 const searchBtn = document.querySelectorAll(".searchBtn");
 
+
 const radioGroups = [
   { radio: idForPhone, elements: [idPhoneName, idPhoneTel, idPhoneAuthNum] },
   { radio: idForEmail, elements: [idEmailName, idEmailNum, idEmailAuthNum] },
@@ -114,9 +115,7 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 			
 			checkIdObj.memberEmail = false;
 			return;
-		}else {
-
-			
+		}else {			
 			fetch("/sendEmail/sendAuth?memberEmail=" + memberEmail.value)
 			.then(res => res.text())
 			.then(result => { 
@@ -126,11 +125,9 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 					tempEmail = memberEmail.value;
 
                		checkIdObj.memberEmail = true;
-
-               		
+		           
                		idEmailCheck.innerText = "4:59";
-
-               		
+		               		
                		authTimer = window.setInterval(()=>{
 
 	                idEmailCheck.innerText = "0" + authMin + ":" + (authSec < 10 ? "0" + authSec : authSec);
@@ -158,33 +155,32 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	                alert("가입 정보가 없는 이메일입니다.")
 	                checkIdObj.memberEmail = false;
 	                return;
-	            }	
-			})	
-			.catch(err => {
+	            }
+    		})
+        .catch(err => {
             console.log("이메일 발송 중 에러 발생");
-            console.log(err);								
-			});
-		}
+            console.log(err);
+        });
+    	}	
 	});
-
-	// 인증 확인
-	const checkEmail = document.getElementById("checkEmail");
-	const certifyBtnEmail = document.getElementById("certifyBtnEmail");
 	
-	certifyBtnEmail.addEventListener("click",  () => {
+	// 이메일로 아이디 찾기 인증 확인
+	const secondCheckAuth = checkAuth[1];
+	
+	secondCheckAuth.addEventListener("click",  () => {
 	
 	    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
 	        /* fetch API */
-	        const obj = {"inputKey":checkEmail.value, "memberEmail":tempEmail}
+	        const obj = {"inputKey":idEmailAuthNum.value, "memberEmail":tempEmail}
 	        const query = new URLSearchParams(obj).toString()
 	
-	        fetch("/email/checkAuthKey?" + query)
+	        fetch("/sendEmail/searchId/checkAuthKey?" + query)
 	        .then(resp => resp.text())
 	        .then(result => {
 	            if(result > 0){
 	                clearInterval(authTimer);
 	                alert("인증되었습니다.");
-	                checkObj.authKey =true;
+	                checkIdObj.authKey =true;
 	
 	            } else{
 	                alert("인증번호가 일치하지 않습니다.")
@@ -199,4 +195,57 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	
 	});
 
-}
+	function searchIdforEmail(e) {
+		
+		if(memberName.value.trim() == ""){
+	        alert("이름을 입력해주세요");
+	        e.preventDefault();
+	        memberName.focus();
+	        checkIdObj.memberName = false;
+	        return;
+	    } else {
+	        checkIdObj.memberName = true;
+	    }
+	
+	    if(memberEmail.value.trim() == ""){
+	        alert("이메일을 입력해주세요");
+	        e.preventDefault();
+	        memberEmail.focus();
+	        checkIdObj.memberEmail = false;
+	        return;
+	    } 
+	
+	    if(checkEmail.value.trim() == ""){
+	        alert("이메일 인증을 진행해주세요");
+	        e.preventDefault();
+	        checkEmail.focus();
+	        checkIdObj.authKey = false;
+	        return;
+	    } 
+		
+		for(let key in checkIdObj){
+	
+	        if(!checkIdObj[key]){ 
+	
+	            switch(key){
+	            case "memberName": 
+	                alert("이름이 유효하지 않습니다"); break;
+	
+	            case "memberEmail": 
+	                alert("이메일이 유효하지 않습니다"); break;
+	
+	            case "authKey": 
+	                alert("인증 확인이 유효하지 않습니다."); break;
+	            }
+	            
+	            e.preventDefault(); 
+	            return; 
+	        }
+	    }		
+	}
+
+
+}	
+
+
+
