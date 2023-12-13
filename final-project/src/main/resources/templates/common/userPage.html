@@ -95,7 +95,7 @@
 
                 <p id="user" th:text="${member.memberNickname}">user</p>
                 <label class="myFL">
-	                <a class="followText">팔로워 :</a>
+	                <a class="followText" th:text="'팔로워 : ' + ${count}">팔로워 :</a>
 				</label>
 				
 				
@@ -135,8 +135,6 @@
                     </div>
                     <div class="comment_right">
                         <a>하트수:</a>
-
-                        <a>조회수:</a>
                    
                         <a>댓글수:</a>
                         <button class="commentBtn">댓글달기</button>

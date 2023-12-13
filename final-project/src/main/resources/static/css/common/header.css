@@ -237,9 +237,8 @@ header>div>div:nth-child(1){
 
 /* 검색 버튼 이미지 */
 #search_icon{
-
     height: 30px;
-
+    cursor: pointer;
 }
 
 

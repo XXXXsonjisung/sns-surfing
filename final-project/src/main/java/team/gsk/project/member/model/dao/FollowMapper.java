@@ -20,5 +20,7 @@ public interface FollowMapper {
 
 	List<Follow> getFolloingDataByMemberId(String memberId);
 
+	int getCount(String memberId);
+
 
 }

@@ -107,6 +107,53 @@
 	
 	    reader.readAsDataURL(file);
 	});
+	
+	
+	document.getElementById('videoInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+	    reader.onload = function(e) {
+	        const video = document.createElement('video');
+	        video.src = e.target.result;
+	        video.controls = true;
+	        video.style.maxWidth = '300px'; // 동영상의 최대 너비 설정
+	        video.style.maxHeight = '300px'; // 동영상의 최대 높이 설정
+	
+	        const postContent = document.createElement('div');
+	        postContent.classList.add('post');
+	        
+	        const postHead = document.createElement('div');
+	        postHead.classList.add('post_head');
+	
+	        const profile = document.createElement('div');
+	        profile.classList.add('profile');
+	
+	        const profileImg = document.createElement('img');
+	        profileImg.src = "@{/images/post/555.jpg}"; // 사용자 이미지 경로
+	
+	        profile.appendChild(profileImg);
+	
+	        const username = document.createElement('h1');
+	        username.textContent = "@{session.loginMember}"; // 사용자 이름
+	
+	        postHead.appendChild(profile);
+	        postHead.appendChild(username);
+	
+	        const postContentDiv = document.createElement('div');
+	        postContentDiv.classList.add('post_content');
+	        postContentDiv.appendChild(video);
+	
+	        postContent.appendChild(postHead);
+	        postContent.appendChild(postContentDiv);
+	
+	        const userPost = document.createElement('div');
+	        userPost.classList.add('user_post');
+	        userPost.appendChild(postContent);
+	    }
+	
+	    reader.readAsDataURL(file);
+	});
 
 
 //--------------------------------------------------
@@ -114,6 +161,19 @@
 
 // 헤더의 모달 내 게시 버튼을 눌렀을 때 실행되는 함수
 function createPost() {
+	
+	 function modalClose() {
+        const modalPostContent = document.getElementById('modalPostContent');
+        modalPostContent.innerText = ''; // 모달 텍스트 초기화
+
+        const imageInput = document.getElementById('imageInputXX');
+        imageInput.value = ''; // 이미지 입력란 초기화
+
+        const videoInput = document.getElementById('videoInput');
+        videoInput.value = ''; // 비디오 입력란 초기화
+    }
+	
+	
     fetch('/userinfo')
         .then(response => response.json())
         .then(data => {
@@ -168,15 +228,24 @@ function createPost() {
             formData.append('content', modalText);
             
    
-        
-            if (imageFile) {
-		         console.log("imageFile::" ,imageFile);
-                formData.append('imageUrls', imageFile); 
-            }
-        
-            if (videoFile) {
-                formData.append('videoUrls', videoFile);
-            }
+   			 if (imageFile) {
+		        formData.append('imageUrls', imageFile);
+		    } else {
+		        // 이미지 파일이 없는 경우에는 빈 Blob을 추가합니다.
+		        const emptyBlob = new Blob([''], { type: 'text/plain' });
+		        formData.append('imageUrls', emptyBlob);
+		    }
+		
+		    // 비디오 파일이 있는 경우에만 FormData에 추가
+		    if (videoFile) {
+		        formData.append('videoUrls', videoFile);
+		    } else {
+		        // 비디오 파일이 없는 경우에는 빈 Blob을 추가합니다.
+		        const emptyBlob = new Blob([''], { type: 'text/plain' });
+		        formData.append('videoUrls', emptyBlob);
+		    }
+            
+            
         
             fetch('/savePost', {
                 method: 'POST',
@@ -203,20 +272,12 @@ function createPost() {
 /*-------------------- 검색 ------------------------------------*/
 
 
-
 document.getElementById('search_icon').addEventListener('click', function() {
     const inputValue = document.getElementById('search_id').value; // 입력된 값 가져오기
-    
-    alert('눌림');
+    const url = `/searchHeader?searchValue=${inputValue}`;
 
-    // AJAX 요청 보내기
-    fetch('/searchHeader', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `searchValue=${inputValue}`, // 입력값을 요청에 첨부
-    })
+    // AJAX GET 요청 보내기
+    fetch(url)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok.');
@@ -230,5 +291,4 @@ document.getElementById('search_icon').addEventListener('click', function() {
         console.error('Request failed!', error);
     });
 });
-
 

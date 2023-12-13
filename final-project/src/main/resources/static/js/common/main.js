@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         </div>
                         <div class="comment_right">
                             <a>하트수 : ${post.heartCount}</a>
-                            <a>조회수 : </a>
                             <a>댓글수 : ${post.commentsCount}</a>
                             <button class="commentBtn" data-post-id="${post.postNo}">댓글달기</button>
                         </div>
@@ -253,8 +252,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	  } else {
 	    commentInputSection.style.display = 'none';
 	  }
-
-	  
+	    
 		      // 폼 데이터 구성
 	  const formData = new FormData();
 	  formData.append('memberNo', memberNo);
@@ -262,35 +260,45 @@ document.addEventListener("DOMContentLoaded", function() {
 	  formData.append('comment', postComment);
 	  formData.append('memberProfile', memberProfile);
 	  formData.append('memberNickname', memberNickname);
+	  
+	  
 	
 	  fetch('/addComment', {
 	    method: 'POST',
 	    body: formData
 	  })
 	  .then(response => response.json())
-	  .then(newComment => {
-	    const commentList = document.querySelector('.commentList');
+	  .then(postCom => {
+	    // 새로운 댓글 HTML 생성
 	    const newCommentElement = document.createElement('div');
-	    newCommentElement.classList.add('newCommentX');
-	    // 실제 댓글 데이터를 이용하여 HTML 구조 만들기
+	    newCommentElement.classList.add('commentItem');
 	    newCommentElement.innerHTML = `
-	      <div class="newComment">
-	      	<div class="newCommentImg">
-		        <img src="${newComment.memberProfile}" alt="Profile Image">	
-	      	</div>
-	        <sqan>${newComment.memberNickname}</span>      	
-	        <p>${newComment.comment}</p>
+	      <div class="commentContentTT">
+	        <div class="commentProfileTT">
+	          <img src="${postCom.memberProfile}" alt="Profile Image">
+	        </div>
+	        <div class="commentDetailsRR">
+	          <p id="comNick">${postCom.memberNickname}</p>
+	          <p>${postCom.postComment}</p>
+	        </div>
 	      </div>
 	    `;
-	    commentList.appendChild(newCommentElement);
+	
+	    // 새로운 댓글을 모달의 댓글 목록에 추가
+	    const commentListContainer = modalXC.querySelector('.commentList');
+	    commentListContainer.appendChild(newCommentElement);
 	  })
 	  .catch(error => {
 	    console.error('Error adding comment:', error);
 	  });
+	  
+	  commentInput.value = '';
+	  
 	});
-		  
+
 	});
 	
+
 
 	
 	//---------------------------------------------------------------------

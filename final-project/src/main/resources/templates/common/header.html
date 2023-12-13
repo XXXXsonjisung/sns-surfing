@@ -2,6 +2,10 @@
 
 
 <header>
+	    <th:block th:if="${session.loginMember}">
+		    <input type="hidden" id="S_memberId" th:value="${session.loginMember.memberId}">
+		</th:block>
+	
         <div class="logo_img">
 			<a th:href="@{/}">
 	            <img th:src="@{/common/images/Rectangle110.png}" id="logo">			
@@ -14,9 +18,9 @@
             <form action="#">
                 <fieldset id="search">
                     <input id="search_id" type="search" placeholder="검색" >
-                    <button>
-                        <img th:src="@{/common/images/Rectangle112.png}" id="search_icon">
-                    </button>
+                    <a id="search_icon">
+                        <img th:src="@{/common/images/Rectangle112.png}">							
+                    </a>
                 </fieldset>
             </form>
         </nav>
@@ -27,7 +31,7 @@
             </div>
             <div>
 				<th:block th:if="${session.loginMember}">
-					<a id="mygo" th:href="@{/myPage}">My Page</a>
+					<a id="mygo" th:href="@{/myPage(memberId=${session.loginMember.memberId})}">My Page</a>
 				</th:block>
                 <button class="w-btn-neon2" type="button">
                     업로드

@@ -104,6 +104,12 @@ public class MemberDAO {
 	}
 
 
+	public int getCount(String memberId) {
+		
+		return Fmapper.getCount(memberId);
+	}
+
+
 
 
 }
