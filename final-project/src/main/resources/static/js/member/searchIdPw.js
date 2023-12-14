@@ -178,10 +178,10 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	        .then(resp => resp.text())
 	        .then(result => {
 	            if(result > 0){
-	                clearInterval(authTimer);
-	                alert("인증되었습니다.");
+	                clearInterval(authTimer); 
+	                idEmailCheck.innerText = "인증되었습니다";
 	                checkIdObj.authKey =true;
-	
+	                alert("인증되었습니다.");
 	            } else{
 	                alert("인증번호가 일치하지 않습니다.")
 	            }
@@ -194,58 +194,56 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	    }
 	
 	});
-
-	function searchIdforEmail(e) {
 		
-		if(memberName.value.trim() == ""){
-	        alert("이름을 입력해주세요");
-	        e.preventDefault();
-	        memberName.focus();
-	        checkIdObj.memberName = false;
-	        return;
-	    } else {
-	        checkIdObj.memberName = true;
-	    }
-	
-	    if(memberEmail.value.trim() == ""){
-	        alert("이메일을 입력해주세요");
-	        e.preventDefault();
-	        memberEmail.focus();
-	        checkIdObj.memberEmail = false;
-	        return;
-	    } 
-	
-	    if(checkEmail.value.trim() == ""){
-	        alert("이메일 인증을 진행해주세요");
-	        e.preventDefault();
-	        checkEmail.focus();
-	        checkIdObj.authKey = false;
-	        return;
-	    } 
-		
-		for(let key in checkIdObj){
-	
-	        if(!checkIdObj[key]){ 
-	
-	            switch(key){
-	            case "memberName": 
-	                alert("이름이 유효하지 않습니다"); break;
-	
-	            case "memberEmail": 
-	                alert("이메일이 유효하지 않습니다"); break;
-	
-	            case "authKey": 
-	                alert("인증 확인이 유효하지 않습니다."); break;
-	            }
-	            
-	            e.preventDefault(); 
-	            return; 
-	        }
-	    }		
-	}
+}
 
 
-}	
+const searchIdForEmail = document.getElementById("searchIdForEmail");
+const modal = document.querySelector('.modal');
+const back_btn = document.getElementById("back_btn");
+const body = document.body;
+
+searchIdForEmail.addEventListener("click", e => {
+
+	modal.classList.toggle('show');
+	body.style.overflow = 'hidden';
+    e.stopPropagation();
+});
+
+
+modal.addEventListener('click', e => {
+    if (e.target === modal) {
+        modal.classList.remove('show');
+        body.style.overflow = 'auto';
+    }
+});
+
+back_btn.addEventListener('click', () => {
+    modal.classList.remove('show');
+    body.style.overflow = 'auto';
+});
+
+	
+
+var idV = "";
+// 아이디 값 받고 출력하는 ajax
+
+fetch("/member/findId", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+        "memberName": idEmailName.val(), 
+        "memberEmail": idEmailNum.val()
+    })
+})
+.then(response => response.text()) // 서버에서 문자열로 응답하므로 text()로 받음
+.then(data => {
+    $('#id_value').text(data);
+    idV = data; // 아이디값 저장
+})
+.catch(err => console.log(err));
 
 
 

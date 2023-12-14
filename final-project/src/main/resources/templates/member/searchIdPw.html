@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<th:block th:replace="~{member/modal}"></th:block>
+	<th:block th:replace="~{member/modal}"></th:block> 
 	
     <div id="logos">
         <img id="logo" th:src="@{/images/20231114115318_93362.png}">
@@ -21,14 +21,14 @@
     </div>
 
     <section id="side">
-		<form id="idForm">
+		<form id="findIdFrm">
 			
         	<div id="leftSide">
 				
            		<div id="idTitleBox">
                		<p id="idTitle">아이디 찾기</p>        
            		</div>
-            
+             
 	            <fieldset class="searchId">
 	
 	                <div class="inputBox">
@@ -81,7 +81,7 @@
 								</dd>
 	                        </dl>
 	                        
-	                        <button onclick="searchIdforEmail" class="searchBtn" disabled>찾기</button>
+	                        <button id="searchIdForEmail" class="searchBtn" disabled>찾기</button>
 	                        
 	                    </div>
 	
@@ -153,7 +153,6 @@
                     
                 </fieldset>
             </form>
-        </div>
     </section>
     <div id="back">
         <a th:href="@{/loginPage}" id="backBtn">돌아가기</a>
