@@ -42,6 +42,12 @@ public interface RoomMakingMapper{
 	//채팅방 설정을 위해 다시 찾기
 	Chatting refindRoom(int roomNo);
 
+	// 채팅방 회원 찾기
+	List<Member> refindMember(int roomNo);
+
+	// 강퇴
+	int kickMembers(Map<String, Object> map);
+
 
 
 	
