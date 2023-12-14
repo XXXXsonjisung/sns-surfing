@@ -64,291 +64,426 @@ button,a {
 
 
 
-.content-1{
-
-    width: 60%;
-    height: 100%;
-    padding-top: 1%;   
-
-   
-
-
-}
-
-
-/* 설정(제목) 밑줄  */
-.content-1::before{
-
-    content : "";
-    position: absolute;
-    left    : 13%;
-    bottom  : 0;
-    height  : 86%;
-    width   : 30%;  /* or 100px */
-    border-top:2px solid black;
-   
-
-
-}
-
-
-
-.content-1 form{
-
-    height: 100%;
-    width: 100%;
-
-}
-
-
-
-
-
-    /* 설정 라벨들 일괄 설정 */
-    .content-1 label{
-
-        border-bottom: 1px solid black;
-        display: inline-block;
-        margin-bottom: 5px;
-        margin-left: 15px; 
-        font-weight: bold;
-
-    }
-
-
-
-/* /// */
-
-
-    /* 채팅그룹태그선택 */
-    .group_choose{
-        height: 10%;
-        width: 30%;
-        display: inline-block;
-        vertical-align: middle;
-        text-align: left;
-
-    }
-
-
-
-    .room_name>div,.pepole_limit>div,.group_choose>div,
-     .room_introduce>div, .fileUpload>input{
-        /* input 입력창과 제목 label을 정렬시키기 위해서 */
-        padding-left: 15px;
-     }
-
-
-
-
-    /* 공개여부 */
-    .public_or_not{
-        height: 10%;
-        width: 30%; 
-      
-
-    }
-
-
-    
-
-
-
-
-
-    .public_or_not div label{
-       
-       cursor: pointer;
-      
-        background-color: white;
-        border: none;
-        width: 30%;
-        height: 20%;
-        text-align: center;
-        font-weight: 500;
-
-    }
-
-
-    .custom-checkbox.checked{
-       
-       background-color: #5B9FC6;
-       opacity : 0.7;
-        
-       
- 
-     }
-
-
-
-     /* 인원수 제한 */
-
-     .pepole_limit{
-
-        width: 30%;
-        height: 10%;
-
-
-     }
-
-
-     .pepole_limit #pepole_limit{
-
-        background-color: #D9D9D9;
-        opacity : 0.7;
-        border: none;
-        width: 20%;
-        height: 30px;
-        text-align: center;
-
-     }
-
-
-
-     /* 채팅방이름 */
-
-     .room_name{
-
-        width: 30%;
-        height: 10%;
-        
-
-
-     }
-
-
-    
-
-     #room_name{
-
-        background-color: #D9D9D9;
-        opacity : 0.7;
-        border: none;
-        width: 80%;
-        height: 30px;
-        text-align: center;
-       
-        
-
-     }
-
-     /* 채팅방소개 */
-
-     .room_introduce{
+   .content-1{
 
         width: 60%;
-        height: 20%;
-      
+        height: 90%;
 
-     }
-
-   
-
-
-     #room_introduce{
-        background-color: #D9D9D9;       
-        opacity : 0.7;
-        border: none;
-        width: 90%;
-        height: 80px;
+       
+    
+    
+    }
+    
+    
   
-
-
-     }
-
-
-     /* 초대창 */
-     
-     .invite{
-
-        width: 90%;
-        height: 30%;
-        display: flex;
-      
     
-
-       
-     }
-
-
     
-     .invi-1{
-
-        width: 60%;
+    .content-1 form{
+    
         height: 100%;
+        width: 100%;
+    
+    }
 
-     }
 
-     .search-nickname, .search-nickname::placeholder{
-        height: 30px;
-        width: 98%;
-        text-align: right;
-        background-color: #7EA2FF;
-        color: white;
+    .content-1 form>div{
+    
+        margin-bottom: 5px;
+    
+    }
+    
+    
+    
+    
+    
+    
+        /* 설정 라벨들 일괄 설정 */
+        .content-1 label{
+    
+            border-bottom: 1px solid black;
+            display: inline-block;
+            margin-bottom: 5px;
+            margin-left: 15px; 
+            font-weight: bold;
+    
+        }
+    
+    
+    
+    /* /// */
+    
+    
+        /* 채팅그룹태그선택 */
+        .group_choose{
+            height: 10%;
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            
+    
+        }
 
-     
-     }
+        .group_con{
+            display: flex;
+            margin-bottom: 50px;
 
+
+        }
+
+
+        #tagsInput{    
+            width: 15%; 
+        
+        }
+        
+       
+
+        
+        #tagsInput:focus {outline:none;}
 
  
 
-     /* 초대가능한 테이블  */
-    .invite_table{
-    
-        width: 100%;
-     }
-
-
-     .invite_table tr{
-        background-color: #D4E5FF;
-
-     }
-
-     .invite_table img{
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
+            z-index: 9999; /* 모달 창 위에 표시되도록 설정 */
+        }
         
-        height: 50px;
-        width: 50px;
-     }
-
-
-     .table_img{
-
-        width: 15%;
-     }
-
-
-     /*프로필사진 변경  */
-
-     .fileUpload{
-
-        width: 40%;
-     }
 
 
 
+        /* 숨겨진 태그 리스트 */
+        .tag-container{
 
-     /*수정하기 돌아가기 */
-     .last_button{
+            width: 700px;
+            height: 500px;
+            border: 1px solid black;
+            background-color: white;
 
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-
-     }
-
-     .last_button>button{
-
-       background: none;
-       background-color: #EBF0FF;
-       border-radius: 10%;
-       height: 50px;
-       width: 200px;
-       border: none;
-       font-weight: bold;
-     }
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
 
+      
+
+        /* 모달 창 닫기 버튼*/
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+          }
+
+
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        
+
+
+
+
+        /* 태그리스트 */
+        .tagList{
+            border: 1px solid black;
+            width: 100%;
+            height: 20%;
+            
+
+        }
+
+        .tagList-detail{
+            height: 70%;
+
+        }
+
+
+
+        .firstList{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid black;
+            list-style: none;
+            height: 60%;
+            padding: 0;
+            grid-gap: 10px;
+
+        }
+
+        .firstList>li{
+
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            
+        }
+
+     
+
+
+        .firstList>li>span{
+
+            position: relative;
+            top: 2px;
+            font-size: 13px;
+            color: #0184e5;
+            vertical-align: top;
+        }
+
+
+        /* 채팅그룹 세부 종류 선택 */
+
+        .secondList{
+            height: 100%;
+            display: flex;
+            gap: 10px;
+            border: solid 1px #00ffcb;
+            padding: 0;
+
+        }
+
+        .list-item{
+
+  
+            border: solid 1px #00ffcb;
+            height: 100%;
+            width: 100%;
+            list-style: none;
+          
+        }
+
+        .detail-tiem{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10%;
+            border: solid 1px #00ffcb;
+            cursor: pointer;
+        
+        }
+    
+    
+        .room_name>div,.pepole_limit>div,.group_choose>div,
+         .room_introduce>div, .fileUpload>input{
+            /* input 입력창과 제목 label을 정렬시키기 위해서 */
+            padding-left: 15px;
+         }
+    
+    
+    
+    
+        /* 공개여부 */
+        .public_or_not{
+            height: 10%;
+            width: 30%; 
+          
+    
+        }
+    
+    
+    
+    
+        .public_or_not div label{
+           
+       
+          
+            background-color: white;
+            border: none;
+            width: 30%;
+            height: 20%;
+            text-align: center;
+            font-weight: 500;
+    
+        }
+    
+    
+        .custom-checkbox.checked{
+           
+           background-color: #5B9FC6;
+           opacity : 0.7;
+            
+           
+     
+         }
+
+       
+    
+    
+         /* 인원수 제한 */
+    
+         .pepole_limit{
+    
+            width: 30%;
+            height: 10%;
+    
+    
+         }
+    
+    
+         .pepole_limit #pepole_limit{
+    
+            background-color: #D9D9D9;
+            opacity : 0.7;
+            border: none;
+            width: 20%;
+            height: 30px;
+            text-align: center;
+    
+         }
+    
+    
+    
+         /* 채팅방이름 */
+    
+         .room_name{
+    
+            width: 30%;
+            height: 10%;
+            
+    
+    
+         }
+    
+    
+        
+    
+         #room_name{
+    
+            background-color: #D9D9D9;
+            opacity : 0.7;
+            border: none;
+            width: 80%;
+            height: 30px;
+            text-align: center;
+           
+            
+    
+         }
+    
+         /* 채팅방소개 */
+    
+         .room_introduce{
+    
+            width: 60%;
+            height: 20%;
+          
+    
+         }
+    
+       
+    
+    
+         #room_introduce{
+            background-color: #D9D9D9;       
+            opacity : 0.7;
+            border: none;
+            width: 90%;
+            height: 80px;
+      
+    
+    
+         }
+    
+    
+         /* 초대창 */
+         
+         .invite{
+    
+            width: 90%;
+            height: 30%;
+            display: flex;
+
+        
+    
+           
+         }
+    
+    
+        
+         .invi-1{
+    
+            width: 60%;
+            height: 100%;
+    
+         }
+    
+         .search-nickname, .search-nickname::placeholder{
+            height: 30px;
+            width: 98%;
+            text-align: right;
+            background-color: #7EA2FF;
+            color: white;
+            margin-left: 2%;
+         
+         }
+    
+    
+     
+    
+         /* 초대가능한 테이블  */
+        .invite_table{
+        
+            width: 100%;
+            margin-left: 2%;
+         }
+    
+    
+         .invite_table tr{
+            background-color: #D4E5FF;
+    
+         }
+    
+         .invite_table img{
+            
+            height: 50px;
+            width: 50px;
+         }
+    
+    
+         .table_img{
+    
+            width: 15%;
+         }
+    
+    
+         /*프로필사진 변경  */
+    
+         .fileUpload{
+    
+            width: 40%;
+         }
+    
+    
+         #preview{
+            margin-left: 5%;
+            width: 40%;
+            height: 60%;
+            border-radius: 50%;
+            border: 1px darkblue solid;
+            border-radius: 100%;
+            object-fit: cover;
+
+
+         }
+         
+    
 
 
      /* ////////////////////////////////////////////////////// */

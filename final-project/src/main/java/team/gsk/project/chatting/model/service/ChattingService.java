@@ -33,6 +33,7 @@ public interface ChattingService {
 	// 채팅방 친구 조회
 	List<Member> displayFriend(int roomNo);
 
+
 	
 
 }

@@ -157,8 +157,18 @@ public class ChattingController {
 	
     // 채팅방 설정 
     @GetMapping("/roomSetting")
-    public String roomSetting() {
+    public String roomSetting(@RequestParam("roomNo") int roomNo,Model model) {
 
+    							
+		Chatting room =roomService.refindRoom(roomNo);
+		model.addAttribute("inputChatting", room);
+		log.info("방 확인 :" +room);
+		
+    	List<Member> memberList = roomService.refindMember(roomNo);
+    	log.info("채팅방 회원 확인 :" +memberList);
+    	model.addAttribute("memberList",memberList);
+    	
+		
     	return "chatting/room_setting";
     }
     
