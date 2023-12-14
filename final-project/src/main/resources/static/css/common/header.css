@@ -107,6 +107,8 @@ nav>form{
     align-items: center;
     position: relative;
     border: none;
+    margin-left: 20%;
+    margin-top: -1%;
 }
 
 #search_id {
@@ -135,12 +137,13 @@ nav>form{
 
 }*/
 
-#search>button{
+#search>a{
     position: absolute;
     border: none;
     outline: none;
     background: none;
     margin-left: 90%;
+    margin-top: 1%;
     box-shadow: 0px 0px 0px;
 
 

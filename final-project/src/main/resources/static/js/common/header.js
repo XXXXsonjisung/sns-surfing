@@ -272,23 +272,8 @@ function createPost() {
 /*-------------------- 검색 ------------------------------------*/
 
 
-document.getElementById('search_icon').addEventListener('click', function() {
-    const inputValue = document.getElementById('search_id').value; // 입력된 값 가져오기
-    const url = `/searchHeader?searchValue=${inputValue}`;
-
-    // AJAX GET 요청 보내기
-    fetch(url)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
-        return response.text();
-    })
-    .then(data => {
-        console.log(data); // 서버에서 받은 응답 확인
-    })
-    .catch(error => {
-        console.error('Request failed!', error);
-    });
-});
+function sendSearch() {
+    var searchValue = document.getElementById("search_id").value;
+    window.location.href = "/searchPage?searchValue=" + encodeURIComponent(searchValue);
+}
 

@@ -95,4 +95,10 @@ public class UserServiceImpl implements UserService{
 		return dao.getCount(memberId);
 	}
 
+	@Override
+	public Member search(String value) {
+		
+		return dao.search(value);
+	}
+
 }

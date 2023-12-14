@@ -18,7 +18,6 @@
 	}
 	
 	.user_box {
-	    align-items: center;
 	    display: flex;
 	    flex-direction: column;
 	    width: 65%;
@@ -30,4 +29,49 @@
 	    hr {
         width: 100%;
     }
+    
+    .profile{
+		display: flex;
+		align-items: flex-start;
+	}
+	
+	.profile-picture {
+		width: 120px;
+        height: 120px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        position: relative; /* 포지션을 상대적으로 변경합니다 */
+        margin-left: 20%;
+        margin-top: 2%;
+        transition: transform 0.2s;
+        cursor: pointer;
+	}
+	
+	.profile-picture img {
+        position: absolute; /* 포지션을 절대적으로 변경합니다 */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .profile-info {
+		width: 50%;
+		height: 30px;
+	}
 
+	.profile-info > p {
+		font-weight: bold;
+		margin-left: 12%;
+	}
+	
+	#inputA {
+		margin-left: 20%;
+	}
+	
+	.id {
+		margin-top: 12%;
+	}

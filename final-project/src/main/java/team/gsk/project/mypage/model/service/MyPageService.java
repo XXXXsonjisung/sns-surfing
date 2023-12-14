@@ -37,6 +37,14 @@ public interface MyPageService {
 	 * @return
 	 */
 	int secession(String memberPw, int memberNo);
+
+
+	/** 커버 이미지 수정 서비스
+	 * @param coverImage
+	 * @param loginMember
+	 * @return
+	 */
+	int updateCover(MultipartFile coverImage, Member loginMember) throws Exception;
 	
 	
 

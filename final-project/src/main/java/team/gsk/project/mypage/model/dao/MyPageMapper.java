@@ -37,6 +37,12 @@ public interface MyPageMapper {
 	 */
 	public int secession(int memberNo);
 
+	/** 커버 이미지 수정 
+	 * @param loginMember
+	 * @return
+	 */
+	public int updateCoverImage(Member loginMember);
+
 
 	
 	

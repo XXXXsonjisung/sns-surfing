@@ -30,6 +30,8 @@ public interface MemberMapper {
 
 	boolean checkNicknameX(String nickname);
 
+	Member search(String value);
+
 
 
 

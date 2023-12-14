@@ -110,6 +110,12 @@ public class MemberDAO {
 	}
 
 
+	public Member search(String value) {
+		
+		return mapper.search(value);
+	}
+
+
 
 
 }
