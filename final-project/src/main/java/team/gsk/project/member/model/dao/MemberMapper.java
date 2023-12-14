@@ -1,6 +1,7 @@
 package team.gsk.project.member.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -29,6 +30,8 @@ public interface MemberMapper {
 	List<Member> searchHeader(String value);
 
 	boolean checkNicknameX(String nickname);
+
+	String findId(Map<String, Object> map);
 
 
 
