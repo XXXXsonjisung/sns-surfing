@@ -25,4 +25,13 @@ public interface RoomMakingService {
 	// 회원 채팅방 가입
 	int insertMemberRoom(int memberNo, int roomNo);
 
+	// 채팅방 설정을 위해 다시 찾기
+	Chatting refindRoom(int roomNo);
+
+	// 채팅방 회원 찾기
+	List<Member> refindMember(int roomNo);
+
+	// 강퇴
+	int kickMembers(String roomNo, List<Long> selectedMembers);
+
 }

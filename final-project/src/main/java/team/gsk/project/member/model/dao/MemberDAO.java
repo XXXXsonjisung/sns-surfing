@@ -1,6 +1,7 @@
 package team.gsk.project.member.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -113,6 +114,7 @@ public class MemberDAO {
 	public Member search(String value) {
 		
 		return mapper.search(value);
+
 	}
 
 

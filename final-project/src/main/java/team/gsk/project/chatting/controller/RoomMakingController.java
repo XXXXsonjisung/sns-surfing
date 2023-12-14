@@ -1,5 +1,6 @@
 package team.gsk.project.chatting.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -87,7 +89,6 @@ public class RoomMakingController {
 	public int joinRoom(@RequestParam("roomNo") int roomNo,
 			@SessionAttribute("loginMember") Member loginMember) {
 		
-		log.info("방번호  : "+ roomNo);
 		int memberNo = loginMember.getMemberNo();
 						
 		int result = service.insertMemberRoom(memberNo,roomNo);
@@ -106,6 +107,27 @@ public class RoomMakingController {
 //		
 //		return result;
 //	}
+	
+	
+	// 강퇴
+	@PostMapping("/kickMembers")
+	public int kickMembers(@RequestBody Map<String, Object> payload) {
+			
+			String roomNo =(String)payload.get("roomNo");
+			List<Long> selectedMembers =(List<Long>)payload.get("selectedMembers");
+			
+			log.info("강퇴 방번호"+ roomNo);
+			log.info("강퇴 회원번호"+ selectedMembers);
+			
+			int result = service.kickMembers(roomNo,selectedMembers);
+			
+		
+		return result;
+	}
+	
+	
+	
+	
 	
 	
 	

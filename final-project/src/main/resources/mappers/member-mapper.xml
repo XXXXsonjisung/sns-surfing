@@ -95,7 +95,11 @@
 		FROM DUAL
 	</select>
 	
-	
+	<select id="findId" resultType="string">
+		SELECT MEMBER_ID, MEMBER_NAME 
+		FROM MEMBER 
+		WHERE MEMBER_NAME = #{memberName} AND MEMBER_EAMIL = #{memberEmail}
+	</select>
 	
 	
 

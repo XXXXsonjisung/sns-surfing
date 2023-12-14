@@ -26,6 +26,13 @@
 		</resultMap>
 	
 	
+		<resultMap type="Member" id="member_rm">
+			<result property="memberNo" column="MEMBER_NO" />	
+			<result property="memberNickname" column="MEMBER_NICKNAME" />	
+			<result property="profileImage" column="MEMBER_PROFILE" />	
+		</resultMap>
+	
+	
 	<!--채팅방 만들기-->
 	<insert id="roomMaking" >
 		INSERT INTO ROOM_GROUP (ROOM_NO,ROOM_NAME,ROOM_INTRUDECE,ROOM_PERSONNEL,
@@ -85,12 +92,44 @@
 	</insert>
 	
 	
+	<!--채팅방 설정을 위해 다시 찾기-->
+	<select id="refindRoom" resultMap="chatting_rm">
+		SELECT 
+		    RG.ROOM_NO,RG.ROOM_NAME,RG.ROOM_INTRUDECE,ROOM_PERSONNEL,ROOM_MANAGER,ROOM_PWD,ROOM_IMG, 
+		    LISTAGG(RT.TAG_NAME, ', ') WITHIN GROUP (ORDER BY RT.TAG_NAME) AS TAG_NAME
+		FROM 
+		    ROOM_GROUP RG
+		LEFT JOIN 
+		    TAG_ROOM_NO TRN ON RG.ROOM_NO = TRN.ROOM_NO
+		LEFT JOIN 
+		    ROOM_TAG RT ON TRN.TAG_NO = RT.TAG_NO
+		WHERE 
+		    RG.ROOM_NO =#{roomNo}
+		GROUP BY 
+    		RG.ROOM_NO,RG.ROOM_NAME,RG.ROOM_INTRUDECE,ROOM_PERSONNEL,ROOM_MANAGER,ROOM_PWD,ROOM_IMG
+	</select>
 	
 	
+	<!--채팅방 회원 다시 찾기(방장빼고)-->
+	<select id="refindMember" resultMap="member_rm">
+		SELECT mrn.MEMBER_NO,m.MEMBER_NICKNAME,m.MEMBER_PROFILE 
+		FROM MEMBER_ROOM_NO mrn 
+		LEFT JOIN ROOM_GROUP rg ON mrn.ROOM_NO = rg.ROOM_NO
+		LEFT JOIN "MEMBER" m ON m.MEMBER_NO = mrn.MEMBER_NO
+		WHERE mrn.ROOM_NO = #{roomNo}
+		AND mrn.MEMBER_NO != rg.ROOM_MANAGER
+	</select>
 	
 	
-	
-	
+	<!--강퇴-->
+	<delete id="kickMembers" parameterType="map">
+		DELETE FROM MEMBER_ROOM_NO
+		WHERE ROOM_NO = #{roomNo}
+    	AND MEMBER_NO IN
+	    <foreach item="member" collection="selectedMembers" open="(" separator="," close=")">
+	      #{member}
+	    </foreach>
+	</delete>
 				
 </mapper>
 

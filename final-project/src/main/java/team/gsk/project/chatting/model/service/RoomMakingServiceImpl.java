@@ -131,6 +131,29 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		
 		return mapper.insertMemberRoom(map);
 	}
+
+	// 채팅방 설정을 위해 다시 찾기
+	@Override
+	public Chatting refindRoom(int roomNo) {
+		
+		
+		return mapper.refindRoom(roomNo);
+	}
+
+	// 채팅방 회원 찾기
+	@Override
+	public List<Member> refindMember(int roomNo) {
+		return mapper.refindMember(roomNo);
+	}
+
+	// 강퇴
+	@Override
+	public int kickMembers(String roomNo, List<Long> selectedMembers) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("roomNo", roomNo);
+		map.put("selectedMembers", selectedMembers);
+		return mapper.kickMembers(map);
+	}
 	
 	
 	
