@@ -79,7 +79,7 @@
 	    WHERE MEMBER_ID = #{username} AND MEMBER_DELETE_FLAG = 'N'
 	</select>
 	
-	<select id="searchHeader" parameterType="String" resultMap="member_rm">
+	<select id="search" parameterType="String" resultMap="member_rm">
 	    SELECT MEMBER_ID, MEMBER_NICKNAME, MEMBER_PROFILE FROM MEMBER WHERE (MEMBER_ID = #{value} OR MEMBER_NICKNAME = #{value}) AND MEMBER_DELETE_FLAG = 'N'
 	</select>
 	

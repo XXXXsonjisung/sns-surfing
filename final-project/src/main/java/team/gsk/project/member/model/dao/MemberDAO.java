@@ -111,9 +111,10 @@ public class MemberDAO {
 	}
 
 
-	public String findId(Map<String, Object> map) {
+	public Member search(String value) {
 		
-		return mapper.findId(map);
+		return mapper.search(value);
+
 	}
 
 

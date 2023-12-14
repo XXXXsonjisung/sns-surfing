@@ -33,4 +33,6 @@ public interface UserService {
 
 	int getCount(String memberId);
 
+	Member search(String memberId);
+
 }

@@ -115,6 +115,21 @@ aside{
 	border-color: rgb(211, 211, 211);
 	}
 	
+	.column > label{
+    width: 90px;
+    height: 40px;
+    color: rgb(0, 0, 64);
+    font-size: 13px;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+	border: 2px solid rgb(0, 0, 1);
+	border-color: rgb(211, 211, 211);
+	}
+	
 	
 	.proBox > label:hover {
 	    cursor: pointer; /* 마우스 호버 시 포인터 모양으로 변경 */
@@ -125,7 +140,7 @@ aside{
     
     
     #imageInput{ display: none;}
-    
+    #coverImageInput{ display: none;}
     
 	    input{
 	    width: 100%;
@@ -145,6 +160,12 @@ aside{
         justify-content: space-between;
         width: auto;
     }
+    .proBoxX {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: auto;
+    }
 
     .profile_img {
         width: 700px;
@@ -155,15 +176,46 @@ aside{
         margin-left: 14%;
     }
     
+    .cover_Image {
+		width: 1000px;
+        height: 600px;
+        border-radius: 20px; /* 반지름이 전체의 50%가 되면 원 모양이 됩니다 */
+        overflow: hidden; /* 원 모양의 영역을 벗어나는 이미지를 숨김 */
+        box-sizing: border-box;
+	}
+    
     .profile_img img {
         width: 100%;
         height: 100%;
         object-fit: cover; /* 이미지가 컨테이너에 맞게 꽉 채워지도록 설정 */
     }
+    
+    .cover_Image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* 이미지가 컨테이너에 맞게 꽉 채워지도록 설정 */
+    }
+    
+    .column {
+		display: flex;
+		width: auto;
+		margin-left: 79%;
+	}
 
     .proBtn {
         height: 40px;
         width: 80px;
+        border-radius: 20px;
+        border: none;
+        background-color: rgb(17, 17, 102);
+        font-weight: bolder;
+        color: white;
+        margin: 0;
+    }
+    
+    .proBtnX {
+        height: 40px;
+        width: 95px;
         border-radius: 20px;
         border: none;
         background-color: rgb(17, 17, 102);

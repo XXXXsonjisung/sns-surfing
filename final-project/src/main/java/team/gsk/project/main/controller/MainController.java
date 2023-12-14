@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -72,10 +73,30 @@ public class MainController {
 		return "common/myPage";
 	}
 	
-	@GetMapping("/searchHeaderT")
-	public String searchPageTForward(@RequestParam(value="memberId", required=false) String memberId) {
+	
+	@GetMapping("/searchPage")
+	public String searchPageTForward(@RequestParam(value="searchValue", required=false) String value,
+	                                    Model model) {
 
-		return "common/searchPage";
+	    Member member = service.search(value);
+	    
+	    System.out.println(value);
+
+	    System.out.println("이것은 member의 값입니다. :" +member);
+
+	    if (member != null) {
+	        model.addAttribute("value", value);
+
+
+	        if (member.getProfileImage() == null || member.getProfileImage().isEmpty()) {
+	        	
+	            member.setProfileImage("/common/images/profile/profile.jpg");
+	        }
+
+	        model.addAttribute("member", member);
+	    }
+
+	    return "common/searchPage";
 	}
 
 }

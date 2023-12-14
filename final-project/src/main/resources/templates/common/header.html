@@ -15,14 +15,12 @@
         <a id="logoText" th:href="@{/}">Surfing</a>
 
         <nav>
-            <form action="#">
-                <fieldset id="search">
-                    <input id="search_id" type="search" placeholder="검색" >
-                    <a id="search_icon">
-                        <img th:src="@{/common/images/Rectangle112.png}">							
-                    </a>
-                </fieldset>
-            </form>
+            <fieldset id="search">
+                <input id="search_id" type="search" placeholder="검색">
+				<a id="search_icon" onclick="sendSearch()">
+				    <i class="fas fa-search fa-lg" th:attr="title='검색'" style="cursor: pointer;"></i>
+				</a>
+            </fieldset>
         </nav>
 
         <div class="right_button">

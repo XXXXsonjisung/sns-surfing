@@ -31,7 +31,8 @@ public interface MemberMapper {
 
 	boolean checkNicknameX(String nickname);
 
-	String findId(Map<String, Object> map);
+	Member search(String value);
+
 
 
 

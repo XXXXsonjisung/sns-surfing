@@ -28,6 +28,13 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+			<!-- 회원 커버 이미지 수정 -->
+	<update id="updateCoverImage">
+		UPDATE "MEMBER" SET
+		MEMBER_PROFILE = #{coverImage}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
 	<select id="mainProfile" parameterType="_int" resultType="string">
 		SELECT * FROM "MEMBER" WHERE MEMBER_NO = #{memberNo}
 	</select>

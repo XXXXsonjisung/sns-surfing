@@ -55,6 +55,35 @@ public class MyPageController {
 	}
 	
 	
+//	// 커버 이미지 수정
+//		@PostMapping("/profile")
+//		public String updateCoverImage(
+//				@RequestParam("coverImage") MultipartFile coverImage // 업로드 파일
+//				, @SessionAttribute("loginMember") Member loginMember
+//				, RedirectAttributes ra // 리다이렉 시 메세지 전달
+//				) throws Exception{
+//			
+//			
+//			// 프로필 이미지 수정 서비스 호출
+//			int result = service.updateCover(coverImage, loginMember);
+//			
+//			
+//			String message = null;
+//			if(result > 0) message = "커버 이미지가 변경되었습니다";
+//			else			message = "커버이미지 변경 실패";
+//			
+//			ra.addFlashAttribute("message", message);
+//			
+//			return "redirect:profile";
+//		}
+//	
+	
+	
+	
+	
+	
+	
+	
 	
 	// 비밀번호 변경
 		@PostMapping("/changePw")
