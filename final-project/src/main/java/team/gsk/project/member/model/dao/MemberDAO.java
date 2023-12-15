@@ -118,6 +118,24 @@ public class MemberDAO {
 	}
 
 
+	public String findId(Map<String, Object> map) {
+	
+		return null;
+	}
+
+
+	public List<String> getFollower(String memberId) {
+		
+		return Fmapper.getFollower(memberId);
+	}
+
+
+	public List<String> getFolloing(String memberId) {
+		
+		return Fmapper.getFolloing(memberId);
+	}
+
+
 
 
 }

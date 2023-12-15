@@ -58,16 +58,6 @@ public class PostDAO {
 	}
 
 
-	public int updatedHeartCountP (int postNo) {
-		
-		return mapper.updatedHeartCountP(postNo);
-	}
-
-
-	public int updatedHeartCountM(int postNo) {
-		
-		return mapper.updatedHeartCountM(postNo);
-	}
 
 
 	public List<Heart> getMemberPosts(int memberNo) {
@@ -91,6 +81,30 @@ public class PostDAO {
 	public String getMemberNicknameByUsername(String username) {
 		
 		return Mmapper.getMemberNicknameByUsername(username);
+	}
+
+
+	public int getHeartCount(Heart heart) {
+		
+		return Hmapper.getHeartCount(heart);
+	}
+
+
+	public int insertPostHeartCount(PostRequest post) {
+		
+		return mapper.insertPostHeartCount(post);
+	}
+
+
+	public int getCommentCount(int postNo) {
+		
+		return Cmapper.getCommentCount(postNo);
+	}
+
+
+	public int insertCommentCount(PostRequest post) {
+		
+		return mapper.insertCommentCount(post);
 	}
 
 

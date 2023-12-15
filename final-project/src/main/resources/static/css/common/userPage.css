@@ -62,8 +62,9 @@ body{
     }
     
     .propile_img img {
-	    width: 140px; /* 원하는 가로 너비로 설정 */
-	    height: auto; /* 세로 크기를 자동 조정하여 비율 유지 */
+	    width: 100%; /* 원하는 가로 너비로 설정 */
+	    height: 100%; /* 세로 크기를 자동 조정하여 비율 유지 */
+		object-fit: cover;
 	}
     
     .propile {

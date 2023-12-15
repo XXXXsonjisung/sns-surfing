@@ -1,11 +1,13 @@
 package team.gsk.project.member.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import jakarta.servlet.http.HttpSession;
 import team.gsk.project.member.model.dto.Follow;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.member.model.service.UserService;
@@ -188,5 +191,55 @@ public class UserController {
 	 	}
 	 	
 	 	
+	 	 @GetMapping("/mutualFollowers")
+	     @ResponseBody
+	     public List<String> getMutualFollowers(HttpSession session) {
+	         List<String> mutualFollowersIds = new ArrayList<>();
+	         if (session.getAttribute("loginMember") != null) {
+	             Member loginMember = (Member) session.getAttribute("loginMember");
+	            
+	             // 나를 팔로우 하는 사람의 목록 가져오기 
+	             List<String> followers = service.getFollower(loginMember.getMemberId()); 
+	             
+	             System.out.println("나를 팔로워 하는 사람 목록 :" +followers);
+	             
+	             // 내가 팔로우 하는 사람의 목록 가져오기
+	             List<String> followings = service.getFolloing(loginMember.getMemberId());
+	             
+	             System.out.println("내가 팔로워 하는 사람 목록 :" +followings);
+	             
+	             followers.retainAll(followings);
+	             
+	          // 맞팔로우하는 회원 목록을 리턴
+	             mutualFollowersIds = followers;
+	             
+	             System.out.println("이것은 멤버 아이디" +loginMember.getMemberId());
+	             
+	             System.out.println("되는거냐 맞팔리스트" +mutualFollowersIds);
+	             
+	            
+	         }
+	         return mutualFollowersIds;
+	     }
+	 	
 	 
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

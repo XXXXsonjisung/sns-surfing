@@ -293,19 +293,16 @@ let deleteCheckX = -1;
 
 let originalImageX; // 초기 프로필 이미지 파일 경로 저장
 
-if(coverImageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안해도 되긴 함 ) 
+if (coverImageInput != null) {
 
-    // 프로필 이미지가 출력되는 img태그의 src 속성을 저장
-    originalImageX = coverImage.getAttribute("src"); 
+    // 이미지가 출력되는 img 태그의 src 속성을 저장
+    const currentImageSrc = coverImage.getAttribute("src");
 
-
-    // 회원 프로필 화면 진입 시 
-    // 현재 회원의 프로필 이미지 상태를 확인
-    if(originalImageX.getAttribute("src") == "/common/images/profile/profile.jpg"){
+    if (currentImageSrc === originalImageX) {
         // 기본 이미지인 경우
-        initCheck = false;
-    }else{
-        initCheck = true;
+        initCheckX = false;
+    } else {
+        initCheckX = true;
     }
     
 
@@ -391,13 +388,13 @@ if(coverImageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳�
         let flag = true; // 제출하면 안되는 경우의 초기값 플래그 true로 지정
 
         // 이전 프로필 이미지가 없으면서, 새 이미지 업로드를 했다 -> 처음으로 이미지 추가
-        if(!initCheck && deleteCheck == 1)  flag = false;
+        if(!initCheckX && deleteCheck == 1)  flag = false;
 
         // 이전 프로필 이미지가 있으면서, 새 이미지 업로드를 했다 -> 새 이미지로 변경
-        if(initCheck && deleteCheck == 1)   flag = false;
+        if(initCheckX && deleteCheck == 1)   flag = false;
         
         // 이전 프로필 이미지가 있으면서, 프로필 삭제 버튼을 눌렀다 -> 삭제
-        if(initCheck && deleteCheck == 0)   flag = false;
+        if(initCheckX && deleteCheck == 0)   flag = false;
 
         
         if(flag){ // flag == true -> 제출하면 안되는 경우

@@ -458,7 +458,7 @@ a {
 /* 프로필 이미지 */
 .commentProfileTT img {
     width: 100%; /* 이미지를 박스 너비에 맞춤 */
-    height: auto; /* 높이 자동 조정 */
+    height: 100%; /* 높이 자동 조정 */
     object-fit: cover; /* 이미지를 박스에 채워줌 */
 }
 

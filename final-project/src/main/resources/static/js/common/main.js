@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <a class="user-link" th:href="@{@{/getUserInfo(username=${post.username})}}" id="user01" data-username="${post.username}">
 							    ${post.userNickname}
 							</a>
+							<button>수정</button>
                         </div>
                         <div class="post_content" id="postContentInput">
                             <h1>${post.content}</h1>
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     <div class="comment">
                         <div class="comment_left">
-                            <i class="fa-solid fa-heart" id="heart" data-item-id="${post.postNo}" data-liked="N"></i>
+                            <i class="fa-solid fa-heart" id="heart" data-item-id="${post.postNo}"></i>
                         </div>
                         <div class="comment_right">
                             <a>하트수 : ${post.heartCount}</a>
@@ -309,7 +310,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	    if (clickedElement.matches('.fa-heart')) {
 	        const postNo = clickedElement.getAttribute('data-item-id');
 	        const memberNoValue = document.getElementById('H_memberNo').value;
-	        let isLiked = clickedElement.getAttribute('data-liked');
+	        
+	        // 현재 하트의 색깔을 읽어옴
+       		const isLiked = window.getComputedStyle(clickedElement).getPropertyValue('color');
 	        
 	        // 서버에 데이터 전송
 	        const formData = new FormData();
@@ -317,10 +320,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	        formData.append('postNo', postNo);
 	        
 	        
-	         if (isLiked === 'N') {
-            clickedElement.style.color = '#ff0000'; // 빨간색으로 변경
-            clickedElement.setAttribute('data-liked', 'Y'); // 좋아요 설정
-
+	         if (isLiked === 'rgb(254, 180, 180)') {
+            clickedElement.style.color = 'rgb(255, 0, 0)'; // 빨간색으로 변경
 		        
 		        fetch('/updateHeart', {
 		            method: 'POST',
@@ -335,9 +336,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		        });
 		        
 	        } else {
-
-			clickedElement.style.color = '#feb4b4';
-			clickedElement.setAttribute('data-liked', 'N');	
+			clickedElement.style.color = 'rgb(254, 180, 180)';
 			
 			
 				fetch('/deleteHeart', {
