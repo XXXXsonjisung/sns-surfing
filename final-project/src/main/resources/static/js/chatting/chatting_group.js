@@ -559,7 +559,12 @@ function exit(){
 	
 }
 
-
+// 채팅 선택
+function chooseList(){
+	 var card = document.querySelector('.card');
+    card.classList.toggle('flipped');
+	
+}
 
 
 

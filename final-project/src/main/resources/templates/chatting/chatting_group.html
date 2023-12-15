@@ -26,12 +26,11 @@
                     <button><img th:src="@{/common/images/Rectangle112.png}"></button>
                 </form>
             </div>
-            <input type="checkbox" id="reg-log" class="checkbox">
-            <div class="card-3d-wrap">
-	             <div class="card-3d-wrapper">
-		            <div class="room_list card-front"> 
+    
+				<button onclick="chooseList()">선택</button>
+	             <div class="card">
+		            <div class="room_list front"> 
 		                <label>채팅방 목록</label>
-		
 			                <ul id="room-list">
 							    <li th:each="room : ${roomList}" th:attr="room-no=${room.roomNo}">
 							        <img th:src="${room.roomImg}">
@@ -47,7 +46,7 @@
 						
 		            </div>
 		            
-		            <div class="private_list card-back">
+		            <div class="private_list back">
 						<label>개인채팅 목록</label>
 						<ul id="private-list">
 							<li>테스트1</li>
@@ -55,8 +54,8 @@
 						</ul>
 					</div>
                 </div>
-            </div>
-            <label for="reg-log" class="switch">보기 전환</label>
+       
+         
         </aside>
 
         <main>
