@@ -96,11 +96,11 @@
 	</select>
 	
 	<select id="findId" resultType="string">
-		SELECT MEMBER_ID, MEMBER_NAME 
+		SELECT MEMBER_ID
 		FROM MEMBER 
-		WHERE MEMBER_NAME = #{memberName} AND MEMBER_EAMIL = #{memberEmail}
+		WHERE MEMBER_NAME = #{memberName} 
+		AND MEMBER_EMAIL = #{memberEmail}
 	</select>
-	
 	
 
 </mapper>

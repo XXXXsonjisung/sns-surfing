@@ -1,7 +1,5 @@
 package team.gsk.project.member.model.service;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -57,9 +55,9 @@ public class MemberServiceImpl implements MemberService{
 
 
 	@Override
-	public String findId(Map<String, Object> map) {
-		
-		return dao.findId(map);
+	public String findId(String memberName, String memberEmail) {
+	
+		return dao.findId(memberName, memberEmail);
 	}
 
 

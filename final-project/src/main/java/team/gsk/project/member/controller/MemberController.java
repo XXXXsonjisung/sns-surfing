@@ -1,8 +1,5 @@
 package team.gsk.project.member.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -17,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -77,41 +75,16 @@ public class MemberController {
 
 	}
 	
-	/** 아이디 찾기
-	 * @param memberName
-	 * @param memberEmail
-	 * @param model
-	 * @param ra
-	 * @return
-	 */
-	@PostMapping("/findId")
-	public String findId(String memberName, String memberEmail, RedirectAttributes ra, @RequestHeader(value = "referer") String referer) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		map.put("memberName", memberName);
-		map.put("memberEmail", memberEmail);
-		
-		String id = service.findId(map);
-		String msg = null;
-		String path = "redirect:";
-		
-		if(id != null) {
-			
-			msg = "회원님의 아이디는" + id + "입니다.";
-			path += "/";
-			
-		}else {
-			
-			msg = "일치하는 회원 정보가 없습니다.";
-			path += referer;
-			
-		}
-		
-		ra.addFlashAttribute("msg", msg);
-		
-		return path;
-	}
+	// 이메일로 아이디 찾기
+    @PostMapping("/findId")
+    @ResponseBody
+    public String findId(String memberName, 
+                        String memberEmail) {
+        
+        String foundId = service.findId(memberName, memberEmail);
+        
+        return foundId != null ? foundId : "아이디를 찾을 수 없습니다.";
+    }      
 	
 	// 회원가입 페이지 이동
 	@GetMapping("/signUp")
@@ -154,7 +127,5 @@ public class MemberController {
 		
 	}
 
-	
-	
-	
+
 }

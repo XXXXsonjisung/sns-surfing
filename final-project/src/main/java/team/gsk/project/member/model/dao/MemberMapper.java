@@ -33,6 +33,8 @@ public interface MemberMapper {
 
 	Member search(String value);
 
+	String findId(String memberName, String memberEmail);
+
 
 
 
