@@ -16,5 +16,7 @@ public interface HeartMapper {
 
 	public List<Heart> getMemberPosts(int memberNo);
 
+	public int getHeartCount(Heart heart);
+
 
 }

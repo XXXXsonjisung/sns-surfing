@@ -131,8 +131,21 @@ public class PostController {
           heart.setMemberNo(memberNo);
           
           int insertHeart = service.insertHeart(heart);
-   	 
-   
+          
+          System.out.println("인서트하트" +insertHeart);
+          
+          if (insertHeart > 0) {
+        	  
+        	  int heartCount = service.getHeartCount(heart);
+        	  
+        	  System.out.println(heartCount);
+        	  
+        	  PostRequest post = new PostRequest();
+        	  post.setPostNo(postNo);
+        	  post.setHeartCount(heartCount);
+        	  
+        	  int insertPostHeartCount = service.insertPostHeartCount(post);  
+          }
         	  
         	  return "common/main";
         	  
@@ -150,10 +163,22 @@ public class PostController {
           heart.setPostNo(postNo);
           heart.setMemberNo(memberNo);
           
-          int insertHeart = service.deleteHeart(heart);
-   	 
-   
+          int deleteHeart = service.deleteHeart(heart);
+          
+          System.out.println("딜리트 :" +deleteHeart);
+
+          if (deleteHeart > 0) {
         	  
+        	  int heartCount = service.getHeartCount(heart);
+        	  
+        	  System.out.println("딜리트 하트 카운트 : " + heartCount);
+        	  
+        	  PostRequest post = new PostRequest();
+        	  post.setPostNo(postNo);
+        	  post.setHeartCount(heartCount);
+        	  
+        	  int insertPostHeartCount = service.insertPostHeartCount(post);
+          }
         	  return "common/main";  
 	 }
 	 
@@ -187,8 +212,23 @@ public class PostController {
 	         postCom.setPostNo(postNo);
 	         postCom.setPostComment(postComment);
 	         postCom.setMemberNickname(memberNickname);
-
+	         
 	         int newComment = service.addComment(postCom);
+	         
+	         int CommentCount = service.getCommentCount(postNo);
+	         
+	         PostRequest post = new PostRequest();
+	       	  post.setPostNo(postNo);
+	       	  post.setCommentsCount(CommentCount);
+	         
+	         
+	         if( CommentCount > 0 ) {
+	        
+	        	 int insertCommentCount = service.insertCommentCount(post);
+	        	 
+	         }
+
+	         
 	         
 	         System.out.println(postCom);
 

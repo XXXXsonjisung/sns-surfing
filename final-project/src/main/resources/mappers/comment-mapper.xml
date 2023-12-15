@@ -24,6 +24,10 @@
 		    FROM POST_COMMENT
 		    WHERE POST_NO = #{postNo}
 		</select>
+		
+		<select id="getCommentCount" resultType="int">
+		    SELECT COUNT(*) FROM POST_COMMENT WHERE POST_NO = #{postNo}
+		</select>
 	
 		
 	

@@ -101,4 +101,16 @@ public class UserServiceImpl implements UserService{
 		return dao.search(value);
 	}
 
+	@Override
+	public List<String> getFollower(String memberId) {
+		
+		return dao.getFollower(memberId);
+	}
+
+	@Override
+	public List<String> getFolloing(String memberId) {
+		
+		return dao.getFolloing(memberId);
+	}
+
 }

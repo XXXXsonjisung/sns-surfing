@@ -59,4 +59,28 @@ public interface PostService {
 	 */
 	String getMemberNicknameByUsername(String username);
 
+	/** 게시물의 하트 수 가져오기
+	 * @param heart
+	 * @return
+	 */
+	int getHeartCount(Heart heart);
+
+	/** 게시물의 하트 수 설정하기
+	 * @param post
+	 * @return
+	 */
+	int insertPostHeartCount(PostRequest post);
+
+	/** 게시물의 댓글 수 가져오기
+	 * @param postNo
+	 * @return
+	 */
+	int getCommentCount(int postNo);
+
+	/** 게시물의 댓글 수 대입하기
+	 * @param post
+	 * @return
+	 */
+	int insertCommentCount(PostRequest post);
+
 }

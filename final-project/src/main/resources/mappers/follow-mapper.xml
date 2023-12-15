@@ -45,6 +45,18 @@
 		WHERE P_MEMBER_ID = #{memberId}
 	</select>
 	
+	<select id="getFollower" resultType="String" parameterType="String">
+	   SELECT H_MEMBER_ID
+		FROM FOLLOW
+		WHERE P_MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="getFolloing" resultType="String" parameterType="String">
+	   SELECT P_MEMBER_ID
+		FROM FOLLOW
+		WHERE H_MEMBER_ID = #{memberId}
+	</select>
+	
 	
 
 	

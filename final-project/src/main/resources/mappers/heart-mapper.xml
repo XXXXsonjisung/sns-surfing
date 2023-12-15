@@ -27,8 +27,10 @@
 			WHERE MEMBER_NO =#{memberNo}
 		</select>
 		
-		
-	
+		<select id="getHeartCount" resultType="int">
+		    SELECT COUNT(*) FROM HEART WHERE POST_NO = #{postNo}
+		</select>
+			
 		
 	
 	</mapper>

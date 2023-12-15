@@ -17,11 +17,9 @@ public interface PostMapper {
 
 	List<PostRequest> getPostBy(int postNo);
 
-	int updatedHeartCountP(int postNo);
+	int insertPostHeartCount(PostRequest post);
 
-	int updatedHeartCountM(int postNo);
-
-
+	int insertCommentCount(PostRequest post);
 
 	
 

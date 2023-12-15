@@ -78,35 +78,14 @@ public class PostServiceImpl implements PostService{
 	public int insertHeart(Heart heart) {
 		
 		
-		int postNo = heart.getPostNo();
-			
-		if(postNo > 0) {
-			
-			int result	= dao.updatedHeartCountP(postNo);
-				
-			
-		
-		}
-		
-		
 		return dao.insertHeart(heart);
 	}
 
 
 	@Override
 	public int deleteHeart(Heart heart) {
+
 		
-		int postNo = heart.getPostNo();
-		
-		if(postNo > 0) {
-			
-			int result	= dao.updatedHeartCountM(postNo);
-			
-		
-	
-		}
-		
-	
 		return dao.deleteHeart(heart);
 	}
 
@@ -138,6 +117,34 @@ public class PostServiceImpl implements PostService{
 	public String getMemberNicknameByUsername(String username) {
 		
 		return dao.getMemberNicknameByUsername(username);
+	}
+
+
+	@Override
+	public int getHeartCount(Heart heart) {
+		
+		return dao.getHeartCount(heart);
+	}
+
+
+	@Override
+	public int insertPostHeartCount(PostRequest post) {
+		
+		return dao.insertPostHeartCount(post);
+	}
+
+
+	@Override
+	public int getCommentCount(int postNo) {
+		
+		return dao.getCommentCount(postNo);
+	}
+
+
+	@Override
+	public int insertCommentCount(PostRequest post) {
+		
+		return dao.insertCommentCount(post);
 	}
 
 

@@ -13,4 +13,6 @@ public interface CommentMapper {
 
 	public List<PostComment> getComments(int postNo);
 
+	public int getCommentCount(int postNo);
+
 }

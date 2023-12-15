@@ -50,19 +50,18 @@
 		WHERE POST_NO = #{postNo}
 	</select>
 	
-	<update id="updatedHeartCountP">
+	<update id="insertPostHeartCount" parameterType="PostRequest">
 	    UPDATE POST
-	    SET HEART_COUNT = HEART_COUNT + 1
+	    SET HEART_COUNT = #{heartCount}
 	    WHERE POST_NO = #{postNo}
 	</update>
 	
-	<update id="updatedHeartCountM">
+	<update id="insertCommentCount" parameterType="PostRequest">
 	    UPDATE POST
-	    SET HEART_COUNT = HEART_COUNT - 1
+	    SET COMMENT_COUNT = #{commentsCount}
 	    WHERE POST_NO = #{postNo}
 	</update>
-	
-	
+		
 
 	
 	

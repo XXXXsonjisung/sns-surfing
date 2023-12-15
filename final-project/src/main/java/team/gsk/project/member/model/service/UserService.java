@@ -35,4 +35,8 @@ public interface UserService {
 
 	Member search(String memberId);
 
+	List<String> getFollower(String memberId);
+
+	List<String> getFolloing(String memberId);
+
 }
