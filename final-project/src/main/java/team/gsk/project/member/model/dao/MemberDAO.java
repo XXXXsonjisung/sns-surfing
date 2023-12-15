@@ -117,6 +117,11 @@ public class MemberDAO {
 
 	}
 
+	public String findId(String memberName, String memberEmail) {
+
+		return mapper.findId(memberName, memberEmail);
+	}
+
 
 
 

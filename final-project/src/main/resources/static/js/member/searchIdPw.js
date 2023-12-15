@@ -69,6 +69,9 @@ const memberEmail = document.getElementById("idEmailNum");
 const authKey = document.getElementById("idEmailAuthNum");
 const idEmailCheck = document.getElementById("idEmailCheck");
 
+const name = document.getElementById("idEmailName").value;
+const email = document.getElementById("idEmailNum").value;
+
 
 
 //전화번호로 아이디 / 비밀번호 찾기
@@ -180,8 +183,8 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 	            if(result > 0){
 	                clearInterval(authTimer); 
 	                idEmailCheck.innerText = "인증되었습니다";
+	                idEmailCheck.classList.add("confirm");
 	                checkIdObj.authKey =true;
-	                alert("인증되었습니다.");
 	            } else{
 	                alert("인증번호가 일치하지 않습니다.")
 	            }
@@ -197,17 +200,42 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 		
 }
 
-
+// 모달창
 const searchIdForEmail = document.getElementById("searchIdForEmail");
 const modal = document.querySelector('.modal');
 const back_btn = document.getElementById("back_btn");
 const body = document.body;
 
 searchIdForEmail.addEventListener("click", e => {
+	
+     // 아이디 값 받고 출력하는 ajax
+	const id_value = document.getElementById("id_value");
+	
+	
+	const formData = new FormData();
+	formData.append('memberName', name); // 변경된 부분
+	formData.append('memberEmail', email);
+	
+	fetch('/member/findId', {
+	  method: 'POST',
+	  body: formData
+	})
+	.then(response => response.json())
+	.then(result => {
+	  console.log(result);
+	})
+	.catch(error => {
+	  console.error('Error:', error);
+	});
 
+
+
+/*
 	modal.classList.toggle('show');
 	body.style.overflow = 'hidden';
     e.stopPropagation();
+ 
+*/
 });
 
 
@@ -221,29 +249,17 @@ modal.addEventListener('click', e => {
 back_btn.addEventListener('click', () => {
     modal.classList.remove('show');
     body.style.overflow = 'auto';
+    
+    
+   
 });
 
 	
 
-var idV = "";
-// 아이디 값 받고 출력하는 ajax
 
-fetch("/member/findId", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-        "memberName": idEmailName.val(), 
-        "memberEmail": idEmailNum.val()
-    })
-})
-.then(response => response.text()) // 서버에서 문자열로 응답하므로 text()로 받음
-.then(data => {
-    $('#id_value').text(data);
-    idV = data; // 아이디값 저장
-})
-.catch(err => console.log(err));
+
+
+
 
 
 
