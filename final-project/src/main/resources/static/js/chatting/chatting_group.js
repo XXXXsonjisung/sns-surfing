@@ -15,6 +15,7 @@ const memberName = document.getElementById('memberNoDivv').getAttribute('data-me
 
 
 let roomNo = null;
+let managerNoN=0;
 
 // 서버에 연결
 stompClient.connect({}, frame=> {
@@ -78,6 +79,8 @@ chatroomList.addEventListener('click', function(event) {
     fetchAndDisplayOldMessages(roomNo);
     
     displayFriend();
+    
+    findManger()
     
     console.log('방번호:', roomNo);
   }
@@ -478,21 +481,86 @@ function appendFriend(list) {
  
 }
 
+// 방장 찾기
+function findManger(){
+		fetch('/RoomMaking/findManger?roomNo='+roomNo)
+		 .then(response => response.json())
+    	 .then(managerNo => {
+			 managerNoN=managerNo;
+			 console.log("방장번호 :"+managerNo);
+		})
+		.catch(err => console.log(err));
+	
+}
+
+
+
+
 
 //채팅방 설정 페이지로
 function roomSetting(){
+	
+
 	if(roomNo===null){
 		
 		alert("채팅방을 선택하세요");
 		
-	}else{
-			
-	window.location.href = '/chatting/roomSetting?roomNo='+roomNo;
+		}else if(memberNo==managerNoN){
+			  window.location.href = '/chatting/roomSetting?roomNo='+roomNo;				 
+		 }else{
+			 
+			 alert("방장만 설정을 할 수 있습니다.")
+		 }	
+
+
+		
 	}
 	
 
 	
+
+
+
+// 나가기 
+function exit(){
+	console.log("나가는사람 번호 :"+memberNo);
+	console.log("방장 번호 :"+managerNoN);
+	
+	if(roomNo===null){
+		alert("채팅방을 선택하십시오");
+	}else if(memberNo==managerNoN){
+		console.log("방장장 번호 확인 : " + managerNoN);
+		alert("채팅방을 나기 위해서는 먼저 방장을 다른사람에게 주십시오");	
+	}else{
+		fetch('/exitMember',{
+			method:'POST',
+			headers:{
+				'Content-Type': 'application/json',
+			},
+			 body: JSON.stringify({ 
+				  roomNo: roomNo,
+       			  memberNo: memberNo
+				})	
+			
+			})
+			.then(resp=>resp.json())
+			.then(result=>{
+				  console.log('성공 :', result);	
+				  if(result>0){
+					  alert("채팅방을 나갔습니다");
+					  
+				  }	
+				  			
+			})
+			.catch(err => console.log(err));
+		
+		
+	}
+	
 }
+
+
+
 
 
 
