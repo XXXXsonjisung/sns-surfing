@@ -42,6 +42,10 @@ public interface ChattingMapper {
 	List<Member> displayFriend(int roomNo);
 
 
+	// 채팅방 나가기
+	int exitMember(Map<String, Object> map);
+
+
 
 
 

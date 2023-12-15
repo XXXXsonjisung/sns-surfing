@@ -130,6 +130,27 @@
 	      #{member}
 	    </foreach>
 	</delete>
+	
+	<!--방장 찾기-->
+	<select id="findManger">
+		SELECT ROOM_MANAGER FROM ROOM_GROUP WHERE ROOM_NO =#{roomNo} 
+	</select>
+	
+	<!--방장 넘기기-->
+	<update id="authorizeManger" parameterType="map">
+		UPDATE ROOM_GROUP SET ROOM_MANAGER = #{member} WHERE ROOM_NO = #{roomNo}
+	</update>
+	
+	<!--채팅방 수정-->
+	<update id="updateRoom">
+		UPDATE ROOM_GROUP SET 
+			ROOM_NAME = #{roomName}, 
+		    ROOM_INTRUDECE = #{roomIntrudece}, 
+		    ROOM_PERSONNEL = #{roomPersonnel}, 
+		    ROOM_PWD = #{roomPwd}, 
+		    ROOM_IMG = #{roomImg}
+		WHERE ROOM_NO = #{roomNo}
+	</update>
 				
 </mapper>
 

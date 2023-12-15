@@ -118,6 +118,12 @@ public class MemberDAO {
 	}
 
 
+	public String findId(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 
 }

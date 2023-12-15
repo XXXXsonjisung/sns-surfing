@@ -155,6 +155,23 @@ public class ChatRoomController {
 	
 		return result;
 	}
+	
+	
+	// 채팅방 나가기
+	@PostMapping("/exitMember")
+	public int exitMember(@RequestBody Map<String, Object> payload) {
+		
+		String roomNo =(String)payload.get("roomNo");
+		String memberNo =(String)payload.get("memberNo");
+	    log.info("초대받은 회원 : "+roomNo);
+        log.info("초대받은 방번호 :"+memberNo);
+        
+        int result	=service.exitMember(roomNo,memberNo);
+        
+	
+		return result;
+	}
+	
 
 }
 
