@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -63,7 +64,6 @@ public class RoomMakingController {
 //		String[] tagName = inputChatting.getTagName().split("[,]");
 		
 		
-		log.info("보내기전 : "+inputChatting+loginMember);
 		
 		// 채팅방 생성
 		int result = service.roomMaking(inputChatting,loginMember);
@@ -80,7 +80,7 @@ public class RoomMakingController {
 		
 		model.addAttribute("roomName",result);
 		
-		return "chatting/chatting_group";
+		return "redirect:/chatting/chattinGroup";
 	}
 	
 	// 채팅방 가입
@@ -111,6 +111,7 @@ public class RoomMakingController {
 	
 	// 강퇴
 	@PostMapping("/kickMembers")
+	@ResponseBody
 	public int kickMembers(@RequestBody Map<String, Object> payload) {
 			
 			String roomNo =(String)payload.get("roomNo");
@@ -127,7 +128,56 @@ public class RoomMakingController {
 	
 	
 	
+	//방장 찾기 
+	@GetMapping("/findManger")
+	@ResponseBody
+	public int findManger(@RequestParam("roomNo") int roomNo) {
+		
+		
+		int managerNo=service.findManger(roomNo);
+		
+		return managerNo;
+	}
 	
+	
+	// 방장 넘기기
+	@PostMapping("/authorizeManger")
+	@ResponseBody
+	public int authorizeManger(@RequestBody Map<String, Object> payload) {
+			String roomNo =(String)payload.get("roomNo");
+			List<String> selectedMembers =(List<String>)payload.get("selectedMembers");
+			String member=	selectedMembers.get(0);
+			log.info("방번호"+ roomNo);
+			log.info("방장예정번호"+  member);
+			int result =service.authorizeManger(roomNo,member);
+			
+		
+		return 1;
+	}
+	
+	// 채팅방 수정 
+	@PostMapping("/update")
+	public String updateRoom(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,
+			 RedirectAttributes redirectAttributes) {
+				if(bindingResult.hasErrors()) {
+
+					   model.addAttribute("inputChatting", inputChatting);
+					
+					return "chatting/room_setting";
+				}
+				int roomNo = inputChatting.getRoomNo();
+				
+				int result =  service.updateRoom(inputChatting); 
+				
+				
+				redirectAttributes.addFlashAttribute("message", "채팅방 수정 완료.");
+		
+				return "redirect:/chatting/roomSetting?roomNo="+roomNo;
+		
+	}
+	
+	
+	 
 	
 	
 	

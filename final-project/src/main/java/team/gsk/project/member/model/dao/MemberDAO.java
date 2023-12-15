@@ -119,7 +119,7 @@ public class MemberDAO {
 
 
 	public String findId(Map<String, Object> map) {
-	
+
 		return null;
 	}
 
@@ -134,7 +134,6 @@ public class MemberDAO {
 		
 		return Fmapper.getFolloing(memberId);
 	}
-
 
 
 

@@ -111,8 +111,13 @@
 		WHERE MEMBER_DELETE_FLAG ='N'
 		AND MEMBER_NO IN (SELECT MEMBER_NO FROM MEMBER_ROOM_NO WHERE ROOM_NO = #{roomNo})
 	</select>
-
-
+	
+	<!--채팅방 나가기-->
+	<delete id="exitMember">
+		DELETE FROM MEMBER_ROOM_NO
+		WHERE ROOM_NO = #{roomNo}
+    	AND MEMBER_NO IN #{memberNo}
+	</delete>
 
 
 </mapper>

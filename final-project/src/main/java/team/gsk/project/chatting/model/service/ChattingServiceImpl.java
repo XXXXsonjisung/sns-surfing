@@ -69,6 +69,16 @@ public class ChattingServiceImpl implements ChattingService {
 		return mapper.displayFriend(roomNo);
 	}
 
+	// 채팅방 나가기
+	@Override
+	public int exitMember(String roomNo, String memberNo) {
+		Map<String, Object>map =new HashMap<>();
+		map.put("roomNo", roomNo);
+		map.put("memberNo", memberNo);
+		
+		return mapper.exitMember(map);
+	}
+
 
 
 }

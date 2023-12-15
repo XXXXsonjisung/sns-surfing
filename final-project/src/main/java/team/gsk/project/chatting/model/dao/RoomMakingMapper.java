@@ -48,6 +48,15 @@ public interface RoomMakingMapper{
 	// 강퇴
 	int kickMembers(Map<String, Object> map);
 
+	// 방장 찾기
+	int findManger(int roomNo);
+	
+	// 방장 넘기기
+	int authorizeManger(Map<String, Object> map);
+
+	// 채팅방 수정
+	int updateRoom(Chatting inputChatting);
+
 
 
 	

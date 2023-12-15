@@ -154,6 +154,20 @@ listItems.forEach(item => {
   });
 });
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const displayTagsInput = document.getElementById('displayTagsInput');
+
+    // tagsInput의 값을 displayTagsInput에 복사
+    displayTagsInput.value = tagsInput.value;
+
+});
+
+
+
+
+
 // 태그 지우기 
 const cleanTagsButtons = document.querySelectorAll(".cleanTag");
 
@@ -190,10 +204,39 @@ function image(input) {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+ let selectedMembers = [];
+ let roomNo = getRoomNoFromURL();
+
+ 	 
+
 // 방번호 냠냠
 function getRoomNoFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('roomNo');
+}
+
+// 페이지 로드 시 roomNo 값을 숨겨진 필드에 설정
+window.onload = function() {
+    let roomNo = getRoomNoFromURL();
+    document.getElementById('roomNoInput').value = roomNo;
+};
+
+
+
+//체크한 회원 찾기 
+function selectedMember(){
+	
+		selectedMembers = [];
+  	 // 체크박스를 순회하면서 선택된 항목들의 memberNo를 수집합니다.
+	 document.querySelectorAll('#np-ul .memberCheckbox:checked').forEach(function(checkbox) {
+     
+        let memberNo = checkbox.closest('.np-list').getAttribute('data-member-no');
+        selectedMembers.push(memberNo);
+    });
+	  // selectedMembers 배열에 있는 멤버 번호를 사용하여 처리합니다.
+    console.log("강퇴를 위한 회원 번호:", selectedMembers);
+		
 }
 
 
@@ -203,19 +246,7 @@ function getRoomNoFromURL() {
 
 function kickMembers(){
 	
-	let selectedMembers = [];
-	 const roomNo = getRoomNoFromURL();
-    console.log("방번호 확인:", roomNo);
-	
-  	 // 체크박스를 순회하면서 선택된 항목들의 memberNo를 수집합니다.
-	 document.querySelectorAll('#np-ul .memberCheckbox:checked').forEach(function(checkbox) {
-     
-        let memberNo = checkbox.closest('.np-list').getAttribute('data-member-no');
-        selectedMembers.push(memberNo);
-    });
-	  // selectedMembers 배열에 있는 멤버 번호를 사용하여 처리합니다.
-    console.log("강퇴를 위한 회원 번호:", selectedMembers);
-    
+     selectedMember()
 	
 	if(selectedMembers==[]){
 		alert("회원을 선택해주세요")
@@ -263,7 +294,45 @@ function  removeKickMembers(selectedMembers){
 	
 }
 
-
+// 방장 넘기기
+function authorizeManger(){
+		
+		   selectedMember()
+		   
+		  if(selectedMembers.length==0){
+			  alert("회원을 선택해주세요");
+		  }else if(selectedMembers.length!=1){
+			  alert("한명의 회원만 선택해주세요");
+		  }else{
+			  fetch('/RoomMaking/authorizeManger',{
+				  method:'POST',
+				  headers:{
+				  	'Content-Type': 'application/json',
+				  },
+				  body:JSON.stringify({
+					  roomNo:roomNo,
+					  selectedMembers:selectedMembers
+					  
+				  })
+			  	  
+			  	})
+			  	 .then(resp=>resp.json())
+				 .then(result=>{
+					  console.log('성공 :', result);	
+					  if(result>0){
+						  alert("방장을 넘기셨습니다. 채팅페이지로 이동합니다.");
+						   window.location.href = '/chatting/chattinGroup';							  
+					  }	
+					  			
+				})
+				.catch(err => console.log(err));
+			  
+		  }
+		  
+		  
+	
+	
+}
 
 
 

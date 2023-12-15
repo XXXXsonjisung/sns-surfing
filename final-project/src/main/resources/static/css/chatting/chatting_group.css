@@ -382,6 +382,37 @@ form{
   
   
   
+  /*채팅리스트 뒤집기*/
+  
+  .card-3d-wrap {
+    perspective: 1000px;
+}
+
+.card-3d-wrapper {
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card-front, .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.checkbox:checked ~ .card-3d-wrapper {
+    transform: rotateY(180deg);
+}
+  
+  
+  
+  
+  
+  
+  
+  
 
         
   
