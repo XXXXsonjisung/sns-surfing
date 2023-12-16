@@ -172,6 +172,18 @@ public class ChatRoomController {
 		return result;
 	}
 	
+	
+	// 채팅방 만들기 위해 친구 찾기 
+	@GetMapping("/findFriends")
+	public List<Member> findFriends(@SessionAttribute("loginMember") Member loginMember) {
+	
+				int memberNo =loginMember.getMemberNo();
+	
+				List<Member> result= service.findFriends(memberNo);
+					
+		return result;
+	}
+	
 
 }
 

@@ -197,6 +197,79 @@ aside button{
 
 
 
+/*개인 채팅*/
+
+.private_list{
+    margin-top: 7%;
+    height: 80%;
+
+
+
+}
+
+
+.private_list label{
+
+    padding-left: 5%;
+    
+    font-weight: bold;
+}
+
+
+
+.private_list ul{
+
+    padding: 0;
+}
+
+
+.private_list li {
+
+
+    height: 150px;
+    border-top: 0.3px rgba(0, 0, 0, 0.3) solid;
+    list-style: none;
+    display: flex;
+    padding-top: 5%;
+   
+
+}
+
+
+
+.private_list li> div{
+
+
+    padding-top: 10%;
+}
+
+
+.private_list li> div .chatDate {
+
+    font-size: 0.7rem;
+    opacity: 50%;
+}
+
+
+
+
+
+.private_list li img {
+
+    height: 100px;
+    width: 100px;
+    border-radius: 70%;
+    padding-right: 5%;
+    overflow: hidden;
+
+}
+
+
+
+
+
+
+
 
 
 

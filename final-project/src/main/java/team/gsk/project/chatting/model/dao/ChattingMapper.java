@@ -46,7 +46,8 @@ public interface ChattingMapper {
 	int exitMember(Map<String, Object> map);
 
 
-
+	// 채팅방 만들기 위한 친구 조회
+	List<Member> findFriends(int memberNo);
 
 
 

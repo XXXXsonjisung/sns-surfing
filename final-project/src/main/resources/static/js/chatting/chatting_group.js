@@ -242,9 +242,9 @@ function clearChatArea() {
 
 // 모달 창
 
- var btn = document.getElementById("invite-btn");
+ let btn = document.getElementById("invite-btn");
  var modal = document.getElementById("modal-overlay");
- var span = document.getElementsByClassName("close")[0];
+ var span = document.getElementsByClassName("close")[0]; 
 
 
  btn.onclick = function() {
@@ -269,7 +269,84 @@ window.onclick = function(event) {
 
 
 
-////
+/////// 개인 채팅 ////////////////////////////////////////////////////////
+
+let friendFindBtn =document.getElementById("friend-FindBtn");
+let friendOverlay = document.getElementById("friend-overlay");
+
+friendFindBtn.onclick = function() {
+  modal.style.display = "block";
+  event.preventDefault();
+
+}
+
+
+const friendInput = document.querySelector("#friendInput"); // 사용자 검색
+const friendsArea = document.querySelector("#friendsArea"); // 검색 결과
+
+// 친구 리스트 전역변수 선언
+let friends = [];
+
+// 친구 추가 버튼 리스트를 가져오기
+friendFindBtn.addEventListener("click",()=>{
+	
+		fetch(`/findFriends`)
+			.then(resp=>resp.json())
+			.then(list=>{
+				friends=list;
+				displayInvite(list);
+				console.log("친구 추가를 위한 :::" +friends)
+			})
+			.catch(err => console.log(err));
+
+		
+});
+
+
+
+function displayInvite(list){
+	friendsArea.innerHTML="";
+	list.forEach(member=>{
+		const li = document.createElement("li");
+	    li.classList.add("friend-row");
+        li.setAttribute("friend-id", member.memberNo);
+		
+		const img = document.createElement("img");
+		img.classList.add("result-row-img");
+		
+		// 프로필 이미지 여부에 따른 src 속성 선택
+		if(member.profileImage == null) img.setAttribute("src", "/images/user.png");
+		else img.setAttribute("src", member.profileImage);
+
+		let nickname = member.memberNickname;
+
+		const span = document.createElement("span");
+		span.innerHTML = `${nickname}`;
+
+		
+		
+		const checkbox = document.createElement("input");
+	    checkbox.type = "checkbox";
+	    checkbox.classList.add("friendd-checkbox");
+	    checkbox.checked = member.selected || false;
+	   
+	
+	  	li.append(checkbox,img,span); // 체크박스 추가
+        friendsArea.append(li);
+		
+	})
+	
+	
+}
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 const targetInput = document.querySelector("#targetInput"); // 사용자 검색
@@ -561,7 +638,8 @@ function exit(){
 
 // 채팅 선택
 function chooseList(){
-	 var card = document.querySelector('.card');
+	clearChatArea()
+	let card = document.querySelector('.card');
     card.classList.toggle('flipped');
 	
 }

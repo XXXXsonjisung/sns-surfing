@@ -79,6 +79,12 @@ public class ChattingServiceImpl implements ChattingService {
 		return mapper.exitMember(map);
 	}
 
+	// 채팅방 만들기 위한 친구 조회
+	@Override
+	public List<Member> findFriends(int memberNo) {
+		return mapper.findFriends(memberNo);
+	}
+
 
 
 }

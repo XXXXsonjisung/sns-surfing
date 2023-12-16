@@ -48,11 +48,38 @@
 		            
 		            <div class="private_list back">
 						<label>개인채팅 목록</label>
+						<button id="friend-FindBtn">친구 초대</button>
 						<ul id="private-list">
-							<li>테스트1</li>
-							<li>테스트2</li>
+							<li>
+								<img >
+						        <div class="message_imform">
+						            <b class="message_pe" >이름</b>
+						            <span class="chatDate" >시간</span>
+						            <div class="last_message">
+						                마지막 메세지
+						            </div>
+						        </div>
+							</li>
 						</ul>
 					</div>
+					
+						
+					 <div class="modal-overlay" id="friend-overlay">
+					 <div class="modal-background">
+						<span class="close"></span>
+						<input id="friendInput" placeholder="친구 초대 입력">
+						<button id="inviteFriend">초대</button>
+						<ul id="friensArea">
+						</ul>
+						<div id="selectedFriends"></div>
+						
+						
+					</div>
+				 </div>	
+					
+					
+					
+					
                 </div>
        
          

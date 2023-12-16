@@ -119,6 +119,12 @@
     	AND MEMBER_NO IN #{memberNo}
 	</delete>
 
+	<!--채팅방 만들기 위한 친구 조회-->
+	<select id="findFriends" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE  FROM "MEMBER"
+		WHERE MEMBER_DELETE_FLAG ='N'
+		AND MEMBER_NO NOT in #{memberNo}
+	</select>
 
 </mapper>
 
