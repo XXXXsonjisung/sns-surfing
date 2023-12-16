@@ -69,8 +69,7 @@ const memberEmail = document.getElementById("idEmailNum");
 const authKey = document.getElementById("idEmailAuthNum");
 const idEmailCheck = document.getElementById("idEmailCheck");
 
-const name = document.getElementById("idEmailName").value;
-const email = document.getElementById("idEmailNum").value;
+
 
 
 
@@ -200,6 +199,7 @@ for (let i = 1; i < sendAuth.length; i += 2) {
 		
 }
 
+
 // 모달창
 const searchIdForEmail = document.getElementById("searchIdForEmail");
 const modal = document.querySelector('.modal');
@@ -208,34 +208,48 @@ const body = document.body;
 
 searchIdForEmail.addEventListener("click", e => {
 	
+	const name = document.getElementById("idEmailName").value;
+	const email = document.getElementById("idEmailNum").value;
+	
      // 아이디 값 받고 출력하는 ajax
 	const id_value = document.getElementById("id_value");
 	
+	fetch("/member/findId", {
+	method: "POST",
+	headers: {
+      "Content-Type": "application/json",
+    },
+	body: JSON.stringify({memberName: name, memberEmail: email})
+	})
+	.then(response => response.text()) // 서버에서 문자열로 응답하므로 text()로 받음
+	.then(data => {
+	    id_value.innerText = data; 
+	})
+	.catch(err => console.log(err));
 	
-	const formData = new FormData();
-	formData.append('memberName', name); // 변경된 부분
+/*	const formData = new FormData();
+	formData.append('memberName', name);
 	formData.append('memberEmail', email);
 	
-	fetch('/member/findId', {
-	  method: 'POST',
-	  body: formData
+	fetch("/member/findId", {
+	    method: "POST",
+	    body: formData
 	})
 	.then(response => response.json())
-	.then(result => {
-	  console.log(result);
+	.then(data => {
+	    id_value.innerText = data;
 	})
-	.catch(error => {
-	  console.error('Error:', error);
-	});
+	.catch(err => console.log(err));
+*/
 
 
 
-/*
+
 	modal.classList.toggle('show');
 	body.style.overflow = 'hidden';
     e.stopPropagation();
  
-*/
+
 });
 
 
