@@ -87,6 +87,14 @@ chatroomList.addEventListener('click', function(event) {
 });
 
 
+
+
+
+
+
+
+
+
 // 방번호로 기존 메시지를 가져오기
 function fetchAndDisplayOldMessages(roomNo) {
   fetch('/getOldMessage?roomNo=' + roomNo)
@@ -243,7 +251,7 @@ function clearChatArea() {
 // 모달 창
 
  let btn = document.getElementById("invite-btn");
- var modal = document.getElementById("modal-overlay");
+ let modal = document.getElementById("modal-overlay");
  var span = document.getElementsByClassName("close")[0]; 
 
 
@@ -260,9 +268,19 @@ span.onclick = function() {
 
 
 
+/*window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+*/
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  } else if (event.target == friendOverlay) {
+    friendOverlay.style.display = "none";
   }
 }
 
@@ -275,7 +293,7 @@ let friendFindBtn =document.getElementById("friend-FindBtn");
 let friendOverlay = document.getElementById("friend-overlay");
 
 friendFindBtn.onclick = function() {
-  modal.style.display = "block";
+ friendOverlay.style.display = "block";
   event.preventDefault();
 
 }
@@ -284,10 +302,10 @@ friendFindBtn.onclick = function() {
 const friendInput = document.querySelector("#friendInput"); // 사용자 검색
 const friendsArea = document.querySelector("#friendsArea"); // 검색 결과
 
-// 친구 리스트 전역변수 선언
+// 개인 채팅 친구 리스트 전역변수 선언
 let friends = [];
 
-// 친구 추가 버튼 리스트를 가져오기
+// 개인 채팅 친구 추가 버튼 리스트를 가져오기
 friendFindBtn.addEventListener("click",()=>{
 	
 		fetch(`/findFriends`)
@@ -347,7 +365,7 @@ function displayInvite(list){
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+////// 채팅방 
 
 const targetInput = document.querySelector("#targetInput"); // 사용자 검색
 const resultArea = document.querySelector("#resultArea"); // 검색 결과
@@ -635,17 +653,29 @@ function exit(){
 	}
 	
 }
+// 설정
+ let settingButton = document.querySelector('.button-room-setting');
 
-// 채팅 선택
-function chooseList(){
-	clearChatArea()
-	let card = document.querySelector('.card');
-    card.classList.toggle('flipped');
-	
+// 채팅방 목록 표시
+function showRoomList() {
+    let card = document.querySelector('.card');
+
+    if (card.classList.contains('flipped')) {
+        card.classList.remove('flipped');
+    }
+       settingButton.style.display = 'block';
+
 }
 
+// 개인 채팅 목록 표시
+function showPrivateList() {
+    let card = document.querySelector('.card');
 
-
+    if (!card.classList.contains('flipped')) {
+        card.classList.add('flipped');
+    }
+   settingButton.style.display = 'none';
+}
 
 
 

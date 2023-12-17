@@ -44,6 +44,17 @@
 	</resultMap>
 	
 	
+	<resultMap type="PrivateRoomList" id="privateList_rm">
+			<result property="roomNo" column="ROOM_NO"/>
+			<result property="sender" column="SENDER"/>
+			<result property="memberNickname" column="MEMBER_NICKNAME"/>
+			<result property="memberProfile" column="MEMBER_PROFILE"/>
+			<result property="chattingMessage" column="MESSAGE_SUBSTR" />
+			<result property="time" column="TIME" />
+	</resultMap>
+	
+	
+	
 	
 	<!--채팅 초대 찾기-->
 	<select id="selectTarget" resultMap="member_rm">
@@ -124,6 +135,25 @@
 		SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE  FROM "MEMBER"
 		WHERE MEMBER_DELETE_FLAG ='N'
 		AND MEMBER_NO NOT in #{memberNo}
+	</select>
+	
+	
+	<!--개인 채팅 리스트 조회-->
+	<select id="selectPrivateList" resultMap="privateList_rm">
+		SELECT ROOM.ROOM_NO,CHATTING.SENDER,MEM.MEMBER_NICKNAME,MEM.MEMBER_PROFILE, DBMS_LOB.SUBSTR(CHATTING.MESSAGE, 4000) AS MESSAGE_SUBSTR, CHATTING.TIME
+		FROM MEMBER MEM
+		JOIN MEMBER_PRIVATE_NO MRN ON MEM.MEMBER_NO = MRN.MEMBER_NO 
+		JOIN ROOM_PRIVATE ROOM ON MRN.ROOM_NO = ROOM.ROOM_NO 
+		LEFT JOIN (
+		    SELECT ROOM_NO, SENDER, MESSAGE, TIME
+		    FROM (
+		        SELECT ROOM_NO, SENDER, MESSAGE, TIME,
+		               ROW_NUMBER() OVER (PARTITION BY ROOM_NO ORDER BY TIME DESC) AS rn
+		        FROM PRIVATE_MESSAGE
+		    ) CM
+		    WHERE CM.rn = 1
+		) CHATTING ON ROOM.ROOM_NO = CHATTING.ROOM_NO
+		WHERE MEM.MEMBER_NO = #{memberNo}
 	</select>
 
 </mapper>

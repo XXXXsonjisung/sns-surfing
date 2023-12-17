@@ -11,6 +11,7 @@ import team.gsk.project.chatting.model.dao.ChattingMapper;
 import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.dto.ChattingMessage;
+import team.gsk.project.chatting.model.dto.PrivateRoomList;
 import team.gsk.project.member.model.dto.Member;
 
 
@@ -83,6 +84,12 @@ public class ChattingServiceImpl implements ChattingService {
 	@Override
 	public List<Member> findFriends(int memberNo) {
 		return mapper.findFriends(memberNo);
+	}
+
+	// 개인 채팅 리스트 조회
+	@Override
+	public List<PrivateRoomList> selectPrivateList(int memberNo) {
+		return mapper. selectPrivateList(memberNo);
 	}
 
 

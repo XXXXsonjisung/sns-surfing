@@ -27,7 +27,8 @@
                 </form>
             </div>
     
-				<button onclick="chooseList()">선택</button>
+				<button onclick="showRoomList()">채팅방 목록</button>
+				<button onclick="showPrivateList()">개인채팅 목록</button>
 	             <div class="card">
 		            <div class="room_list front"> 
 		                <label>채팅방 목록</label>
@@ -48,7 +49,21 @@
 		            
 		            <div class="private_list back">
 						<label>개인채팅 목록</label>
-						<button id="friend-FindBtn">친구 초대</button>
+						<ul id="private-list">
+							    <li th:each="room : ${privateList}" th:attr="private-no=${room.roomNo}">
+							        <img th:src="${room.memberProfile}">
+							        <div class="message_imform">
+							            <b class="message_pe" th:text="${room.memberNickname}">이름</b>
+							            <span class="chatDate" th:text="${room.time}">시간</span>
+							            <div class="last_message" th:text="${room.chattingMessage}">
+							                마지막 메세지
+							            </div>
+							        </div>
+							    </li>
+							</ul>
+						
+						
+						<!--
 						<ul id="private-list">
 							<li>
 								<img >
@@ -60,25 +75,10 @@
 						            </div>
 						        </div>
 							</li>
-						</ul>
+						</ul>-->
 					</div>
 					
-						
-					 <div class="modal-overlay" id="friend-overlay">
-					 <div class="modal-background">
-						<span class="close"></span>
-						<input id="friendInput" placeholder="친구 초대 입력">
-						<button id="inviteFriend">초대</button>
-						<ul id="friensArea">
-						</ul>
-						<div id="selectedFriends"></div>
-						
-						
-					</div>
-				 </div>	
-					
-					
-					
+		
 					
                 </div>
        
@@ -109,10 +109,11 @@
             </div>
             <div class="mainSide">
                 <button th:onclick="history.back()" id="back">돌아가기</button>
-                <button th:onclick="roomSetting()">설정</button>
+                <button class="button-room-setting"  th:onclick="roomSetting()">설정</button>
                 <button id="invite-btn">친구추가 창</button>
                 <button th:onclick="location.href='/chatting/invite'">친구추가</button>
                 <button th:onclick="exit()">나가기</button>
+                <button id="friend-FindBtn">친구 초대</button>
                 <div >현재 인원
 				</div>
 					
@@ -131,6 +132,19 @@
 				</div>
 			 </div>
            
+           		 <div class="friend-overlay" id="friend-overlay">
+						 <div class="friend-background">
+							<span class="close"></span>
+							<input id="friendInput" placeholder="친구dd 초대 입력">
+							<button id="inviteFriend">초대</button>
+							<ul id="friensArea">
+							</ul>
+							<div id="selectedFriends"></div>
+						</div>
+					 </div>	
+					
+           
+           
             
         </main>
 </body>
@@ -138,6 +152,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script th:src="@{/js/chatting/chatting_group.js}"></script>
+    <script  type="module"  th:src="@{/js/chatting/chatting_private.js}"></script>
 
 
 </html>

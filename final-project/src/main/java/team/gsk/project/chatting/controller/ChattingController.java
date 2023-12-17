@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import team.gsk.project.chatting.model.dto.ChatRoom;
 import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
+import team.gsk.project.chatting.model.dto.PrivateRoomList;
 import team.gsk.project.chatting.model.service.ChatService;
 import team.gsk.project.chatting.model.service.ChattingService;
 import team.gsk.project.chatting.model.service.RoomMakingService;
@@ -104,9 +105,14 @@ public class ChattingController {
 		
 		List<ChatRoomList>  roomList = service.selectRoomList(memberNo);
 	
+		List<PrivateRoomList>  privateList = service.selectPrivateList(memberNo);
 		
 		model.addAttribute("roomList", roomList);
+		
+		model.addAttribute("privateList", privateList);
 	
+		log.info("개인 채팅조회"+ privateList);
+		
 		return "chatting/chatting_group";
 		
 		

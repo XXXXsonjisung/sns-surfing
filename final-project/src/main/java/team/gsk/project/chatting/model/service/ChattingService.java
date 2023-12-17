@@ -7,6 +7,7 @@ import team.gsk.project.chatting.model.dto.ChatRoom;
 import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.dto.ChattingMessage;
+import team.gsk.project.chatting.model.dto.PrivateRoomList;
 import team.gsk.project.member.model.dto.Member;
 
 public interface ChattingService {
@@ -38,6 +39,9 @@ public interface ChattingService {
 
 	// 채팅방 만들기 위한 친구 조회
 	List<Member> findFriends(int memberNo);
+
+	// 개인 채팅 리스트 조회
+	List<PrivateRoomList> selectPrivateList(int memberNo);
 
 
 	
