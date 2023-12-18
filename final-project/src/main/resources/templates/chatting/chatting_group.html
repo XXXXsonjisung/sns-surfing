@@ -13,7 +13,7 @@
             <div>성북컴퓨터</div>
             <div class="nowPepole">현재인원:</div>
             <div id="memberNoDiv" th:data-member-no="${memberNo}"></div>
-            <div id="memberNoDivv" th:data-member-name="${memberName}"></div>
+            <div id="memberNoDivv" th:data-member-name="${memberNickname}"></div>
         </div>
     </header>
 
@@ -61,21 +61,6 @@
 							        </div>
 							    </li>
 							</ul>
-						
-						
-						<!--
-						<ul id="private-list">
-							<li>
-								<img >
-						        <div class="message_imform">
-						            <b class="message_pe" >이름</b>
-						            <span class="chatDate" >시간</span>
-						            <div class="last_message">
-						                마지막 메세지
-						            </div>
-						        </div>
-							</li>
-						</ul>-->
 					</div>
 					
 		
@@ -113,9 +98,8 @@
                 <button id="invite-btn">친구추가 창</button>
                 <button th:onclick="location.href='/chatting/invite'">친구추가</button>
                 <button th:onclick="exit()">나가기</button>
-                <button id="friend-FindBtn">친구 초대</button>
-                <div >현재 인원
-				</div>
+                <button id="friend-FindBtn">채팅 할 친구 알아보기</button>
+            
 					
             </div>
         
@@ -132,16 +116,17 @@
 				</div>
 			 </div>
            
-           		 <div class="friend-overlay" id="friend-overlay">
-						 <div class="friend-background">
-							<span class="close"></span>
-							<input id="friendInput" placeholder="친구dd 초대 입력">
-							<button id="inviteFriend">초대</button>
-							<ul id="friensArea">
-							</ul>
-							<div id="selectedFriends"></div>
-						</div>
-					 </div>	
+           
+   		 <div class="friend-overlay" id="friend-overlay">
+				 <div class="friend-background">
+					<span class="close"></span>
+					<input id="friendInput" placeholder="친구 누구">
+					<button id="inviteFriend">채팅방 생성</button>
+					<ul id="friendsArea">
+					</ul>
+					<div id="selectedFriendsPrivateArea"></div>
+				</div>
+			 </div>	
 					
            
            
@@ -152,7 +137,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script th:src="@{/js/chatting/chatting_group.js}"></script>
-    <script  type="module"  th:src="@{/js/chatting/chatting_private.js}"></script>
+    <script type="module" th:src="@{/js/chatting/chatting_private.js}"></script>
 
 
 </html>

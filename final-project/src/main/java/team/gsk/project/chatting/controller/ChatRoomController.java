@@ -71,7 +71,7 @@ public class ChatRoomController {
 	// 메세지 보낸거 저장
 	@MessageMapping("/ws-stomp.sendMessage")
 	public void sendMessage(@Payload ChattingMessage chattingMessage) {
-		log.info("채팅메세지 :"+ chattingMessage);
+		log.info("보낼때 채팅메세지 :"+ chattingMessage);
 		service.saveMessage(chattingMessage);
 		messagingTemplate.convertAndSend("/sub/updateMessage", chattingMessage);
 	}
@@ -180,7 +180,9 @@ public class ChatRoomController {
 				int memberNo =loginMember.getMemberNo();
 	
 				List<Member> result= service.findFriends(memberNo);
-					
+				
+				log.info("친구 몇명 : " +result);
+				
 		return result;
 	}
 	

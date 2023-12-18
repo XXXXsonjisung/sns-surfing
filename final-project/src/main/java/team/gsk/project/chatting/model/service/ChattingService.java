@@ -21,7 +21,6 @@ public interface ChattingService {
 	// 채팅방의 메세지 리스트 찾기
 	List<ChattingMessage> getOldMessage(int roomNo);
 
-
 	// 개인 채팅 메세지 저장
 	void saveMessage(ChattingMessage chattingMessage);
 

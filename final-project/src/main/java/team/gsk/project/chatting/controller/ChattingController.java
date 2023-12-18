@@ -99,9 +99,9 @@ public class ChattingController {
 	public String chattinGroup(@SessionAttribute("loginMember") Member loginMember, Model model){
 		
 		int memberNo =loginMember.getMemberNo();
-		String memberName =loginMember.getMemberName();
+		String memberNickname =loginMember.getMemberNickname();
 		model.addAttribute("memberNo", memberNo);
-		model.addAttribute("memberName", memberName);
+		model.addAttribute("memberNickname", memberNickname);
 		
 		List<ChatRoomList>  roomList = service.selectRoomList(memberNo);
 	
