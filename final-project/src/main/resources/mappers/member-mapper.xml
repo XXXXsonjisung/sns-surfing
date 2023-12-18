@@ -99,7 +99,7 @@
 		SELECT MEMBER_ID
 		FROM MEMBER 
 		WHERE MEMBER_NAME = #{memberName} 
-		AND MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_EMAIL = #{memberEmail}  
 	</select>
 	
 
