@@ -66,7 +66,6 @@
                     	<img id="kakaotalk" th:src="@{/images/simple-icons_kakaotalk.png}">
                     </a>
                     
-                    
                     <a href="#"><img id="facebook" th:src="@{/images/logos_facebook.png}"></a>
                 </div>
 
@@ -74,8 +73,11 @@
                     <a th:href="@{/member/searchIdPw}" id="findIdPw" data-onsuccess="onSignIn">아이디/비밀번호 찾기</a> 
                     <a th:href="@{/member/signUp}" id="signUp">회원가입</a>
                 </div>
+                <button class="api-btn" onclick="requestUserInfo()" style="visibility:hidden">사용자 정보 가져오기</button>
+
             </div>
         </div>
+
 
     </section>
 

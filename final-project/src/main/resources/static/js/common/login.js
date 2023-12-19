@@ -38,9 +38,39 @@ if(loginFrm != null) {
 
   function loginWithKakao() {
     Kakao.Auth.authorize({
-      redirectUri: 'https://localhost',
+      redirectUri: 'http://localhost:80',
+      state: 'userme'
     });
   }
+  
+    function requestUserInfo() {
+    Kakao.API.request({
+      url: '/v2/user/me',
+    })
+      .then(function(res) {
+        alert(JSON.stringify(res));
+      })
+      .catch(function(err) {
+        alert(
+          'failed to request user information: ' + JSON.stringify(err)
+        );
+      });
+  }
+  
+  Kakao.API.request({
+  url: '/v1/user/update_profile',
+  data: {
+    properties: {
+      '${CUSTOM_PROPERTY_KEY}': '${CUSTOM_PROPERTY_VALUE}',
+    },
+  },
+})
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
 
   // 아래는 데모를 위한 UI 코드입니다.
   displayToken()
@@ -49,16 +79,8 @@ if(loginFrm != null) {
 
     if(token) {
       Kakao.Auth.setAccessToken(token);
-      Kakao.Auth.getStatusInfo()
-        .then(function(res) {
-          if (res.status === 'connected') {
-            document.getElementById('token-result').innerText
-              = 'login success, token: ' + Kakao.Auth.getAccessToken();
-          }
-        })
-        .catch(function(err) {
-          Kakao.Auth.setAccessToken(null);
-        });
+      document.querySelector('#token_result').innerText = 'login success, ready to request API';
+      document.querySelector('button.api-btn').style.visibility = 'visible';
     }
   }
 
