@@ -1,5 +1,7 @@
 package team.gsk.project.chatting.model.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -47,4 +49,12 @@ public class Chatting {
 	private int tagNo; // 태그 번호
 
 	private int memberCount; // 채팅방 인원수
+	
+	
+	// 이미지 저장 객체
+	private MultipartFile roomImgFile;
+	
+	
+	
+	
 }

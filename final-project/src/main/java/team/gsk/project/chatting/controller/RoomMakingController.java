@@ -1,9 +1,13 @@
 package team.gsk.project.chatting.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
@@ -28,16 +33,22 @@ import team.gsk.project.member.model.dto.Member;
 @Controller
 @RequestMapping("/RoomMaking")
 @SessionAttributes({"loginMember"})
+@PropertySource("classpath:/config.properties")
 public class RoomMakingController {
 
 	@Autowired
 	private RoomMakingService service;
 	
+	@Value("${my.chatting.webpath}")
+	private String webPath;
+	
+	@Value("${my.chatting.location}")
+	private String filePath;
 	
 
 	// 채팅방 만들기
 	@PostMapping("/making")
-	public String roomMaking(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,@SessionAttribute("loginMember") Member loginMember) {
+	public String roomMaking(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,@SessionAttribute("loginMember") Member loginMember) throws Exception {
 		
 		// 서버에서 유효성 검사
 		if(bindingResult.hasErrors()) {
@@ -55,14 +66,26 @@ public class RoomMakingController {
 			return "chatting/room_making";
 		}
 	
-		// 태그이름에 ',' 제거 후 리스트로 저장
 	
-//		
-//		for (String tag : tagName) {
-//	    System.out.println(tag.trim()); // 각 요소를 출력하고 공백 제거
-//	}
-//		String[] tagName = inputChatting.getTagName().split("[,]");
-		
+		  MultipartFile roomImgFile = inputChatting.getRoomImgFile();
+		  
+		  String originalFileName = roomImgFile.getOriginalFilename();
+		  
+		  String fileExtension = Objects.requireNonNull(originalFileName).substring(originalFileName.lastIndexOf("."));
+
+		  // 현재 시간을 밀리초로 변환하여 파일명 생성
+		  String fileName = System.currentTimeMillis() + fileExtension;
+		  
+		  
+		  // 파일 저장 경로 설정
+		  String fullFilePath = filePath + fileName;
+		  
+		  File dest = new File(fullFilePath);
+		  roomImgFile.transferTo(dest);
+		  
+		  String fullWebPath = webPath + fileName;
+		  
+		  inputChatting.setRoomImg(fullWebPath);
 		
 		
 		// 채팅방 생성

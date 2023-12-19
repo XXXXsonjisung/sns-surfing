@@ -17,6 +17,8 @@ import team.gsk.project.member.model.dto.Member;
 @Service
 public class PrivateRoomServiceImpl implements PrivateRoomService {
 	
+	
+	
 	@Autowired
 	private PrivateRoomMapper mapper;
 	

@@ -17,7 +17,7 @@
         <div class="roomMake-title">채팅방 만들기</div>
         <div class="content-1">
              
-            <form th:action="@{/RoomMaking/making}" method="POST" id="roomMaking" th:object="${inputChatting}">
+            <form th:action="@{/RoomMaking/making}" method="POST" id="roomMaking" th:object="${inputChatting}" enctype="multipart/form-data">
                 <div class="group_choose">
                     <label for="tagsInput">채팅방 그룹</label>
                     <div class="group_con">
@@ -112,15 +112,10 @@
                 </div>
 
                 <div class="invite">
-                    <div class="invi-1">
-                        <label for="targetInput">초대하기</label>
-                        <input class="search-nickname" id="targetInput" type="text" placeholder="닉네임을 입력해주세요" autocomplete="off" >
-                            <ul id="resultArea">
-                            </ul>    
-                    </div>
+           
                     <div class="fileUpload">
                         <label for="roomImg">프로필 이미지 선택 </label>
-                        <input id="roomImg" type="file" name="roomImg" accept="image/jpeg,image/jpg,image/png" onchange="image(this)">
+                        <input id="roomImg" type="file" name="roomImgFile" accept="image/jpeg,image/jpg,image/png" onchange="image(this)">
                         <img id="preview">
                     </div>
                 </div>

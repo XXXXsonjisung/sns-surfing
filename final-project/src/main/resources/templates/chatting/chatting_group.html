@@ -34,7 +34,7 @@
 		                <label>채팅방 목록</label>
 			                <ul id="room-list">
 							    <li th:each="room : ${roomList}" th:attr="room-no=${room.roomNo}">
-							        <img th:src="${room.roomImg}">
+							        <img th:src="@{${room.roomImg}}">
 							        <div class="message_imform">
 							            <b class="message_pe" th:text="${room.roomName}">이름</b>
 							            <span class="chatDate" th:text="${room.time}">시간</span>
