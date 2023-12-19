@@ -62,6 +62,7 @@ public class MemberController {
 				
 	}
 	
+	
 	@GetMapping("/logout")
 	public String logout(SessionStatus status, HttpSession session) {
 		status.setComplete();

@@ -43,19 +43,24 @@ if(loginFrm != null) {
     });
   }
   
-    function requestUserInfo() {
-    Kakao.API.request({
-      url: '/v2/user/me',
-    })
-      .then(function(res) {
-        alert(JSON.stringify(res));
-      })
-      .catch(function(err) {
-        alert(
-          'failed to request user information: ' + JSON.stringify(err)
-        );
-      });
-  }
+// 사용자 정보 요청
+Kakao.API.request({
+  url: '/v2/user/me',
+})
+  .then(function(response) {
+    // 사용자 정보 출력 (닉네임 및 프로필 이미지)
+    console.log('Nickname:', response.properties.nickname);
+    console.log('Profile Image:', response.properties.profile_image);
+    
+    // 클라이언트 측에서 사용자 정보 저장 (예: localStorage)
+    localStorage.setItem('kakaoUserId', response.id);
+    localStorage.setItem('kakaoNickname', response.properties.nickname);
+    localStorage.setItem('kakaoProfileImage', response.properties.profile_image);
+
+  })
+  .catch(function(error) {
+    console.error('Failed to request user information:', error);
+  });
   
   Kakao.API.request({
   url: '/v1/user/update_profile',
