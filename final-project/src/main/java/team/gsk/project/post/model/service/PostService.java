@@ -83,4 +83,16 @@ public interface PostService {
 	 */
 	int insertCommentCount(PostRequest post);
 
+	/** 게시물 삭제 
+	 * @param postNo
+	 * @return
+	 */
+	int deletePostByPostNo(int postNo);
+
+	/** 수정 모달창에 값 넣기
+	 * @param postNo
+	 * @return
+	 */
+	PostRequest getPostQQ(int postNo);
+
 }

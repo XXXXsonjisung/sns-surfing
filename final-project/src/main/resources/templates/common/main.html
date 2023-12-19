@@ -68,6 +68,27 @@
 	                </div>
 	            </div> 
 			</th:block>
+			
+			
+			<div id="myModalQQ" class="modalQQ">
+				    <div class="modal-contentQQ">
+				        <span class="close">&times;</span>
+				        <h2>게시글 작성</h2>
+				        <div class="modelPostContentQQ" id="modalPostContentQQ" contenteditable="true" placeholder="게시글 내용을 입력하세요"></div>
+				        <!-- 이미지 및 동영상 추가 입력란 -->
+				        <label for="imageInputXXQQ" class="custom-file-uploadQQ" id="cfuQQ">
+				            <span class="button-textQQ">이미지</span>
+				            <input type="file" id="imageInputXXQQ" accept="image/*" style="display: none;">
+				        </label>
+				        <label class="custom-file-uploadQQ" for="videoInputQQ">
+				            <span class="button-textQQ">동영상</span>
+				            <input type="file" id="videoInputQQ" accept="video/*" style="display: none;">
+				        </label>
+				        <button class="xxxQQ" onclick="QQQPost()">게시</button>
+				    </div>
+			</div>
+			
+			
       
 			<!-- 모달 -->
 			<div id="commentModalXC" class="modalXC">

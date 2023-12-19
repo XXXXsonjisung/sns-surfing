@@ -108,6 +108,18 @@ public class PostDAO {
 	}
 
 
+	public int deletePostByPostNo(int postNo) {
+		
+		return mapper.deletePostByPostNo(postNo);
+	}
+
+
+	public PostRequest getPostQQ(int postNo) {
+		
+		return mapper.getPostQQ(postNo);
+	}
+
+
 
 
 

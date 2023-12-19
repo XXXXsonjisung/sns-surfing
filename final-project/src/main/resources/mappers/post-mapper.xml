@@ -3,17 +3,17 @@
 <!-- namespace를 Mapper 인터페이스로 지정 -->
 <mapper namespace="team.gsk.project.post.model.dao.PostMapper">
 	
-	<resultMap type="PostRequest" id="post_rm">
-		<id property="postNo" column="POST_NO" />
-		<result property="username" column="MEMBER_ID" />
-		<result property="content" column="CONTENT" />
-		<result property="commentsCount" column="COMMENT_COUNT" />
-		<result property="heartCount" column="HEART_COUNT" />
-		<result property="postUploadDate" column="POST_UPLOAD_DATE" />
-		<result property="memberProfile" column="MEMBER_PROFILE" />
-		<result property="imageUrls" column="IMG_URL" />		
-		<result property="videoUrls" column="VIDEO_URL" />		
-	</resultMap>
+		<resultMap type="PostRequest" id="post_rm">
+			<id property="postNo" column="POST_NO" />
+			<result property="username" column="MEMBER_ID" />
+			<result property="content" column="CONTENT" />
+			<result property="commentsCount" column="COMMENT_COUNT" />
+			<result property="heartCount" column="HEART_COUNT" />
+			<result property="postUploadDate" column="POST_UPLOAD_DATE" />
+			<result property="memberProfile" column="MEMBER_PROFILE" />
+			<result property="imageUrls" column="IMG_URL" />		
+			<result property="videoUrls" column="VIDEO_URL" />		
+		</resultMap>
 	
 	
 	<insert id="insertPost" parameterType="PostRequest">
@@ -62,6 +62,14 @@
 	    WHERE POST_NO = #{postNo}
 	</update>
 		
+	<delete id="deletePostByPostNo" parameterType="int">
+	    DELETE FROM POST
+	    WHERE POST_NO = #{postNo}
+	</delete>
+	
+	<select id="getPostQQ" parameterType="int" resultMap="post_rm">
+	    SELECT CONTENT IMG_URL FROM POST WHERE POST_NO = #{postNo}
+	</select>
 
 	
 	

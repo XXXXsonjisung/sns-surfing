@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(posts => {
             const userBox = document.getElementById('user_boxT');
-
+			
             posts.forEach(post => {
                 const postElement = document.createElement('div');
                 postElement.classList.add('user_post');
@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
                             <a class="user-link" th:href="@{@{/getUserInfo(username=${post.username})}}" id="user01" data-username="${post.username}">
 							    ${post.userNickname}
 							</a>
-							<button>수정</button>
+							<button class="postBtn" data-post-id="${post.postNo}">수정</button>
+							<span class="delete" data-post-id="${post.postNo}">&times;</span>
                         </div>
                         <div class="post_content" id="postContentInput">
                             <h1>${post.content}</h1>
@@ -42,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 userBox.appendChild(postElement);
             });
-            
+
             
             
             
@@ -54,10 +55,116 @@ document.addEventListener("DOMContentLoaded", function() {
 		        window.location.href = `/getUserInfo?username=${username}`;
 		    });
 		});
-            
-            
+		
+		
+		// 동적으로 생성된 HTML에 적용하기
+		// 예를 들어, postBtn과 delete 클래스를 가진 요소를 순회하며 조건에 따라 보이거나 숨기기
+		var postBtns = document.querySelectorAll('.postBtn');
+		var deleteSpans = document.querySelectorAll('.delete');
+		const memberId = document.getElementById('S_memberId').value;
+		
+		postBtns.forEach(function(btn, index) {
+		    // 여기서 post 변수를 다시 가져와야 합니다.
+		    const post = posts[index]; // 루프의 인덱스에 해당하는 post 객체 가져오기
+		
+		    if (memberId === post.username) {
+		        btn.style.display = 'block'; // 보이게 설정
+		        deleteSpans[index].style.display = 'block'; // 보이게 설정
+		    } else {
+		        btn.style.display = 'none'; // 숨기기
+		        deleteSpans[index].style.display = 'none'; // 숨기기
+		    }
+		});
+		
+		
+		document.querySelectorAll('.delete').forEach(deleteButton => {
+	    deleteButton.addEventListener('click', function() {
+	        const postNo = this.getAttribute('data-post-id');
+	        const postIdentifier = this.getAttribute('data-post-identifier');
+	        
+	        // 여기서 postNo와 postIdentifier를 사용하여 서버로 삭제 요청을 보냅니다.
+	        // fetch 또는 XMLHttpRequest를 사용하여 DELETE 요청을 보낼 수 있습니다.
+	        // 서버로 요청을 보내 삭제 작업을 수행하는 컨트롤러를 호출합니다.
+	       fetch(`/deletePost/${postNo}`, {
+		    method: 'DELETE',
+		})
+		.then(response => {
+		    if (response.ok) {
+		        alert('게시물이 삭제되었습니다.');
+		    } else {
+		        console.error('Failed to delete post');
+		    }
+		})
+		.catch(error => {
+		    console.error('Error deleting post:', error);
+		});
+	    });
+	});
+	
+	
+	
 
-            
+	
+	
+	
+	      document.querySelectorAll('.postBtn').forEach(btn => {
+		    btn.addEventListener('click', function(event) {
+		        const postNo = this.getAttribute('data-post-id');
+		        
+		        // 서버로 해당 게시물 정보 요청
+		        fetch(`/getPostQ?postNo=${postNo}`, {
+		            method: 'POST',
+		            headers: {
+		                'Content-Type': 'application/json'
+		            }
+		        })
+		        .then(response => {
+		            if (!response.ok) {
+		                throw new Error('Network response was not ok');
+		            }
+		            return response.json();
+		        })
+		        .then(postData => {
+		            // 모달에 데이터 채우기 예시
+		            const modalPostContent = document.getElementById('modalPostContentQQ');
+		            modalPostContent.textContent = postData.content; // 게시글 내용 채우기
+		            
+		            // 이미지를 표시할 요소
+		            const imageElement = document.createElement('img');
+		            imageElement.src = postData.imageUrls; // 이미지 URL 설정
+		            // 이미지를 추가할 모달 내 적절한 위치에 추가
+		            modalPostContent.appendChild(imageElement);
+		            
+		            // 모달 창 보이게 하기
+		            const modal = document.getElementById('myModalQQ');
+		            modal.style.display = 'block';
+		            
+		            // 닫기 버튼에 postNo 속성 추가
+		            const closeButton = document.querySelector('.close');
+		            closeButton.setAttribute('data-post-id', postData.postNo);
+		        })
+		        .catch(error => {
+		            console.error('Error:', error);
+		        });
+		    });
+		});
+		
+		document.querySelectorAll('.close').forEach(closeBtn => {
+	    closeBtn.addEventListener('click', function() {
+	        const postNo = this.getAttribute('data-post-id'); // 어떤 게시물의 모달인지 확인
+	        // postNo를 사용하여 어떤 게시물과 연관된 모달인지 확인하고 작업 수행
+	
+	        closeModal(); // 모달 닫기
+	    });
+	});
+	
+	
+		
+		function closeModal() {
+		    const modal = document.getElementById('myModalQQ');
+		    modal.style.display = 'none';
+		}
+   
             
             
 	    const memberNo = document.getElementById('H_memberNo').value;
