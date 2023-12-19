@@ -144,12 +144,12 @@ function appendMessage(message) {
         `;
 		
 		
-	        
+	        ///<img id="pro" src="/common/images/${message.profile}.jpg">
 	        
 		}else{
 			  // 메시지 내용을 구성
         messageElement.innerHTML = `
-            <img id="pro" src="/images/${message.sender}.jpg">
+         <img id ="pro" src="${message.profile != null ? message.profile : '/common/images/profile/profile.jpg'}">
             <div>
                 <b>${message.memberNickname}</b><br>
                 <p class="chat">${message.message}</p>
@@ -557,7 +557,7 @@ function displayFriends(list){
 		img.classList.add("result-row-img");
 		
 		// 프로필 이미지 여부에 따른 src 속성 선택
-		if(member.profileImage == null) img.setAttribute("src", "/images/user.png");
+		if(member.profileImage == null) img.setAttribute("src", "/common/images/profile/profile.jpg");
 		else img.setAttribute("src", member.profileImage);
 
 		let nickname = member.memberNickname;
@@ -721,7 +721,8 @@ function appendFriend(list) {
             p.textContent = member.memberNickname;
 
             const img = document.createElement('img');
-            img.src = member.profileImage;
+            img.classList.add('friendAreasImages');
+            img.src = member.profileImage ? member.profileImage : '/common/images/profile/profile.jpg';
 
             li.appendChild(img);
             li.appendChild(p);
@@ -810,6 +811,7 @@ function exit(){
 }
 // 설정
  let settingButton = document.querySelector('.button-room-setting');
+ let inviteButton = document.querySelector('.invite-btn');
 
 // 채팅방 선택에 그룹채팅과 개인채팅을 구별 짓는 중요한 지표
 let chatActive = false;
@@ -825,6 +827,7 @@ function showRoomList() {
         card.classList.remove('flipped');
     }
        settingButton.style.display = 'block';
+       	inviteButton.style.display = 'none';
 
 }
 
@@ -837,7 +840,9 @@ function showPrivateList() {
     if (!card.classList.contains('flipped')) {
         card.classList.add('flipped');
     }
-   settingButton.style.display = 'none';
+    settingButton.style.display = 'none';
+  
+   	 inviteButton.style.display = 'block';
 }
 
 

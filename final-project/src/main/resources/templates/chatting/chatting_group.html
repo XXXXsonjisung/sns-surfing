@@ -34,7 +34,10 @@
 		                <label>채팅방 목록</label>
 			                <ul id="room-list">
 							    <li th:each="room : ${roomList}" th:attr="room-no=${room.roomNo}">
-							        <img th:src="@{${room.roomImg}}">
+							
+							     <img th:src="${room.roomImg != null ? room.roomImg : '/common/images/profile/profile.jpg'}">
+   							
+
 							        <div class="message_imform">
 							            <b class="message_pe" th:text="${room.roomName}">이름</b>
 							            <span class="chatDate" th:text="${room.time}">시간</span>
@@ -51,7 +54,7 @@
 						<label>개인채팅 목록</label>
 						<ul id="private-list">
 							    <li th:each="room : ${privateList}" th:attr="private-no=${room.roomNo}">
-							        <img th:src="${room.memberProfile}">
+							        <img th:src="${room.memberProfile != null ? room.memberProfile : '/common/images/profile/profile.jpg'}">
 							        <div class="message_imform">
 							            <b class="message_pe" th:text="${room.memberNickname}">이름</b>
 							            <span class="chatDate" th:text="${room.time}">시간</span>
@@ -95,8 +98,7 @@
             <div class="mainSide">
                 <button th:onclick="history.back()" id="back">돌아가기</button>
                 <button class="button-room-setting"  th:onclick="roomSetting()">설정</button>
-                <button id="invite-btn">친구추가 창</button>
-                <button th:onclick="location.href='/chatting/invite'">친구추가</button>
+                <button id="invite-btn" class="invite-btn">친구추가 창</button>
                 <button th:onclick="exit()">나가기</button>
                 <button id="friend-FindBtn">채팅 할 친구 알아보기</button>
             

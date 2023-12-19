@@ -54,7 +54,7 @@
                 <ul class="room-list">
                     <li class="room-li" th:each="room:${roomList}">
                         <div class="room-img">
-                            <img th:src="${room.roomImg}"> 
+                              <img th:src="${room.roomImg != null ? room.roomImg : '/common/images/profile/profile.jpg'}">
                         </div>
                         <div class="room-title" th:text="${room.roomName}">채팅방이름</div>
                         <div class="room-headCount">정원:[[${room.roomPersonnel}]]/회원수:[[${room.memberCount}]]</div>

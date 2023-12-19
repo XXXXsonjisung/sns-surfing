@@ -31,5 +31,8 @@ public class ChattingMessage {
 	    
 	    private String memberNickname;// 회원 닉네임
 	    private int messageNo; // 개인 채팅 메세지 번호
+	    
+	    
+	    private String profile; // 프로필
 
 }
