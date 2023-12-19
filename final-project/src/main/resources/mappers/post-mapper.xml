@@ -68,7 +68,7 @@
 	</delete>
 	
 	<select id="getPostQQ" parameterType="int" resultMap="post_rm">
-	    SELECT CONTENT IMG_URL FROM POST WHERE POST_NO = #{postNo}
+	    SELECT CONTENT, IMG_URL FROM POST WHERE POST_NO = #{postNo}
 	</select>
 
 	

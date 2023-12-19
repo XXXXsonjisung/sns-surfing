@@ -275,6 +275,8 @@ public class PostController {
 			System.out.println("겟 포스트노랍니다." +postNo);
 	      
 	        PostRequest post = service.getPostQQ(postNo);
+	        
+	        System.out.println("포스트" +post);
 	        		
 	        		
 	        		
