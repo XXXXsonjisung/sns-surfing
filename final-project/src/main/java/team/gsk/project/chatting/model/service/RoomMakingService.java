@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.validation.Errors;
 
+import jakarta.validation.Valid;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.member.model.dto.Member;
 
@@ -33,5 +34,14 @@ public interface RoomMakingService {
 
 	// 강퇴
 	int kickMembers(String roomNo, List<Long> selectedMembers);
+
+	// 방장 찾기
+	int findManger(int roomNo);
+
+	// 방장 넘기기
+	int authorizeManger(String roomNo, String member);
+
+	// 채팅방 수정
+	int updateRoom(Chatting inputChatting);
 
 }

@@ -21,7 +21,7 @@
             <div class="setting_title">설정</div>
             <div class="setting_contents">
                 <div class="content-1">
-                   <form th:action="@{/RoomMaking/making}" method="POST" id="roomMaking" th:object="${inputChatting}">
+                   <form th:action="@{/RoomMaking/update}" method="POST" id="roomMaking" th:object="${inputChatting}">
                 <div class="group_choose">
                     <label for="tagsInput">채팅방 그룹</label>
                     <div class="group_con">
@@ -49,7 +49,7 @@
                                 </li>
                             </ul>
                         </div> 
-                        <input class="other-inputs" readonly type="text"placeholder="5개까지 가능합니다" th:field="*{tagName}" >
+                        <input class="other-inputs" id="displayTagsInput" readonly type="text"placeholder="5개까지 가능합니다">
                         <button type="button" class="cleanTag">지우기</button>
                         <div class="tagList-detail">
                             <ul class="secondList">
@@ -116,12 +116,7 @@
                 </div>
 
                 <div class="invite">
-                    <div class="invi-1">
-                        <label for="targetInput">초대하기</label>
-                        <input class="search-nickname" id="targetInput" type="text" placeholder="닉네임을 입력해주세요" autocomplete="off" >
-                            <ul id="resultArea">
-                            </ul>    
-                    </div>
+                    
                     <div class="fileUpload">
                         <label for="roomImg">프로필 이미지 선택 </label>
                         <input id="roomImg" type="file" name="roomImg" accept="image/jpeg,image/jpg,image/png" onchange="image(this)">
@@ -133,8 +128,9 @@
 				</ul>
 
                 <div class="last_button">
-                    <button type="submit">만들기</button>
-                    <button type="button">돌아가기</button>
+                    <button type="submit">수정하기</button>
+                    <button type="button" th:onclick="history.back()">돌아가기</button>
+                    <input type="hidden" name="roomNo" id="roomNoInput">
                 </div>
             </form>
                 </div>
@@ -152,7 +148,7 @@
                         </ul>
                      </div>
                      <div class="now_people_button">
-                        <button>방장넘기기</button>
+                        <button onclick="authorizeManger()">방장넘기기</button>
                         <button onclick="kickMembers()">강퇴</button>
                      </div>
                    </div>

@@ -33,6 +33,9 @@ public interface ChattingService {
 	// 채팅방 친구 조회
 	List<Member> displayFriend(int roomNo);
 
+	// 채팅방 나가기
+	int exitMember(String roomNo, String memberNo);
+
 
 	
 
