@@ -10,7 +10,11 @@
     <link rel="stylesheet" th:href="@{/css/common/login.css}">
 
     <script th:src="@{https://apis.google.com/js/platform.js}" async defer></script>
-    <script th:src="@{//developers.kakao.com/sdk/js/kakao.min.js}"></script>
+	<script th:src="@{https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js}"
+	  integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4" crossorigin="anonymous"></script>
+	<script>
+	  Kakao.init('cd03e7df27c61fde0636c7ef01f9cb11'); // 사용하려는 앱의 JavaScript 키 입력
+	</script>
 </head>
 <body>
     <header id="loginHeader">
@@ -58,7 +62,10 @@
 					    <img id="google" th:src="@{/images/flat-color-icons_google.png}">
 					</a>
                   
-                    <a href="#" id="kakao-login-btn"><img id="kakaotalk" th:src="@{/images/simple-icons_kakaotalk.png}"></a>
+                    <a id="kakao-login-btn" onclick="javascript:loginWithKakao()">
+                    	<img id="kakaotalk" th:src="@{/images/simple-icons_kakaotalk.png}">
+                    </a>
+                    
                     <a href="#"><img id="facebook" th:src="@{/images/logos_facebook.png}"></a>
                 </div>
 
@@ -66,8 +73,11 @@
                     <a th:href="@{/member/searchIdPw}" id="findIdPw" data-onsuccess="onSignIn">아이디/비밀번호 찾기</a> 
                     <a th:href="@{/member/signUp}" id="signUp">회원가입</a>
                 </div>
+                <button class="api-btn" onclick="requestUserInfo()" style="visibility:hidden">사용자 정보 가져오기</button>
+
             </div>
         </div>
+
 
     </section>
 

@@ -1,4 +1,3 @@
-
 const loginFrm = document.getElementById("loginFrm");
 
 const memberId = document.querySelector("#loginFrm input[name='memberId']");
@@ -35,6 +34,60 @@ if(loginFrm != null) {
 
     });
 }
+
+
+  function loginWithKakao() {
+    Kakao.Auth.authorize({
+      redirectUri: 'http://localhost:80',
+      state: 'userme'
+    });
+  }
+  
+    function requestUserInfo() {
+    Kakao.API.request({
+      url: '/v2/user/me',
+    })
+      .then(function(res) {
+        alert(JSON.stringify(res));
+      })
+      .catch(function(err) {
+        alert(
+          'failed to request user information: ' + JSON.stringify(err)
+        );
+      });
+  }
+  
+  Kakao.API.request({
+  url: '/v1/user/update_profile',
+  data: {
+    properties: {
+      '${CUSTOM_PROPERTY_KEY}': '${CUSTOM_PROPERTY_VALUE}',
+    },
+  },
+})
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+  // 아래는 데모를 위한 UI 코드입니다.
+  displayToken()
+  function displayToken() {
+    var token = getCookie('authorize-access-token');
+
+    if(token) {
+      Kakao.Auth.setAccessToken(token);
+      document.querySelector('#token_result').innerText = 'login success, ready to request API';
+      document.querySelector('button.api-btn').style.visibility = 'visible';
+    }
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie.split(name + '=');
+    if (parts.length === 2) { return parts[1].split(';')[0]; }
+  }
 
 
 

@@ -1,5 +1,7 @@
 package team.gsk.project.member.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -78,13 +81,18 @@ public class MemberController {
 	// 이메일로 아이디 찾기
     @PostMapping("/findId")
     @ResponseBody
-    public String findId(String memberName, 
-                        String memberEmail) {
-        
+    public String findId(@RequestBody Map<String, Object> map) {
+    	
+    	System.out.println(map);
+    	
+    	String memberName = (String) map.get("memberName");
+    	String memberEmail = (String) map.get("memberEmail");
+    	     
         String foundId = service.findId(memberName, memberEmail);
         
         return foundId != null ? foundId : "아이디를 찾을 수 없습니다.";
-    }      
+    	
+    }
 	
 	// 회원가입 페이지 이동
 	@GetMapping("/signUp")

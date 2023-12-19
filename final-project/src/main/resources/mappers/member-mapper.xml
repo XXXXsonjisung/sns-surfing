@@ -95,11 +95,11 @@
 		FROM DUAL
 	</select>
 	
-	<select id="findId" resultType="string">
+	<select id="findId" parameterType="map" resultType="string">
 		SELECT MEMBER_ID
 		FROM MEMBER 
 		WHERE MEMBER_NAME = #{memberName} 
-		AND MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_EMAIL = #{memberEmail}  
 	</select>
 	
 
