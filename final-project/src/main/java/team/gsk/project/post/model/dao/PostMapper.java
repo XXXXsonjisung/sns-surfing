@@ -21,6 +21,10 @@ public interface PostMapper {
 
 	int insertCommentCount(PostRequest post);
 
+	int deletePostByPostNo(int postNo);
+
+	PostRequest getPostQQ(int postNo);
+
 	
 
 

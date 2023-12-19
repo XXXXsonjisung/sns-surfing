@@ -148,11 +148,18 @@ public class PostServiceImpl implements PostService{
 	}
 
 
+	@Override
+	public int deletePostByPostNo(int postNo) {
+		
+		return dao.deletePostByPostNo(postNo);
+	}
 
 
-
-
-
+	@Override
+	public PostRequest getPostQQ(int postNo) {
+		
+		return dao.getPostQQ(postNo);
+	}
 
 
 

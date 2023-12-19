@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -254,8 +256,32 @@ public class PostController {
 	 }
 	 
 	 
+		@RequestMapping(value = "/deletePost/{postNo}", method = RequestMethod.DELETE)
+		public ResponseEntity<String> deletePost(@PathVariable int postNo) {
+        int deleteResult = service.deletePostByPostNo(postNo);
+        if (deleteResult > 0) {
+            return ResponseEntity.ok("게시물이 삭제되었습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("게시물을 찾을 수 없습니다.");
+        }
+    }
 	 
 	 
+		
+		@PostMapping("/getPostQ")
+		@ResponseBody
+	    public PostRequest getPost(@RequestParam("postNo") int postNo) {
+			
+			System.out.println("겟 포스트노랍니다." +postNo);
+	      
+	        PostRequest post = service.getPostQQ(postNo);
+	        		
+	        		
+	        		
+	        return post;
+	    }
+		
+		
 	 
 	 
 }
