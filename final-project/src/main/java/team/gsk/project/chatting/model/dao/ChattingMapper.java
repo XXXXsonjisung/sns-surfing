@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.dto.ChattingMessage;
+import team.gsk.project.chatting.model.dto.PrivateRoomList;
 import team.gsk.project.member.model.dto.Member;
 
 @Mapper
@@ -46,7 +47,12 @@ public interface ChattingMapper {
 	int exitMember(Map<String, Object> map);
 
 
+	// 채팅방 만들기 위한 친구 조회
+	List<Member> findFriends(int memberNo);
 
+
+	// 개인 채팅 리스트 조회
+	List<PrivateRoomList> selectPrivateList(int memberNo);
 
 
 

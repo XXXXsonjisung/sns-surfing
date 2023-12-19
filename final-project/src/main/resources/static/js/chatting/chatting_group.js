@@ -6,10 +6,10 @@ const stompClient = Stomp.over(socket); // SockJS를 이용해 Stomp 클라이�
 
 const chatroomList = document.getElementById("room-list");
 const messageArea = document.getElementById('messageArea'); // 채팅 메시지를 표시할 영역
-
+const chatPrivateList = document.getElementById("private-list");
 
 const memberNo = document.getElementById('memberNoDiv').getAttribute('data-member-no');
-const memberName = document.getElementById('memberNoDivv').getAttribute('data-member-name');
+const memberNickname = document.getElementById('memberNoDivv').getAttribute('data-member-name');
 
 
 
@@ -27,6 +27,13 @@ stompClient.connect({}, frame=> {
 //    });
 
 	stompClient.subscribe('/sub/updateMessage',chattingMessage => {
+			
+			const receivedMessage = JSON.parse(chattingMessage.body);
+			showMessage(receivedMessage);
+	});
+	
+	
+	stompClient.subscribe('/sub/updatePrivateMessage',chattingMessage => {
 			
 			const receivedMessage = JSON.parse(chattingMessage.body);
 			showMessage(receivedMessage);
@@ -87,6 +94,14 @@ chatroomList.addEventListener('click', function(event) {
 });
 
 
+
+
+
+
+
+
+
+
 // 방번호로 기존 메시지를 가져오기
 function fetchAndDisplayOldMessages(roomNo) {
   fetch('/getOldMessage?roomNo=' + roomNo)
@@ -136,7 +151,7 @@ function appendMessage(message) {
         messageElement.innerHTML = `
             <img id="pro" src="/images/${message.sender}.jpg">
             <div>
-                <b>${message.memberName}</b><br>
+                <b>${message.memberNickname}</b><br>
                 <p class="chat">${message.message}</p>
                 <span class="chatDate">${message.time}</span>
             </div>
@@ -176,18 +191,35 @@ function sendMessage() {
 //            message: message,
 //            // time: 현재 시간 설정 (서버에서 처리할 수도 있음)
 //        };
-
-        // WebSocket을 통해 서버에 메시지 전송
+	if(chatActive){
+		
+		stompClient.send("/pub/ws-stomp.sendPrivateMessage", {}, JSON.stringify({
+			type: 'TALK',
+			roomNo : roomNo,
+			memberNickname : memberNickname,
+			message : message,
+			sender : memberNo
+		}));
+        // 입력 필드 초기화
+        messageInput.value = '';
+		
+		
+	}else{
+		
+	      // WebSocket을 통해 서버에 메시지 전송
         stompClient.send("/pub/ws-stomp.sendMessage", {}, JSON.stringify({
 			type: 'TALK',
 			roomNo : roomNo,
-			memberName : memberName,
+			memberNickname : memberNickname,
 			message : message,
 			sender : memberNo
 		}));
         // 입력 필드 초기화
         messageInput.value = '';
     }
+		
+	}
+  
 }
 
 
@@ -242,9 +274,9 @@ function clearChatArea() {
 
 // 모달 창
 
- var btn = document.getElementById("invite-btn");
- var modal = document.getElementById("modal-overlay");
- var span = document.getElementsByClassName("close")[0];
+ let btn = document.getElementById("invite-btn");
+ let modal = document.getElementById("modal-overlay");
+ let span = document.getElementsByClassName("close")[0]; 
 
 
  btn.onclick = function() {
@@ -260,17 +292,187 @@ span.onclick = function() {
 
 
 
+/*window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+*/
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  } else if (event.target == friendOverlay) {
+    friendOverlay.style.display = "none";
   }
 }
 
 
 
 
-////
+/////// 개인 채팅 ////////////////////////////////////////////////////////
 
+let friendFindBtn =document.getElementById("friend-FindBtn");
+let friendOverlay = document.getElementById("friend-overlay");
+
+friendFindBtn.onclick = function() {
+ friendOverlay.style.display = "block";
+
+
+}
+
+
+const friendInput = document.querySelector("#friendInput"); // 사용자 검색
+const friendsArea = document.querySelector("#friendsArea"); // 검색 결과
+
+// 개인 채팅 친구 리스트 전역변수 선언
+let friends = [];
+
+
+// 개인 친구 채팅 
+function displayInvite(list){
+	
+	friendsArea.innerHTML="";
+	list.forEach(member=> {
+		const li = document.createElement("li");
+	    li.classList.add("friend-row");
+        li.setAttribute("friend-id", member.memberNo);
+		
+		const img = document.createElement("img");
+		img.classList.add("friend-row-img");
+		
+		// 프로필 이미지 여부에 따른 src 속성 선택
+		if(member.profileImage == null) img.setAttribute("src", "/images/user.png");
+		else img.setAttribute("src", member.profileImage);
+
+		let nickname = member.memberNickname;
+
+		const span = document.createElement("span");
+		span.innerHTML = `${nickname}`;
+
+	
+	
+	  	const checkbox = document.createElement("input");
+	    checkbox.type = "checkbox";
+	    checkbox.classList.add("friend-checkbox");
+	    checkbox.checked = member.selected || false;
+	    checkbox.addEventListener("change", (e) => handleCheckboxFriendsChange(e, member));
+	
+	  	li.append(checkbox,img,span); // 체크박스 추가
+        friendsArea.append(li);
+		
+	})
+	
+	
+}
+
+
+
+// 개인 채팅 친구 추가 버튼 리스트를 가져오기
+friendFindBtn.addEventListener("click",()=>{
+	
+		fetch(`/findFriends`)
+			.then(resp=>resp.json())
+			.then(list=>{
+				friends=list;
+				displayInvite(list);
+				console.log(friends)
+			})
+			.catch(err => console.log(err));
+
+		
+});
+
+
+// 친구 체크박스 상태 변경 시 이벤트 처리
+function handleCheckboxFriendsChange(event, member) {
+    if (event.target.checked) {
+        // 체크박스 선택 시, 선택된 친구 목록에 추가
+        member.selected = true;
+    } else {
+        // 체크박스 해제 시, 선택된 친구 목록에서 제거
+        member.selected = false;
+    }
+    updateSelectedFriendsPrivateDisplay();
+}
+
+
+
+// 선택된 친구 목록 업데이트 및 표시
+function updateSelectedFriendsPrivateDisplay() {
+	const selectedFriendsArea = document.getElementById("selectedFriendsPrivateArea");
+	selectedFriendsArea.innerHTML = "";
+
+    const selectedFriends = friends.filter(member => member.selected);
+    
+    selectedFriends.forEach(member=> {
+		const div = document.createElement("div");
+		div.textContent=member.memberNickname;
+		selectedFriendsArea.appendChild(div);
+		
+	});
+	
+}
+
+
+
+// 입력창에 친구 입력시
+friendInput.addEventListener("input", e => {
+
+	const query = e.target.value.trim();
+	if(query.length > 0){
+		const filteredFriends = friends.filter(member => 
+        member.memberNickname.includes(query));
+    	displayInvite(filteredFriends);
+		} else {
+		    displayInvite(friends);
+		}
+	
+});
+
+
+// 친구 초대~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+document.getElementById("inviteFriend").addEventListener("click", () => {
+	
+	 const selectedFriendIds = friends.filter(member => member.selected)
+                                         .map(member => member.memberNo);
+                                         
+    if (selectedFriendIds.length > 0) {
+     
+        fetch('/private/createPrivateRoom', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+				invitedFriends: selectedFriendIds,
+				})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('성공 :', data);
+            if(data>1){
+				
+				location.reload();
+				
+			} else {
+		      console.error('서버 오류 발생');
+		    }
+            
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+          
+        });
+    }
+	
+	
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+////// 채팅방 
 
 const targetInput = document.querySelector("#targetInput"); // 사용자 검색
 const resultArea = document.querySelector("#resultArea"); // 검색 결과
@@ -282,7 +484,26 @@ let allFriends = [];
 // 친구 추가 버튼 리스트를 가져오기
 inviteBtn.addEventListener("click",()=>{
 
-	if(roomNo!==null){
+
+	if(chatActive){
+		
+		if(roomNo!==null){
+		
+		fetch(`/private/allFriends?roomNo=${roomNo}`)
+			.then(resp=>resp.json())
+			.then(list=>{
+				allFriends=list;
+				displayFriends(list);
+				console.log(allFriends)
+			})
+			.catch(err => console.log(err));
+		}
+		
+		
+		
+	}else{
+		
+		if(roomNo!==null){
 		
 		fetch(`/allFriends?roomNo=${roomNo}`)
 			.then(resp=>resp.json())
@@ -293,6 +514,10 @@ inviteBtn.addEventListener("click",()=>{
 			})
 			.catch(err => console.log(err));
 		}
+		
+		
+	}
+
 		
 });
 
@@ -440,7 +665,25 @@ document.getElementById("invite").addEventListener("click", () => {
 
 // 현재 채팅방에 있는 친구 찾기 
 function displayFriend(){
-	if(roomNo!==null){
+	
+	if(chatActive){
+		if(roomNo!==null){
+		
+		fetch(`/private/displayFriend?roomNo=${roomNo}`)
+			.then(resp=>resp.json())
+			.then(list=>{
+				
+				console.log('현재 개인채팅방 인원',list)
+				appendFriend(list)
+			})
+			.catch(err => console.log(err));
+		}
+
+		
+		
+	}else{
+		
+		if(roomNo!==null){
 		
 		fetch(`/displayFriend?roomNo=${roomNo}`)
 			.then(resp=>resp.json())
@@ -451,6 +694,13 @@ function displayFriend(){
 			})
 			.catch(err => console.log(err));
 		}
+
+		
+		
+	}
+	
+	
+	
 
 }
 
@@ -558,8 +808,80 @@ function exit(){
 	}
 	
 }
+// 설정
+ let settingButton = document.querySelector('.button-room-setting');
+
+// 채팅방 선택에 그룹채팅과 개인채팅을 구별 짓는 중요한 지표
+let chatActive = false;
 
 
+// 채팅방 목록 표시
+function showRoomList() {
+    let card = document.querySelector('.card');
+	
+	chatActive = false;
+
+    if (card.classList.contains('flipped')) {
+        card.classList.remove('flipped');
+    }
+       settingButton.style.display = 'block';
+
+}
+
+// 개인 채팅 목록 표시
+function showPrivateList() {
+    let card = document.querySelector('.card');
+    
+    chatActive = true;
+    
+    if (!card.classList.contains('flipped')) {
+        card.classList.add('flipped');
+    }
+   settingButton.style.display = 'none';
+}
+
+
+
+
+
+
+
+
+chatPrivateList.addEventListener('click', function(event) {
+  // 클릭된 요소 또는 그 부모 요소 중 LI 요소 찾기
+  let li = event.target.closest('li');
+
+  // LI 요소가 클릭되었는지 확인
+  if (li) {
+    // 선택한 채팅방의 데이터 속성 값 가져오기
+    roomNo = li.getAttribute('private-no');
+
+  	clearChatArea();
+    // 기존 메시지 불러와 화면에 표시
+    fetchAndDisplayOldMessagesPrivate(roomNo);
+    
+    displayFriend();
+    
+    console.log('방번호:', roomNo);
+  }
+});
+
+
+
+
+// 방번호로 기존 메시지를 가져오기
+function fetchAndDisplayOldMessagesPrivate(roomNo) {
+  fetch('/private/getOldMessage?roomNo=' + roomNo)
+    .then(response => response.json())
+    .then(messages => {
+      // 채팅 내역을 받아와서 화면에 표시하기
+      console.log(messages);
+      displayChat(messages);
+    })
+    .catch(error => {
+      console.error('에러:', error);
+    });
+}
 
 
 

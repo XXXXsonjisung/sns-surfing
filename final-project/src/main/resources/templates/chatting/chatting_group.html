@@ -13,7 +13,7 @@
             <div>성북컴퓨터</div>
             <div class="nowPepole">현재인원:</div>
             <div id="memberNoDiv" th:data-member-no="${memberNo}"></div>
-            <div id="memberNoDivv" th:data-member-name="${memberName}"></div>
+            <div id="memberNoDivv" th:data-member-name="${memberNickname}"></div>
         </div>
     </header>
 
@@ -26,15 +26,15 @@
                     <button><img th:src="@{/common/images/Rectangle112.png}"></button>
                 </form>
             </div>
-            <input type="checkbox" id="reg-log" class="checkbox">
-            <div class="card-3d-wrap">
-	             <div class="card-3d-wrapper">
-		            <div class="room_list card-front"> 
+    
+				<button onclick="showRoomList()">채팅방 목록</button>
+				<button onclick="showPrivateList()">개인채팅 목록</button>
+	             <div class="card">
+		            <div class="room_list front"> 
 		                <label>채팅방 목록</label>
-		
 			                <ul id="room-list">
 							    <li th:each="room : ${roomList}" th:attr="room-no=${room.roomNo}">
-							        <img th:src="${room.roomImg}">
+							        <img th:src="@{${room.roomImg}}">
 							        <div class="message_imform">
 							            <b class="message_pe" th:text="${room.roomName}">이름</b>
 							            <span class="chatDate" th:text="${room.time}">시간</span>
@@ -47,16 +47,27 @@
 						
 		            </div>
 		            
-		            <div class="private_list card-back">
+		            <div class="private_list back">
 						<label>개인채팅 목록</label>
 						<ul id="private-list">
-							<li>테스트1</li>
-							<li>테스트2</li>
-						</ul>
+							    <li th:each="room : ${privateList}" th:attr="private-no=${room.roomNo}">
+							        <img th:src="${room.memberProfile}">
+							        <div class="message_imform">
+							            <b class="message_pe" th:text="${room.memberNickname}">이름</b>
+							            <span class="chatDate" th:text="${room.time}">시간</span>
+							            <div class="last_message" th:text="${room.chattingMessage}">
+							                마지막 메세지
+							            </div>
+							        </div>
+							    </li>
+							</ul>
 					</div>
+					
+		
+					
                 </div>
-            </div>
-            <label for="reg-log" class="switch">보기 전환</label>
+       
+         
         </aside>
 
         <main>
@@ -83,12 +94,12 @@
             </div>
             <div class="mainSide">
                 <button th:onclick="history.back()" id="back">돌아가기</button>
-                <button th:onclick="roomSetting()">설정</button>
+                <button class="button-room-setting"  th:onclick="roomSetting()">설정</button>
                 <button id="invite-btn">친구추가 창</button>
                 <button th:onclick="location.href='/chatting/invite'">친구추가</button>
                 <button th:onclick="exit()">나가기</button>
-                <div >현재 인원
-				</div>
+                <button id="friend-FindBtn">채팅 할 친구 알아보기</button>
+            
 					
             </div>
         
@@ -105,6 +116,20 @@
 				</div>
 			 </div>
            
+           
+   		 <div class="friend-overlay" id="friend-overlay">
+				 <div class="friend-background">
+					<span class="close"></span>
+					<input id="friendInput" placeholder="친구 누구">
+					<button id="inviteFriend">채팅방 생성</button>
+					<ul id="friendsArea">
+					</ul>
+					<div id="selectedFriendsPrivateArea"></div>
+				</div>
+			 </div>	
+					
+           
+           
             
         </main>
 </body>
@@ -112,6 +137,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script th:src="@{/js/chatting/chatting_group.js}"></script>
+    <script type="module" th:src="@{/js/chatting/chatting_private.js}"></script>
 
 
 </html>

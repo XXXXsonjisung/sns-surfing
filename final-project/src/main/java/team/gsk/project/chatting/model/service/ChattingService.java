@@ -7,6 +7,7 @@ import team.gsk.project.chatting.model.dto.ChatRoom;
 import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.dto.ChattingMessage;
+import team.gsk.project.chatting.model.dto.PrivateRoomList;
 import team.gsk.project.member.model.dto.Member;
 
 public interface ChattingService {
@@ -19,7 +20,6 @@ public interface ChattingService {
 
 	// 채팅방의 메세지 리스트 찾기
 	List<ChattingMessage> getOldMessage(int roomNo);
-
 
 	// 개인 채팅 메세지 저장
 	void saveMessage(ChattingMessage chattingMessage);
@@ -35,6 +35,12 @@ public interface ChattingService {
 
 	// 채팅방 나가기
 	int exitMember(String roomNo, String memberNo);
+
+	// 채팅방 만들기 위한 친구 조회
+	List<Member> findFriends(int memberNo);
+
+	// 개인 채팅 리스트 조회
+	List<PrivateRoomList> selectPrivateList(int memberNo);
 
 
 	

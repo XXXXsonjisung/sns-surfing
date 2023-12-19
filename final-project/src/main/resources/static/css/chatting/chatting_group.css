@@ -197,6 +197,80 @@ aside button{
 
 
 
+/*개인 채팅*/
+
+.private_list{
+    margin-top: 7%;
+    height: 80%;
+  
+
+
+
+}
+
+
+.private_list label{
+
+    padding-left: 5%;
+    
+    font-weight: bold;
+}
+
+
+
+.private_list ul{
+
+    padding: 0;
+}
+
+
+.private_list li {
+
+
+    height: 150px;
+    border-top: 0.3px rgba(0, 0, 0, 0.3) solid;
+    list-style: none;
+    display: flex;
+    padding-top: 5%;
+   
+
+}
+
+
+
+.private_list li> div{
+
+
+    padding-top: 10%;
+}
+
+
+.private_list li> div .chatDate {
+
+    font-size: 0.7rem;
+    opacity: 50%;
+}
+
+
+
+
+
+.private_list li img {
+
+    height: 100px;
+    width: 100px;
+    border-radius: 70%;
+    padding-right: 5%;
+    overflow: hidden;
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -338,7 +412,7 @@ form{
 	    width: 50%;
 	    height: 100%;
 	    background: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
-	    z-index: 9999; /* 모달 창 위에 표시되도록 설정 */
+	    z-index: 99; /* 모달 창 위에 표시되도록 설정 */
 	}
 	
 	
@@ -380,39 +454,97 @@ form{
  
   
   
+  /*/////////친구 초대를 위한 모달*/
+  
+  	.friend-overlay {
+	    display: none;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 50%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
+	    z-index: 999; /* 모달 창 위에 표시되도록 설정 */
+	}
+	
+	
+	.friend-background{
+		
+		
+		background: white;
+	}
+	
+	
+
+  #friendsArea{
+	  
+	  width: 50%;
+	  height: 50%;
+	  display: flex;
+	  
+  }	        
+  
+  
+  
+    .friend-row{
+	  margin:0%;
+	  padding:0%;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  margin-right: 5%;
+	  
+	  
+  }
+  
+  
+ /*친구 리스트 이미지*/
+ 
+ .friend-row-img{
+	 width: 50px;
+	 height: 50px;
+	 
+ }
+ 
+  
+  
+  
+  
+
+  
+ .button-room-setting {
+    display: none;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+/*.//////////////////////*/
   
   
   /*채팅리스트 뒤집기*/
-  
-  .card-3d-wrap {
-    perspective: 1000px;
-}
-
-.card-3d-wrapper {
+.card{
+	transition: transform 0.5s;
     transform-style: preserve-3d;
-    transition: transform 0.5s;
 }
-
-.card-front, .card-back {
-    backface-visibility: hidden;
-    position: absolute;
+  
+  
+ .front,.back {
+  position: absolute;
+   backface-visibility: hidden;
 }
-
-.card-back {
+  
+  
+.back {
+transform: rotateY(180deg);
+}
+.card.flipped {
     transform: rotateY(180deg);
 }
-
-.checkbox:checked ~ .card-3d-wrapper {
-    transform: rotateY(180deg);
-}
-  
-  
-  
-  
-  
-  
-  
-  
-
         
   
