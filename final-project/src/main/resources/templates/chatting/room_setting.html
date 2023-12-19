@@ -98,7 +98,7 @@
                     <div>
                         <input type="number" name="roomPersonnel" min="2" max="10" id="pepole_limit" placeholder="3~10" th:field="*{roomPersonnel}">
                    		<span class="validationError" th:if="${#fields.hasErrors('roomPersonnel')}" th:errors="*{roomPersonnel}">ddddd</span>
-                   		<span>dfdfdf</span>
+                   		<span></span>
                     </div>
                 </div>
                 <div class="room_name">
@@ -141,7 +141,7 @@
                      <div class="now_people_content">
                         <ul id="np-ul">
                             <li th:each="member:${memberList}" class="np-list" th:attr="data-member-no=${member.memberNo}">
-                                <img id="np-img" th:src="${member.profileImage}">
+								<img  id="np-img" th:src="${member.profileImage != null ? member.profileImage : '/common/images/profile/profile.jpg'}">
                                 <div id="np-id" th:text="${member.memberNickname}">닉네임</div>
                                 <input type="checkbox" class="memberCheckbox">
                             </li> 

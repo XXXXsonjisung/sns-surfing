@@ -513,13 +513,26 @@ form{
 
   
  .button-room-setting {
-    display: none;
+    display: block;
 }
   
   
   
+
+.friendAreasImages{
+	
+	width: 30px;
+	height: 30px;
+	border-radius: 20%;
+}
+
+
   
-  
+.invite-btn{
+	 
+	 display: none;
+	 
+ } 
   
   
   
