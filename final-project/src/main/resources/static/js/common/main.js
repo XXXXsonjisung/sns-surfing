@@ -157,7 +157,45 @@ document.addEventListener("DOMContentLoaded", function() {
 	        closeModal(); // 모달 닫기
 	    });
 	});
+
+
 	
+	document.getElementById('imageInputXXQQ').addEventListener('change', function(event) {
+		    const file = event.target.files[0];
+		    const reader = new FileReader();
+		
+		    reader.onload = function(e) {
+		        const img = document.createElement('img');
+		        img.src = e.target.result;
+		        img.style.maxWidth = '300px'; // 이미지의 최대 너비 설정
+		        img.style.maxHeight = '300px'; // 이미지의 최대 높이 설정
+		
+		        const modalPostContent = document.getElementById('modalPostContentQQ');
+		        modalPostContent.appendChild(img);
+		        modalPostContent.appendChild(document.createElement('br')); // 줄 바꿈 추가
+		    }
+		
+		    reader.readAsDataURL(file);
+		});
+		
+		document.getElementById('videoInputQQ').addEventListener('change', function(event) {
+		    const file = event.target.files[0];
+		    const reader = new FileReader();
+		
+		    reader.onload = function(e) {
+		        const video = document.createElement('video');
+		        video.src = e.target.result;
+		        video.controls = true;
+		        video.style.maxWidth = '300px'; // 동영상의 최대 너비 설정
+		        video.style.maxHeight = '300px'; // 동영상의 최대 높이 설정
+		
+		        const modalPostContent = document.getElementById('modalPostContentQQ');
+		        modalPostContent.appendChild(video);
+		        modalPostContent.appendChild(document.createElement('br')); // 줄 바꿈 추가
+		    }
+		
+		    reader.readAsDataURL(file);
+		});
 	
 		
 		function closeModal() {
