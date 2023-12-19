@@ -157,6 +157,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	        closeModal(); // 모달 닫기
 	    });
 	});
+	
+	
 		
 		function closeModal() {
 		    const modal = document.getElementById('myModalQQ');
