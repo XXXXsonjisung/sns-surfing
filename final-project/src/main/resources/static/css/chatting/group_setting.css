@@ -56,9 +56,9 @@ body{
         padding: 0;
         margin: 0;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-gap: 10px;
-        width: 30%;
+        width: 40%;
         height: 30%;
     }
 
@@ -71,6 +71,7 @@ body{
         background-color: lightblue;
         padding: 20px;
         text-align: center;
+        cursor: pointer;
 
 
     }
@@ -288,3 +289,25 @@ body{
         justify-content: center;
 
     }
+    
+    
+    
+    /*////////////////////////////그룹채팅*/
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
