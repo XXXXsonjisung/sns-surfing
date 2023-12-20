@@ -1,5 +1,7 @@
 package team.gsk.project.chatting.model.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,5 +36,9 @@ public class ChattingMessage {
 	    
 	    
 	    private String profile; // 프로필
+	    
+	    
+	    
+	    private LocalDateTime sentAt;// 채팅 보낼때 시간
 
 }
