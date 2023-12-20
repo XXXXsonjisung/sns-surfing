@@ -54,6 +54,7 @@
 						<label>개인채팅 목록</label>
 						<ul id="private-list">
 							    <li th:each="room : ${privateList}" th:attr="private-no=${room.roomNo}">
+								<!-- <img th:src="${room.memberProfile != null ? room.memberProfile : '/common/images/profile/profile.jpg'}">-->
 							        <img th:src="${room.memberProfile != null ? room.memberProfile : '/common/images/profile/profile.jpg'}">
 							        <div class="message_imform">
 							            <b class="message_pe" th:text="${room.memberNickname}">이름</b>

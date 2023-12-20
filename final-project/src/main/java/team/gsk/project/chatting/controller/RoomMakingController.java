@@ -181,13 +181,36 @@ public class RoomMakingController {
 	// 채팅방 수정 
 	@PostMapping("/update")
 	public String updateRoom(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,
-			 RedirectAttributes redirectAttributes) {
+			 RedirectAttributes redirectAttributes) throws Exception {
 				if(bindingResult.hasErrors()) {
 
 					   model.addAttribute("inputChatting", inputChatting);
 					
 					return "chatting/room_setting";
 				}
+				
+				  MultipartFile roomImgFile = inputChatting.getRoomImgFile();
+				  
+				  String originalFileName = roomImgFile.getOriginalFilename();
+				  
+				  String fileExtension = Objects.requireNonNull(originalFileName).substring(originalFileName.lastIndexOf("."));
+
+				  // 현재 시간을 밀리초로 변환하여 파일명 생성
+				  String fileName = System.currentTimeMillis() + fileExtension;
+				  
+				  
+				  // 파일 저장 경로 설정
+				  String fullFilePath = filePath + fileName;
+				  
+				  File dest = new File(fullFilePath);
+				  roomImgFile.transferTo(dest);
+				  
+				  String fullWebPath = webPath + fileName;
+				  
+				  inputChatting.setRoomImg(fullWebPath);
+						
+				
+				
 				int roomNo = inputChatting.getRoomNo();
 				
 				int result =  service.updateRoom(inputChatting); 

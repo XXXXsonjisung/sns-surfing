@@ -21,7 +21,7 @@
             <div class="setting_title">설정</div>
             <div class="setting_contents">
                 <div class="content-1">
-                   <form th:action="@{/RoomMaking/update}" method="POST" id="roomMaking" th:object="${inputChatting}">
+                   <form th:action="@{/RoomMaking/update}" method="POST" id="roomMaking" th:object="${inputChatting}" enctype="multipart/form-data">
                 <div class="group_choose">
                     <label for="tagsInput">채팅방 그룹</label>
                     <div class="group_con">
@@ -119,8 +119,8 @@
                     
                     <div class="fileUpload">
                         <label for="roomImg">프로필 이미지 선택 </label>
-                        <input id="roomImg" type="file" name="roomImg" accept="image/jpeg,image/jpg,image/png" onchange="image(this)">
-                        <img id="preview">
+                        <input id="roomImg" type="file" name="roomImgFile" accept="image/jpeg,image/jpg,image/png" onchange="image(this)" >
+                        <img id="preview" th:src="*{roomImg}" />
                     </div>
                 </div>
                 <ul th:if="${errors != null}">
