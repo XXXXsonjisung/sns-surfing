@@ -17,17 +17,26 @@
     <main>
         <div class="tag_container">
             <div class="tag-chose">
-                <label class="tag-title">태그 선택</label>
+                <label class="tag-title">그룹 선택</label>
                 <ul class="tag-list">
-                    <li class="tag-li">지역</li>
-                    <li class="tag-li"></li>
-                    <li class="tag-li"></li>
-                    <li class="tag-li"></li>
-                    <li class="tag-li">나이</li> 
-                    <li class="tag-li"></li>
-                    <li class="tag-li"></li>
-                    <li class="tag-li"></li>
-                    <li class="tag-li">직업</li>
+                    <li class="tag-li">서울</li>
+                    <li class="tag-li">경기도</li>
+                    <li class="tag-li">강원도</li>
+                    <li class="tag-li">충청도</li>
+                    <li class="tag-li">경상도</li> 
+                    <li class="tag-li">전라도</li>
+                    <li class="tag-li">제주도</li>
+                    <li class="tag-li">10대</li>
+                    <li class="tag-li">20대</li>
+                    <li class="tag-li">30대</li>
+                    <li class="tag-li">40대</li>
+                    <li class="tag-li">50대</li>
+                    <li class="tag-li">취미</li>
+                    <li class="tag-li">친목</li>
+                    <li class="tag-li">공부</li>
+                    <li class="tag-li">봉사</li>
+                    <li class="tag-li">만남</li>
+                    <li class="tag-li">종교</li>
                 </ul>
             </div>
 
@@ -36,8 +45,9 @@
             <!-- 누를시 tag-result에 담김 -->
             
             <div class="tag-result">
-                <input type="text" id="tag-box" placeholder="#태그를 추가하세요">
-                <button>검색</button>
+                <input type="text" id="tag-box" placeholder="#그룹을 추가하고 검색하세요">
+                <button onclick="searchRoom()">검색</button>
+                <button class="cleanTag">지우기</button>
             </div>
         </div>
 
