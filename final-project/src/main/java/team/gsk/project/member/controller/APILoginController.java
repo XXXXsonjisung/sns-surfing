@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 
+
 import team.gsk.project.member.model.service.APILoginService;
 
 @Controller
@@ -64,7 +65,7 @@ public class APILoginController {
 	        System.out.println("response body : " + result);
 
 //	        JsonElement element = JsonParser.parseString(result.toString());
-//
+
 //	        accessToken = element.getAsJsonObject().get("access_token").getAsString();
 //	        refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
 
