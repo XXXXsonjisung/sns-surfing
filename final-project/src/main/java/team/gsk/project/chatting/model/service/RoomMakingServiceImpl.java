@@ -188,21 +188,25 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		
 		String[] tagName = tags.split(", ");	
 		
+
+		
 		List<Map<String, Object>> listOfMaps = new ArrayList<>();
 		
-		for (int i = 0; i < tagName.length; i++) {
-		
-		Map<String, Object> map = new HashMap<>();	
-		
-		map.put("tagName", tagName[i]);
-		
-		listOfMaps.add(map);
+	
 
-		}		
+		for (String tag : tagName) {
+		    Map<String, Object> map = new HashMap<>();    
+		    map.put("tagName", tag);
+		    listOfMaps.add(map);
+		}
 		
+		int tagLength = tagName.length;
 		
+		Map<String, Object> params = new HashMap<>();
+		params.put("listOfMaps", listOfMaps);
+		params.put("tagLength", tagLength);
 		
-		return mapper.searchRoom(listOfMaps);
+		return mapper.searchRoom(params);
 	}
 	
 	

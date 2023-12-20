@@ -238,12 +238,22 @@ public class RoomMakingController {
 //		    }
 //		 
 //		 
-			List<Chatting> result = service.searchRoom(tags);
+			List<Chatting> roomList = service.searchRoom(tags);
 			
-			log.info("태그로 찾은 채팅방"+result);
+			for(Chatting room : roomList) {
+				int roomNo = room.getRoomNo();
+				List<String> tag =service.findRoomTag(roomNo);
+				String tagName = String.join(",", tag);
+				room.setTagName(tagName);
+				log.info("문자열로 만들기 :"+ tagName);
+			}
+			
+			
+			
+			log.info("태그로 찾은 채팅방"+roomList );
 			
 		
-		return result;
+		return roomList ;
 	}
 	
 	

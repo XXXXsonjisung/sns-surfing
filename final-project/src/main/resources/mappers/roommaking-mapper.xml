@@ -13,6 +13,7 @@
 		<result property="roomImg" column="ROOM_IMG"/>
 		<result property="tagName" column="TAG_NAME" />
 		
+		
 		<!--해소테이블 컬럼-->
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="tagNo" column="TAG_NO" />
@@ -154,15 +155,23 @@
 	
 	
 	<!--채팅방 찾기-->
-	<select id="searchRoom" resultMap="chatting_rm">
-	    SELECT * FROM ROOM_GROUP rg 
+	<select id="searchRoom" parameterType="map" resultMap="chatting_rm">
+	    SELECT rg.ROOM_NO,rg.ROOM_NAME,rg.ROOM_INTRUDECE,rg.ROOM_PERSONNEL,rg.ROOM_MANAGER,rg.ROOM_PWD,rg.ROOM_IMG
+	    FROM ROOM_GROUP rg
 	    LEFT JOIN TAG_ROOM_NO trn ON rg.ROOM_NO = trn.ROOM_NO 
 	    LEFT JOIN ROOM_TAG rt ON rt.TAG_NO = trn.TAG_NO 
+	    LEFT JOIN (
+	        SELECT ROOM_NO, COUNT(MEMBER_NO) AS count 
+	        FROM MEMBER_ROOM_NO 
+	        GROUP BY ROOM_NO
+	    ) mrn_count ON mrn_count.ROOM_NO = rg.ROOM_NO
 	    WHERE rt.TAG_NAME IN
-	    <foreach item="tagMap" collection="listOfMaps" open="(" separator="," close=")">
+	    <foreach item="tagMap" index="index" collection="listOfMaps" open="(" separator="," close=")">
 	        #{tagMap.tagName}
 	    </foreach>
+	    GROUP BY rg.ROOM_NO,rg.ROOM_NAME,rg.ROOM_INTRUDECE,rg.ROOM_PERSONNEL,rg.ROOM_MANAGER,rg.ROOM_PWD,rg.ROOM_IMG
+	    HAVING COUNT(DISTINCT rt.TAG_NAME) = #{tagLength}
 	</select>
-				
+						
 </mapper>
 
