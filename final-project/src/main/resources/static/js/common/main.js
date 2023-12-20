@@ -74,6 +74,18 @@ document.addEventListener("DOMContentLoaded", function() {
 		        btn.style.display = 'none'; // 숨기기
 		        deleteSpans[index].style.display = 'none'; // 숨기기
 		    }
+		    
+		    
+		    if (!memberId) {
+				btn.style.display = 'none';
+				deleteSpans[index].style.display = 'none';
+			}
+		    
+		    
+		    
+		    
+		    
+		    
 		});
 		
 		
