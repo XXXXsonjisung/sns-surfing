@@ -10,14 +10,14 @@
     <header>
         <div onclick="window.location.href='/'" class="title1">Surfing</div>
         <div class="title2">
-            <div>성북컴퓨터</div>
-            <div class="nowPepole">현재인원:</div>
+            <div></div>
+            <div class="nowPepole"></div>
             <div id="memberNoDiv" th:data-member-no="${memberNo}"></div>
             <div id="memberNoDivv" th:data-member-name="${memberNickname}"></div>
         </div>
     </header>
 
-        <aside>
+        <aside id="aside">
           
             <div class="search_room">
                 <div>채팅방검색</div>
@@ -97,11 +97,13 @@
                 </div>
             </div>
             <div class="mainSide">
-                <button th:onclick="history.back()" id="back">돌아가기</button>
+               
                 <button class="button-room-setting"  th:onclick="roomSetting()">설정</button>
-                <button id="invite-btn" class="invite-btn">친구추가 창</button>
-                <button th:onclick="exit()">나가기</button>
-                <button id="friend-FindBtn">채팅 할 친구 알아보기</button>
+                <button id="invite-btn" class="invite-btn">채팅방 팔로우 추가</button>
+                 <button class="findBtn" id="friend-FindBtn">채팅 할 팔로우 찾기</button>
+                <button class="exit" th:onclick="exit()">나가기</button>
+                <button class="sideBarOut" id="sideBarOut">사이드바 숨기기</button>
+                <button th:onclick="history.back()" id="back">돌아가기</button>
             
 					
             </div>
@@ -123,7 +125,7 @@
    		 <div class="friend-overlay" id="friend-overlay">
 				 <div class="friend-background">
 					<span class="close"></span>
-					<input id="friendInput" placeholder="친구 누구">
+					<input id="friendInput" placeholder="팔로우 닉네임 입력">
 					<button id="inviteFriend">채팅방 생성</button>
 					<ul id="friendsArea">
 					</ul>

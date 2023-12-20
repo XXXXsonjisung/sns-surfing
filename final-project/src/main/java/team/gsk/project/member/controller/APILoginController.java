@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 import team.gsk.project.member.model.service.APILoginService;
 
@@ -65,10 +63,10 @@ public class APILoginController {
 	        }
 	        System.out.println("response body : " + result);
 
-	        JsonElement element = JsonParser.parseString(result.toString());
-
-	        accessToken = element.getAsJsonObject().get("access_token").getAsString();
-	        refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
+//	        JsonElement element = JsonParser.parseString(result.toString());
+//
+//	        accessToken = element.getAsJsonObject().get("access_token").getAsString();
+//	        refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
 
 	        System.out.println("accessToken : " + accessToken);
 	        System.out.println("refreshToken : " + refreshToken);
