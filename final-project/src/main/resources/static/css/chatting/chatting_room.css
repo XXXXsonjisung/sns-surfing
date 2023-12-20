@@ -49,13 +49,6 @@ width: 90%;
 
 
 
-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 30px;
-
-}
 
 input{
 
@@ -99,7 +92,7 @@ input{
 
     .display-chatting {
         width: 100%;
-        height: 570px;
+        height: 100%;
         overflow: auto;
         list-style: none;
         padding: 10px 10px;
@@ -132,4 +125,17 @@ input{
     width: 80px;
     border-radius: 50px;
 
+  }
+  
+  
+  
+  
+  
+   .send-contanier{
+	      display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+
+	  
   }

@@ -128,6 +128,7 @@ function displayChat(messages){
 // 메세지 추가 
 function appendMessage(message) {
 	
+	console.log("메세지 확인" +message);
 	
      const messageElement = document.createElement('li');
         messageElement.className = 'target-chat';
@@ -145,11 +146,14 @@ function appendMessage(message) {
 		
 		
 	        ///<img id="pro" src="/common/images/${message.profile}.jpg">
+	        //    <img id ="pro" src="${message.profile != null ? message.profile : '/common/images/profile/profile.jpg'}">
 	        
 		}else{
-			  // 메시지 내용을 구성
+		     let profileImageSrc = message.profile ? message.profile : '/common/images/profile/profile.jpg';
+
+        // 메시지 내용을 구성
         messageElement.innerHTML = `
-         <img id ="pro" src="${message.profile != null ? message.profile : '/common/images/profile/profile.jpg'}">
+             <img id="pro" src="${message.profile}" onerror="this.onerror=null; this.src='/common/images/profile/profile.jpg';">
             <div>
                 <b>${message.memberNickname}</b><br>
                 <p class="chat">${message.message}</p>
@@ -199,6 +203,7 @@ function sendMessage() {
 			memberNickname : memberNickname,
 			message : message,
 			sender : memberNo
+			
 		}));
         // 입력 필드 초기화
         messageInput.value = '';
@@ -206,7 +211,6 @@ function sendMessage() {
 		
 	}else{
 		
-	      // WebSocket을 통해 서버에 메시지 전송
         stompClient.send("/pub/ws-stomp.sendMessage", {}, JSON.stringify({
 			type: 'TALK',
 			roomNo : roomNo,
@@ -221,6 +225,16 @@ function sendMessage() {
 	}
   
 }
+
+   const messageInput = document.getElementById('message');
+
+messageInput.addEventListener("keyup", e => {
+	if(e.key == "Enter"){ 
+		if (!e.shiftKey) {
+			sendMessage();
+		}
+	}
+})
 
 
 

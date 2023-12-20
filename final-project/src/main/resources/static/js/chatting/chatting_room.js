@@ -67,10 +67,15 @@ function sendMessage() {
     const messageInput = document.getElementById('message');
     const message = messageInput.value.trim();
     if (message !== '') {
+		
+		 const now = new Date();
+   		 now.setHours(now.getHours() + 9); // 현재 시간에 9시간을 더함
+		
+		
         stompClient.send("/app/chat.sendMessage", { sessionId: sessionId }, JSON.stringify({
             content: message,
             sender: sessionId,
-            sentAt: new Date().toISOString()
+            sentAt: now.toISOString()
         }));
         messageInput.value = '';
     }
@@ -140,3 +145,14 @@ function appendSystemMessage(message) {
 }     
        
        
+       
+       
+const messageInput = document.getElementById("message"); 
+       
+messageInput.addEventListener("keyup", e => {
+	if(e.key == "Enter"){ 
+		if (!e.shiftKey) {
+			sendMessage();
+		}
+	}
+})
