@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 클릭 이벤트 핸들러 추가
                 img.addEventListener('click', function() {
-                    window.location.href = `http://localhost/getUserInfo?username=${item.h_memberId}`;
+                    window.location.href = `http://15.165.163.175/getUserInfo?username=${item.h_memberId}`;
                 });
                 
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 클릭 이벤트 핸들러 추가
                 aTag.addEventListener('click', function() {
-                    window.location.href = `http://localhost/getUserInfo?username=${item.h_memberId}`;
+                    window.location.href = `http://15.165.163.175/getUserInfo?username=${item.h_memberId}`;
                 });
 
                 // 그룹화된 요소들을 합쳐서 구조를 형성합니다.
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                  // 클릭 이벤트 핸들러 추가
                 img.addEventListener('click', function() {
-                    window.location.href = `http://localhost/getUserInfo?username=${item.p_memberId}`;
+                    window.location.href = `http://15.165.163.175/getUserInfo?username=${item.p_memberId}`;
                 });
 
                 const followNavDiv = document.createElement('div');
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                  // 클릭 이벤트 핸들러 추가
                 aTag.addEventListener('click', function() {
-                    window.location.href = `http://localhost/getUserInfo?username=${item.p_memberId}`;
+                    window.location.href = `http://15.165.163.175/getUserInfo?username=${item.p_memberId}`;
                 });
 
                 // 그룹화된 요소들을 합쳐서 구조를 형성합니다.
