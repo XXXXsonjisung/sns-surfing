@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.member.model.dao.MemberMapper;
 import team.gsk.project.post.model.dto.Heart;
 import team.gsk.project.post.model.dto.PostComment;

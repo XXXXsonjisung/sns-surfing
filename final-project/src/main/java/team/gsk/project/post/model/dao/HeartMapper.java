@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.post.model.dto.Heart;
 
 @Mapper

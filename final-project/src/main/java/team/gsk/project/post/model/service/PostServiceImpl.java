@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import oracle.jdbc.proxy.annotation.Post;
 import team.gsk.project.common.utility.Util;
-import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.mypage.model.dao.MyPageMapper;
 import team.gsk.project.post.model.dao.PostDAO;
 import team.gsk.project.post.model.dto.Heart;
