@@ -223,7 +223,28 @@ public class RoomMakingController {
 	}
 	
 	
-	 
+	// 태그로 채팅방 검색하기
+	@PostMapping("/searchRoom")
+	@ResponseBody
+	public List<Chatting> searchRoom(@RequestBody Chatting chatting) {
+			
+		
+				String tags = chatting.getTagName();
+		
+//		 
+//		 for (String tag : tags) {
+//		        // 각 태그 처리
+//		        System.out.println(tag.trim()); // 공백 제거
+//		    }
+//		 
+//		 
+			List<Chatting> result = service.searchRoom(tags);
+			
+			log.info("태그로 찾은 채팅방"+result);
+			
+		
+		return result;
+	}
 	
 	
 	

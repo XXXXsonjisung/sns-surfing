@@ -44,4 +44,7 @@ public interface RoomMakingService {
 	// 채팅방 수정
 	int updateRoom(Chatting inputChatting);
 
+	// 채팅방 검색
+	List<Chatting> searchRoom(String tags);
+
 }

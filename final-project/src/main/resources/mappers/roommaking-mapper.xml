@@ -151,6 +151,18 @@
 		    ROOM_IMG = #{roomImg}
 		WHERE ROOM_NO = #{roomNo}
 	</update>
+	
+	
+	<!--채팅방 찾기-->
+	<select id="searchRoom" resultMap="chatting_rm">
+	    SELECT * FROM ROOM_GROUP rg 
+	    LEFT JOIN TAG_ROOM_NO trn ON rg.ROOM_NO = trn.ROOM_NO 
+	    LEFT JOIN ROOM_TAG rt ON rt.TAG_NO = trn.TAG_NO 
+	    WHERE rt.TAG_NAME IN
+	    <foreach item="tagMap" collection="listOfMaps" open="(" separator="," close=")">
+	        #{tagMap.tagName}
+	    </foreach>
+	</select>
 				
 </mapper>
 
