@@ -147,20 +147,33 @@ function appendMessage(message) {
 		
 	        ///<img id="pro" src="/common/images/${message.profile}.jpg">
 	        //    <img id ="pro" src="${message.profile != null ? message.profile : '/common/images/profile/profile.jpg'}">
+	        // <img id="pro" src="${message.profile}" onerror="this.onerror=null; this.src='/common/images/profile/profile.jpg';">
 	        
 		}else{
-		     let profileImageSrc = message.profile ? message.profile : '/common/images/profile/profile.jpg';
+		     //let profileImageSrc = message.profile ? message.profile : '/common/images/profile/profile.jpg';
 
         // 메시지 내용을 구성
+      	const img = document.createElement("img");
+		if (message.profile) {
+		    img.setAttribute("src", message.profile);
+		} else {
+		    img.setAttribute("src", '/common/images/profile/profile.jpg');
+		}
+
+		img.id = "pro";
+      
         messageElement.innerHTML = `
-             <img id="pro" src="${message.profile}" onerror="this.onerror=null; this.src='/common/images/profile/profile.jpg';">
+             ${img.outerHTML}
             <div>
                 <b>${message.memberNickname}</b><br>
                 <p class="chat">${message.message}</p>
                 <span class="chatDate">${message.time}</span>
             </div>
         `;	
-			
+        	
+        		/*const div = document.createElement("div");
+        		const b = document.createElement("b");
+				 messageElement.append(img,div);*/
 		}
 
    
@@ -185,6 +198,16 @@ function sendMessage() {
 	 console.log('sendMessage 내부의 roomNo:', roomNo);
 	    const messageInput = document.getElementById('message');
 	    const message = messageInput.value.trim();
+	    
+	//     const now = new Date();
+   		// now.setHours(now.getHours() + 9); // 현재 시간에 9시간을 더함
+   		
+   		
+   		const now = new Date();
+		const hours = String(now.getHours()).padStart(2, '0');
+		const minutes = String(now.getMinutes()).padStart(2, '0');
+   		const timeString = `${hours}:${minutes}`;
+	    
 
     // 입력된 메시지가 비어있지 않은 경우에만 전송
     if (message !== '') {
@@ -197,12 +220,18 @@ function sendMessage() {
 //        };
 	if(chatActive){
 		
+		
+		
+		
+		
 		stompClient.send("/pub/ws-stomp.sendPrivateMessage", {}, JSON.stringify({
 			type: 'TALK',
 			roomNo : roomNo,
 			memberNickname : memberNickname,
 			message : message,
-			sender : memberNo
+			sender : memberNo,
+			time: timeString
+			
 			
 		}));
         // 입력 필드 초기화
@@ -216,7 +245,8 @@ function sendMessage() {
 			roomNo : roomNo,
 			memberNickname : memberNickname,
 			message : message,
-			sender : memberNo
+			sender : memberNo,
+			time: timeString
 		}));
         // 입력 필드 초기화
         messageInput.value = '';

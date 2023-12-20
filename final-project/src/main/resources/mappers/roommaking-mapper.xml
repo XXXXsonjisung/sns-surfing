@@ -10,7 +10,7 @@
 		<result property="roomPersonnel" column="ROOM_PERSONNEL" />
 		<result property="roomManager" column="ROOM_MANAGER" />	
 		<result property="roomPwd" column="ROOM_PWD" />		
-		<result property="roomImg" column="ROOM_IMG" />
+		<result property="roomImg" column="ROOM_IMG"/>
 		<result property="tagName" column="TAG_NAME" />
 		
 		<!--해소테이블 컬럼-->
@@ -73,7 +73,7 @@
 	<select id="findRoom" resultMap="chatting_rm">
 		SELECT rg.*, COALESCE(mrn_count.count, 0) AS MEMBER_COUNT FROM ROOM_GROUP rg LEFT JOIN (SELECT ROOM_NO, COUNT(MEMBER_NO) AS count FROM MEMBER_ROOM_NO GROUP BY ROOM_NO ) mrn_count
 		ON mrn_count.ROOM_NO= rg.ROOM_NO
-		ORDER BY MEMBER_COUNT DESC
+		ORDER BY CREATION_DATE DESC
 	</select>
 	
 	<!--채팅방 태그찾기-->

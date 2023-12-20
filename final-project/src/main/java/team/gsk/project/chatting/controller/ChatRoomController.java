@@ -24,7 +24,7 @@ import team.gsk.project.chatting.model.dto.ChattingMessage;
 import team.gsk.project.chatting.model.service.ChattingService;
 import team.gsk.project.member.model.dto.Member;
 
-// 개인 채팅
+// 그룹 채팅
 @SessionAttributes({"loginMember"})
 @Slf4j
 @RestController

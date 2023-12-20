@@ -171,8 +171,8 @@ aside button{
 
     height: 100px;
     width: 100px;
-    border-radius: 70%;
-    padding-right: 5%;
+    border-radius: 50px;
+    margin-right: 5%;
     overflow: hidden;
 
 }
@@ -259,8 +259,8 @@ aside button{
 
     height: 100px;
     width: 100px;
-    border-radius: 70%;
-    padding-right: 5%;
+    border-radius: 50px;
+    margin-right: 5%;
     overflow: hidden;
 
 }
