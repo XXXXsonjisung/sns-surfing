@@ -220,9 +220,7 @@ function sendMessage() {
 //        };
 	if(chatActive){
 		
-		
-		
-		
+
 		
 		stompClient.send("/pub/ws-stomp.sendPrivateMessage", {}, JSON.stringify({
 			type: 'TALK',
@@ -256,7 +254,9 @@ function sendMessage() {
   
 }
 
-   const messageInput = document.getElementById('message');
+
+// 메세지 입력창
+const messageInput = document.getElementById('message');
 
 messageInput.addEventListener("keyup", e => {
 	if(e.key == "Enter"){ 
@@ -265,6 +265,13 @@ messageInput.addEventListener("keyup", e => {
 		}
 	}
 })
+
+
+document.addEventListener("keydown", e => {
+    if (e.ctrlKey && e.shiftKey) {
+        messageInput.focus(); // Ctrl + Shift 키 조합을 눌렀을 때 messageInput에 포커스
+    }
+});
 
 
 
@@ -387,8 +394,11 @@ function displayInvite(list){
 		img.classList.add("friend-row-img");
 		
 		// 프로필 이미지 여부에 따른 src 속성 선택
-		if(member.profileImage == null) img.setAttribute("src", "/images/user.png");
+		/*if(member.profileImage == null) img.setAttribute("src", "/images/user.png");
 		else img.setAttribute("src", member.profileImage);
+*/
+	     img.src = member.profileImage ? member.profileImage : '/common/images/profile/profile.jpg';
+
 
 		let nickname = member.memberNickname;
 
@@ -476,7 +486,7 @@ friendInput.addEventListener("input", e => {
 });
 
 
-// 친구 초대~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 친구끼리 채팅방 만들기
 document.getElementById("inviteFriend").addEventListener("click", () => {
 	
 	 const selectedFriendIds = friends.filter(member => member.selected)
@@ -934,6 +944,31 @@ function fetchAndDisplayOldMessagesPrivate(roomNo) {
 
 
 
+
+const aside = document.getElementById("aside");
+const sideBarOut = document.getElementById("sideBarOut");
+
+function toggleSidebar() {
+    if (aside.style.display === 'none') {
+        aside.style.display = 'block';
+       sideBarOut.textContent = '사이드바 숨기기';
+    } else {
+        aside.style.display = 'none';
+        sideBarOut.textContent = '사이드바 펼치기';
+    }
+}
+
+// sideBarOut 버튼 클릭 시 toggleSidebar 함수 실행
+sideBarOut.addEventListener('click', toggleSidebar);
+
+// 키보드 이벤트 리스너 추가
+document.addEventListener('keydown', function(event) {
+    // Ctrl + Enter 키 조합이 눌렸는지 확인
+    if (event.ctrlKey && event.key === 'Enter') {
+        // 해당 조합이 눌렸으면 toggleSidebar 함수 실행
+        toggleSidebar();
+    }
+});
 
 
 
