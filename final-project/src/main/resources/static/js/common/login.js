@@ -38,7 +38,7 @@ if(loginFrm != null) {
 
   function loginWithKakao() {
     Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:80',
+      redirectUri: 'http://localhost',
       state: 'userme'
     });
   }
