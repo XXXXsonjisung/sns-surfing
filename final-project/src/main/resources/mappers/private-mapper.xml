@@ -10,9 +10,10 @@
 			<result property="message" column="MESSAGE" />
 			<result property="time" column="TIME" />
 			<result property="sender" column="SENDER"/>
-
+			
 			<result property="memberNickname" column="MEMBER_NICKNAME"/>
 			<result property="messageNo" column="MESSAGE_NO"/>
+			<result property="profile" column="MEMBER_PROFILE"/>
 	</resultMap>
 
 	<resultMap type="Member" id="member_rm">
@@ -40,7 +41,7 @@
 	<!--채팅방의 메세지 리스트 찾기-->
 	<select id="getOldMessage" resultMap="message_rm">
 		SELECT MESSAGE_NO,TYPE,ROOM_NO,MESSAGE,TIME,MEMBER_NICKNAME,SENDER,m.MEMBER_PROFILE  
-		FROM PRIVATE_MESSAGE LEFT JOIN "MEMBER" m ON SENDER = MEMBER_NO WHERE ROOM_NO  = #{roomNo}
+		FROM PRIVATE_MESSAGE LEFT JOIN "MEMBER" m ON SENDER = MEMBER_NO WHERE ROOM_NO = #{roomNo}
 		ORDER BY TIME
 	</select>
 
@@ -59,9 +60,13 @@
 	
 	<!--초대를 위한 친구 조회-->
 	<select id="allFriends" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE  FROM "MEMBER"
-		WHERE MEMBER_DELETE_FLAG ='N'
+			SELECT m.MEMBER_NO,m.MEMBER_NICKNAME,m.MEMBER_PROFILE
+		FROM MEMBER m JOIN FOLLOW f ON m.MEMBER_ID = f.P_MEMBER_ID
+        WHERE f.H_MEMBER_ID = (SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_NO = #{memberNo})
+		AND m.MEMBER_DELETE_FLAG = 'N'
 		AND MEMBER_NO NOT IN (SELECT MEMBER_NO FROM MEMBER_PRIVATE_NO WHERE ROOM_NO = #{roomNo})
+		
+		
 	</select>
 	
 	<!--방생성-->

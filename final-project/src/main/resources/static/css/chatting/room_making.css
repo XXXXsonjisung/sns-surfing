@@ -243,7 +243,7 @@ body{
             height: 100%;
             display: flex;
             gap: 10px;
-            border: solid 1px #00ffcb;
+            border: solid 1px rgb(0, 0, 0);
             padding: 0;
 
         }
@@ -251,7 +251,7 @@ body{
         .list-item{
 
   
-            border: solid 1px #00ffcb;
+            border: solid 1px rgb(0, 0, 0);
             height: 100%;
             width: 100%;
             list-style: none;
@@ -264,7 +264,7 @@ body{
             justify-content: center;
             align-items: center;
             height: 10%;
-            border: solid 1px #00ffcb;
+            border: solid 1px rgb(128, 128, 192);
             cursor: pointer;
         
         }

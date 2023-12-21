@@ -42,8 +42,14 @@ public class PrivateRoomServiceImpl implements PrivateRoomService {
 	
 	// 채팅방 참여를 위한 친구 조회
 	@Override
-	public List<Member> allFriends(int roomNo) {
-		return mapper.allFriends(roomNo);
+	public List<Member> allFriends(int roomNo, int memberNo) {
+		
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("roomNo", roomNo);	
+		map.put("memberNo", memberNo);
+		
+		return mapper.allFriends(map);
 	}
 
 	//친구끼리 채팅방 만들기 

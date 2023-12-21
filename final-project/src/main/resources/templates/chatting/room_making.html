@@ -29,7 +29,7 @@
                 <div class="modal-overlay" id="modal-overlay">
                     <div class="tag-container" id="tag-container">
                         <div class="tagList">
-                            <span class="close">&times;</span>
+                            <!--<span class="close">&times;</span>-->
                             <ul class="firstList">
                                 <li>
                                     <a onclick="showListItem(0)" >지역</a>
@@ -41,7 +41,7 @@
                                 </li>
                                 <li>
                                     <a onclick="showListItem(2)">목적</a>
-                                    <span>(5)</span>
+                                    <span>(6)</span>
                                 </li>
                             </ul>
                         </div> 
@@ -71,6 +71,7 @@
                                     <div class="detail-tiem">공부</div>
                                     <div class="detail-tiem">봉사</div>
                                     <div class="detail-tiem">만남</div>
+                                    <div class="detail-tiem">종교</div>
                                 </li>
                             </ul>
                         </div> 
@@ -92,7 +93,7 @@
                 <div class="pepole_limit">
                     <label>인원제한</label>
                     <div>
-                        <input type="number" name="roomPersonnel" min="2" max="10" id="pepole_limit" placeholder="3~10" th:field="*{roomPersonnel}">
+                        <input type="number" name="roomPersonnel" min="2" max="10" id="pepole_limit" placeholder="~10" th:field="*{roomPersonnel}">
                    		<span class="validationError" th:if="${#fields.hasErrors('roomPersonnel')}" th:errors="*{roomPersonnel}">ddddd</span>
                    		<span></span>
                     </div>

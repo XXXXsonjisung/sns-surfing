@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.member.model.dto.Member;
@@ -61,9 +62,15 @@ public interface RoomMakingMapper{
 
 	List<Chatting> searchRoom(Map<String, Object> params);
 
-
-
+	// 채팅방 회원수 찾기
+	List<Chatting> findMemberCount(@Param("listOfMaps")List<Map<String, Object>> listOfMaps);
 
 
 	
 }
+
+
+
+
+
+

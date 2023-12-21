@@ -547,9 +547,26 @@ width: 90%;
 	  
   }
   
-  
+  #targetInput{
+	  
+	  margin-left: 20px;
+  }
 
   
+  
+  
+#room-list,#private-list {
+    max-height: 600px;
+    overflow-y: auto; 
+}
+  
+ #room-list::-webkit-scrollbar {
+    display: none;
+}
+  
+ #private-list::-webkit-scrollbar {
+    display: none;
+}
   
   
 /*.//////////////////////*/

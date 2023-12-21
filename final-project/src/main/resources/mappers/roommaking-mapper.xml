@@ -172,6 +172,25 @@
 	    GROUP BY rg.ROOM_NO,rg.ROOM_NAME,rg.ROOM_INTRUDECE,rg.ROOM_PERSONNEL,rg.ROOM_MANAGER,rg.ROOM_PWD,rg.ROOM_IMG
 	    HAVING COUNT(DISTINCT rt.TAG_NAME) = #{tagLength}
 	</select>
+				
+	<!--태그로 채팅방 회원수 찾기-->	
+	<select id="findMemberCount" resultMap="chatting_rm">
+	    SELECT rg.ROOM_NO, COALESCE(mrn_count.count, 0) AS MEMBER_COUNT 
+	    FROM ROOM_GROUP rg 
+	    LEFT JOIN TAG_ROOM_NO trn ON rg.ROOM_NO = trn.ROOM_NO 
+	    LEFT JOIN ROOM_TAG rt ON rt.TAG_NO = trn.TAG_NO 
+	    LEFT JOIN (
+	    SELECT ROOM_NO, COUNT(MEMBER_NO) AS count 
+	    FROM MEMBER_ROOM_NO 
+	    GROUP BY ROOM_NO
+		) mrn_count ON mrn_count.ROOM_NO = rg.ROOM_NO
+	    WHERE rt.TAG_NAME IN
+	    <foreach item="tagMap" collection="listOfMaps" open="(" separator="," close=")">
+	        #{tagMap.tagName}
+	    </foreach>
+	</select>	
+				
+				
 						
 </mapper>
 

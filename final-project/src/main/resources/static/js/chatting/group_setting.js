@@ -171,12 +171,11 @@ function updateRoomList(data) {
                     <img src="${room.roomImg ? room.roomImg : '/common/images/profile/profile.jpg'}">
                 </div>
                 <div class="room-title">${room.roomName}</div>
-                <div class="room-headCount">정원:${room.roomPersonnel}</div>
+                <div class="room-headCount">정원:${room.roomPersonnel} 회원수:${room.memberCount}</div>
                 <div class="room-signUp">
                     ${room.roomPwd ? '<div>비공개</div>' : '<div>공개</div>'}
                     <button data-room-no="${room.roomNo}" data-room-pwd="${room.roomPwd}" onclick="join(this)">가입</button>
                 </div>
-                <div class="room-chatNum">회원수:${room.memberCount}</div>
                 <div class="room-tag">${room.tagName}</div>
                 <div class="room-introduce">${room.roomIntrudece}</div>
      
@@ -187,6 +186,10 @@ function updateRoomList(data) {
     });
 }
 
+
+function returnRoom() {
+    location.reload();
+}
 
 
 

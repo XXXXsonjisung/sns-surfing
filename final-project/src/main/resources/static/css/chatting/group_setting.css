@@ -291,6 +291,22 @@ body{
     }
     
     
+ 
+ 
+ 	 .room-tag{
+
+        grid-column: 3 / 5; 
+        grid-row: 2/ 3; 
+
+    }
+    
+    
+    .room-headCount{
+
+        width: 90%;
+
+    }
+    
     
     /*////////////////////////////그룹채팅*/
     
