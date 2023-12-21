@@ -397,7 +397,7 @@ function displayInvite(list){
 		/*if(member.profileImage == null) img.setAttribute("src", "/images/user.png");
 		else img.setAttribute("src", member.profileImage);
 */
-	     img.src = member.profileImage ? member.profileImage : '/common/images/profile/profile.jpg';
+	    img.src = member.profileImage ? member.profileImage : '/common/images/profile/profile.jpg';
 
 
 		let nickname = member.memberNickname;
