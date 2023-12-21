@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	// 카카오 로그인 서비스
-	public String getKaKaoAccessToken(String code){
+/*	public String getKaKaoAccessToken(String code){
         String access_Token="";
         String refresh_Token ="";
         String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -100,7 +100,7 @@ public class MemberServiceImpl implements MemberService{
 
         return access_Token;
     }
-
+*/
 
 	// 회원 가입 서비스
 	@Transactional
