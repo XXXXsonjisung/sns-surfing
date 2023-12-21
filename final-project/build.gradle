@@ -53,7 +53,7 @@ dependencies {
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.0'
 	
 	//api 로그인
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+  
 	
 	//@Validation 유효성검사 
 
