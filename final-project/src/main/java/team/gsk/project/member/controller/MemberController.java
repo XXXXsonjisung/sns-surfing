@@ -62,15 +62,6 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@ResponseBody
-	@GetMapping("/kakao")
-	public String  kakaoCallback(@RequestParam String code) throws Exception {
-
-		
-	            
-		return "카카오 인증 완료";
-	}
-	
 	
 	// 아이디/비밀번호 찾기 페이지 이동
 	@GetMapping("/searchIdPw")

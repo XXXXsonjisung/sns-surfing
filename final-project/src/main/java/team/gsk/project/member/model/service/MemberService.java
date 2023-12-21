@@ -1,6 +1,8 @@
 package team.gsk.project.member.model.service;
 
 
+import java.util.Map;
+
 import team.gsk.project.member.model.dto.Member;
 
 public interface MemberService {
@@ -10,5 +12,11 @@ public interface MemberService {
 	int signUp(Member inputMember);
 
 	String findId(String memberName, String memberEmail);
+
+	String checkMember(String email);
+
+	int kakaoSignUp(Map<String, String> map);
+
+	Member kakaoLoginMember(String email);
 
 }
