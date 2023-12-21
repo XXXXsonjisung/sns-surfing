@@ -31,7 +31,6 @@ public class PrivateRoomController {
 	private final PrivateRoomService service;
     private final SimpMessagingTemplate messagingTemplate;
     
-    @Autowired
     public  PrivateRoomController (SimpMessagingTemplate messagingTemplate,PrivateRoomService service) {
     	
         this.messagingTemplate = messagingTemplate;

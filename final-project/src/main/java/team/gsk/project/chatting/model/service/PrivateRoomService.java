@@ -2,8 +2,6 @@ package team.gsk.project.chatting.model.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import team.gsk.project.chatting.model.dto.ChattingMessage;
 import team.gsk.project.member.model.dto.Member;
 

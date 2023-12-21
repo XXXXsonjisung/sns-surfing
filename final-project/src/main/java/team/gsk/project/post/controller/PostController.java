@@ -29,7 +29,6 @@ public class PostController {
 	private  PostService service;
 	
 	
-	@Autowired
     public PostController(PostService service) {
         this.service = service;
     }

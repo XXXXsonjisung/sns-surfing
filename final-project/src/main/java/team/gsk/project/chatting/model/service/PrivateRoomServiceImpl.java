@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.gsk.project.chatting.model.dao.PrivateRoomMapper;
-
-import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.dto.ChattingMessage;
-import team.gsk.project.chatting.model.dto.PrivateRoomList;
 import team.gsk.project.member.model.dto.Member;
 
 @Service

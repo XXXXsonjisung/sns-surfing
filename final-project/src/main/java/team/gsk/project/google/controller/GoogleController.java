@@ -6,9 +6,7 @@ import java.net.URISyntaxException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -25,7 +23,6 @@ import team.gsk.project.google.constants.ConfigUtils;
 import team.gsk.project.google.dto.GoogleLoginDto;
 import team.gsk.project.google.dto.GoogleLoginRequest;
 import team.gsk.project.google.dto.GoogleLoginResponse;
-import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.member.model.service.MemberService;
 
 @Controller

@@ -2,11 +2,9 @@ package team.gsk.project.chatting.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
 import team.gsk.project.chatting.model.dto.ChatMessage;
@@ -18,10 +16,7 @@ public class ChatController {
 	
     private final SimpMessagingTemplate messagingTemplate;
     private final ChatService chatService;
- 
-    private int userCount = 0; // 현재 사용자 수
 
-    @Autowired
     public ChatController(SimpMessagingTemplate messagingTemplate, ChatService chatService) {
         this.messagingTemplate = messagingTemplate;
         this.chatService = chatService;
