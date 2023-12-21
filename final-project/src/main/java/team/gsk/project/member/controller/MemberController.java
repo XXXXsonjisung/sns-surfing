@@ -72,16 +72,6 @@ public class MemberController {
 	@GetMapping("/kakao")
 	public String  kakaoCallback(@RequestParam String code) throws OracleDatabaseException {
 
-		RestTemplate rt = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
-		
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-		params.add(grant_type, authorization_code);
-		params.add(client_id, authorization_code);
-		params.add(grant_type, authorization_code);
-		params.add(grant_type, authorization_code);
-		
 		
 	            
 		return "카카오 인증 완료";
