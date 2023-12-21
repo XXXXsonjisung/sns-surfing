@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import team.gsk.project.member.model.dao.MemberDAO;
 import team.gsk.project.member.model.dto.Member;
 
@@ -45,7 +44,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	// 카카오 로그인 서비스
-	public String getKaKaoAccessToken(String code){
+/*	public String getKaKaoAccessToken(String code){
         String access_Token="";
         String refresh_Token ="";
         String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -98,7 +97,7 @@ public class MemberServiceImpl implements MemberService{
 
         return access_Token;
     }
-
+*/
 
 	// 회원 가입 서비스
 	@Transactional

@@ -181,6 +181,37 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		
 		return 0;
 	}
+
+	// 채팅방 검색
+	@Override
+	public List<Chatting> searchRoom(String tags) {
+		
+		String[] tagName = tags.split(", ");	
+		
+
+		
+		List<Map<String, Object>> listOfMaps = new ArrayList<>();
+		
+	
+
+		for (String tag : tagName) {
+		    Map<String, Object> map = new HashMap<>();    
+		    map.put("tagName", tag);
+		    listOfMaps.add(map);
+		}
+		
+		int tagLength = tagName.length;
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("listOfMaps", listOfMaps);
+		params.put("tagLength", tagLength);
+		
+		List<Chatting> result= mapper.searchRoom(params);
+			
+		
+		
+		return mapper.searchRoom(params);
+	}
 	
 	
 	

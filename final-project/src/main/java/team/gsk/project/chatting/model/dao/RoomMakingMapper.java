@@ -57,6 +57,13 @@ public interface RoomMakingMapper{
 	// 채팅방 수정
 	int updateRoom(Chatting inputChatting);
 
+	// 채팅방 검색
+	//List<Chatting> searchRoom(@Param("listOfMaps")List<Map<String, Object>> listOfMaps);
+
+	List<Chatting> searchRoom(Map<String, Object> params);
+
+
+
 
 
 	
