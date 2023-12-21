@@ -2,8 +2,7 @@ package team.gsk.project.chatting.model.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,13 +20,13 @@ public class Chatting {
 	
 	private int roomNo; // 채팅방 번호 
 	
-	@NotBlank(message = "필수 입력 항목입니다.")
+	//@NotBlank(message = "필수 입력 항목입니다.")
 	private String roomName; // 채팅방 이름 
 	
-	@NotBlank(message = "필수 입력 항목입니다.")
+	//@NotBlank(message = "필수 입력 항목입니다.")
 	private String roomIntrudece; // 채팅방 소개
 	
-	@NotNull(message = "인원 설정은 필수입니다.")
+	//@NotNull(message = "인원 설정은 필수입니다.")
 	private Integer roomPersonnel; //채팅방 정원 
 
 	private int roomManager; //방장 번호

@@ -93,7 +93,7 @@
                     <label>인원제한</label>
                     <div>
                         <input type="number" name="roomPersonnel" min="2" max="10" id="pepole_limit" placeholder="~10" th:field="*{roomPersonnel}">
-                   		<span class="validationError" th:if="${#fields.hasErrors('roomPersonnel')}" th:errors="*{roomPersonnel}">ddddd</span>
+                   		<!--<span class="validationError" th:if="${#fields.hasErrors('roomPersonnel')}" th:errors="*{roomPersonnel}">ddddd</span>-->
                    		<span></span>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                     <label for="room_name">채팅방이름</label>
                     <div>
                         <input type="text" id="room_name" name="roomName" th:field="*{roomName}" placeholder="채팅방 이름을 입력해주세요">
-                  		<span class="validationError" th:if="${#fields.hasErrors('roomName')}" th:errors="*{roomName}">dd</span>
+                  	<!--	<span class="validationError" th:if="${#fields.hasErrors('roomName')}" th:errors="*{roomName}">dd</span>-->
                     </div>
                 </div>
                 <div class="room_introduce">
@@ -119,9 +119,9 @@
                         <img id="preview">
                     </div>
                 </div>
-                <ul th:if="${errors != null}">
+               <!-- <ul th:if="${errors != null}">
   				  <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
-				</ul>
+				</ul>-->
 
                 <div class="last_button">
                     <button type="submit">만들기</button>
