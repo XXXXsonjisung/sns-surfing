@@ -1,6 +1,7 @@
 package team.gsk.project.chatting.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -47,7 +48,7 @@ public class RoomMakingController {
 
 	// 채팅방 만들기
 	@PostMapping("/making")
-	public String roomMaking(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,@SessionAttribute("loginMember") Member loginMember) throws Exception {
+	public String roomMaking(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,@SessionAttribute("loginMember") Member loginMember) throws IOException {
 		
 		// 서버에서 유효성 검사
 		/*

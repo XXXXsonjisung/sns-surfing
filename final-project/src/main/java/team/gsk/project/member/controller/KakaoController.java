@@ -45,8 +45,8 @@ public class KakaoController {
 		String email = kakaoInfo.getEmail();
 		String name = kakaoInfo.getNickname();
  
-		member.setMemberEmail(email);
-		member.setMemberName(name);
+//		member.setMemberEmail(email);
+//		member.setMemberName(name);
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("memberEmail", email);
