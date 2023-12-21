@@ -3,7 +3,6 @@ package team.gsk.project.chatting.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -35,7 +34,7 @@ public class ChatRoomController {
 	private final ChattingService service;
     private final SimpMessagingTemplate messagingTemplate;
     
-    @Autowired
+    
     public ChatRoomController(SimpMessagingTemplate messagingTemplate,ChattingService service) {
     	
         this.messagingTemplate = messagingTemplate;

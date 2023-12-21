@@ -11,7 +11,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -175,7 +174,7 @@ public class RoomMakingController {
 			int result =service.authorizeManger(roomNo,member);
 			
 		
-		return 1;
+		return result;
 	}
 	
 	// 채팅방 수정 

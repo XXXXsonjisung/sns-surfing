@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.validation.Errors;
-
-import jakarta.validation.Valid;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.member.model.dto.Member;
 

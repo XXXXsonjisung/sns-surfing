@@ -1,21 +1,12 @@
 package team.gsk.project.chatting.model.service;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import team.gsk.project.chatting.model.dao.ChatMapper;
 import team.gsk.project.chatting.model.dto.ChatMessage;
-import team.gsk.project.chatting.model.dto.ChatRoom;
 
 // 전체 채팅
 
@@ -26,7 +17,6 @@ public class ChatServiceImpl implements ChatService {
 	private final ChatMapper mapper;
 
 	
-		@Autowired
 	    public ChatServiceImpl(ChatMapper mapper) {
 	        this.mapper = mapper;
 	    }

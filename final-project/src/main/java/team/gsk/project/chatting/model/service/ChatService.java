@@ -3,7 +3,6 @@ package team.gsk.project.chatting.model.service;
 import java.util.List;
 
 import team.gsk.project.chatting.model.dto.ChatMessage;
-import team.gsk.project.chatting.model.dto.ChatRoom;
 
 
 public interface ChatService {

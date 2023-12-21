@@ -3,10 +3,8 @@ package team.gsk.project.chatting.model.service;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.EventListener;
-import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.messaging.SessionConnectEvent;
@@ -23,7 +21,6 @@ public class SessionService implements ApplicationListener<SessionConnectEvent> 
     private final SimpMessagingTemplate messagingTemplate;
 
     // 의존성 주입
-    @Autowired
     public SessionService(SimpMessagingTemplate messagingTemplate) {
         this.messagingTemplate = messagingTemplate;
     }

@@ -1,7 +1,6 @@
 package team.gsk.project.post.model.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

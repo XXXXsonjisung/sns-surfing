@@ -68,8 +68,6 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 			map2.put("roomNo", roomNo);
 		
 			
-//			
-			
 //			Map<String, Object> map = new HashMap<>();	
 //			
 //			map.put("roomNo", roomNo);

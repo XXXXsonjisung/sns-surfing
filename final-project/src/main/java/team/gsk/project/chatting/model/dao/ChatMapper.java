@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import team.gsk.project.chatting.model.dto.ChatMessage;
-import team.gsk.project.chatting.model.dto.ChatRoom;
 
 @Mapper
 public interface ChatMapper {

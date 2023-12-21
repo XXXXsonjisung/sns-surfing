@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import lombok.extern.slf4j.Slf4j;
-import team.gsk.project.chatting.model.dto.ChatRoom;
 import team.gsk.project.chatting.model.dto.ChatRoomList;
 import team.gsk.project.chatting.model.dto.Chatting;
 import team.gsk.project.chatting.model.dto.PrivateRoomList;
-import team.gsk.project.chatting.model.service.ChatService;
 import team.gsk.project.chatting.model.service.ChattingService;
 import team.gsk.project.chatting.model.service.RoomMakingService;
 import team.gsk.project.member.model.dto.Member;
@@ -35,8 +33,6 @@ public class ChattingController {
 	@Autowired
 	private ChattingService service;
 	
-	@Autowired
-	private ChatService chatService;
 	
 	@Autowired
 	private RoomMakingService roomService;
