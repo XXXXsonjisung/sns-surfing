@@ -42,13 +42,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const profilePictureDiv = document.createElement('div');
     profilePictureDiv.classList.add('profile-picture');
 
-    // 프로필 이미지가 있을 때만 추가
-    if (profileImage) {
-        const profileImageElement = document.createElement('img');
-        profileImageElement.setAttribute('src', profileImage); // 프로필 이미지 소스 설정
-        profileImageElement.setAttribute('alt', '프로필 사진');
-        profilePictureDiv.appendChild(profileImageElement);
-    }
+  	// 프로필 이미지가 있을 때만 추가
+	if (profileImage) {
+	    const profileImageElement = document.createElement('img');
+	    profileImageElement.setAttribute('src', profileImage); // 프로필 이미지 소스 설정
+	    profileImageElement.setAttribute('alt', '프로필 사진');
+	
+	    // 이미지를 클릭했을 때 이벤트 처리
+	   profileImageElement.addEventListener('click', function() {
+	    const memberId = document.getElementById('userId').innerText; // userId 요소에서 memberId 가져오기
+	    const getUserInfoURL = `/getUserInfo?username=${memberId}`; // 상대 경로 사용
+	
+	    // 현재 호스트의 기본 주소에 상대 경로를 추가하여 URL 구성
+	    const baseURL = window.location.origin;
+	    const completeURL = baseURL + getUserInfoURL;
+	
+	    // 새 탭에서 해당 URL 열기
+	    window.open(completeURL, '_blank');
+	});
+	
+	    profilePictureDiv.appendChild(profileImageElement);
+	}
 
     const profileInfoDiv = document.createElement('div');
     profileInfoDiv.classList.add('profile-info');
@@ -69,4 +83,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // searchList에 새로운 프로필 정보 추가
     const searchList = document.getElementById('searchList');
     searchList.appendChild(newProfileDiv);
+    
+    
+    
+    
+    
+    
+    
 });
