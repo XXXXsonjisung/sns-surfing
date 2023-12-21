@@ -19,7 +19,7 @@ const socket = new SockJS('/chat');
 		    
 		    // 채팅방 참여자 표시
 		    stompClient.subscribe('/topic/connectedUsers', (message) => {
-                document.getElementById('connectedUsers').innerText = `Connected Users: ${message.body}`;
+                document.getElementById('connectedUsers').innerText = `현재인원 : ${message.body}`;
             });
 		    
 		    

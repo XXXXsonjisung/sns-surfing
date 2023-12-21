@@ -62,12 +62,12 @@ public class SessionService implements ApplicationListener<SessionConnectEvent> 
     
     // 사용자 입장 메시지 전송
     private void sendUserJoinMessage(String sessionId) {
-        messagingTemplate.convertAndSend("/topic/userJoin", "User joined: " + sessionId);
+        messagingTemplate.convertAndSend("/topic/userJoin", sessionId+"유저들어옴");
     }
 
     // 사용자 퇴장 메시지 전송
     private void sendUserLeaveMessage(String sessionId) {
-        messagingTemplate.convertAndSend("/topic/userLeave", "User left: " + sessionId);
+        messagingTemplate.convertAndSend("/topic/userLeave",  "유저 나감 ");
     }
     
     
