@@ -52,7 +52,12 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.0'
 	
-	//api 로그인
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation group: 'org.json', name: 'json', version: '20230618'
+	
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+ 
   
 	
 	//@Validation 유효성검사 
@@ -60,9 +65,6 @@ dependencies {
 // 이거 밑으로 세개 주요 
 	// https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api
 	implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
-
-	// json
-	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
 
 	// gson
 	implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'

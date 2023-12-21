@@ -333,7 +333,7 @@ inputBirth.addEventListener("input", () => {
 			  	checkObj.inputBirth = false;
 			  	birthCheck.classList.remove("confirm");
 		        birthCheck.classList.add("error");
-				birthCheck.innerText = "유효하지 않은 ";
+				birthCheck.innerText = "유효하지 않은 날짜입니다";
 			  	alert("해당 기간의 조회가 불가능합니다.");
 			  } else {
 			 	 checkObj.inputBirth = true;

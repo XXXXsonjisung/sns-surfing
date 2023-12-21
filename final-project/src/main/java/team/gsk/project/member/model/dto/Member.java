@@ -1,5 +1,7 @@
 package team.gsk.project.member.model.dto;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +11,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
+@Component
 public class Member {
 
 	private int memberNo;

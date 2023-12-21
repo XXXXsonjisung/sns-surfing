@@ -95,11 +95,46 @@
 		FROM DUAL
 	</select>
 	
-	<select id="findId" parameterType="map" resultType="string">
+	<select id="findId"  parameterType="map" resultType="string">
 		SELECT MEMBER_ID
-		FROM MEMBER 
-		WHERE MEMBER_NAME = #{memberName} 
-		AND MEMBER_EMAIL = #{memberEmail}  
+		FROM MEMBER
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	<update id="changePassword">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_EMAIL = #{memberEmail}
+	</update>
+	
+		<!-- 카카오 로그인 시 회원인지 확인 -->
+	<select id="checkMember">
+		SELECT MEMBER_EMAIL
+		FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{email}
+	</select>
+	
+	<!-- 회원 아닐시 카카오 자동 회원가입 -->
+	<insert id="kakaoSignUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL
+		, #{memberEmail}
+		, DEFAULT
+		, #{memberName}
+		, DEFAULT
+		, NULL
+		, DEFAULT
+		, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<!-- 카카오 계정 이메일로 로그인 -->
+	<select id="kakaoLoginMember" resultMap="member_rm">
+		SELECT *
+		FROM "MEMBER"
+		WHERE MEMBER_DELETE_FLAG = 'N'
+		AND MEMBER_EMAIL = #{memberEmail}
 	</select>
 	
 

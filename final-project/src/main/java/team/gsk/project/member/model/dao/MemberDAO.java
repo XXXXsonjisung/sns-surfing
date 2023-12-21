@@ -3,6 +3,7 @@ package team.gsk.project.member.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -117,15 +118,9 @@ public class MemberDAO {
 
 	}
 
-	public String findId(String memberName, String memberEmail) {
+	public String findId(@Param("memberName")String memberName, @Param("memberEmail")String memberEmail) {
 
 		return mapper.findId(memberName, memberEmail);
-	}
-
-
-	public String findId(Map<String, Object> map) {
-
-		return null;
 	}
 
 
@@ -139,6 +134,26 @@ public class MemberDAO {
 		
 		return Fmapper.getFolloing(memberId);
 	}
+
+
+	public String checkMember(String email) {
+		
+		return mapper.checkMember(email);
+	}
+
+
+	public int kakaoSignUp(Map<String, String> map) {
+		
+		return mapper.kakaoSignUp(map);
+	}
+
+
+	public Member kakaoLoginMember(String email) {
+		
+		return mapper.kakaoLoginMember(email);
+	}
+
+
 
 
 
