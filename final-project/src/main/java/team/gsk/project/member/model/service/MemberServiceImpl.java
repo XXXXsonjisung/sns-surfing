@@ -13,8 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+//import com.google.gson.JsonElement;
+//import com.google.gson.JsonParser;
 
 import team.gsk.project.member.model.dao.MemberDAO;
 import team.gsk.project.member.model.dto.Member;
@@ -84,10 +84,10 @@ public class MemberServiceImpl implements MemberService{
             System.out.println("response body : " + result);
 
             //Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
-            JsonElement element = JsonParser.parseString(result);
+//            JsonElement element = JsonParser.parseString(result);
 
-            access_Token = element.getAsJsonObject().get("access_token").getAsString();
-            refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
+//            access_Token = element.getAsJsonObject().get("access_token").getAsString();
+//            refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
 
             System.out.println("access_token : " + access_Token);
             System.out.println("refresh_token : " + refresh_Token);
