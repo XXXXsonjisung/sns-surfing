@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import oracle.jdbc.OracleDatabaseException;
 import team.gsk.project.member.model.dto.Member;
 import team.gsk.project.member.model.service.MemberService;
 
@@ -65,7 +64,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@GetMapping("/kakao")
-	public String  kakaoCallback(@RequestParam String code) throws OracleDatabaseException {
+	public String  kakaoCallback(@RequestParam String code) throws Exception {
 
 		
 	            
