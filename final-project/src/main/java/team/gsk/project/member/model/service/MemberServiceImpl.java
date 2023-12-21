@@ -13,9 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-//import com.google.gson.JsonElement;
-//import com.google.gson.JsonParser;
-
 import team.gsk.project.member.model.dao.MemberDAO;
 import team.gsk.project.member.model.dto.Member;
 
