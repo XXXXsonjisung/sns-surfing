@@ -154,14 +154,14 @@ btnShowHide.addEventListener("click", () => {
 	
 	const currentImage = btnShowHide.style.backgroundImage;
 	
-	if(currentImage.includes("/common/images/slashEye.png") ) {
+	if(currentImage.includes("/images/page/slashEye.png") ) {
 		
-			btnShowHide.style.backgroundImage = "url(/common/images/eye.png)"
+			btnShowHide.style.backgroundImage = "url(/images/page/eye.png)"
 			inputPw.type = "text";
 			
 		} else {
 			
-		btnShowHide.style.backgroundImage = "url(/common/images/slashEye.png)"
+		btnShowHide.style.backgroundImage = "url(/images/page/slashEye.png)"
 		inputPw.type = "password";
 	}
 
