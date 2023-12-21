@@ -190,12 +190,19 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		
 		List<Map<String, Object>> listOfMaps = new ArrayList<>();
 		
-	
 
 		for (String tag : tagName) {
 		    Map<String, Object> map = new HashMap<>();    
 		    map.put("tagName", tag);
 		    listOfMaps.add(map);
+		}
+		
+		// 회원수 찾기
+		List<Chatting> memberCount = mapper.findMemberCount(listOfMaps);
+		
+		Map<Integer, Integer> memberCountMap = new HashMap<>();
+		for (Chatting chatting : memberCount) {
+		    memberCountMap.put(chatting.getRoomNo(), chatting.getMemberCount());
 		}
 		
 		int tagLength = tagName.length;
@@ -204,11 +211,22 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		params.put("listOfMaps", listOfMaps);
 		params.put("tagLength", tagLength);
 		
+		// 태그로 채팅방 정보 찾기
 		List<Chatting> result= mapper.searchRoom(params);
-			
+		
+		// 결과 목록 순회하며 회원 수 설정
+		for (Chatting chatting : result) {
+		    Integer count = memberCountMap.get(chatting.getRoomNo());
+		    if (count != null) {
+		        chatting.setMemberCount(count);
+		    }
+		}
 		
 		
-		return mapper.searchRoom(params);
+
+		
+		
+		return result;
 	}
 	
 	

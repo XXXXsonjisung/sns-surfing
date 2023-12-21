@@ -18,7 +18,7 @@
     <main>
         <div class="tag_container">
             <div class="tag-chose">
-                <label class="tag-title">그룹 선택</label>
+                <label class="tag-title">그룹 종류 선택</label>
                 <ul class="tag-list">
                     <li class="tag-li">서울</li>
                     <li class="tag-li">경기도</li>
@@ -46,9 +46,10 @@
             <!-- 누를시 tag-result에 담김 -->
             
             <div class="tag-result">
-                <input type="text" id="tag-box" placeholder="#그룹을 추가하고 검색하세요">
+                <input type="text" id="tag-box" placeholder="그룹을 5개까지 선택하고검색하세요">
                 <button onclick="searchRoom()">검색</button>
                 <button class="cleanTag">지우기</button>
+                <button onclick="returnRoom()">전체조회</button>
             </div>
         </div>
 
@@ -68,13 +69,13 @@
                               <img th:src="${room.roomImg != null ? room.roomImg : '/common/images/profile/profile.jpg'}">
                         </div>
                         <div class="room-title" th:text="${room.roomName}">채팅방이름</div>
-                        <div class="room-headCount">정원:[[${room.roomPersonnel}]]/회원수:[[${room.memberCount}]]</div>
+                        <div class="room-headCount">정원:[[${room.roomPersonnel}]]  회원수:[[${room.memberCount}]]</div>
                         <div class="room-signUp">
                             <div th:if="${room.roomPwd}">비공개</div>
                             <div th:unless="${room.roomPwd}">공개</div>
                             <button th:data-room-no="${room.roomNo}" th:data-room-pwd="${room.roomPwd}" onclick="join(this)">가입</button>
                         </div>
-                        <div class="room-chatNum">일주일동안 54개 채팅수</div>
+                     
                         <div class="room-tag" th:text="${room.tagName}">태그이름들</div>
                         <div class="room-introduce" th:text="${room.roomIntrudece}">소개</div>
                         

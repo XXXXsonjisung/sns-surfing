@@ -853,7 +853,7 @@ function exit(){
 				  console.log('성공 :', result);	
 				  if(result>0){
 					  alert("채팅방을 나갔습니다");
-					  
+					   location.reload();	  
 				  }	
 				  			
 			})

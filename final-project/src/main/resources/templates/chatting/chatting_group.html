@@ -55,9 +55,10 @@
 						<ul id="private-list">
 							    <li th:each="room : ${privateList}" th:attr="private-no=${room.roomNo}">
 								<!-- <img th:src="${room.memberProfile != null ? room.memberProfile : '/common/images/profile/profile.jpg'}">-->
-							        <img th:src="${room.memberProfile != null ? room.memberProfile : '/common/images/profile/profile.jpg'}">
+							    <img th:src="${'/common/images/profile/profile.jpg'}">
 							        <div class="message_imform">
-							            <b class="message_pe" th:text="${room.memberNickname}">이름</b>
+							          <!--  <b class="message_pe" th:text="${room.memberNickname}">이름</b>-->
+							          	<b>채팅</b>
 							            <span class="chatDate" th:text="${room.time}">시간</span>
 							            <div class="last_message" th:text="${room.chattingMessage}">
 							                마지막 메세지

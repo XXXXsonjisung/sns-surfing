@@ -21,7 +21,7 @@ public interface PrivateRoomMapper {
 	List<Member> displayFriend(int roomNo);
 
 	// 초대를 위한 친구 조회
-	List<Member> allFriends(int roomNo);
+	List<Member> allFriends(Map<String, Object> map);
 
 	//친구끼리 채팅방 만들기 
 	int createPrivateRoom(Map<String, Object> map);

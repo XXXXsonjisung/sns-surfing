@@ -74,12 +74,14 @@ public class PrivateRoomController {
 	
 	// 친구 초대를 위한 전부 조회
 	@GetMapping("/allFriends")
-	public List<Member> allFriends(@RequestParam("roomNo")int roomNo) {
+	public List<Member> allFriends(@RequestParam("roomNo")int roomNo,@SessionAttribute("loginMember") Member loginMember) {
 		
 		log.info("친구 조회를 위한 방번호 :"+roomNo);
+		int memberNo =loginMember.getMemberNo();
 		
+		List<Member> allFriends = service.allFriends(roomNo,memberNo);
 		
-		List<Member> allFriends = service.allFriends(roomNo);
+		log.info("팔로우 친구만을 조회 :"+allFriends);
 		
 		return allFriends;
 	}

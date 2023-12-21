@@ -18,7 +18,7 @@ public interface PrivateRoomService {
 	List<Member> displayFriend(int roomNo);
 
 	// 채팅방 참여를 위한 친구 조회
-	List<Member> allFriends(int roomNo);
+	List<Member> allFriends(int roomNo, int memberNo);
 
 	//친구끼리 채팅방 만들기 
 	int createPrivateRoom(int memberNo, List<Long> invitedFriends);
