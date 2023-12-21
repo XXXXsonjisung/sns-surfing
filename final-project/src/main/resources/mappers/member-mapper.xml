@@ -95,12 +95,19 @@
 		FROM DUAL
 	</select>
 	
-	<select id="findId" parameterType="map" resultType="string">
+	<select id="findId"  parameterType="map" resultType="string">
 		SELECT MEMBER_ID
-		FROM MEMBER 
-		WHERE MEMBER_NAME = #{memberName} 
-		AND MEMBER_EMAIL = #{memberEmail}  
+		FROM MEMBER
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_EMAIL = #{memberEmail}
 	</select>
+	
+	<update id="changePassword">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_EMAIL = #{memberEmail}
+	</update>
 	
 		<!-- 카카오 로그인 시 회원인지 확인 -->
 	<select id="checkMember">

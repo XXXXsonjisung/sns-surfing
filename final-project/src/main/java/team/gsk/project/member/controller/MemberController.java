@@ -1,5 +1,6 @@
 package team.gsk.project.member.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,9 +76,9 @@ public class MemberController {
 	// 이메일로 아이디 찾기
     @PostMapping("/findId")
     @ResponseBody
-    public String findId(@RequestBody Map<String, Object> map) {
+    public String findId(@RequestBody Map<String, String> map) {
     	
-    	System.out.println(map);
+    	System.out.println(map); 
     	
     	String memberName = (String) map.get("memberName");
     	String memberEmail = (String) map.get("memberEmail");
@@ -87,6 +88,23 @@ public class MemberController {
         return foundId != null ? foundId : "아이디를 찾을 수 없습니다.";
     	
     }
+    
+    // 이메일로 비밀번호 찾기
+    @PostMapping("/changePw")
+    @ResponseBody
+    public String changePassword(@RequestBody Map<String, String> map) {
+
+    	System.out.println(map); 
+    	
+    	String memberName = (String) map.get("memberName2");
+    	String memberEmail = (String) map.get("memberEmail2");
+    	     
+        String foundPw = service.findPw(memberName, memberEmail);
+        
+        return foundPw != null ? foundPw : "아이디를 찾을 수 없습니다.";
+    	
+
+    } 
 	
 	// 회원가입 페이지 이동
 	@GetMapping("/signUp")
