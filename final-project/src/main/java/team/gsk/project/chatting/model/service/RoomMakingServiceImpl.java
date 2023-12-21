@@ -206,6 +206,10 @@ public class RoomMakingServiceImpl implements RoomMakingService {
 		params.put("listOfMaps", listOfMaps);
 		params.put("tagLength", tagLength);
 		
+		List<Chatting> result= mapper.searchRoom(params);
+			
+		
+		
 		return mapper.searchRoom(params);
 	}
 	
