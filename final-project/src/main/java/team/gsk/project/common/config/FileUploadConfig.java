@@ -31,6 +31,9 @@ public class FileUploadConfig implements WebMvcConfigurer{
 	@Value("${spring.servlet.multipart.max-request-size}")
 	private long maxRequestSize;
 	
+	@Value("${my.images.resourcepath}")
+	private String resourcePath;
+	
 	@Bean // 개발자가 수동으로 Bean 등록(생성은 개발자, 관리는 Spring)
 	public MultipartConfigElement configElement() {
 		
@@ -62,7 +65,7 @@ public class FileUploadConfig implements WebMvcConfigurer{
 		String webPath = "/images/**";
 		
 		// 실제로 자원이 저장되어 있는 로컬 경로
-		String resourcePath = "file:///C:/finalImages/";
+		//String resourcePath = "file:///C:/final/sns-surfing/finalImages/";
 		
 		// /images/로 시작하는 요청이 오면, C:/uploadImages/ 와 연결
 		registry.addResourceHandler(webPath).addResourceLocations(resourcePath);
