@@ -163,7 +163,7 @@ btnShowHide.addEventListener("click", () => {
 			
 		btnShowHide.style.backgroundImage = "url(/images/page/slashEye.png)"
 		inputPw.type = "password";
-	}
+	}                
 
 	
 }); 
