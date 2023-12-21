@@ -9,6 +9,7 @@
 <body>
 	
 	<th:block th:replace="~{member/modal}"></th:block> 
+	<th:block th:replace="~{member/modal2}"></th:block> 
 	
     <div id="logos">
         <img id="logo" th:src="@{/common/images/20231114115318_93362.png}">
@@ -31,29 +32,7 @@
              
 	            <fieldset class="searchId">
 	
-	                <div class="inputBox">
-						
-						<label class="labelBox" for="idForPhone">
-	                        <input type="radio" id="idForPhone" value="idForPhone" name="searchGroup" checked> 전화번호
-	                    </label>
-						
-	                    <dl>
-	                        <dt class="idFirstDt">
-	                            <input type="text" id="idPhoneName" placeholder="이름">
-	                        </dt>
-	                        <dt class="idSecondDt">
-	                            <input type="text" id="idPhoneTel" placeholder="전화번호">
-	                            <button type="button" class="sendAuth">인증번호 받기</button>
-	                        </dt>
-	                        <dd class="idFristDd">
-	                            <input type="text" id="idPhoneAuthNum" placeholder="인증번호">
-	                            <button type="button" class="checkAuth">인증번호 확인</button>
-	                        </dd>
-	                    </dl>
-	                    
-	                    <button class="searchBtn" >찾기</button>
-	                        
-	                </div>
+
 	
 	        
 	                <hr class="inputHr">           
@@ -61,7 +40,7 @@
 	                    <div class="inputBox">
 							
 	                            <label class="labelBox" for="idForEmail">
-	                                <input type="radio" id="idForEmail" value="idForEmail" name="searchGroup"> 이메일
+	                                <input type="radio" id="idForEmail" value="idForEmail" name="searchGroup"> 아이디
 	                            </label>
 	                        
 	                        <dl>
@@ -100,36 +79,14 @@
                 <fieldset class="searchId">
                     
                    
-                    <div class="inputBox">
-						
-	                        <label class="labelBox" for="pwForPhone">
-	                            <input type="radio" id="pwForPhone" value="pwForPhone" name="searchGroup"> 전화번호
-	                        </label>
-                        
-                        <dl>
-	                        <dt class="idFirstDt">
-	                            <input type="text" disabled id="pwPhoneName" placeholder="이름">
-	                        </dt>
-	                        <dt class="idSecondDt">
-	                            <input type="text" disabled id="pwPhoneTel" placeholder="전화번호">
-	                            <button type="button" disabled class="sendAuth">인증번호 받기</button>
-	                        </dt>
-	                        <dd class="idFristDd">
-	                            <input type="text" disabled id="pwPhoneAuthNum" placeholder="인증번호">
-	                            <button type="button" disabled class="checkAuth">인증번호 확인</button>
-	                        </dd>
-                        </dl>
-                        
-                        <button class="searchBtn" disabled>찾기</button>
-                        
-                    </div>                    
+                    
             
                     <hr class="inputHr">                   
                    
                     <div class="inputBox">
 						
                         <label class="labelBox" for="pwForEmail">
-                            <input type="radio" id="pwForEmail" value="pwForEmail" name="searchGroup"> 이메일
+                            <input type="radio" id="pwForEmail" value="pwForEmail" name="searchGroup"> 비밀번호
                         </label>
                         
                         <dl>
@@ -140,13 +97,16 @@
 	                            <input type="text" disabled id="pwEmailNum" placeholder="이메일">
 	                            <button type="button" disabled class="sendAuth">인증번호 받기</button>
 	                        </dt>
-	                        <dd class="idFristDd">
+	                        <dt class="idThirdDt">
 	                            <input type="text" disabled id="pwEmailAuthNum" placeholder="인증번호">
 	                            <button type="button" disabled class="checkAuth">인증번호 확인</button>
-	                        </dd>
+	                        </dt>
+	                        <dd class="idFristDd">
+								<h6 id="pwEmailCheck"> </h6>
+							</dd>
                         </dl>
                         
-                        <button class="searchBtn" disabled>찾기</button>
+                        <button type="button" class="searchBtn" id="searchPwForEmail" disabled>찾기</button>
                         
                     </div>
                     

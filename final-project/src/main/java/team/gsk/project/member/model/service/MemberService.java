@@ -18,5 +18,4 @@ public interface MemberService {
 	int kakaoSignUp(Map<String, String> map);
 
 	Member kakaoLoginMember(String email);
-
 }
