@@ -50,10 +50,10 @@ public class RoomMakingController {
 	public String roomMaking(@Valid Chatting inputChatting, BindingResult bindingResult,Model model,@SessionAttribute("loginMember") Member loginMember) throws Exception {
 		
 		// 서버에서 유효성 검사
-		if(bindingResult.hasErrors()) {
-			//   model.addAttribute("errors", errors.getAllErrors());
-			   model.addAttribute("inputChatting", inputChatting);
-			   
+		/*
+		 * if(bindingResult.hasErrors()) { // model.addAttribute("errors",
+		 * errors.getAllErrors()); model.addAttribute("inputChatting", inputChatting);
+		 */
 			
 			//	유효성 통과 못한 필드와 메시지를 핸들링        
 //			Map<String, String> validatorResult = service.validateHandling(errors);
@@ -62,8 +62,9 @@ public class RoomMakingController {
 //			
 //			}
 //			
-			return "chatting/room_making";
-		}
+			/*
+			 * return "chatting/room_making"; }
+			 */
 
 		  MultipartFile roomImgFile = inputChatting.getRoomImgFile();
 		  
