@@ -64,8 +64,7 @@ public class RoomMakingController {
 //			
 			return "chatting/room_making";
 		}
-	
-	
+
 		  MultipartFile roomImgFile = inputChatting.getRoomImgFile();
 		  
 		  String originalFileName = roomImgFile.getOriginalFilename();
