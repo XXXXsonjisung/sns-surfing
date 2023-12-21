@@ -137,6 +137,11 @@ body {
     margin-right: 20px;
 }
 
+#naver {
+	width: 60px;
+	height: 70px;
+}
+
 #findIdPw {
     margin-right: 15px;
 }

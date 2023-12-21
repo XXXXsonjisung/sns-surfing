@@ -141,5 +141,23 @@ public class MemberDAO {
 	}
 
 
+	public String checkMember(String email) {
+		
+		return mapper.checkMember(email);
+	}
+
+
+	public int kakaoSignUp(Map<String, String> map) {
+		
+		return mapper.kakaoSignUp(map);
+	}
+
+
+	public Member kakaoLoginMember(String email) {
+		
+		return mapper.kakaoLoginMember(email);
+	}
+
+
 
 }

@@ -1,6 +1,7 @@
 package team.gsk.project.member.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import team.gsk.project.member.model.dto.Member;
@@ -31,6 +32,12 @@ public interface MemberMapper {
 	Member search(String value);
 
 	String findId(String memberName, String memberEmail);
+
+	String checkMember(String email);
+
+	int kakaoSignUp(Map<String, String> map);
+
+	Member kakaoLoginMember(String email);
 
 
 

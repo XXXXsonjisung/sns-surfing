@@ -34,6 +34,8 @@ public class KakaoController {
 	@Autowired
 	private MemberService service;
 
+	@Autowired
+	private Member member;
 
 	@GetMapping("/callback")
 	public ResponseEntity<Object> callback(HttpServletRequest request,
@@ -72,7 +74,7 @@ public class KakaoController {
 			} else {
 				path = "member/idPw/signUp";
 
-				message = "카카오 회원 가입 실패로 camPlex 홈페이지에서 직접 회원가입 바랍니다.";
+				message = "회원 가입 실패";
 			}
 
 		} else {
