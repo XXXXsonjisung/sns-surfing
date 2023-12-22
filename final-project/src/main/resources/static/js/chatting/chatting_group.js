@@ -87,7 +87,7 @@ chatroomList.addEventListener('click', function(event) {
     
     displayFriend();
     
-    findManger();
+    findManger()
     
     console.log('방번호:', roomNo);
   }
@@ -232,6 +232,7 @@ function sendMessage() {
 			
 			
 		}));
+        // 입력 필드 초기화
         messageInput.value = '';
 		
 		
