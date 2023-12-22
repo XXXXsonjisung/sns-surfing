@@ -1,6 +1,5 @@
 package team.gsk.project.member.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -89,23 +87,23 @@ public class MemberController {
     	
     }
     
-    // 이메일로 비밀번호 찾기
-    @PostMapping("/changePw")
-    @ResponseBody
-    public String changePassword(@RequestBody Map<String, String> map) {
-
-    	System.out.println(map); 
-    	
-    	String memberName = (String) map.get("memberName2");
-    	String memberEmail = (String) map.get("memberEmail2");
-    	     
-        String foundPw = service.findPw(memberName, memberEmail);
-        
-        return foundPw != null ? foundPw : "아이디를 찾을 수 없습니다.";
-    	
-
-    } 
-	
+//    // 이메일로 비밀번호 찾기
+//    @PostMapping("/changePw")
+//    @ResponseBody
+//    public String changePassword(@RequestBody Map<String, String> map) {
+//
+//    	System.out.println(map); 
+//    	
+//    	String memberName = (String) map.get("memberName2");
+//    	String memberEmail = (String) map.get("memberEmail2");
+//    	     
+////        String foundPw = service.findPw(memberName, memberEmail);
+//        
+////        return foundPw != null ? foundPw : "아이디를 찾을 수 없습니다.";
+//    	
+//
+//    } 
+//	
 	// 회원가입 페이지 이동
 	@GetMapping("/signUp")
 	public String signUpForward(Model model) {
