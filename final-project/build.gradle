@@ -52,11 +52,6 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.0'
 	
-	// https://mvnrepository.com/artifact/org.json/json
-	implementation group: 'org.json', name: 'json', version: '20230618'
-	
-	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
-	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
  
   
 	
