@@ -35,7 +35,7 @@ public class KakaoController {
 	private MemberService service;
 
 	@Autowired
-	private Member member;
+//	private Member member;
 
 	@GetMapping("/callback")
 	public ResponseEntity<Object> callback(HttpServletRequest request,
