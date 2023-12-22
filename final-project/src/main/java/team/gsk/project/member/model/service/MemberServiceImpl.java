@@ -69,17 +69,17 @@ public class MemberServiceImpl implements MemberService{
 		return null;
 	}
 
-	@Override
-	public int kakaoSignUp(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Member kakaoLoginMember(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public int kakaoSignUp(Map<String, String> map) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public Member kakaoLoginMember(String email) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 
 }
